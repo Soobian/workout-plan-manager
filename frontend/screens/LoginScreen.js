@@ -7,10 +7,24 @@ import { FloatingLabelInput } from 'react-native-floating-label-input';
 const LoginScreen = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const handleSignUp = () => {
+    
+  }
+
+  const handleLogin = () => {
+    
+  }
+
+
+
     return(
     <KeyboardAvoidingView 
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}>
+      <View style={styles.upperContener}>
+        <Text>Hello</Text>
+      </View>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.inputContainer}>
           <FloatingLabelInput
@@ -42,6 +56,7 @@ const LoginScreen = () => {
             onChangeText={text => setPassword(text)}
             containerStyles={{
               backgroundColor: 'white',
+              color: '#03767B',
               paddingHorizontal: 15,
               paddingVertical: 10,
               borderRadius: 10,
@@ -58,7 +73,15 @@ const LoginScreen = () => {
           />
         </View>
     </TouchableWithoutFeedback>
-  </KeyboardAvoidingView> 
+    <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          //onPress={handleLogin}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+      </View>
+    </KeyboardAvoidingView> 
     )
 }
 
@@ -67,11 +90,11 @@ export default LoginScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
   },
   inputContainer: {
-    width: '80%'
+    width: '80%',
+    borderRadius: 20,
   },
   input: {
     backgroundColor: 'white',
@@ -95,8 +118,8 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   button: {
-    backgroundColor: '#0782F9',
-    width: '100%',
+    backgroundColor: '#03767B',
+    width: '80%',
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
@@ -104,7 +127,7 @@ const styles = StyleSheet.create({
   buttonOutline: {
     backgroundColor: 'white',
     marginTop: 5,
-    borderColor: '#0782F9',
+    borderColor: '#03767B',
     borderWidth: 2,
   },
   buttonText: {
@@ -113,9 +136,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   buttonOutlineText: {
-    color: '#0782F9',
+    color: '#03767B',
     fontWeight: '700',
     fontSize: 16,
   },
-  
+  upperContener:{
+    color: '#03767B',
+    backgroundColor: '#03767B',
+    width: '103%',
+    height: '40%',
+    fontSize: 16,
+    borderRadius: 10,
+    padding: 10,
+    top: -30,
+  }
 })
