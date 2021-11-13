@@ -23,7 +23,7 @@ const LoginScreen = () => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}>
       <View style={styles.upperContener}>
-        <Text>Hello</Text>
+      <Text style={styles.upperContenerText}>Login to your account</Text>
       </View>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.inputContainer}>
@@ -149,5 +149,16 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     top: -30,
+  },
+  upperContenerText:{
+    color: 'white',
+    fontWeight: '700',
+    fontSize: 28,
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlignVertical: 'bottom',
+    position: 'absolute',  
+    bottom: 20,
+    left: 30,
   }
 })
