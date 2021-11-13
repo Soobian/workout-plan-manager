@@ -1,13 +1,16 @@
 import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
-import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, TouchableWithoutFeedback, Keyboard } from 'react-native'
 // import { auth } from '../firebase'
 
 const LoginScreen = () => {
     return(
         
-        <KeyboardAvoidingView style={styles.container}
-        behavior="padding">
+        <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
             <View style={styles.inputContainer}>
         <TextInput
@@ -25,6 +28,7 @@ const LoginScreen = () => {
           secureTextEntry
         />
       </View>
+      </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
         
     )
