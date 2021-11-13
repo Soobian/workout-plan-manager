@@ -1,38 +1,65 @@
 import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { FloatingLabelInput } from 'react-native-floating-label-input';
 // import { auth } from '../firebase'
 
 const LoginScreen = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
     return(
-        
-        <KeyboardAvoidingView
+    <KeyboardAvoidingView 
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
+      style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-
-            <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Email"
-          //value={email}
-          //onChangeText={text => setEmail(text)}
-          style={styles.input}
-        />
-        
-        <TextInput
-          placeholder="Password"
-          //value={password}
-          //onChangeText={text => setPassword(text)}
-          style={styles.input}
-          secureTextEntry
-        />
-      </View>
-      </TouchableWithoutFeedback>
-        </KeyboardAvoidingView>
-        
+        <View style={styles.inputContainer}>
+          <FloatingLabelInput
+            label={'Email'}
+            value={email}
+            onChangeText={text => setEmail(text)}
+            containerStyles={{
+              backgroundColor: 'white',
+              paddingHorizontal: 15,
+              paddingVertical: 10,
+              borderRadius: 10,
+              marginTop: 15,
+              shadowColor: "#000",
+              shadowOffset: {
+              width: 0,
+              height: 3,
+              },
+              shadowOpacity: 0.27,
+              shadowRadius: 4.65,
+              elevation: 6,
+              }}
+          />
+          <FloatingLabelInput
+            label={'Password'}
+            isPassword
+            darkTheme
+            secureTextEntry
+            value={password}
+            onChangeText={text => setPassword(text)}
+            containerStyles={{
+              backgroundColor: 'white',
+              paddingHorizontal: 15,
+              paddingVertical: 10,
+              borderRadius: 10,
+              marginTop: 15,
+              shadowColor: "#000",
+              shadowOffset: {
+              width: 0,
+              height: 3,
+              },
+              shadowOpacity: 0.27,
+              shadowRadius: 4.65,
+              elevation: 6,
+              }}
+          />
+        </View>
+    </TouchableWithoutFeedback>
+  </KeyboardAvoidingView> 
     )
-  
 }
 
 export default LoginScreen
@@ -59,7 +86,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
-    
     elevation: 6,
   },
   buttonContainer: {
@@ -91,4 +117,5 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 16,
   },
+  
 })
