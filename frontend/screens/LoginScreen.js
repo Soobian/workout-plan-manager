@@ -81,6 +81,16 @@ const LoginScreen = () => {
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
       </View>
+      <View>
+      <Text style={styles.smallText}>
+        You don't have an account?
+        <TouchableOpacity>
+          <Text style={styles.buttonLabelText}>
+            Sign up
+          </Text>
+      </TouchableOpacity>
+      </Text>
+    </View>
     </KeyboardAvoidingView> 
     )
 }
@@ -160,5 +170,21 @@ const styles = StyleSheet.create({
     position: 'absolute',  
     bottom: 20,
     left: 30,
+  },
+  smallText:{
+    color: 'gray',
+    fontWeight: '700',
+    fontSize: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlignVertical: 'bottom',
+    padding: 20
+  },
+  buttonLabelText:{
+    color: '#03767B',
+    fontWeight: '700',
+    fontSize: 14,
+    marginLeft: 15,
+    marginTop: 5
   }
 })
