@@ -2,7 +2,6 @@ import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input';
-// import { auth } from '../firebase'
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('')
@@ -54,6 +53,7 @@ const LoginScreen = () => {
             secureTextEntry
             value={password}
             onChangeText={text => setPassword(text)}
+            
             containerStyles={{
               backgroundColor: 'white',
               color: '#03767B',
@@ -78,7 +78,7 @@ const LoginScreen = () => {
           //onPress={handleLogin}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>Login</Text>
+          <Text style={styles.buttonText}>Sign in</Text>
         </TouchableOpacity>
       </View>
       <View>
@@ -178,13 +178,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     textAlignVertical: 'bottom',
-    padding: 20
+    marginTop: 20
   },
   buttonLabelText:{
     color: '#03767B',
     fontWeight: '700',
     fontSize: 14,
     marginLeft: 15,
-    marginTop: 5
   }
 })
