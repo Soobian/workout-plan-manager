@@ -9,21 +9,21 @@ import RegisterScreen from './screens/RegisterScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen options={{ headerShown: false }} name="Register" component={RegisterScreen} />
-        <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
-      </Stack.Navigator>
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen options={{ headerShown: false }} name="Register" component={RegisterScreen} />
+                <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
+        </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 });
