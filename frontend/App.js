@@ -1,16 +1,19 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import HomeScreen from './screens/HomeScreen';
-import ProfileScreen from './screens/ProfileScreen';
+import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
 
-import BottomTab from './components/navigation/BottomTabs';
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <BottomTab />
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen options={{ headerShown: false }} name="Register" component={RegisterScreen} />
+                <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
+        </Stack.Navigator>
     </NavigationContainer>
-  )
+  );
 }
