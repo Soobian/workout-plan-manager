@@ -41,6 +41,7 @@ const ExerciseScreen = () => {
             <Text style={ExerciseStyles.nameText}>
                     {state.name}</Text>
             </View>
+
             <View style={ExerciseStyles.descriptionContener}>
             <Text style={ExerciseStyles.descriptionText}
             android_hyphenationFrequency
