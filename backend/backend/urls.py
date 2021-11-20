@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('users.urls')),
     path('auth/', obtain_auth_token),
+    path('', include('exercise.urls')),
 ]
