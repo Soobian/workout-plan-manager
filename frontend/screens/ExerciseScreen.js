@@ -31,21 +31,21 @@ const ExerciseScreen = () => {
             style={ExerciseStyles.container}>
             <View style={ExerciseStyles.imageContener}>
                 <Image
-                    style={ExerciseStyles.image}
-                    source={{
-                        uri: state.imageUrl,
-                      }}/>
+                style={ExerciseStyles.image}
+                source={{
+                    uri: state.imageUrl}}/>
             </View>
             <View style={ExerciseStyles.nameContener}>
-            <Text style={ExerciseStyles.nameText}>
-                    {state.name}</Text>
+                <Text style={ExerciseStyles.nameText}>
+                    {state.name}
+                </Text>
             </View>
             <View style={ExerciseStyles.descriptionContener}>
-            <Text style={ExerciseStyles.descriptionText}
-            android_hyphenationFrequency
-            adjustsFontSizeToFit>
+                <Text style={ExerciseStyles.descriptionText}
+                android_hyphenationFrequency
+                adjustsFontSizeToFit>
                     {state.description}
-            </Text>
+                </Text>
             </View>
         </KeyboardAvoidingView>
     )

@@ -2,14 +2,78 @@ import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { render } from 'react-dom';
-import { KeyboardAvoidingView, Text, Image, View, ScrollView, SafeAreaView } from 'react-native'
+import { KeyboardAvoidingView, Text, Image, View, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
 import { ExerciseStyles } from '../components/exercise/ExerciseStyles';
 
 
 const ExerciseListScreen = () => {
     state = {
-        exercises: []
+        exercises: [
+            {
+                id: 1,
+                name: "Pushup"
+            },
+            {
+                id: 2,
+                name: "Squats"
+            },
+            {
+                id: 3,
+                name: "Walking"
+            },
+            {
+                id: 4,
+                name: "Dancing"
+            },
+            {
+                id: 5,
+                name: "Lunges"
+            },
+            {
+                id: 6,
+                name: "Abdominal Crunches"
+            },
+            {
+                id: 7,
+                name: "Pushup"
+            },
+            {
+                id: 8,
+                name: "Squats"
+            },
+            {
+                id: 9,
+                name: "Pushup"
+            },
+            {
+                id: 10,
+                name: "Squats"
+            },
+            {
+                id: 8,
+                name: "Squats"
+            },
+            {
+                id: 9,
+                name: "Pushup"
+            },
+            {
+                id: 10,
+                name: "Squats"
+            },
+        ]
     };
+
+    const refreshList = () => {
+        axios
+        .get("/exercises/")
+        .then((res) => this.setState({ exercises: res.data }))
+        .catch((err) => console.log(err));
+    };
+
+    const handleExercise = (id) => {
+
+    }
 
     return (
         <KeyboardAvoidingView 
@@ -19,43 +83,21 @@ const ExerciseListScreen = () => {
             <Text style={ExerciseStyles.exerciseText}>
                     Exercises</Text>
             </View>
-            <SafeAreaView style={ExerciseStyles.container}>
-      <ScrollView style={ExerciseStyles.scrollView}>
-        <Text style={ExerciseStyles.descriptionText}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Text>
-                </ScrollView>
-            </SafeAreaView>
+            <ScrollView contentContainerStyle={ExerciseStyles.scrollView}
+            centerContent>
+                {state.exercises.map((item, index) => {
+                    return(
+                         <TouchableOpacity 
+                        //onPress={handleExercise(item.id)} 
+                        style={ExerciseStyles.exerciseItemContainer}>
+                        <Text style={ExerciseStyles.exerciseItemContainerText}>
+                            {item.name}
+                        </Text>
+                        </TouchableOpacity>)
+                })}
+            </ScrollView>
         </KeyboardAvoidingView>
     )
-
 }
 
 export default ExerciseListScreen

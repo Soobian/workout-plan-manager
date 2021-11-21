@@ -7,8 +7,6 @@ export const ExerciseStyles = StyleSheet.create({
         backgroundColor: COLORS.dark_gray
     },
     descriptionContener:{
-        color: COLORS.dark_gray,
-        backgroundColor: COLORS.dark_gray,
         width: '103%',
         height: '40%',
         fontSize: 16,
@@ -37,8 +35,7 @@ export const ExerciseStyles = StyleSheet.create({
         
     },
     nameContener: {
-        color: '#272927',
-        backgroundColor: '#272927',
+        backgroundColor: COLORS.dark_gray,
         width: '100%',
         height: '9%',
         fontSize: 16,
@@ -73,6 +70,21 @@ export const ExerciseStyles = StyleSheet.create({
         bottom: 7
     },
     scrollView: {
-        backgroundColor: COLORS.dark_gray,
-      },
+        width: '150%',
+    },
+    exerciseItemContainer: {
+        backgroundColor: COLORS.midlle_gray,
+        width: 300,
+        height: 45,
+        fontSize: 16,
+        borderRadius: 17,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 15
+    },
+    exerciseItemContainerText: {
+        color: 'white',
+        fontWeight: '700',
+        fontSize: 20,
+    }
 })
