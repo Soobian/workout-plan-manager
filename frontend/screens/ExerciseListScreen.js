@@ -87,8 +87,10 @@ const ExerciseListScreen = () => {
             centerContent>
                 {state.exercises.map((item, index) => {
                     return(
+                        // button with exercise name displayed
                          <TouchableOpacity 
                         //onPress={handleExercise(item.id)} 
+                        // on press it should display ExerciseScreen of proper exercise
                         style={ExerciseStyles.exerciseItemContainer}>
                         <Text style={ExerciseStyles.exerciseItemContainerText}>
                             {item.name}

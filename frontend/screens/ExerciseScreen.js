@@ -14,32 +14,37 @@ const ExerciseScreen = () => {
         imageUrl: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/1076/articles/2016/10/woman-pushup-1522242407.jpg?crop=1xw:0.75xh;center,top&resize=980:*',
     };
 
-    componentDidMount= () =>{
+    refreshExercise = (item) =>{
         axios
-        .get(`/exercise/${id}`)
+        .get(`/exercise/${item.id}`)
         .then((res) => this.setState({ 
             name: res.data.name,
             description: res.data.description,
-            imageUrl: res.data.description
+            imageUrl: res.data.imageUrl
          }))
         .catch((err) => console.log(err));
     }
+
+
 
     return (
         <KeyboardAvoidingView 
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={ExerciseStyles.container}>
+                
             <View style={ExerciseStyles.imageContener}>
                 <Image
                 style={ExerciseStyles.image}
                 source={{
                     uri: state.imageUrl}}/>
             </View>
+
             <View style={ExerciseStyles.nameContener}>
                 <Text style={ExerciseStyles.nameText}>
                     {state.name}
                 </Text>
             </View>
+
             <View style={ExerciseStyles.descriptionContener}>
                 <Text style={ExerciseStyles.descriptionText}
                 android_hyphenationFrequency
@@ -47,6 +52,7 @@ const ExerciseScreen = () => {
                     {state.description}
                 </Text>
             </View>
+
         </KeyboardAvoidingView>
     )
 }

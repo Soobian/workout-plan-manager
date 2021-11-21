@@ -2,11 +2,15 @@ import { StyleSheet } from "react-native"
 import {COLORS} from '../colors/Colors'
 export const ExerciseStyles = StyleSheet.create({
     container: {
+        // whole page for both ExerciseScreen and ExerciseListScreen
         flex: 1,
         alignItems: 'center',
         backgroundColor: COLORS.dark_gray
     },
+
+    // Styles specific to ExerciseScreen:
     descriptionContener:{
+        // descrition of the exercise in ExerciseScreen
         width: '103%',
         height: '40%',
         fontSize: 16,
@@ -35,6 +39,7 @@ export const ExerciseStyles = StyleSheet.create({
         
     },
     nameContener: {
+        // container for exercise name in ExerciseScreen
         backgroundColor: COLORS.dark_gray,
         width: '100%',
         height: '9%',
@@ -43,6 +48,7 @@ export const ExerciseStyles = StyleSheet.create({
         top: -20
     },
     nameText: {
+        // exercise name 
         color: 'white',
         fontWeight: '700',
         fontSize: 28,
@@ -54,6 +60,7 @@ export const ExerciseStyles = StyleSheet.create({
         paddingTop: 17,
     },
     exerciseContainer: {
+        // container for "Exercise" title
         color: COLORS.blue,
         backgroundColor: COLORS.blue,
         width: '100%',
@@ -62,6 +69,7 @@ export const ExerciseStyles = StyleSheet.create({
         borderRadius: 17,
     },
     exerciseText: {
+        // "Exercise" title at the top of page
         color: 'white',
         fontWeight: '700',
         fontSize: 28,
@@ -69,10 +77,15 @@ export const ExerciseStyles = StyleSheet.create({
         paddingTop: '12%',
         bottom: 7
     },
+
+    // Exercise list components:
+
     scrollView: {
+        // container which enables scrolling
         width: '150%',
     },
     exerciseItemContainer: {
+        // button with exercise name displayed
         backgroundColor: COLORS.midlle_gray,
         width: 300,
         height: 45,
@@ -83,6 +96,7 @@ export const ExerciseStyles = StyleSheet.create({
         marginTop: 15
     },
     exerciseItemContainerText: {
+        // text displayed on above button
         color: 'white',
         fontWeight: '700',
         fontSize: 20,
