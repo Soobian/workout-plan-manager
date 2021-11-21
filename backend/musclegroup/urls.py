@@ -1,10 +1,10 @@
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
-from .views import ExerciseViewSet
+from .views import MuscleGroupViewSet
 
 router = routers.DefaultRouter()
-router.register('exercise', ExerciseViewSet)
+router.register('musclegroup', MuscleGroupViewSet)
 
 
 urlpatterns = [

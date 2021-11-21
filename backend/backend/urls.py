@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('users.urls')),
     path('auth/', obtain_auth_token),
     path('', include('exercise.urls')),
+    path('', include('musclegroup.urls')),
 ]
