@@ -1,13 +1,14 @@
 import { StyleSheet } from "react-native"
+import {COLORS} from '../colors/Colors'
 export const ExerciseStyles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#272927'
+        backgroundColor: COLORS.dark_gray
     },
     descriptionContener:{
-        color: '#272927',
-        backgroundColor: '#272927',
+        color: COLORS.dark_gray,
+        backgroundColor: COLORS.dark_gray,
         width: '103%',
         height: '40%',
         fontSize: 16,
@@ -55,4 +56,23 @@ export const ExerciseStyles = StyleSheet.create({
         left: 25,
         paddingTop: 17,
     },
+    exerciseContainer: {
+        color: COLORS.blue,
+        backgroundColor: COLORS.blue,
+        width: '100%',
+        height: '15%',
+        fontSize: 16,
+        borderRadius: 17,
+    },
+    exerciseText: {
+        color: 'white',
+        fontWeight: '700',
+        fontSize: 28,
+        paddingLeft: '9%',
+        paddingTop: '12%',
+        bottom: 7
+    },
+    scrollView: {
+        backgroundColor: COLORS.dark_gray,
+      },
 })

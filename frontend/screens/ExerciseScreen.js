@@ -2,8 +2,7 @@ import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { render } from 'react-dom';
-import { KeyboardAvoidingView, Text, Image, TouchableOpacity, View, TouchableWithoutFeedback, Keyboard } from 'react-native'
-import { RegisterLoginStyles } from '../components/authentication/RegisterLoginStyles'
+import { KeyboardAvoidingView, Text, Image, View } from 'react-native'
 import { ExerciseStyles } from '../components/exercise/ExerciseStyles';
 
 
@@ -41,7 +40,6 @@ const ExerciseScreen = () => {
             <Text style={ExerciseStyles.nameText}>
                     {state.name}</Text>
             </View>
-
             <View style={ExerciseStyles.descriptionContener}>
             <Text style={ExerciseStyles.descriptionText}
             android_hyphenationFrequency
