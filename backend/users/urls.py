@@ -1,13 +1,10 @@
-from django.contrib import admin
 from django.urls import path
-from django.conf.urls import include
-from rest_framework import routers
-from .views import UserViewSet
+from .views import CustomUserCreate, BlacklistTokenUpdateView
 
-router = routers.DefaultRouter()
-router.register('users', UserViewSet)
-
+app_name = 'users'
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('create/', CustomUserCreate.as_view(), name="create_user"),
+    path('logout/blacklist/', BlacklistTokenUpdateView.as_view(),
+         name='blacklist')
 ]
