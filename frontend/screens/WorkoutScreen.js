@@ -13,8 +13,15 @@ const WorkoutScreen = () => {
         exercises: [
             {
                 id: 0,
-                name: "Power push"
+                name: "Power push",
+                repeat: 2
             },
+            {
+                id: 1,
+                name: "Squts",
+                repeat: 5
+            },
+            
         ]
     };
 
@@ -39,7 +46,8 @@ const WorkoutScreen = () => {
             centerContent>
                 {state.exercises.map((item, index) => {
                     return(
-                        <View>
+                        <View
+                        style={WorkoutStyles.exerciseWithReapeatContainer}>
                             <TouchableOpacity 
                             //onPress={handleWorkout(item.id)} 
                             // on press it should display WorkoutScreen of the proper workout
@@ -48,6 +56,9 @@ const WorkoutScreen = () => {
                                     {item.name}
                                 </Text>
                             </TouchableOpacity>
+                            <Text style={WorkoutStyles.repeatItemCOntainer}>
+                                    {item.repeat}
+                                </Text>
                         </View>)
                 })}
             </ScrollView>
