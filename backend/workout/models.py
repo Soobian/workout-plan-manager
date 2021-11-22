@@ -20,7 +20,7 @@ class WorkoutPlanDay(models.Model):
 class WorkoutPlanDay_Exercise(models.Model):
     WorkoutPlanDay_ExerciseId = models.IntegerField(primary_key=True, blank=False, null=False)
     WorkoutPlanDayId = models.ForeignKey(WorkoutPlanDay, on_delete=models.CASCADE)
-    ExerciseId = models.ForeignKey(Exercise, blank=False, null=False)
+    ExerciseId = models.ForeignKey(Exercise, on_delete=models.CASCADE)
 
 
 class WorkoutPlanDay_Exercise_Sets(models.Model):
