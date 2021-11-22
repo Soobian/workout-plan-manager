@@ -3,20 +3,39 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { render } from 'react-dom';
 import { KeyboardAvoidingView, Text, Image, View, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
-import { ExerciseStyles } from '../components/exercise/ExerciseStyles';
+import { WorkoutStyles } from '../components/workout/WorkoutStyles';
 
 
-const ExerciseListScreen = () => {
+const WorkoutPlanScreen = () => {
     state = {
-        workouts: []
+        planId: 0,
+        name: "my first workout plan",
+        workouts: [
+            {
+                id: 0,
+                name: "Power push"
+            },
+            {
+                id: 1,
+                name: "Power push"
+            },
+            {
+                id: 2,
+                name: "Power push"
+            },
+
+        ]
     };
 
-    const refreshList = () => {
-        axios
-        .get("/exercises/")
-        .then((res) => this.setState({ exercises: res.data }))
-        .catch((err) => console.log(err));
-    };
+    const weekDays = [
+        {name: 'Monday'},
+        {name: 'Tuesday'},
+        {name: 'Wednesday'},
+        {name: 'Thursday'},
+        {name: 'Friday'},
+        {name: 'Saturday'},
+        {name: 'Sunday'},
+    ]
 
     // on push go to the workout page
     const handleWorkout = (id) => {
@@ -26,33 +45,33 @@ const ExerciseListScreen = () => {
     return (
         <KeyboardAvoidingView 
             behavior={Platform.OS === "ios" ? "padding" : "height"}
-            style={ExerciseStyles.container}>
-            <View style={ExerciseStyles.exerciseContainer}>
-            <Text style={ExerciseStyles.exerciseText}>
-                    Exercises</Text>
+            style={WorkoutStyles.container}>
+            <View style={WorkoutStyles.workoutContainer}>
+            <Text style={WorkoutStyles.workoutContainerText}>
+                    {state.name}</Text>
             </View>
-            <ScrollView contentContainerStyle={ExerciseStyles.scrollView}
+            <ScrollView contentContainerStyle={WorkoutStyles.scrollView}
             centerContent>
-                {state.exercises.map((item, index) => {
+                {state.workouts.map((item, index) => {
                     return(
                         <View>
-                        <Text style={ExerciseStyles.exerciseItemContainerText}>
-                            {item.index}
-                        </Text>
-                         <TouchableOpacity 
-                        //onPress={handleExercise(item.id)} 
-                        // on press it should display ExerciseScreen of proper exercise
-                        style={ExerciseStyles.exerciseItemContainer}>
-                        <Text style={ExerciseStyles.exerciseItemContainerText}>
-                            {item.name}
-                        </Text>
-                        </TouchableOpacity>)
-                        </View>
-                        
+                            <Text style={WorkoutStyles.workDayContainer}>
+                                {weekDays[index].name}
+                            </Text>
+
+                            <TouchableOpacity 
+                            //onPress={handleWorkout(item.id)} 
+                            // on press it should display WorkoutScreen of the proper workout
+                            style={WorkoutStyles.workoutItemContainer}>
+                                <Text style={WorkoutStyles.workoutItemContainerText}>
+                                    {item.name}
+                                </Text>
+                            </TouchableOpacity>
+                        </View>)
                 })}
             </ScrollView>
         </KeyboardAvoidingView>
     )
 }
 
-export default ExerciseListScreen
+export default WorkoutPlanScreen
