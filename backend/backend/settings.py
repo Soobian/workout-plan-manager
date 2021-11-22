@@ -162,3 +162,28 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+ALLOWED_HOSTS=['localhost']
+
+CORS_ALLOWED_ORIGINS = [
+    "https://domain.com",
+    "https://api.domain.com",
+    "http://localhost:8080",
+    "http://127.0.0.1:9000",
+    "http://127.0.0.1:8000",
+    "http://localhost:8000",
+]
+
+
+CORS_ORIGIN_WHITELIST = (
+       'http://localhost:8000',
+)
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
