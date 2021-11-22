@@ -27,7 +27,8 @@ export const WorkoutStyles = StyleSheet.create({
     },
     scrollView: {
         // container which enables scrolling
-        width: '150%',
+        width: 350,
+        backgroundColor: 'pink'
     },
     workoutItemContainer: {
         // button with workout name displayed
@@ -52,5 +53,36 @@ export const WorkoutStyles = StyleSheet.create({
         fontSize: 14,
         bottom: -10,
         marginTop: 10
+    },
+
+    // Workout screen 
+    
+    //"Exercise" and "repeat" labels
+    topLabelsExercise: {
+        color: COLORS.blue,
+        fontWeight: '700',
+        fontSize: 18,
+        bottom: -10,
+        marginTop: 10,
+        marginBottom: 10,
+        left: 30
+    },
+    exerciseItemContainer: {
+        // button with exercise name displayed
+        backgroundColor: COLORS.midlle_gray,
+        width: 220,
+        height: 45,
+        fontSize: 16,
+        borderRadius: 17,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 15,
+        left: 10,
+    },
+    exerciseItemContainerText: {
+        color: 'white',
+        fontWeight: '700',
+        fontSize: 18,
     }
+    
 })

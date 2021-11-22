@@ -6,27 +6,17 @@ import { KeyboardAvoidingView, Text, Image, View, ScrollView, SafeAreaView, Touc
 import { WorkoutStyles } from '../components/workout/WorkoutStyles';
 
 
-const WorkoutPlanScreen = () => {
+const WorkoutScreen = () => {
     state = {
-        planId: 0,
-        name: "my first workout plan",
-        workouts: [
+        workoutId: 0,
+        name: "a random workout",
+        exercises: [
             {
                 id: 0,
                 name: "Power push"
             },
         ]
     };
-
-    const weekDays = [
-        {name: 'Monday'},
-        {name: 'Tuesday'},
-        {name: 'Wednesday'},
-        {name: 'Thursday'},
-        {name: 'Friday'},
-        {name: 'Saturday'},
-        {name: 'Sunday'},
-    ]
 
     // on push go to the workout page
     const handleWorkout = (id) => {
@@ -41,20 +31,20 @@ const WorkoutPlanScreen = () => {
             <Text style={WorkoutStyles.workoutContainerText}>
                     {state.name}</Text>
             </View>
+                <Text style={WorkoutStyles.topLabelsExercise}>
+                    Exercise                  Repetitions
+                </Text>
+            
             <ScrollView contentContainerStyle={WorkoutStyles.scrollView}
             centerContent>
-                {state.workouts.map((item, index) => {
+                {state.exercises.map((item, index) => {
                     return(
                         <View>
-                            <Text style={WorkoutStyles.workDayContainer}>
-                                {weekDays[index].name}
-                            </Text>
-
                             <TouchableOpacity 
                             //onPress={handleWorkout(item.id)} 
                             // on press it should display WorkoutScreen of the proper workout
-                            style={WorkoutStyles.workoutItemContainer}>
-                                <Text style={WorkoutStyles.workoutItemContainerText}>
+                            style={WorkoutStyles.exerciseItemContainer}>
+                                <Text style={WorkoutStyles.exerciseItemContainerText}>
                                     {item.name}
                                 </Text>
                             </TouchableOpacity>
@@ -65,4 +55,4 @@ const WorkoutPlanScreen = () => {
     )
 }
 
-export default WorkoutPlanScreen
+export default WorkoutScreen
