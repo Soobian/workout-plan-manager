@@ -39,7 +39,7 @@ const LoginScreen = ({navigation}) => {
             firstText={'Sign in'} 
             secondText={'Sign up'} 
             smallText={"You don't have an account?"} 
-            handleLogin={handleLogin} 
+            handleLogin={() => navigation.navigate('Home')} 
             handleScreenSwitch={() => navigation.navigate('Register')}/> 
     )
 }

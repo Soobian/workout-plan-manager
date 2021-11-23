@@ -21,6 +21,7 @@ const RegisterScreen = ({navigation}) => {
             firstText={"Sign up"} 
             secondText={"Sign in"} 
             smallText={"You already have an account?"} 
+            handleLogin={() => navigation.navigate('Login')}
             handleScreenSwitch={() => navigation.navigate('Login')}/>
     )
 }
