@@ -7,9 +7,9 @@ from .views import WorkoutPlanViewSet, WorkoutPlanDayViewSet, WorkoutPlanDay_Exe
 
 router = routers.DefaultRouter()
 router.register('workout', WorkoutPlanViewSet)
-router.register('workoutplan', WorkoutPlanViewSet)
-router.register('set', WorkoutPlanViewSet)
-router.register('reps', WorkoutPlanViewSet)
+router.register('workoutplan', WorkoutPlanDayViewSet)
+router.register('set', WorkoutPlanDay_ExerciseViewSet)
+router.register('reps', WorkoutPlanDay_Exercise_SetsViewSet)
 
 
 urlpatterns = [

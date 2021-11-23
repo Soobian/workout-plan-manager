@@ -5,22 +5,22 @@ from .models import WorkoutPlan, WorkoutPlanDay, WorkoutPlanDay_Exercise, Workou
 class WorkoutPlanSerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkoutPlan
-        fields = ['Id', 'name', 'description']
+        fields = ['WorkoutPlanId','UserId', 'name', 'description']
 
 
 class WorkoutPlanDaySerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkoutPlanDay
-        fields = ['Id', 'name', 'description']
+        fields = ['WorkoutPlanDayId','WorkoutPlanId', 'name', 'description']
 
 
 class WorkoutPlanDay_ExerciseSerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkoutPlanDay_Exercise
-        fields = ['Id', 'WorkoutPlanDayId', 'ExerciseId']
+        fields = ['WorkoutPlanDay_ExerciseId', 'WorkoutPlanDayId', 'ExerciseId']
 
 
 class WorkoutPlanDay_Exercise_SetsSerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkoutPlanDay_Exercise_Sets
-        fields = ['id', 'reps']
+        fields = ['WorkoutPlanDay_Exercise_SetsId', 'WorkoutPlanDay_ExerciseId','reps']
