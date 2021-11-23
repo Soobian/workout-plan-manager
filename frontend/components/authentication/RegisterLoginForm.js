@@ -1,10 +1,10 @@
 import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
-import { KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View, TouchableWithoutFeedback, Keyboard, Platform } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { RegisterLoginStyles } from './RegisterLoginStyles'
 
-const RegisterLoginForm = ({formFields, title, firstText, smallText, secondText}) => {
+const RegisterLoginForm = ({formFields, title, firstText, smallText, secondText, handleLogin, handleScreenSwitch}) => {
     return (
         <KeyboardAvoidingView 
             behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -37,7 +37,7 @@ const RegisterLoginForm = ({formFields, title, firstText, smallText, secondText}
             </TouchableWithoutFeedback>
             <View style={RegisterLoginStyles.buttonContainer}>
                 <TouchableOpacity 
-                    //onPress={handleLogin} 
+                    onPress={handleLogin.bind(this)}
                     style={RegisterLoginStyles.button}
                 >
                     <Text style={RegisterLoginStyles.buttonText}>{firstText}</Text>
@@ -46,7 +46,7 @@ const RegisterLoginForm = ({formFields, title, firstText, smallText, secondText}
             <View>
                 <Text style={RegisterLoginStyles.smallText}>
                     {smallText}
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={handleScreenSwitch}>
                         <Text style={RegisterLoginStyles.buttonLabelText}>{secondText}</Text>
                     </TouchableOpacity>
                 </Text>
