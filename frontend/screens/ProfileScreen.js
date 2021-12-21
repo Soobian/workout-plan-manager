@@ -5,6 +5,7 @@ import { render } from 'react-dom';
 import { KeyboardAvoidingView, Text, Image, View, ScrollView, SafeAreaView, TouchableOpacity,  Dimensions } from 'react-native'
 import { ProfileStyles } from '../components/profile/ProfileStyles';
 import { LineChart} from 'react-native-chart-kit';
+import BorderWrapper from 'react-border-wrapper';
 import { COLORS } from '../components/colors/Colors';
 
 const ProfileScreen = () => {
@@ -89,12 +90,27 @@ const ProfileScreen = () => {
                 </TouchableOpacity>
             </View>
             
-            <ScrollView contentContainerStyle={ProfileStyles.scrollView}
+            <Text style={ProfileStyles.titleText}>History</Text>
+            <View style={ProfileStyles.measurementHistoryContainer}> 
+                <ScrollView contentContainerStyle={ProfileStyles.scrollView}
             centerContent>
-                <Text style={ProfileStyles.titleText}>History</Text>
-                <View style={ProfileStyles.measurementHistoryContainer}> 
-                </View>
-            </ScrollView>
+                    <View style={ProfileStyles.singleMeasurementContainer}> 
+                        <View style={ProfileStyles.dateContainer}> 
+                            <Text style={ProfileStyles.dateText}>`DATE`</Text>
+                        </View>
+                        <View style={ProfileStyles.specificMeasurementsCOntainer}> 
+                            <Text style={ProfileStyles.specificMeasurementsText}>
+                                    CHEST          WAIST           BICEPS          THIGH
+                            </Text>
+                            <Text style={ProfileStyles.numbersText}>
+                                     100          80           60          50
+                            </Text>
+                        </View>
+                    </View>
+                    
+                </ScrollView>
+            </View>
+            
             
         </KeyboardAvoidingView>
     )

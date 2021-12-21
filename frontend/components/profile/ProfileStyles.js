@@ -10,8 +10,8 @@ export const ProfileStyles = StyleSheet.create({
     },
     scrollView: {
         // container which enables scrolling
-        width: 350,
-        paddingVertical: 0,
+        width: '100%',
+        alignItems: 'center',
     },
     
     upperContainer: {
@@ -39,16 +39,12 @@ export const ProfileStyles = StyleSheet.create({
 
     measurementHistoryContainer: {
         borderColor: '#03767B',
-        borderEndColor: '#03767B',
-        borderTopColor: '#03767B',
         borderWidth: 2,
         borderRadius: 10,
-        padding: 5,
         marginBottom: 30,
-        paddingVertical: 15,
+        paddingVertical: 5,
         width: '90%',
-        paddingHorizontal: 10,
-        left: 20
+        height: 160
     },
 
     detailsText: {
@@ -63,14 +59,11 @@ export const ProfileStyles = StyleSheet.create({
 
     // title for measurements: weight, ...
     titleText: {
-        color: '#03767B',
+        color: COLORS.blue,
         fontWeight: '900',
         fontSize: 19,
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingHorizontal: 30,
-        paddingVertical: 5,
-        left: 20
+        left: -110,
+        paddingBottom: 3
     },
 
     chartContainer: {
@@ -82,7 +75,7 @@ export const ProfileStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 10,
-        marginBottom:10
+        marginBottom:3
     },
 
     buttonLabelText: {
@@ -93,8 +86,47 @@ export const ProfileStyles = StyleSheet.create({
     button: {
         backgroundColor: '#03767B',
         width: '70%',
-        padding: 15,
+        padding: 12,
         borderRadius: 10,
         alignItems: 'center',
     },
+
+    singleMeasurementContainer: {
+        backgroundColor: COLORS.white,
+        borderColor: COLORS.light_gray,
+        borderWidth: 1,
+        width: '101%',
+        marginBottom: 10,
+    },
+
+    dateContainer: {
+        backgroundColor: COLORS.blue,
+        width: '100%',
+        height: 16,
+        alignItems: 'center'
+    },
+    dateText: {
+        color: COLORS.white,
+        fontSize: 10
+    },
+    specificMeasurementsCOntainer: {
+        width: '100%',
+        height: 50,
+        borderRadius: 8,
+    },
+    specificMeasurementsText: {
+        color: COLORS.blue,
+        paddingLeft: 25,
+        paddingTop: 5,
+        fontSize: 13,
+        fontWeight: "900",
+        alignItems: 'center'
+    },
+    numbersText : {
+        color: COLORS.blue,
+        paddingLeft: 25,
+        fontSize: 18,
+        fontWeight: "900",
+        alignItems: 'center'
+    }
 })
