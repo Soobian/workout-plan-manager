@@ -8,16 +8,22 @@ import { AddMeasurementStyle } from '../components/profile/AddMeasurementStyle';
 import { COLORS } from '../components/colors/Colors';
 
 const AddMeasurementScreen = ({navigation}) => {
-    const [email, setEmail] = useState('')
     const [chest, setChest] = useState('')
-    const [password, setPassword] = useState('')
+    const [waist, setWaist] = useState('')
+    const [biceps, setBiceps] = useState('')
+    const [thigh, setThigh] = useState('')
 
     const formFields = [
-        {label: 'Chest', value: email, onChangeText: text => setEmail(text)},
-        {label: 'Waist', value: email, onChangeText: text => setEmail(text)},
-        {label: 'Biceps', value: email, onChangeText: text => setEmail(text)},
-        {label: 'Thigh', value: email, onChangeText: text => setEmail(text)},
+        {label: 'CHEST', value: chest, onChangeText: text => setChest(text)},
+        {label: 'WAIST', value: waist, onChangeText: text => setWaist(text)},
+        {label: 'BICEPS', value: biceps, onChangeText: text => setBiceps(text)},
+        {label: 'THIGH', value: thigh, onChangeText: text => setThigh(text)},
     ]
+
+    const handleAdd = () => {
+        // checking whether all fields are filled 
+        navigation.navigate('Home');
+    }
     return (
         <KeyboardAvoidingView 
             behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -32,10 +38,16 @@ const AddMeasurementScreen = ({navigation}) => {
                 <View style={AddMeasurementStyle.inputContainer}>
                     {formFields.map((item, index) => {
                         return (
-                            <View style={AddMeasurementStyle.labelsCointeiner}>
+                            <View style={AddMeasurementStyle.wholeContainer}>
+                                <View style={AddMeasurementStyle.labelNameContianer}>
+                                    <Text style={AddMeasurementStyle.labelNameText}>
+                                        {item.label}
+                                    </Text>
+                                </View>
+                                <View style={AddMeasurementStyle.labelsCointeiner}>
                                 <FloatingLabelInput
+                                keyboardType="numeric"
                                 key={index}
-                                label={item.label}
                                 value={item.value}
                                 onChangeText={item.onChangeText}
                                 containerStyles={AddMeasurementStyle.floatingLabelInputContainerStyle}
@@ -43,18 +55,25 @@ const AddMeasurementScreen = ({navigation}) => {
                                     colorFocused: COLORS.midlle_gray,
                                     fontSizeFocused: 10,
                                 }}
-                            />
+                                maxDecimalPlaces='2'
+                                />
+                                </View>
+                                <View style={AddMeasurementStyle.labelkgContianer}>
+                                    <Text style={AddMeasurementStyle.labelNameText}>
+                                        kg
+                                    </Text>
+                                </View>
                             </View>
                         )
                     })}
                 </View>
             </TouchableWithoutFeedback>
             <View style={AddMeasurementStyle.buttonContainer}>
-                <TouchableOpacity style={AddMeasurementStyle.button}>
+                <TouchableOpacity style={AddMeasurementStyle.button}
+                onPress={handleAdd}>
                     <Text style={AddMeasurementStyle.buttonText}>ADD</Text>
                 </TouchableOpacity>
-            </View>
-            
+            </View> 
         </KeyboardAvoidingView>
     )
 }
