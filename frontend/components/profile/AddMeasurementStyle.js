@@ -10,30 +10,16 @@ export const AddMeasurementStyle = StyleSheet.create({
     inputContainer: {
         width: '80%',
         borderRadius: 20,
-        paddingTop: 40,
-        height: 400,
+        paddingTop: 20,
+        height: 350,
+        alignItems: 'center'
     },
-    input: {
-        backgroundColor: 'white',
-        paddingHorizontal: 15,
-        paddingVertical: 10,
-        borderRadius: 10,
-        marginTop: 15,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.27,
-        shadowRadius: 4.65,
-        elevation: 6,
-    },
+
+    // ADD button
     buttonContainer: {
-        width: '60%',
+        width: '40%',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 40,
-        paddingTop: 10,
     },
     button: {
         backgroundColor: '#03767B',
@@ -54,11 +40,7 @@ export const AddMeasurementStyle = StyleSheet.create({
         fontWeight: '700',
         fontSize: 16,
     },
-    buttonOutlineText: {
-        color: '#03767B',
-        fontWeight: '700',
-        fontSize: 16,
-    },
+    
     // upper blue container
     upperContener:{
         backgroundColor: '#03767B',
@@ -69,7 +51,7 @@ export const AddMeasurementStyle = StyleSheet.create({
         paddingBottom: 20,
     },
     upperContenerText:{
-        color: 'white',
+        color: COLORS.white,
         fontWeight: '700',
         fontSize: 28,
         justifyContent: 'center',
@@ -80,11 +62,11 @@ export const AddMeasurementStyle = StyleSheet.create({
         left: 30,
     },
     
-    buttonLabelText:{
-        color: '#03767B',
-        fontWeight: '700',
-        fontSize: 14,
-        marginLeft: 15,
+    // input labels
+    labelsCointeiner: {
+        paddingTop: 10,
+        width: 80,
+        alignItems: 'center'
     },
     floatingLabelInputContainerStyle: {
         backgroundColor: 'white',
@@ -101,5 +83,6 @@ export const AddMeasurementStyle = StyleSheet.create({
         shadowOpacity: 0.27,
         shadowRadius: 4.65,
         elevation: 6,
+        fontWeight: "500"
     },
 })

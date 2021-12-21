@@ -13,10 +13,10 @@ const AddMeasurementScreen = ({navigation}) => {
     const [password, setPassword] = useState('')
 
     const formFields = [
-        {label: 'Chest', value: email, onChangeText: text => setEmail(text), darkTheme: false},
-        {label: 'Waist', value: email, onChangeText: text => setEmail(text), darkTheme: false},
-        {label: 'Biceps', value: email, onChangeText: text => setEmail(text),darkTheme: false},
-        {label: 'Thigh', value: email, onChangeText: text => setEmail(text), darkTheme: false},
+        {label: 'Chest', value: email, onChangeText: text => setEmail(text)},
+        {label: 'Waist', value: email, onChangeText: text => setEmail(text)},
+        {label: 'Biceps', value: email, onChangeText: text => setEmail(text)},
+        {label: 'Thigh', value: email, onChangeText: text => setEmail(text)},
     ]
     return (
         <KeyboardAvoidingView 
@@ -28,31 +28,29 @@ const AddMeasurementScreen = ({navigation}) => {
             </View>
             <TouchableWithoutFeedback 
             onPress={Keyboard.dismiss} 
-            style={AddMeasurementStyle.upperContener}>
+            >
                 <View style={AddMeasurementStyle.inputContainer}>
                     {formFields.map((item, index) => {
                         return (
-                            <FloatingLabelInput
+                            <View style={AddMeasurementStyle.labelsCointeiner}>
+                                <FloatingLabelInput
                                 key={index}
                                 label={item.label}
                                 value={item.value}
-                                darkTheme={item.darkTheme}
-                                secureTextEntry={item.secureTextEntry}
                                 onChangeText={item.onChangeText}
                                 containerStyles={AddMeasurementStyle.floatingLabelInputContainerStyle}
                                 customLabelStyles={{
-                                    colorFocused: 'gray',
+                                    colorFocused: COLORS.midlle_gray,
                                     fontSizeFocused: 10,
                                 }}
                             />
+                            </View>
                         )
                     })}
                 </View>
             </TouchableWithoutFeedback>
             <View style={AddMeasurementStyle.buttonContainer}>
-                <TouchableOpacity 
-                    style={AddMeasurementStyle.button}
-                >
+                <TouchableOpacity style={AddMeasurementStyle.button}>
                     <Text style={AddMeasurementStyle.buttonText}>ADD</Text>
                 </TouchableOpacity>
             </View>
