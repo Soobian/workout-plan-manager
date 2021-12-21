@@ -100,7 +100,7 @@ const ProfileScreen = ({navigation}) => {
             />
             <View style={ProfileStyles.buttonContainer}>
                 <TouchableOpacity style={ProfileStyles.button}
-                onPress={() => navigation.navigate('Register')}>
+                onPress={() => navigation.navigate('AddMeasurement')}>
                     <Text style={ProfileStyles.buttonLabelText}>ADD MEASUREMENT</Text>
                 </TouchableOpacity>
             </View>

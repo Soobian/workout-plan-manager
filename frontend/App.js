@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import MainStack from './stacks/MainStack';
-import { AddMeasurementScreen } from './screens/AddMeasurementScreen';
+import AddMeasurementScreen from './screens/AddMeasurementScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +17,7 @@ export default function App() {
                 <Stack.Screen options={{ headerShown: false }} name="Register" component={RegisterScreen} />
                 <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
                 <Stack.Screen options={{ headerShown: false }} name="Home" component={MainStack} />
-                
+                <Stack.Screen options={{ headerShown: false }} name="AddMeasurement" component={AddMeasurementScreen} />
         </Stack.Navigator>
     </NavigationContainer>
   );

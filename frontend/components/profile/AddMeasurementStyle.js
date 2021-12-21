@@ -1,31 +1,74 @@
 import { StyleSheet } from "react-native"
 import {COLORS} from '../colors/Colors'
+import { useNavigation } from '@react-navigation/core'
 
 export const AddMeasurementStyle = StyleSheet.create({
     container: {
-        // whole page
         flex: 1,
         alignItems: 'center',
-        backgroundColor: COLORS.white
     },
-    scrollView: {
-        // container which enables scrolling
-        width: '100%',
+    inputContainer: {
+        width: '80%',
+        borderRadius: 20,
+        paddingTop: 40,
+        height: 400,
+    },
+    input: {
+        backgroundColor: 'white',
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+        borderRadius: 10,
+        marginTop: 15,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
+    },
+    buttonContainer: {
+        width: '60%',
+        justifyContent: 'center',
         alignItems: 'center',
+        marginTop: 40,
+        paddingTop: 10,
     },
-    
-    upperContainer: {
+    button: {
+        backgroundColor: '#03767B',
+        width: '80%',
+        padding: 15,
+        borderRadius: 10,
+        alignItems: 'center',
+        paddingTop: 10,
+    },
+    buttonOutline: {
+        backgroundColor: 'white',
+        marginTop: 5,
+        borderColor: '#03767B',
+        borderWidth: 2,
+    },
+    buttonText: {
+        color: 'white',
+        fontWeight: '700',
+        fontSize: 16,
+    },
+    buttonOutlineText: {
         color: '#03767B',
+        fontWeight: '700',
+        fontSize: 16,
+    },
+    // upper blue container
+    upperContener:{
         backgroundColor: '#03767B',
         width: '103%',
-        height: '16%',
+        height: '20%',
         fontSize: 16,
         borderRadius: 10,
-        padding: 10,
-        top: 0,
+        paddingBottom: 20,
     },
-
-    upperContainerText: {
+    upperContenerText:{
         color: 'white',
         fontWeight: '700',
         fontSize: 28,
@@ -33,101 +76,30 @@ export const AddMeasurementStyle = StyleSheet.create({
         alignItems: 'center',
         textAlignVertical: 'bottom',
         position: 'absolute',  
-        bottom: 23,
+        bottom: 20,
         left: 30,
     },
-
-    measurementHistoryContainer: {
-        borderColor: '#03767B',
-        borderWidth: 2,
+    
+    buttonLabelText:{
+        color: '#03767B',
+        fontWeight: '700',
+        fontSize: 14,
+        marginLeft: 15,
+    },
+    floatingLabelInputContainerStyle: {
+        backgroundColor: 'white',
+        color: '#03767B',
+        paddingHorizontal: 15,
+        paddingVertical: 10,
         borderRadius: 10,
-        marginBottom: 30,
-        paddingVertical: 5,
-        width: '85%',
-        height: 160,
-        left: -5
-    },
-
-    detailsText: {
-        color: 'black',
-        fontWeight: '600',
-        fontSize: 16,
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingHorizontal: 30,
-        paddingVertical: 5
-    },
-
-    // title for measurements: weight, ...
-    titleText: {
-        color: COLORS.blue,
-        fontWeight: '900',
-        fontSize: 19,
-        left: -110,
-        paddingBottom: 3
-    },
-
-    chartContainer: {
-        paddingBottom: 1,
-    },
-
-    buttonContainer: {
-        width: '60%',
-        justifyContent: 'center',
-        alignItems: 'center',
         marginTop: 10,
-        marginBottom:3
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
     },
-
-    buttonLabelText: {
-        color: COLORS.white,
-        fontSize: 14
-    },
-
-    button: {
-        backgroundColor: '#03767B',
-        width: '70%',
-        padding: 12,
-        borderRadius: 10,
-        alignItems: 'center',
-    },
-
-    singleMeasurementContainer: {
-        backgroundColor: COLORS.white,
-        borderColor: COLORS.light_gray,
-        borderWidth: 1,
-        width: '101%',
-        marginBottom: 10,
-    },
-
-    dateContainer: {
-        backgroundColor: COLORS.blue,
-        width: '100%',
-        height: 16,
-        alignItems: 'center'
-    },
-    dateText: {
-        color: COLORS.white,
-        fontSize: 10
-    },
-    specificMeasurementsCOntainer: {
-        width: '100%',
-        height: 50,
-        borderRadius: 8,
-    },
-    specificMeasurementsText: {
-        color: COLORS.blue,
-        paddingLeft: 20,
-        paddingTop: 5,
-        fontSize: 13,
-        fontWeight: "900",
-        alignItems: 'center'
-    },
-    numbersText : {
-        color: COLORS.blue,
-        paddingLeft: 25,
-        fontSize: 18,
-        fontWeight: "900",
-        alignItems: 'center'
-    }
 })

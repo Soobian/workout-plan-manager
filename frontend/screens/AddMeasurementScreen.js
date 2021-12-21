@@ -1,42 +1,45 @@
-import React, { Component } from 'react'
+import React, { Component , useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/core'
 import axios from "axios"
 import { render } from 'react-dom';
-import { KeyboardAvoidingView, Text, Image, View, ScrollView, SafeAreaView, TouchableOpacity,  Dimensions } from 'react-native'
+import { KeyboardAvoidingView, Text, Image, View, ScrollView, SafeAreaView, TouchableOpacity,  Dimensions, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { AddMeasurementStyle } from '../components/profile/AddMeasurementStyle';
-import { RegisterLoginStyles } from '../components/authentication/RegisterLoginStyles'
 import { COLORS } from '../components/colors/Colors';
 
 const AddMeasurementScreen = ({navigation}) => {
     const [email, setEmail] = useState('')
+    const [chest, setChest] = useState('')
     const [password, setPassword] = useState('')
-    const [isAuthorized, setAuthorization] = useState('')
 
     const formFields = [
-        {label: 'Email', value: email, onChangeText: text => setEmail(text), isPassword: false, secureTextEntry: false,  darkTheme: false},
-        {label: 'Password', value: password, onChangeText: text => setPassword(text), isPassword: true, secureTextEntry: true,  darkTheme: true},
+        {label: 'Chest', value: email, onChangeText: text => setEmail(text), darkTheme: false},
+        {label: 'Waist', value: email, onChangeText: text => setEmail(text), darkTheme: false},
+        {label: 'Biceps', value: email, onChangeText: text => setEmail(text),darkTheme: false},
+        {label: 'Thigh', value: email, onChangeText: text => setEmail(text), darkTheme: false},
     ]
     return (
         <KeyboardAvoidingView 
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={AddMeasurementStyle.container}
         >
-            <View style={RegisterLoginStyles.upperContener}>
-                <Text style={RegisterLoginStyles.upperContenerText}>{title}</Text>
+            <View style={AddMeasurementStyle.upperContener}>
+                <Text style={AddMeasurementStyle.upperContenerText}>Add measurement</Text>
             </View>
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View style={RegisterLoginStyles.inputContainer}>
+            <TouchableWithoutFeedback 
+            onPress={Keyboard.dismiss} 
+            style={AddMeasurementStyle.upperContener}>
+                <View style={AddMeasurementStyle.inputContainer}>
                     {formFields.map((item, index) => {
                         return (
                             <FloatingLabelInput
                                 key={index}
                                 label={item.label}
                                 value={item.value}
-                                isPassword={item.isPassword}
                                 darkTheme={item.darkTheme}
                                 secureTextEntry={item.secureTextEntry}
                                 onChangeText={item.onChangeText}
-                                containerStyles={RegisterLoginStyles.floatingLabelInputContainerStyle}
+                                containerStyles={AddMeasurementStyle.floatingLabelInputContainerStyle}
                                 customLabelStyles={{
                                     colorFocused: 'gray',
                                     fontSizeFocused: 10,
@@ -46,22 +49,14 @@ const AddMeasurementScreen = ({navigation}) => {
                     })}
                 </View>
             </TouchableWithoutFeedback>
-            <View style={RegisterLoginStyles.buttonContainer}>
+            <View style={AddMeasurementStyle.buttonContainer}>
                 <TouchableOpacity 
-                    onPress={handleLogin.bind(this)}
-                    style={RegisterLoginStyles.button}
+                    style={AddMeasurementStyle.button}
                 >
-                    <Text style={RegisterLoginStyles.buttonText}>{firstText}</Text>
+                    <Text style={AddMeasurementStyle.buttonText}>ADD</Text>
                 </TouchableOpacity>
             </View>
-            <View>
-                <Text style={RegisterLoginStyles.smallText}>
-                    {smallText}
-                    <TouchableOpacity onPress={handleScreenSwitch}>
-                        <Text style={RegisterLoginStyles.buttonLabelText}>{secondText}</Text>
-                    </TouchableOpacity>
-                </Text>
-            </View>
+            
         </KeyboardAvoidingView>
     )
 }
