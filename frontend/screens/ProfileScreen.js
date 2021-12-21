@@ -8,7 +8,7 @@ import { LineChart} from 'react-native-chart-kit';
 import BorderWrapper from 'react-border-wrapper';
 import { COLORS } from '../components/colors/Colors';
 
-const ProfileScreen = () => {
+const ProfileScreen = ({navigation}) => {
     const screenWidth = Dimensions.get("window").width;
     const datesOfMeasurements = ["30.01","03.02","05.02","08.02","11.02"];
     const chestMeasurements = [99, 96, 92, 88, 84];
@@ -99,7 +99,8 @@ const ProfileScreen = () => {
                 chartConfig={chartConfig}
             />
             <View style={ProfileStyles.buttonContainer}>
-                <TouchableOpacity style={ProfileStyles.button}>
+                <TouchableOpacity style={ProfileStyles.button}
+                onPress={() => navigation.navigate('Register')}>
                     <Text style={ProfileStyles.buttonLabelText}>ADD MEASUREMENT</Text>
                 </TouchableOpacity>
             </View>
