@@ -43,8 +43,9 @@ export const ProfileStyles = StyleSheet.create({
         borderRadius: 10,
         marginBottom: 30,
         paddingVertical: 5,
-        width: '90%',
-        height: 160
+        width: '85%',
+        height: 160,
+        left: -5
     },
 
     detailsText: {
@@ -116,7 +117,7 @@ export const ProfileStyles = StyleSheet.create({
     },
     specificMeasurementsText: {
         color: COLORS.blue,
-        paddingLeft: 25,
+        paddingLeft: 20,
         paddingTop: 5,
         fontSize: 13,
         fontWeight: "900",
