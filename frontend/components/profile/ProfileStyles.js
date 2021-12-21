@@ -41,7 +41,7 @@ export const ProfileStyles = StyleSheet.create({
         borderColor: '#03767B',
         borderWidth: 2,
         borderRadius: 10,
-        marginBottom: 30,
+        marginBottom: 7,
         paddingVertical: 5,
         width: '85%',
         height: 160,
@@ -75,7 +75,6 @@ export const ProfileStyles = StyleSheet.create({
         width: '60%',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 10,
         marginBottom:3
     },
 
@@ -98,6 +97,7 @@ export const ProfileStyles = StyleSheet.create({
         borderWidth: 1,
         width: '101%',
         marginBottom: 10,
+        
     },
 
     dateContainer: {
@@ -114,6 +114,23 @@ export const ProfileStyles = StyleSheet.create({
         width: '100%',
         height: 50,
         borderRadius: 8,
+        flexDirection: "row" ,
+        justifyContent: 'space-evenly',
+        
+    },
+    specificsOneItemContainer: {
+        height: 50,
+        width: '24%',
+        alignItems: 'center',
+        borderRadius: 8
+    },
+    specificText: {
+        color: COLORS.blue,
+        paddingTop: 5,
+        paddingHorizontal: 5,
+        fontSize: 13,
+        fontWeight: "900",
+        alignItems: 'center'
     },
     specificMeasurementsText: {
         color: COLORS.blue,
@@ -125,7 +142,6 @@ export const ProfileStyles = StyleSheet.create({
     },
     numbersText : {
         color: COLORS.blue,
-        paddingLeft: 25,
         fontSize: 18,
         fontWeight: "900",
         alignItems: 'center'

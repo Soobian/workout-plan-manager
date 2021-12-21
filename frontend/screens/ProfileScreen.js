@@ -95,12 +95,7 @@ const ProfileScreen = ({navigation}) => {
                 height={220}
                 chartConfig={chartConfig}
             />
-            <View style={ProfileStyles.buttonContainer}>
-                <TouchableOpacity style={ProfileStyles.button}
-                onPress={() => navigation.navigate('AddMeasurement')}>
-                    <Text style={ProfileStyles.buttonLabelText}>ADD MEASUREMENT</Text>
-                </TouchableOpacity>
-            </View>
+            
             
             <Text style={ProfileStyles.titleText}>History</Text>
             <View style={ProfileStyles.measurementHistoryContainer}> 
@@ -113,16 +108,33 @@ const ProfileScreen = ({navigation}) => {
                             <Text style={ProfileStyles.dateText}>{item.date}</Text>
                         </View>
                         <View style={ProfileStyles.specificMeasurementsCOntainer}> 
-                            <Text style={ProfileStyles.specificMeasurementsText}>
-                                CHEST        WAIST          BICEPS        THIGH
-                            </Text>
-                            <Text style={ProfileStyles.numbersText}>
-                                     {item.chest}        {item.waist}         {item.biceps}       {item.thigh}
-                            </Text>
+                            <View style={ProfileStyles.specificsOneItemContainer}>
+                                    <Text style={ProfileStyles.specificText}>CHEST</Text>
+                                    <Text style={ProfileStyles.numbersText}>{item.chest}</Text>
+                            </View>
+                            <View style={ProfileStyles.specificsOneItemContainer}>
+                                    <Text style={ProfileStyles.specificText}>WAIST</Text>
+                                    <Text style={ProfileStyles.numbersText}>{item.waist}</Text>
+                            </View>
+                            <View style={ProfileStyles.specificsOneItemContainer}>
+                                    <Text style={ProfileStyles.specificText}>BICEPS</Text>
+                                    <Text style={ProfileStyles.numbersText}>{item.biceps}</Text>
+                            </View>
+                            <View style={ProfileStyles.specificsOneItemContainer}>
+                                    <Text style={ProfileStyles.specificText}>THIGH</Text>
+                                    <Text style={ProfileStyles.numbersText}>{item.thigh}</Text>
+                            </View>
+            
                         </View>
                     </View>)
                 })}
                 </ScrollView>
+            </View>
+            <View style={ProfileStyles.buttonContainer}>
+                <TouchableOpacity style={ProfileStyles.button}
+                onPress={() => navigation.navigate('AddMeasurement')}>
+                    <Text style={ProfileStyles.buttonLabelText}>ADD MEASUREMENT</Text>
+                </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>
     )
