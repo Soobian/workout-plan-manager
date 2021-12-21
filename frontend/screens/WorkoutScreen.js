@@ -6,7 +6,7 @@ import { KeyboardAvoidingView, Text, Image, View, ScrollView, SafeAreaView, Touc
 import { WorkoutStyles } from '../components/workout/WorkoutStyles';
 
 
-const WorkoutScreen = () => {
+const WorkoutScreen = ({navigation}) => {
     state = {
         workoutId: 0,
         name: "a random workout",

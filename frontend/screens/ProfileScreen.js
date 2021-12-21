@@ -1,11 +1,8 @@
-import React, { Component } from 'react'
-import { useNavigation } from '@react-navigation/core'
+import React from 'react'
 import axios from "axios"
-import { render } from 'react-dom';
-import { KeyboardAvoidingView, Text, Image, View, ScrollView, SafeAreaView, TouchableOpacity,  Dimensions } from 'react-native'
+import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity,  Dimensions } from 'react-native'
 import { ProfileStyles } from '../components/profile/ProfileStyles';
 import { LineChart} from 'react-native-chart-kit';
-import BorderWrapper from 'react-border-wrapper';
 import { COLORS } from '../components/colors/Colors';
 
 const ProfileScreen = ({navigation}) => {

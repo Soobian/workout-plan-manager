@@ -7,7 +7,7 @@ import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { AddMeasurementStyle } from '../components/profile/AddMeasurementStyle';
 import { COLORS } from '../components/colors/Colors';
 
-const AddMeasurementScreen = ({navigation}) => {
+const AddMeasurementScreen = ({navigation}, measurements) => {
     const [chest, setChest] = useState('')
     const [waist, setWaist] = useState('')
     const [biceps, setBiceps] = useState('')
