@@ -63,6 +63,9 @@ export const AddWorkoutStyle = StyleSheet.create({
         left: 30,
     },
     
+    untouchableContainer: {
+        alignItems: 'center',
+    },
     // input labels
     // whole container
     wholeContainer: {
@@ -132,68 +135,39 @@ export const AddWorkoutStyle = StyleSheet.create({
         borderRadius: 10,
         marginBottom: 7,
         paddingVertical: 5,
-        width: 250,
+        width: 320,
         height: 160,
-        left: -5
+        left: -5,
     },
     scrollView: {
         // container which enables scrolling
         width: '100%',
         alignItems: 'center',
     },
-    singleMeasurementContainer: {
+    // container for whole exercise
+    singleExerciseContainer: {
         backgroundColor: COLORS.white,
         borderColor: COLORS.light_gray,
         borderWidth: 1,
-        width: '101%',
+        width: '80%',
         marginBottom: 10,
-        
+        borderRadius: 8,
     },
-
-    dateContainer: {
-        backgroundColor: COLORS.blue,
+    rowDivisionContainer: {
         width: '100%',
-        height: 16,
-        alignItems: 'center'
-    },
-    dateText: {
-        color: COLORS.white,
-        fontSize: 10
-    },
-    specificMeasurementsCOntainer: {
-        width: '100%',
-        height: 50,
+        height: 40,
         borderRadius: 8,
         flexDirection: "row" ,
         justifyContent: 'space-evenly',
-        
     },
-    specificsOneItemContainer: {
-        height: 50,
-        width: '24%',
-        alignItems: 'center',
-        borderRadius: 8
+    
+    exerciseNameContainer: {
+        backgroundColor: COLORS.light_blue,
+        width: '60%',
+        borderRadius: 8,
     },
-    specificText: {
-        color: COLORS.blue,
-        paddingTop: 5,
-        paddingHorizontal: 5,
-        fontSize: 13,
-        fontWeight: "900",
-        alignItems: 'center'
-    },
-    specificMeasurementsText: {
-        color: COLORS.blue,
-        paddingLeft: 20,
-        paddingTop: 5,
-        fontSize: 13,
-        fontWeight: "900",
-        alignItems: 'center'
-    },
-    numbersText : {
-        color: COLORS.blue,
-        fontSize: 18,
-        fontWeight: "900",
-        alignItems: 'center'
+
+    repeatAndSeriesContainer: {
+        width: '20%',
     }
 })

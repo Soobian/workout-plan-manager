@@ -57,6 +57,8 @@ const AddWorkoutScreen = ({navigation}) => {
     //added exercises
     exercises = [
         {id: 0, name: 'Push up', repeat: 3, series: 3},
+        {id: 1, name: 'Push up', repeat: 3, series: 3},
+        {id: 2, name: 'Push up', repeat: 3, series: 3},
     ];
 
     return (
@@ -68,7 +70,7 @@ const AddWorkoutScreen = ({navigation}) => {
                 <Text style={AddWorkoutStyle.upperContenerText}>Create workout</Text>
             </View>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View style={AddWorkoutStyle.container}>
+                <View style={AddWorkoutStyle.untouchableContainer}>
                 <View style={AddWorkoutStyle.labelsCointeiner}>
                     <FloatingLabelInput
                     value={name}
@@ -106,19 +108,25 @@ const AddWorkoutScreen = ({navigation}) => {
                 </View>
                 )
             })}
-
-            <Text style={AddWorkoutStyle.titleText}>Exercises</Text>
+            <Text style={AddWorkoutStyle.titleText}>Exercises:</Text>
+            </View>
+            </TouchableWithoutFeedback>
             <View style={AddWorkoutStyle.addedExercisesContainer}> 
             <ScrollView contentContainerStyle={AddWorkoutStyle.scrollView}
             centerContent>
                     {exercises.map((item, index) => {
                     return(
-                        <View style={AddWorkoutStyle.singleMeasurementContainer}> 
-                        <View style={AddWorkoutStyle.dateContainer}> 
-                            <Text style={AddWorkoutStyle.dateText}>data</Text>
-                        </View>
-                        <View style={AddWorkoutStyle.specificMeasurementsCOntainer}> 
-                            
+                        <View style={AddWorkoutStyle.singleExerciseContainer}> 
+                        <View style={AddWorkoutStyle.rowDivisionContainer}> 
+                            <View style={AddWorkoutStyle.exerciseNameContainer}>
+                                <Text> elo</Text>
+                            </View>
+                            <View style={AddWorkoutStyle.repeatAndSeriesContainer}>
+                                <Text> elo</Text>
+                            </View>
+                            <View style={AddWorkoutStyle.repeatAndSeriesContainer}>
+                                <Text> elo</Text>
+                            </View>
                         </View>
                     </View>)
                 })}
@@ -130,9 +138,6 @@ const AddWorkoutScreen = ({navigation}) => {
                     <Text style={AddWorkoutStyle.buttonText}>ADD WORKOUT</Text>
                 </TouchableOpacity>
             </View> 
-
-            </View>
-            </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
     )
 }
