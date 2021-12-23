@@ -9,6 +9,7 @@ import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
 import Select from 'react-select'
 
 const AddWorkoutScreen = ({navigation}) => {
+    const [name, setName] = useState('')
     const [selectedDuration, setSelectedDuration] = useState("");
     const [selectedLevel, setSelectedLevel] = useState("");
     const [selectedType, setSelectedType] = useState("");
@@ -23,7 +24,7 @@ const AddWorkoutScreen = ({navigation}) => {
         {value: 1, label: '15min'},
         {value: 2, label: '30min'},
         {value: 3, label: '45min'},
-        {value: 4, label: '1hmin'},
+        {value: 4, label: '1h'},
         {value: 5, label: '1h 15min'},
         {value: 6, label: '1h 30min'},
         {value: 7, label: '1h 45min'},
@@ -61,39 +62,55 @@ const AddWorkoutScreen = ({navigation}) => {
             <View style={AddWorkoutStyle.upperContener}>
                 <Text style={AddWorkoutStyle.upperContenerText}>Add workout</Text>
             </View>
-
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <View style={AddWorkoutStyle.container}>
+                <View style={AddWorkoutStyle.labelsCointeiner}>
+                <FloatingLabelInput
+                value={name}
+                label='Workout name'
+                onChangeText={text => setName(text)}
+                containerStyles={AddWorkoutStyle.floatingLabelInputContainerStyle}
+                customLabelStyles={{
+                    colorFocused: COLORS.midlle_gray,
+                    fontSizeFocused: 10,
+                    }}/>
+            </View>
+            
             {tables.map((item, index) => {
                 return (
-                    <View style={AddWorkoutStyle.wholeContainer}>
-                <View style={AddWorkoutStyle.labelForPickerContainer}>
-                    <Text style={AddWorkoutStyle.labelForPickerContainerText}>
+                <View style={AddWorkoutStyle.wholeContainer}>
+                    <View style={AddWorkoutStyle.labelForPickerContainer}>
+                        <Text style={AddWorkoutStyle.labelForPickerContainerText}>
                         {item.name}:
-                    </Text>
+                        </Text>
+                    </View>
+                    <View style={AddWorkoutStyle.pickerContainer}>
+                        <Picker
+                            selectedValue={selectedDuration}
+                            style={{ height: 40, width: 130 }}
+                            onValueChange={(itemValue, itemIndex) => setSelectedDuration(itemValue)}
+                            mode='dropdown'
+                        >
+                            {item.table.map((subitem, index) => {
+                                return (
+                                    <Picker.Item label={subitem.label} value={subitem.value} />
+                                    )
+                                })}
+                        </Picker>
+                    </View>
                 </View>
-                <View style={AddWorkoutStyle.pickerContainer}>
-                    <Picker
-                        selectedValue={selectedDuration}
-                        style={{ height: 40, width: 130 }}
-                        onValueChange={(itemValue, itemIndex) => setSelectedDuration(itemValue)}
-                        mode='dropdown'
-                    >
-                        {item.table.map((subitem, index) => {
-                            return (
-                                <Picker.Item label={subitem.label} value={subitem.value} />
-                                )
-                            })}
-                    </Picker>
-                </View>
-            </View>
                 )
             })}                   
             
             <View style={AddWorkoutStyle.buttonContainer}>
                 <TouchableOpacity style={AddWorkoutStyle.button}
                 onPress={handleAdd}>
-                    <Text style={AddWorkoutStyle.buttonText}>ADD</Text>
+                    <Text style={AddWorkoutStyle.buttonText}>ADD WORKOUT</Text>
                 </TouchableOpacity>
             </View> 
+
+            </View>
+            </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
     )
 }

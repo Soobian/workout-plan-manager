@@ -17,9 +17,10 @@ export const AddWorkoutStyle = StyleSheet.create({
 
     // ADD button
     buttonContainer: {
-        width: '40%',
+        width: '50%',
         justifyContent: 'center',
         alignItems: 'center',
+        paddingTop: 20,
     },
     button: {
         backgroundColor: '#03767B',
@@ -69,11 +70,13 @@ export const AddWorkoutStyle = StyleSheet.create({
         alignItems: 'center',
         flexDirection: "row" ,
         justifyContent: 'space-evenly',
+        paddingBottom: 5,
     },
     labelsCointeiner: {
         paddingTop: 10,
-        width: 80,
+        width: 260,
         alignItems: 'center',
+        paddingBottom: 30,
     },
     floatingLabelInputContainerStyle: {
         backgroundColor: 'white',
@@ -90,37 +93,9 @@ export const AddWorkoutStyle = StyleSheet.create({
         shadowRadius: 4.65,
         elevation: 6,
         fontWeight: "500",
-        width: 30
+        width: 60
     },
-    labelNameContianer: {
-        paddingHorizontal: 15,
-        borderRadius: 10,
-        width: 90,
-        marginHorizontal: 35,
-        marginTop: 15,
-        left: -30,
-    },
-    labelNameText : {
-        fontSize: 18,
-        color: COLORS.midlle_gray,
-    },
-    labelkgContianer: {
-        paddingHorizontal: 15,
-        paddingVertical: 15,
-        borderRadius: 10,
-        marginTop: 25,
-        width: 50,
-        marginHorizontal:50,
-        marginTop: 10,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        fontWeight: "500",
-        fontSize: 30,
-        left: 30,
-    },
+    
     pickerContainer: {
         backgroundColor: COLORS.white,
         height: 40,
