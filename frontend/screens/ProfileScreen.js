@@ -10,8 +10,8 @@ const ProfileScreen = ({navigation}) => {
     const datesOfMeasurements = ["30.01","03.02","05.02","08.02","11.02"];
     const chestMeasurements = [99, 96, 92, 88, 84];
     const waistMeasurements = [102, 102, 99, 96, 92];
-    const bicepsMeasurements = [60.4, 60.4, 60.2, 60, 59.8];
-    const thighMeasurements =  [55, 52, 52, 52, 51];
+    bicepsMeasurements = [60.4, 60.4, 60.2, 60, 59.8];
+    thighMeasurements =  [55, 52, 52, 52, 51];
 
     measurements = [
         {
@@ -68,7 +68,7 @@ const ProfileScreen = ({navigation}) => {
             },
             {
                 data: waistMeasurements,
-                color: (opacity = 1) => COLORS.light_blue, 
+                color: (opacity = 1) => COLORS.middle_blue, 
                 strokeWidth: 2 
             },
             {

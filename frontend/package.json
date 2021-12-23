@@ -33,6 +33,7 @@
     "react-native-web": "0.17.1",
     "react-navigation": "^4.4.4",
     "react-scripts": "4.0.3",
+    "react-select": "^5.2.1",
     "styled-components": "5.3.3",
     "web-vitals": "^2.1.2"
   },

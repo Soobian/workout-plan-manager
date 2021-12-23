@@ -46,7 +46,7 @@ export const WorkoutListStyle = StyleSheet.create({
         paddingVertical: 5,
         width: '90%',
         height: 350,
-        paddingTop: 20
+        paddingTop: 10
     },
 
     // button
@@ -76,7 +76,7 @@ export const WorkoutListStyle = StyleSheet.create({
         borderColor: COLORS.light_gray,
         borderWidth: 1,
         width: '101%',
-        marginBottom: 10,
+        marginBottom: 20,
     },
 
     workoutNameContainer: {
@@ -92,31 +92,30 @@ export const WorkoutListStyle = StyleSheet.create({
     // details about the workout - box below the name
     specificsContainer: {
         width: '100%',
-        height: 50,
+        height: 52,
         borderRadius: 8,
         flexDirection: "row" ,
         justifyContent: 'space-evenly',
-        
+        backgroundColor: COLORS.light_blue,
     },
     specificsOneItemContainer: {
         height: 50,
         backgroundColor: COLORS.light_blue,
-        width: '30%',
+        width: '33%',
         alignItems: 'center',
-        borderRadius: 8
     },
     specificText: {
-        color: COLORS.white,
+        color: COLORS.blue,
         paddingTop: 5,
         paddingHorizontal: 5,
         fontSize: 14,
-        fontWeight: "900",
+        fontWeight: "500",
         alignItems: 'center'
     },
     numbersText : {
         color: COLORS.blue,
-        paddingLeft: 25,
-        fontSize: 18,
+        paddingHorizontal: 5,
+        fontSize: 16,
         fontWeight: "900",
         alignItems: 'center'
     }
