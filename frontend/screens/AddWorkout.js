@@ -9,17 +9,9 @@ import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
 import Select from 'react-select'
 
 const AddWorkoutScreen = ({navigation}) => {
-    const [chest, setChest] = useState('')
-    const [waist, setWaist] = useState('')
-    const [biceps, setBiceps] = useState('')
-    const [thigh, setThigh] = useState('')
-
-    const formFields = [
-        {label: 'CHEST', value: chest, onChangeText: text => setChest(text)},
-        {label: 'WAIST', value: waist, onChangeText: text => setWaist(text)},
-        {label: 'BICEPS', value: biceps, onChangeText: text => setBiceps(text)},
-        {label: 'THIGH', value: thigh, onChangeText: text => setThigh(text)},
-    ]
+    const [selectedDuration, setSelectedDuration] = useState("");
+    const [selectedLevel, setSelectedLevel] = useState("");
+    const [selectedType, setSelectedType] = useState("");
 
     const handleAdd = () => {
         // checking whether all fields are filled 
@@ -27,7 +19,6 @@ const AddWorkoutScreen = ({navigation}) => {
     };
 
     // select workout duration
-
     const duration = [
         {value: 1, label: '15min'},
         {value: 2, label: '30min'},
@@ -39,7 +30,28 @@ const AddWorkoutScreen = ({navigation}) => {
         {value: 8, label: '2h'},
     ];
 
-    const [selectedDuration, setSelectedDuration] = useState("");
+    // select workout level
+    const level = [
+        {value: 1, label: 'easy'},
+        {value: 2, label: 'medium'},
+        {value: 3, label: 'hard'},
+        {value: 4, label: 'killer'},
+    ];
+
+    // select workout type 
+    const type = [
+        {value: 1, label: 'cardio'},
+        {value: 2, label: 'strength'},
+        {value: 3, label: 'stretching'},
+        {value: 4, label: 'balance'},
+        {value: 4, label: 'HIIT'},
+    ];
+    // all tables for select windows
+    const tables = [
+        {name: 'DURATION', table: duration},
+        {name: 'LEVEL', table: level},
+        {name: 'TYPE', table: type}
+    ];
 
     return (
         <KeyboardAvoidingView 
@@ -49,59 +61,33 @@ const AddWorkoutScreen = ({navigation}) => {
             <View style={AddWorkoutStyle.upperContener}>
                 <Text style={AddWorkoutStyle.upperContenerText}>Add workout</Text>
             </View>
-            <View style={AddWorkoutStyle.pickerContainer}>
-                <Picker
-                    selectedValue={selectedDuration}
-                    style={{ height: 40, width: 130 }}
-                    onValueChange={(itemValue, itemIndex) => setSelectedDuration(itemValue)}
-                    mode='dropdown'
-                >
 
-                    {duration.map((item, index) => {
-                            return (
-                                <Picker.Item label={item.label} value={item.value} />
-                            )
-                        })}
-                </Picker>
-            </View>
-            
-
-            <TouchableWithoutFeedback 
-            onPress={Keyboard.dismiss} 
-            >
-                <View style={AddWorkoutStyle.inputContainer}>
-                    {formFields.map((item, index) => {
-                        return (
-                            <View style={AddWorkoutStyle.wholeContainer}>
-                                <View style={AddWorkoutStyle.labelNameContianer}>
-                                    <Text style={AddWorkoutStyle.labelNameText}>
-                                        {item.label}
-                                    </Text>
-                                </View>
-                                <View style={AddWorkoutStyle.labelsCointeiner}>
-                                <FloatingLabelInput
-                                keyboardType="numeric"
-                                key={index}
-                                value={item.value}
-                                onChangeText={item.onChangeText}
-                                containerStyles={AddWorkoutStyle.floatingLabelInputContainerStyle}
-                                customLabelStyles={{
-                                    colorFocused: COLORS.midlle_gray,
-                                    fontSizeFocused: 10,
-                                }}
-                                maxDecimalPlaces='2'
-                                />
-                                </View>
-                                <View style={AddWorkoutStyle.labelkgContianer}>
-                                    <Text style={AddWorkoutStyle.labelNameText}>
-                                        kg
-                                    </Text>
-                                </View>
-                            </View>
-                        )
-                    })}
+            {tables.map((item, index) => {
+                return (
+                    <View style={AddWorkoutStyle.wholeContainer}>
+                <View style={AddWorkoutStyle.labelForPickerContainer}>
+                    <Text style={AddWorkoutStyle.labelForPickerContainerText}>
+                        {item.name}:
+                    </Text>
                 </View>
-            </TouchableWithoutFeedback>
+                <View style={AddWorkoutStyle.pickerContainer}>
+                    <Picker
+                        selectedValue={selectedDuration}
+                        style={{ height: 40, width: 130 }}
+                        onValueChange={(itemValue, itemIndex) => setSelectedDuration(itemValue)}
+                        mode='dropdown'
+                    >
+                        {item.table.map((subitem, index) => {
+                            return (
+                                <Picker.Item label={subitem.label} value={subitem.value} />
+                                )
+                            })}
+                    </Picker>
+                </View>
+            </View>
+                )
+            })}                   
+            
             <View style={AddWorkoutStyle.buttonContainer}>
                 <TouchableOpacity style={AddWorkoutStyle.button}
                 onPress={handleAdd}>

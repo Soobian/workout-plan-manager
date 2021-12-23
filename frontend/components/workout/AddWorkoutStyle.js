@@ -65,7 +65,7 @@ export const AddWorkoutStyle = StyleSheet.create({
     // input labels
     // whole container
     wholeContainer: {
-        width: 80,
+        width: 180,
         alignItems: 'center',
         flexDirection: "row" ,
         justifyContent: 'space-evenly',
@@ -125,5 +125,16 @@ export const AddWorkoutStyle = StyleSheet.create({
         backgroundColor: COLORS.white,
         height: 40,
         borderRadius: 4,
+    },
+    labelForPickerContainer: {
+        height: 40,
+        borderRadius: 4,
+        width: 90,
+        left: -10,
+    },
+    labelForPickerContainerText: {
+        color: COLORS.midlle_gray,
+        fontSize: 17,
+        marginVertical: 10,
     },
 })
