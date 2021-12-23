@@ -51,7 +51,7 @@ const WorkoutListScreen = ({navigation}) => {
             <View style={WorkoutListStyle.buttonContainer}>
                 <TouchableOpacity style={WorkoutListStyle.button}
                 onPress={() => navigation.navigate('AddWorkout')}>
-                    <Text style={WorkoutListStyle.buttonLabelText}>ADD WORKOUT</Text>
+                    <Text style={WorkoutListStyle.buttonLabelText}>CREATE WORKOUT</Text>
                 </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>

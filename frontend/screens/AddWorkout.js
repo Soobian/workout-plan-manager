@@ -49,9 +49,14 @@ const AddWorkoutScreen = ({navigation}) => {
     ];
     // all tables for select windows
     const tables = [
-        {name: 'DURATION', table: duration},
-        {name: 'LEVEL', table: level},
-        {name: 'TYPE', table: type}
+        {name: 'DURATION', table: duration, set: setSelectedDuration},
+        {name: 'LEVEL', table: level, set: setSelectedLevel},
+        {name: 'TYPE', table: type, set: setSelectedType}
+    ];
+
+    //added exercises
+    exercises = [
+        {id: 0, name: 'Push up', repeat: 3, series: 3},
     ];
 
     return (
@@ -60,21 +65,21 @@ const AddWorkoutScreen = ({navigation}) => {
             style={AddWorkoutStyle.container}
         >
             <View style={AddWorkoutStyle.upperContener}>
-                <Text style={AddWorkoutStyle.upperContenerText}>Add workout</Text>
+                <Text style={AddWorkoutStyle.upperContenerText}>Create workout</Text>
             </View>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={AddWorkoutStyle.container}>
                 <View style={AddWorkoutStyle.labelsCointeiner}>
-                <FloatingLabelInput
-                value={name}
-                label='Workout name'
-                onChangeText={text => setName(text)}
-                containerStyles={AddWorkoutStyle.floatingLabelInputContainerStyle}
-                customLabelStyles={{
-                    colorFocused: COLORS.midlle_gray,
-                    fontSizeFocused: 10,
-                    }}/>
-            </View>
+                    <FloatingLabelInput
+                    value={name}
+                    label='Workout name'
+                    onChangeText={text => setName(text)}
+                    containerStyles={AddWorkoutStyle.floatingLabelInputContainerStyle}
+                    customLabelStyles={{
+                        colorFocused: COLORS.midlle_gray,
+                        fontSizeFocused: 10,
+                        }}/>
+                </View>
             
             {tables.map((item, index) => {
                 return (
@@ -87,11 +92,11 @@ const AddWorkoutScreen = ({navigation}) => {
                     <View style={AddWorkoutStyle.pickerContainer}>
                         <Picker
                             selectedValue={selectedDuration}
-                            style={{ height: 40, width: 130 }}
-                            onValueChange={(itemValue, itemIndex) => setSelectedDuration(itemValue)}
+                            style={AddWorkoutStyle.pickerText}
+                            onValueChange={(itemValue, itemIndex) => item.set(itemValue)}
                             mode='dropdown'
                         >
-                            {item.table.map((subitem, index) => {
+                            {item.table.map((subitem, subindex) => {
                                 return (
                                     <Picker.Item label={subitem.label} value={subitem.value} />
                                     )
@@ -100,8 +105,25 @@ const AddWorkoutScreen = ({navigation}) => {
                     </View>
                 </View>
                 )
-            })}                   
-            
+            })}
+
+            <Text style={AddWorkoutStyle.titleText}>Exercises</Text>
+            <View style={AddWorkoutStyle.addedExercisesContainer}> 
+            <ScrollView contentContainerStyle={AddWorkoutStyle.scrollView}
+            centerContent>
+                    {exercises.map((item, index) => {
+                    return(
+                        <View style={AddWorkoutStyle.singleMeasurementContainer}> 
+                        <View style={AddWorkoutStyle.dateContainer}> 
+                            <Text style={AddWorkoutStyle.dateText}>data</Text>
+                        </View>
+                        <View style={AddWorkoutStyle.specificMeasurementsCOntainer}> 
+                            
+                        </View>
+                    </View>)
+                })}
+                </ScrollView>
+            </View>
             <View style={AddWorkoutStyle.buttonContainer}>
                 <TouchableOpacity style={AddWorkoutStyle.button}
                 onPress={handleAdd}>
