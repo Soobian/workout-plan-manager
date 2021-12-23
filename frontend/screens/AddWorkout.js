@@ -56,9 +56,9 @@ const AddWorkoutScreen = ({navigation}) => {
 
     //added exercises
     exercises = [
-        {id: 0, name: 'Push up', repeat: 3, series: 3},
-        {id: 1, name: 'Push up', repeat: 3, series: 3},
-        {id: 2, name: 'Push up', repeat: 3, series: 3},
+        {id: 0, name: 'Push up', repeat: 10, series: 3},
+        {id: 1, name: 'Push up', repeat: 20, series: 5},
+        {id: 2, name: 'Push up', repeat: 10, series: 5},
     ];
 
     return (
@@ -108,9 +108,10 @@ const AddWorkoutScreen = ({navigation}) => {
                 </View>
                 )
             })}
-            <Text style={AddWorkoutStyle.titleText}>Exercises:</Text>
+            
             </View>
             </TouchableWithoutFeedback>
+            <Text style={AddWorkoutStyle.titleText}>Exercises:             Repetition:   Series:</Text>
             <View style={AddWorkoutStyle.addedExercisesContainer}> 
             <ScrollView contentContainerStyle={AddWorkoutStyle.scrollView}
             centerContent>
@@ -119,23 +120,29 @@ const AddWorkoutScreen = ({navigation}) => {
                         <View style={AddWorkoutStyle.singleExerciseContainer}> 
                         <View style={AddWorkoutStyle.rowDivisionContainer}> 
                             <View style={AddWorkoutStyle.exerciseNameContainer}>
-                                <Text> elo</Text>
+                                <Text style={AddWorkoutStyle.nameText}> {item.name}</Text>
                             </View>
                             <View style={AddWorkoutStyle.repeatAndSeriesContainer}>
-                                <Text> elo</Text>
+                                <Text style={AddWorkoutStyle.numberText}> {item.repeat}</Text>
                             </View>
                             <View style={AddWorkoutStyle.repeatAndSeriesContainer}>
-                                <Text> elo</Text>
+                                <Text style={AddWorkoutStyle.numberText}> {item.series}</Text>
                             </View>
                         </View>
                     </View>)
                 })}
+                <View style={AddWorkoutStyle.exerciseButtonContainer}>
+                    <TouchableOpacity style={AddWorkoutStyle.button}
+                    onPress={handleAdd}>
+                        <Text style={AddWorkoutStyle.buttonText}>ADD EXERCISE</Text>
+                    </TouchableOpacity>
+                </View> 
                 </ScrollView>
             </View>
             <View style={AddWorkoutStyle.buttonContainer}>
                 <TouchableOpacity style={AddWorkoutStyle.button}
                 onPress={handleAdd}>
-                    <Text style={AddWorkoutStyle.buttonText}>ADD WORKOUT</Text>
+                    <Text style={AddWorkoutStyle.buttonText}>CREATE WORKOUT</Text>
                 </TouchableOpacity>
             </View> 
         </KeyboardAvoidingView>

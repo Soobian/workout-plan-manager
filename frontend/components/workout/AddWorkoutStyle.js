@@ -17,7 +17,7 @@ export const AddWorkoutStyle = StyleSheet.create({
 
     // ADD button
     buttonContainer: {
-        width: '50%',
+        width: '60%',
         justifyContent: 'center',
         alignItems: 'center',
         paddingTop: 20,
@@ -65,6 +65,7 @@ export const AddWorkoutStyle = StyleSheet.create({
     
     untouchableContainer: {
         alignItems: 'center',
+        paddingBottom: 10,
     },
     // input labels
     // whole container
@@ -96,7 +97,8 @@ export const AddWorkoutStyle = StyleSheet.create({
         shadowRadius: 4.65,
         elevation: 6,
         fontWeight: "500",
-        width: 60
+        width: 60,
+        fontSize: 12
     },
     
     pickerContainer: {
@@ -125,8 +127,8 @@ export const AddWorkoutStyle = StyleSheet.create({
     titleText: {
         color: COLORS.blue,
         fontWeight: '900',
-        fontSize: 19,
-        left: -110,
+        fontSize: 15,
+        
         paddingBottom: 3
     },
     addedExercisesContainer: {
@@ -165,9 +167,48 @@ export const AddWorkoutStyle = StyleSheet.create({
         backgroundColor: COLORS.light_blue,
         width: '60%',
         borderRadius: 8,
+        alignItems: 'center'
     },
 
     repeatAndSeriesContainer: {
         width: '20%',
-    }
+        alignItems: 'center'
+    },
+    nameText: {
+        color: COLORS.midlle_gray,
+        fontSize: 17,
+        marginTop: 5,
+    },
+    numberText: {
+        color: COLORS.midlle_gray,
+        fontSize: 18,
+        marginTop: 5,
+    },
+
+    //exercise button
+    exerciseButtonContainer: {
+        width: '50%',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+    },
+    button: {
+        backgroundColor: '#03767B',
+        width: '80%',
+        padding: 15,
+        borderRadius: 10,
+        alignItems: 'center',
+        paddingTop: 10,
+    },
+    buttonOutline: {
+        backgroundColor: 'white',
+        marginTop: 5,
+        borderColor: '#03767B',
+        borderWidth: 2,
+    },
+    buttonText: {
+        color: 'white',
+        fontWeight: '700',
+        fontSize: 16,
+    },
 })
