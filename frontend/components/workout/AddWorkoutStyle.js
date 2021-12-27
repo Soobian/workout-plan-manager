@@ -260,12 +260,60 @@ export const AddWorkoutStyle = StyleSheet.create({
         borderRadius: 8,
     },
     checkboxContainer: {
-        backgroundColor: COLORS.light_blue,
         width: '9%',
         height: '100%',
         borderRadius: 8,
         alignItems: 'center',
         justifyContent: 'center',
-    }
+    },
+
+    containerFOrExerciseAndCheckBox: {
+        width: '100%',
+        height: 70,
+        borderRadius: 8,
+        flexDirection: "row" ,
+        justifyContent: 'space-evenly',
+        marginBottom: 10,
+    },
+
+    /// series and repetitions
+    wholeContainer: {
+        width: '90%',
+        alignItems: 'center',
+        flexDirection: "row" ,
+        justifyContent: 'space-evenly',
+    },
+    labelsCointeiner2: {
+        paddingTop: 10,
+        width: 60,
+        alignItems: 'center',
+    },
+    floatingLabelExercise: {
+        backgroundColor: 'white',
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+        borderRadius: 10,
+        marginTop: 10,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
+        fontWeight: "500",
+        width: 30
+    },
+    labelNameContianer: {
+        paddingHorizontal: 15,
+        borderRadius: 10,
+        marginHorizontal: 5,
+        marginTop: 15,
+    },
+    labelNameText : {
+        fontSize: 18,
+        color: COLORS.midlle_gray,
+    },
     
 })

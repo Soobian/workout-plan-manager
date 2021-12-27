@@ -60,7 +60,7 @@ const AddMeasurementScreen = ({navigation}, measurements) => {
                                 </View>
                                 <View style={AddMeasurementStyle.labelkgContianer}>
                                     <Text style={AddMeasurementStyle.labelNameText}>
-                                        kg
+                                        cm
                                     </Text>
                                 </View>
                             </View>

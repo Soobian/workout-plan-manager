@@ -6,9 +6,11 @@ import { CheckBox, Icon } from 'react-native-elements';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { COLORS } from '../components/colors/Colors';
 import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
+import { AddMeasurementStyle } from '../components/profile/AddMeasurementStyle';
 
 const AddExerciseToWorkoutScreen = ({navigation}) => {
-    const [name, setName] = useState('')
+    const [series, setSeries] = useState('')
+    const [repeat, setRepeat] = useState('')
 
     const handleAddExercise = () => {
         // returning to creation of the same workout
@@ -27,8 +29,6 @@ const AddExerciseToWorkoutScreen = ({navigation}) => {
         {id: 1, name: "sth else", photoUrl: photos[1], selected: false},
         {id: 2, name: "have no idea", photoUrl: photos[2], selected: false}
     ];
-
-    checklist = [];
 
     const handleSelection = (id) => {
         console.log(id);
@@ -57,7 +57,8 @@ const AddExerciseToWorkoutScreen = ({navigation}) => {
             centerContent>
                     {exerciseList.map((item, index) => {
                     return(
-                        <View style={AddWorkoutStyle.singleExerciseWithPhotoContainer}> 
+                        <View style={AddWorkoutStyle.containerFOrExerciseAndCheckBox}> 
+                            <View style={AddWorkoutStyle.singleExerciseWithPhotoContainer}> 
                         <View style={AddWorkoutStyle.rowDivisionContainer}> 
                             <View style={AddWorkoutStyle.exerciseNameContainer}>
                                 <Text style={AddWorkoutStyle.nameText}> {item.name}</Text>
@@ -67,7 +68,10 @@ const AddExerciseToWorkoutScreen = ({navigation}) => {
                                 style={AddWorkoutStyle.image}
                                 source={{uri: item.photoUrl}}/>
                             </View>
-                            <View style={AddWorkoutStyle.checkboxContainer}>
+                            
+                        </View>
+                        </View>
+                        <View style={AddWorkoutStyle.checkboxContainer}>
                                 <CheckBox
                                 center={true}
                                 checkedIcon="dot-circle-o"
@@ -75,12 +79,45 @@ const AddExerciseToWorkoutScreen = ({navigation}) => {
                                 checked={item.selected}
                                 onPress={() => handleSelection(index)}
                                 />
-                            </View>
-                            
                         </View>
-                    </View>)
+                        </View>
+                        )
                 })}
                 </ScrollView>
+            </View>
+            <View style={AddWorkoutStyle.wholeContainer}>
+                <View style={AddWorkoutStyle.labelNameContianer}>
+                    <Text style={AddWorkoutStyle.labelNameText}>Series:</Text>
+                </View>
+                <View style={AddWorkoutStyle.labelsCointeiner2}>
+                    <FloatingLabelInput
+                        keyboardType="numeric"
+                        value={series}
+                        onChangeText={text => setSeries(text)}
+                        containerStyles={AddWorkoutStyle.floatingLabelExercise}
+                        customLabelStyles={{
+                            colorFocused: COLORS.midlle_gray,
+                            fontSizeFocused: 10,
+                        }}
+                        maxDecimalPlaces='0'
+                        />
+                </View>
+                <View style={AddWorkoutStyle.labelNameContianer}>
+                    <Text style={AddWorkoutStyle.labelNameText}>Repetitions:</Text>
+                </View>
+                <View style={AddWorkoutStyle.labelsCointeiner2}>
+                    <FloatingLabelInput
+                        keyboardType="numeric"
+                        value={repeat}
+                        onChangeText={text => setRepeat(text)}
+                        containerStyles={AddWorkoutStyle.floatingLabelExercise}
+                        customLabelStyles={{
+                            colorFocused: COLORS.midlle_gray,
+                            fontSizeFocused: 10,
+                        }}
+                        maxDecimalPlaces='0'
+                        />
+                </View>
             </View>
             <View style={AddWorkoutStyle.buttonContainer}>
                 <TouchableOpacity style={AddWorkoutStyle.button}
