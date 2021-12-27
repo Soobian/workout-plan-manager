@@ -247,8 +247,8 @@ export const AddWorkoutStyle = StyleSheet.create({
         borderRadius: 8,
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100%',
-        width: '100%',
+        height: '98%',
+        width: '98%',
     },
     singleExerciseWithPhotoContainer: {
         backgroundColor: COLORS.white,
@@ -259,5 +259,13 @@ export const AddWorkoutStyle = StyleSheet.create({
         marginBottom: 10,
         borderRadius: 8,
     },
+    checkboxContainer: {
+        backgroundColor: COLORS.light_blue,
+        width: '9%',
+        height: '100%',
+        borderRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
     
 })
