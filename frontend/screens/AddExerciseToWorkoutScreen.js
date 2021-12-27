@@ -6,7 +6,6 @@ import { CheckBox, Icon } from 'react-native-elements';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { COLORS } from '../components/colors/Colors';
 import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
-import { AddMeasurementStyle } from '../components/profile/AddMeasurementStyle';
 
 const AddExerciseToWorkoutScreen = ({navigation}) => {
     const [series, setSeries] = useState('')
@@ -50,6 +49,40 @@ const AddExerciseToWorkoutScreen = ({navigation}) => {
             <View style={AddWorkoutStyle.upperContener}>
                 <Text style={AddWorkoutStyle.upperContenerText}>Select exercise</Text>
             </View>
+            <View style={AddWorkoutStyle.wholeContainer}>
+                <View style={AddWorkoutStyle.labelNameContianer}>
+                    <Text style={AddWorkoutStyle.labelNameText}>Series:</Text>
+                </View>
+                <View style={AddWorkoutStyle.labelsCointeiner2}>
+                    <FloatingLabelInput
+                        keyboardType="numeric"
+                        value={series}
+                        onChangeText={text => setSeries(text)}
+                        containerStyles={AddWorkoutStyle.floatingLabelExercise}
+                        customLabelStyles={{
+                            colorFocused: COLORS.midlle_gray,
+                            fontSizeFocused: 10,
+                        }}
+                        maxDecimalPlaces='0'
+                        />
+                </View>
+                <View style={AddWorkoutStyle.labelNameContianer}>
+                    <Text style={AddWorkoutStyle.labelNameText}>Repetitions:</Text>
+                </View>
+                <View style={AddWorkoutStyle.labelsCointeiner2}>
+                    <FloatingLabelInput
+                        keyboardType="numeric"
+                        value={repeat}
+                        onChangeText={text => setRepeat(text)}
+                        containerStyles={AddWorkoutStyle.floatingLabelExercise}
+                        customLabelStyles={{
+                            colorFocused: COLORS.midlle_gray,
+                            fontSizeFocused: 10,
+                        }}
+                        maxDecimalPlaces='0'
+                        />
+                </View>
+            </View>
             
             <Text style={AddWorkoutStyle.titleExerciseText}>Exercises:</Text>
             <View style={AddWorkoutStyle.exercisesToSelectContainer}> 
@@ -85,40 +118,7 @@ const AddExerciseToWorkoutScreen = ({navigation}) => {
                 })}
                 </ScrollView>
             </View>
-            <View style={AddWorkoutStyle.wholeContainer}>
-                <View style={AddWorkoutStyle.labelNameContianer}>
-                    <Text style={AddWorkoutStyle.labelNameText}>Series:</Text>
-                </View>
-                <View style={AddWorkoutStyle.labelsCointeiner2}>
-                    <FloatingLabelInput
-                        keyboardType="numeric"
-                        value={series}
-                        onChangeText={text => setSeries(text)}
-                        containerStyles={AddWorkoutStyle.floatingLabelExercise}
-                        customLabelStyles={{
-                            colorFocused: COLORS.midlle_gray,
-                            fontSizeFocused: 10,
-                        }}
-                        maxDecimalPlaces='0'
-                        />
-                </View>
-                <View style={AddWorkoutStyle.labelNameContianer}>
-                    <Text style={AddWorkoutStyle.labelNameText}>Repetitions:</Text>
-                </View>
-                <View style={AddWorkoutStyle.labelsCointeiner2}>
-                    <FloatingLabelInput
-                        keyboardType="numeric"
-                        value={repeat}
-                        onChangeText={text => setRepeat(text)}
-                        containerStyles={AddWorkoutStyle.floatingLabelExercise}
-                        customLabelStyles={{
-                            colorFocused: COLORS.midlle_gray,
-                            fontSizeFocused: 10,
-                        }}
-                        maxDecimalPlaces='0'
-                        />
-                </View>
-            </View>
+            
             <View style={AddWorkoutStyle.buttonContainer}>
                 <TouchableOpacity style={AddWorkoutStyle.button}
                 onPress={handleAddExercise}>

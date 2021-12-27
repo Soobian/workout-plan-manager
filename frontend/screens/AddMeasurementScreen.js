@@ -2,7 +2,7 @@ import React, { Component , useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/core'
 import axios from "axios"
 import { render } from 'react-dom';
-import { KeyboardAvoidingView, Text, Image, View, ScrollView, SafeAreaView, TouchableOpacity,  Dimensions, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { KeyboardAvoidingView, Text, Image, View, ScrollView, SafeAreaView, TouchableOpacity,  Dimensions, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { AddMeasurementStyle } from '../components/profile/AddMeasurementStyle';
 import { COLORS } from '../components/colors/Colors';
@@ -20,9 +20,46 @@ const AddMeasurementScreen = ({navigation}, measurements) => {
         {label: 'THIGH', value: thigh, onChangeText: text => setThigh(text)},
     ]
 
+    function areAllFormsFilled(){
+        let isOk = true;
+        formFields.map((field, fieldId) => {
+            if(field.value==''){
+                console.log(field.label + " not filled")
+                isOk = false;
+            }
+        });
+        return isOk;
+    }
+
+    function areDataValid(){
+        if(formFields[0].value < 30 || formFields[0].value > 200
+            || formFields[1].value < 30 || formFields[1].value > 200 || 
+            formFields[2].value < 6 || formFields[2].value > 50 ||
+            formFields[3].value < 10 || formFields[3].value > 100){
+            return false;
+        }
+        return true;
+    }
+
     const handleAdd = () => {
-        // checking whether all fields are filled 
-        navigation.navigate('Home');
+        if(areAllFormsFilled()==true){
+            if(areDataValid()==true){
+                navigation.navigate('Home');
+            }
+            else{
+                Alert.alert('Ops!','Provided data are not valid',
+            [
+                {text: 'Understood', onPress: () => console.log('alert closed')}
+            ]);
+            }
+        }
+        else{
+            Alert.alert('Ops!','All fields must be filled before submition',
+            [
+                {text: 'Understood', onPress: () => console.log('alert closed')}
+            ]);
+        }
+        
     }
     return (
         <KeyboardAvoidingView 

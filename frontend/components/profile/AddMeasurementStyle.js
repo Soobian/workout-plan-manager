@@ -109,7 +109,7 @@ export const AddMeasurementStyle = StyleSheet.create({
         paddingVertical: 15,
         borderRadius: 10,
         marginTop: 25,
-        width: 50,
+        width: 60,
         marginHorizontal:50,
         marginTop: 10,
         shadowColor: "#000",
