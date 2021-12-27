@@ -1,19 +1,34 @@
 import React, { Component , useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/core'
 import axios from "axios"
-import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Picker, Image } from 'react-native'
+import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Picker, Image, Alert } from 'react-native'
 import { CheckBox, Icon } from 'react-native-elements';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { COLORS } from '../components/colors/Colors';
 import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
 
 const AddExerciseToWorkoutScreen = ({navigation}) => {
+    const [selectedExercise, setSelectedExercise] = useState('')
     const [series, setSeries] = useState('')
     const [repeat, setRepeat] = useState('')
 
     const handleAddExercise = () => {
         // returning to creation of the same workout
-        navigation.navigate('AddWorkout');
+        if(series == '' || repeat == ''){
+            Alert.alert('Ops!','You have not filled all forms',[
+                {text: 'Understood', onPress: () => console.log('alert closed')}
+            ]);
+        }
+        else if(selectedExercise==''){
+            Alert.alert('Ops!','No exercise was selected',[
+                {text: 'Understood', onPress: () => console.log('alert closed')}
+            ]);
+        }
+        else{
+            console.log('{exerciseId: ' + selectedExercise + ', series: '+ series +
+            ',  repeat: '+ repeat + '}');
+            navigation.navigate('AddWorkout');
+        }
     };
 
     const photos = [
@@ -22,23 +37,36 @@ const AddExerciseToWorkoutScreen = ({navigation}) => {
         'https://images.medicinenet.com/images/article/main_image/stretches-for-tight-hips.jpg'
     ] ;
 
-
-    exerciseList = [
+    const [exerciseList, setexerciseList] = useState([
         {id: 0, name: "pushups", photoUrl: photos[0], selected: false},
         {id: 1, name: "sth else", photoUrl: photos[1], selected: false},
         {id: 2, name: "have no idea", photoUrl: photos[2], selected: false}
-    ];
+    ]);
 
     const handleSelection = (id) => {
-        console.log(id);
-        for(var i = 0; i < exerciseList.length; ++i){
-            if(i==id){
-                exerciseList[i].selected = true;
+        // only one box can be selected
+        const newValue = exerciseList.map((checkbox, i) => {
+            if (i !== id)
+                return {
+                ...checkbox,
+                selected: false,
             }
-            else{
-                exerciseList[i].selected = false;
-            } 
+            if (i === id) {
+                const item = {
+                ...checkbox,
+                selected: !checkbox.selected,
+                }
+                return item
+            }
+            return checkbox
+        })
+        if(newValue[id].selected==true){
+            setSelectedExercise(id);
         }
+        else{
+            setSelectedExercise('');
+        }
+        setexerciseList(newValue)
     };
 
     return (
