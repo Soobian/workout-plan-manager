@@ -1,7 +1,7 @@
 import React, { Component , useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/core'
 import axios from "axios"
-import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Keyboard, CheckBox, Picker } from 'react-native'
+import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Keyboard, CheckBox, Picker, Alert } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { COLORS } from '../components/colors/Colors';
 import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
@@ -12,14 +12,22 @@ const AddWorkoutScreen = ({navigation}) => {
     const [selectedLevel, setSelectedLevel] = useState("");
     const [selectedType, setSelectedType] = useState("");
 
-    const handleAddExercise = () => {
-        // checking whether all fields are filled 
-        navigation.navigate('AddExerciseToWorkout');
+    const handleAddWorkout = () => {
+        if(name == ''){
+            console.log('workout name was not provided');
+            Alert.alert('Ops!','workout name was not provided',[
+                {text: 'Understood', onPress: () => console.log('alert closed')}
+            ]);
+            }
+        else{
+            console.log('{ name: '+ name +', durationId: '+selectedDuration +
+            ', levelId: '+ selectedLevel + ', typeId: ' + selectedType +'}');
+            navigation.navigate('Home');
+        }
     };
 
-    const handleAddWorkout = () => {
-        // checking whether all fields are filled 
-        navigation.navigate('Home');
+    const  handleAddExercise= () => {
+        navigation.navigate('AddExerciseToWorkout');
     };
 
     // select workout duration
@@ -52,9 +60,9 @@ const AddWorkoutScreen = ({navigation}) => {
     ];
     // all tables for select windows
     const tables = [
-        {name: 'DURATION', table: duration, set: setSelectedDuration},
-        {name: 'LEVEL', table: level, set: setSelectedLevel},
-        {name: 'TYPE', table: type, set: setSelectedType}
+        {name: 'DURATION', table: duration, set: setSelectedDuration, save: selectedDuration},
+        {name: 'LEVEL', table: level, set: setSelectedLevel, save: selectedLevel},
+        {name: 'TYPE', table: type, set: setSelectedType, save: selectedType}
     ];
 
     //added exercises
@@ -96,7 +104,7 @@ const AddWorkoutScreen = ({navigation}) => {
                     </View>
                     <View style={AddWorkoutStyle.pickerContainer}>
                         <Picker
-                            selectedValue={selectedDuration}
+                            selectedValue={item.save}
                             style={AddWorkoutStyle.pickerText}
                             onValueChange={(itemValue, itemIndex) => item.set(itemValue)}
                             mode='dropdown'

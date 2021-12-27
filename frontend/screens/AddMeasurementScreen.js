@@ -47,8 +47,7 @@ const AddMeasurementScreen = ({navigation}, measurements) => {
                 navigation.navigate('Home');
             }
             else{
-                Alert.alert('Ops!','Provided data are not valid',
-            [
+                Alert.alert('Ops!','Provided data are not valid',[
                 {text: 'Understood', onPress: () => console.log('alert closed')}
             ]);
             }
