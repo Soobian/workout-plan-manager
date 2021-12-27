@@ -1,12 +1,10 @@
 import React, { Component , useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/core'
 import axios from "axios"
-import { render } from 'react-dom';
-import { KeyboardAvoidingView, Text, View, ScrollView, SafeAreaView, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Picker } from 'react-native'
+import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Keyboard, CheckBox, Picker } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { COLORS } from '../components/colors/Colors';
 import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
-import Select from 'react-select'
 
 const AddWorkoutScreen = ({navigation}) => {
     const [name, setName] = useState('')
@@ -14,7 +12,12 @@ const AddWorkoutScreen = ({navigation}) => {
     const [selectedLevel, setSelectedLevel] = useState("");
     const [selectedType, setSelectedType] = useState("");
 
-    const handleAdd = () => {
+    const handleAddExercise = () => {
+        // checking whether all fields are filled 
+        navigation.navigate('AddExerciseToWorkout');
+    };
+
+    const handleAddWorkout = () => {
         // checking whether all fields are filled 
         navigation.navigate('Home');
     };
@@ -133,7 +136,7 @@ const AddWorkoutScreen = ({navigation}) => {
                 })}
                 <View style={AddWorkoutStyle.exerciseButtonContainer}>
                     <TouchableOpacity style={AddWorkoutStyle.button}
-                    onPress={handleAdd}>
+                    onPress={handleAddExercise}>
                         <Text style={AddWorkoutStyle.buttonText}>ADD EXERCISE</Text>
                     </TouchableOpacity>
                 </View> 
@@ -141,7 +144,7 @@ const AddWorkoutScreen = ({navigation}) => {
             </View>
             <View style={AddWorkoutStyle.buttonContainer}>
                 <TouchableOpacity style={AddWorkoutStyle.button}
-                onPress={handleAdd}>
+                onPress={handleAddWorkout}>
                     <Text style={AddWorkoutStyle.buttonText}>CREATE WORKOUT</Text>
                 </TouchableOpacity>
             </View> 

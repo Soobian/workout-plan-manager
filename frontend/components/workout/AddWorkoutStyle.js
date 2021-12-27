@@ -128,7 +128,6 @@ export const AddWorkoutStyle = StyleSheet.create({
         color: COLORS.blue,
         fontWeight: '900',
         fontSize: 15,
-        
         paddingBottom: 3
     },
     addedExercisesContainer: {
@@ -152,12 +151,13 @@ export const AddWorkoutStyle = StyleSheet.create({
         borderColor: COLORS.light_gray,
         borderWidth: 1,
         width: '80%',
+        height: 40,
         marginBottom: 10,
         borderRadius: 8,
     },
     rowDivisionContainer: {
         width: '100%',
-        height: 40,
+        height: '100%',
         borderRadius: 8,
         flexDirection: "row" ,
         justifyContent: 'space-evenly',
@@ -190,7 +190,6 @@ export const AddWorkoutStyle = StyleSheet.create({
         width: '50%',
         justifyContent: 'center',
         alignItems: 'center',
-
     },
     button: {
         backgroundColor: '#03767B',
@@ -199,6 +198,9 @@ export const AddWorkoutStyle = StyleSheet.create({
         borderRadius: 10,
         alignItems: 'center',
         paddingTop: 10,
+        alignItems: 'center',
+        alignContent: 'center',
+        justifyContent: 'center',
     },
     buttonOutline: {
         backgroundColor: 'white',
@@ -210,5 +212,52 @@ export const AddWorkoutStyle = StyleSheet.create({
         color: 'white',
         fontWeight: '700',
         fontSize: 16,
+        alignItems: 'center',
+        alignContent: 'center',
+        justifyContent: 'center',
     },
+
+    /*** SELECT EXERICISE SPECIFIC ***/
+    exercisesToSelectContainer: {
+        borderColor: '#03767B',
+        borderWidth: 2,
+        borderRadius: 10,
+        marginBottom: 7,
+        paddingTop: 20,
+        width: 320,
+        height: 260,
+        marginTop: 10,
+    },
+    titleExerciseText: {
+        color: COLORS.blue,
+        fontWeight: '900',
+        fontSize: 18,
+        paddingTop: 20,
+    },
+    imageContener: {
+        backgroundColor: COLORS.light_blue,
+        width: '40%',
+        height: '100%',
+        borderRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    image: {
+        backgroundColor: COLORS.light_blue,
+        borderRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%',
+        width: '100%',
+    },
+    singleExerciseWithPhotoContainer: {
+        backgroundColor: COLORS.white,
+        borderColor: COLORS.light_gray,
+        borderWidth: 1,
+        width: '85%',
+        height: 70,
+        marginBottom: 10,
+        borderRadius: 8,
+    },
+    
 })
