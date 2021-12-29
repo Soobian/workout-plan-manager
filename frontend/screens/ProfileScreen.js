@@ -10,10 +10,10 @@ const ProfileScreen = ({navigation}) => {
     const datesOfMeasurements = ["30.01","03.02","05.02","08.02","11.02"];
     const chestMeasurements = [99, 96, 92, 88, 84];
     const waistMeasurements = [102, 102, 99, 96, 92];
-    bicepsMeasurements = [60.4, 60.4, 60.2, 60, 59.8];
-    thighMeasurements =  [55, 52, 52, 52, 51];
+    const bicepsMeasurements = [60.4, 60.4, 60.2, 60, 59.8];
+    const thighMeasurements =  [55, 52, 52, 52, 51];
 
-    measurements = [
+    const measurements = [
         {
             date: "30.01", chest: 99, waist: 102, biceps: 60.4, thigh: 55
         },

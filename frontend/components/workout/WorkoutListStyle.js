@@ -12,6 +12,7 @@ export const WorkoutListStyle = StyleSheet.create({
         // container which enables scrolling
         width: '100%',
         alignItems: 'center',
+        marginBottom: 20,
     },
     
     upperContainer: {
@@ -22,8 +23,7 @@ export const WorkoutListStyle = StyleSheet.create({
         fontSize: 16,
         borderRadius: 10,
         padding: 10,
-        paddingBottom: 10,
-        marginBottom: 20
+        marginBottom: 10
     },
 
     upperContainerText: {
@@ -39,14 +39,11 @@ export const WorkoutListStyle = StyleSheet.create({
     },
 
     workoutListContainer: {
-        borderColor: '#03767B',
-        borderWidth: 2,
-        borderRadius: 10,
-        marginBottom: 20,
-        paddingVertical: 5,
-        width: '90%',
-        height: 350,
-        paddingTop: 10
+
+        width: '99%',
+        height: '64%',
+        paddingTop: 5,
+        backgroundColor: 'rgba(100, 100, 100, 0.01)',
     },
 
     // button
@@ -55,7 +52,8 @@ export const WorkoutListStyle = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 10,
-        marginBottom:3
+        marginBottom:3,
+        left: 90,
     },
 
     buttonLabelText: {
@@ -72,22 +70,25 @@ export const WorkoutListStyle = StyleSheet.create({
     },
 
     singleMeasurementContainer: {
-        backgroundColor: COLORS.white,
         borderColor: COLORS.light_gray,
         borderWidth: 1,
-        width: '101%',
+        width: '80%',
+        height: 140,
         marginBottom: 20,
+        alignContent: 'center',
+        shadowColor: COLORS.dark_gray,
     },
 
     workoutNameContainer: {
-        backgroundColor: COLORS.blue,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        position: 'absolute', top: 50, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center',
         width: '100%',
-        height: 26,
-        alignItems: 'center'
+        height: 50,
     },
     workoutNameText: {
         color: COLORS.white,
-        fontSize: 18
+        fontSize: 20,
+        fontWeight: '900',
     },
     // details about the workout - box below the name
     specificsContainer: {
@@ -113,10 +114,18 @@ export const WorkoutListStyle = StyleSheet.create({
         alignItems: 'center'
     },
     numbersText : {
-        color: COLORS.blue,
+        color: COLORS.white,
         paddingHorizontal: 5,
         fontSize: 16,
         fontWeight: "900",
-        alignItems: 'center'
-    }
+        alignItems: 'center',
+
+    },
+    image: {
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%',
+        width: '100%',
+    },
 })

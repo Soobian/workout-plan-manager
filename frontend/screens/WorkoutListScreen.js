@@ -1,15 +1,21 @@
 import React from 'react'
 import axios from "axios"
-import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity,  Dimensions } from 'react-native'
+import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity,  Image , ImageBackground } from 'react-native'
 import { COLORS } from '../components/colors/Colors';
 import { WorkoutListStyle } from '../components/workout/WorkoutListStyle';
 
 const WorkoutListScreen = ({navigation}) => {
+
+    const photos = [
+        'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimagesvc.meredithcorp.io%2Fv3%2Fmm%2Fimage%3Furl%3Dhttps%253A%252F%252Fstatic.onecms.io%252Fwp-content%252Fuploads%252Fsites%252F35%252F2010%252F07%252F28170650%252Ffb-interval-training-workouts.jpg&q=85',
+        'https://globaljabar.com/wp-content/uploads/2021/02/xbreak-workout_602724-1.jpg.pagespeed.ic_.v8byD7su-e-1.jpg',
+        'https://www.incimages.com/uploaded_files/image/1920x1080/getty_901096798_200013332000928080_415454.jpg'
+    ];
     workoutList = [
-        {name: 'ABS workout', duration: '1h', level: 'medium', type: 'ABS'},
-        {name: 'Killer', duration: '45min', level: 'medium', type: 'Cardio'},
-        {name: 'Hot body', duration: '40min', level: 'hard', type: 'Legs'},
-        {name: 'Skalpel', duration: '30min', level: 'easy', type: 'Cardio'},
+        {name: 'ABS workout', level: 'medium', urlPhoto: photos[0]},
+        {name: 'Killer', level: 'medium', urlPhoto: photos[1]},
+        {name: 'Hot body', level: 'hard', urlPhoto: photos[2]},
+        {name: 'Skalpel',  level: 'easy', urlPhoto: photos[1]},
     ];
 
     return (
@@ -26,34 +32,28 @@ const WorkoutListScreen = ({navigation}) => {
                     {workoutList.map((item, index) => {
                     return(
                         <TouchableOpacity style={WorkoutListStyle.singleMeasurementContainer}>
-                        <View style={WorkoutListStyle.workoutNameContainer}> 
+                            <ImageBackground 
+                                style={WorkoutListStyle.image}
+                                source={{uri: item.urlPhoto}}/>
+                            
+                            <View style={WorkoutListStyle.workoutNameContainer}>
                             <Text style={WorkoutListStyle.workoutNameText}>{item.name}</Text>
-                        </View>
-                        <View style={WorkoutListStyle.specificsContainer}> 
-                            <View style={WorkoutListStyle.specificsOneItemContainer}>
-                                    <Text style={WorkoutListStyle.specificText}>DURATION</Text>
-                                    <Text style={WorkoutListStyle.numbersText}>{item.duration}</Text>
+                            <Text style={WorkoutListStyle.numbersText}>{item.level}</Text>
                             </View>
-                            <View style={WorkoutListStyle.specificsOneItemContainer}>
-                                    <Text style={WorkoutListStyle.specificText}>LEVEL</Text>
-                                    <Text style={WorkoutListStyle.numbersText}>{item.level}</Text>
-                            </View>
-                            <View style={WorkoutListStyle.specificsOneItemContainer}>
-                                    <Text style={WorkoutListStyle.specificText}>TYPE</Text>
-                                    <Text style={WorkoutListStyle.numbersText}>{item.type}</Text>
-                            </View>
-                        </View>
+                            
+                            
                     </TouchableOpacity>)
                 })}
                     
                 </ScrollView>
+                
             </View>
             <View style={WorkoutListStyle.buttonContainer}>
-                <TouchableOpacity style={WorkoutListStyle.button}
+                    <TouchableOpacity style={WorkoutListStyle.button}
                 onPress={() => navigation.navigate('AddWorkout')}>
                     <Text style={WorkoutListStyle.buttonLabelText}>CREATE WORKOUT</Text>
-                </TouchableOpacity>
-            </View>
+                    </TouchableOpacity>
+                    </View>
         </KeyboardAvoidingView>
     )
 }
