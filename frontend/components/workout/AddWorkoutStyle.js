@@ -46,7 +46,7 @@ export const AddWorkoutStyle = StyleSheet.create({
     upperContener:{
         backgroundColor: '#03767B',
         width: '103%',
-        height: '20%',
+        height: '18%',
         fontSize: 16,
         borderRadius: 10,
         paddingBottom: 20,
@@ -220,14 +220,14 @@ export const AddWorkoutStyle = StyleSheet.create({
 
     /*** SELECT EXERICISE SPECIFIC ***/
     exercisesToSelectContainer: {
-        borderColor: '#03767B',
-        borderWidth: 2,
         borderRadius: 10,
         marginBottom: 7,
-        paddingTop: 20,
+        paddingTop: 10,
         width: 320,
         height: 260,
         marginTop: 10,
+        width: '100%',
+        height: '50%',
     },
     titleExerciseText: {
         color: COLORS.blue,
@@ -255,7 +255,7 @@ export const AddWorkoutStyle = StyleSheet.create({
 /***********************************************/
     // SELECT EXERCISE
     containerFOrExerciseAndCheckBox: {
-        width: '100%',
+        width: '90%',
         height: 70,
         borderRadius: 8,
         flexDirection: "row" ,
@@ -263,13 +263,20 @@ export const AddWorkoutStyle = StyleSheet.create({
         marginBottom: 10,
     },
     singleExerciseWithPhotoContainer: {
-        backgroundColor: COLORS.white,
-        borderColor: COLORS.light_gray,
-        borderWidth: 1,
         width: '85%',
         height: 70,
         marginBottom: 10,
         borderRadius: 8,
+        shadowColor: COLORS.dark_gray,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
+        backgroundColor: COLORS.blue,
     },
     checkboxContainer: {
         width: '9%',
@@ -286,18 +293,18 @@ export const AddWorkoutStyle = StyleSheet.create({
         justifyContent: 'space-evenly',
     },
     exerciseNameContainerS: {
-        backgroundColor: COLORS.light_blue,
+        backgroundColor: COLORS.blue,
         width: '60%',
         borderRadius: 8,
         alignItems: 'center'
     },
     exercisenameText: {
-        color: COLORS.midlle_gray,
-        fontSize: 17,
-        marginTop: 5,
+        color: COLORS.white,
+        fontSize: 18,
+        marginTop: 22,
     },
     imageContenerForExercise: {
-        backgroundColor: COLORS.light_blue,
+        backgroundColor: COLORS.blue,
         width: '40%',
         height: '100%',
         borderRadius: 8,
@@ -309,8 +316,9 @@ export const AddWorkoutStyle = StyleSheet.create({
         borderRadius: 8,
         alignItems: 'center',
         justifyContent: 'center',
-        height: '98%',
-        width: '98%',
+        height: '100%',
+        width: '100%',
+        opacity: 0.7
     },
     
     /// series and repetitions
@@ -351,6 +359,32 @@ export const AddWorkoutStyle = StyleSheet.create({
     labelNameText : {
         fontSize: 18,
         color: COLORS.midlle_gray,
+    },
+
+    //button 'add exercise to workout'
+
+    addButtonContainer: {
+        width: '90%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    addexerciseButton: {
+        backgroundColor: '#03767B',
+        padding: 15,
+        borderRadius: 10,
+        alignItems: 'center',
+        paddingTop: 10,
+        alignItems: 'center',
+        alignContent: 'center',
+        justifyContent: 'center',
+    },
+    addexerciseButtonText: {
+        color: 'white',
+        fontWeight: '700',
+        fontSize: 16,
+        alignItems: 'center',
+        alignContent: 'center',
+        justifyContent: 'center',
     },
     /***********************************************/
     

@@ -43,6 +43,12 @@ const AddExerciseToWorkoutScreen = ({navigation}) => {
         {id: 2, name: "have no idea", photoUrl: photos[2], selected: false}
     ]);
 
+    const handleExerciseClick = (id) => {
+        // TO DO
+        // redirect to exercise page with proper id
+        navigation.navigate('Exercise');
+    };
+
     const handleSelection = (id) => {
         // only one box can be selected
         const newValue = exerciseList.map((checkbox, i) => {
@@ -120,18 +126,20 @@ const AddExerciseToWorkoutScreen = ({navigation}) => {
                     return(
                         <View style={AddWorkoutStyle.containerFOrExerciseAndCheckBox}> 
                             <View style={AddWorkoutStyle.singleExerciseWithPhotoContainer}> 
-                        <View style={AddWorkoutStyle.rowDivisionContainerForExercise}> 
-                            <View style={AddWorkoutStyle.exerciseNameContainerS}>
-                                <Text style={AddWorkoutStyle.nameText}> {item.name}</Text>
+                            <TouchableOpacity
+                            onPress={() => handleExerciseClick(index)}>
+                                <View style={AddWorkoutStyle.rowDivisionContainerForExercise}> 
+                                <View style={AddWorkoutStyle.exerciseNameContainerS}>
+                                <Text style={AddWorkoutStyle.exercisenameText}> {item.name}</Text>
+                                </View>
+                                <View style={AddWorkoutStyle.imageContenerForExercise}>
+                                    <Image
+                                    style={AddWorkoutStyle.imageExercise}
+                                    source={{uri: item.photoUrl}}/>
+                                </View>
+                                </View>
+                            </TouchableOpacity>
                             </View>
-                            <View style={AddWorkoutStyle.imageContenerForExercise}>
-                                <Image
-                                style={AddWorkoutStyle.imageExercise}
-                                source={{uri: item.photoUrl}}/>
-                            </View>
-                            
-                        </View>
-                        </View>
                         <View style={AddWorkoutStyle.checkboxContainer}>
                                 <CheckBox
                                 center={true}
@@ -147,10 +155,10 @@ const AddExerciseToWorkoutScreen = ({navigation}) => {
                 </ScrollView>
             </View>
             
-            <View style={AddWorkoutStyle.buttonContainer}>
-                <TouchableOpacity style={AddWorkoutStyle.button}
+            <View style={AddWorkoutStyle.addButtonContainer}>
+                <TouchableOpacity style={AddWorkoutStyle.addexerciseButton}
                 onPress={handleAddExercise}>
-                    <Text style={AddWorkoutStyle.buttonText}>ADD EXERCISE TO WORKOUT</Text>
+                    <Text style={AddWorkoutStyle.addexerciseButtonText}>ADD EXERCISE TO WORKOUT</Text>
                 </TouchableOpacity>
             </View> 
         </KeyboardAvoidingView>
