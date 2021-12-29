@@ -15,7 +15,7 @@ export const AddWorkoutStyle = StyleSheet.create({
         alignItems: 'center',
     },
 
-    // ADD button
+    // CREATE WORKOUT button
     buttonContainer: {
         width: '60%',
         justifyContent: 'center',
@@ -24,7 +24,7 @@ export const AddWorkoutStyle = StyleSheet.create({
     },
     button: {
         backgroundColor: '#03767B',
-        width: '80%',
+        width: '90%',
         padding: 15,
         borderRadius: 10,
         alignItems: 'center',
@@ -74,11 +74,12 @@ export const AddWorkoutStyle = StyleSheet.create({
         alignItems: 'center',
         flexDirection: "row" ,
         justifyContent: 'space-evenly',
-        paddingBottom: 5,
+        paddingBottom: 15,
+        marginBottom: 10,
     },
     labelsCointeiner: {
         paddingTop: 10,
-        width: 260,
+        width: '90%',
         alignItems: 'center',
         paddingBottom: 20,
     },
@@ -136,9 +137,9 @@ export const AddWorkoutStyle = StyleSheet.create({
         borderRadius: 10,
         marginBottom: 7,
         paddingVertical: 5,
-        width: 320,
-        height: 160,
-        left: -5,
+        width: '95%',
+        height: '40%',
+
     },
     scrollView: {
         // container which enables scrolling
@@ -150,8 +151,8 @@ export const AddWorkoutStyle = StyleSheet.create({
         backgroundColor: COLORS.white,
         borderColor: COLORS.light_gray,
         borderWidth: 1,
-        width: '80%',
-        height: 40,
+        width: '90%',
+        height: 80,
         marginBottom: 10,
         borderRadius: 8,
     },
@@ -165,14 +166,15 @@ export const AddWorkoutStyle = StyleSheet.create({
     
     exerciseNameContainer: {
         backgroundColor: COLORS.light_blue,
-        width: '60%',
+        width: '50%',
         borderRadius: 8,
         alignItems: 'center'
     },
 
     repeatAndSeriesContainer: {
-        width: '20%',
-        alignItems: 'center'
+        width: '25%',
+        alignItems: 'center',
+        alignContent: 'center'
     },
     nameText: {
         color: COLORS.midlle_gray,
@@ -187,13 +189,12 @@ export const AddWorkoutStyle = StyleSheet.create({
 
     //exercise button
     exerciseButtonContainer: {
-        width: '50%',
+        width: '90%',
         justifyContent: 'center',
         alignItems: 'center',
     },
-    button: {
+    exerciseButton: {
         backgroundColor: '#03767B',
-        width: '80%',
         padding: 15,
         borderRadius: 10,
         alignItems: 'center',
@@ -208,7 +209,7 @@ export const AddWorkoutStyle = StyleSheet.create({
         borderColor: '#03767B',
         borderWidth: 2,
     },
-    buttonText: {
+    exerciseButtonText: {
         color: 'white',
         fontWeight: '700',
         fontSize: 16,
@@ -250,6 +251,17 @@ export const AddWorkoutStyle = StyleSheet.create({
         height: '98%',
         width: '98%',
     },
+
+/***********************************************/
+    // SELECT EXERCISE
+    containerFOrExerciseAndCheckBox: {
+        width: '100%',
+        height: 70,
+        borderRadius: 8,
+        flexDirection: "row" ,
+        justifyContent: 'space-evenly',
+        marginBottom: 10,
+    },
     singleExerciseWithPhotoContainer: {
         backgroundColor: COLORS.white,
         borderColor: COLORS.light_gray,
@@ -266,16 +278,41 @@ export const AddWorkoutStyle = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-
-    containerFOrExerciseAndCheckBox: {
+    rowDivisionContainerForExercise: {
         width: '100%',
-        height: 70,
+        height: '100%',
         borderRadius: 8,
         flexDirection: "row" ,
         justifyContent: 'space-evenly',
-        marginBottom: 10,
     },
-
+    exerciseNameContainerS: {
+        backgroundColor: COLORS.light_blue,
+        width: '60%',
+        borderRadius: 8,
+        alignItems: 'center'
+    },
+    exercisenameText: {
+        color: COLORS.midlle_gray,
+        fontSize: 17,
+        marginTop: 5,
+    },
+    imageContenerForExercise: {
+        backgroundColor: COLORS.light_blue,
+        width: '40%',
+        height: '100%',
+        borderRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    imageExercise: {
+        backgroundColor: COLORS.light_blue,
+        borderRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '98%',
+        width: '98%',
+    },
+    
     /// series and repetitions
     wholeContainer: {
         width: '90%',
@@ -315,5 +352,6 @@ export const AddWorkoutStyle = StyleSheet.create({
         fontSize: 18,
         color: COLORS.midlle_gray,
     },
+    /***********************************************/
     
 })

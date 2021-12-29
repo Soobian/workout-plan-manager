@@ -1,7 +1,7 @@
 import React, { Component , useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/core'
 import axios from "axios"
-import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Keyboard, CheckBox, Picker, Alert } from 'react-native'
+import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Keyboard, ImageBackground, Picker, Alert } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { COLORS } from '../components/colors/Colors';
 import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
@@ -60,16 +60,20 @@ const AddWorkoutScreen = ({navigation}) => {
     ];
     // all tables for select windows
     const tables = [
-        {name: 'DURATION', table: duration, set: setSelectedDuration, save: selectedDuration},
         {name: 'LEVEL', table: level, set: setSelectedLevel, save: selectedLevel},
-        {name: 'TYPE', table: type, set: setSelectedType, save: selectedType}
     ];
+
+    const photos = [
+        'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/1076/articles/2016/10/woman-pushup-1522242407.jpg?crop=1xw:0.75xh;center,top&resize=980:*',
+        'https://www.helpguide.org/wp-content/uploads/resistance-band-woman-doing-leg-workout-768.jpg',
+        'https://images.medicinenet.com/images/article/main_image/stretches-for-tight-hips.jpg'
+    ] ;
 
     //added exercises
     exercises = [
-        {id: 0, name: 'Push up', repeat: 10, series: 3},
-        {id: 1, name: 'Push up', repeat: 20, series: 5},
-        {id: 2, name: 'Push up', repeat: 10, series: 5},
+        {id: 0, urlPhoto: photos[0] ,name: 'Push up', repeat: 10, series: 3},
+        {id: 1, urlPhoto: photos[1] ,name: 'Push up', repeat: 20, series: 5},
+        {id: 2, urlPhoto: photos[2] ,name: 'Push up', repeat: 10, series: 5},
     ];
 
     return (
@@ -131,7 +135,13 @@ const AddWorkoutScreen = ({navigation}) => {
                         <View style={AddWorkoutStyle.singleExerciseContainer}> 
                         <View style={AddWorkoutStyle.rowDivisionContainer}> 
                             <View style={AddWorkoutStyle.exerciseNameContainer}>
+                                <ImageBackground 
+                                style={AddWorkoutStyle.image}
+                                source={{uri: item.urlPhoto}}/>
+                                <View style={AddWorkoutStyle.workoutNameContainer}>
                                 <Text style={AddWorkoutStyle.nameText}> {item.name}</Text>
+                                </View>
+                                
                             </View>
                             <View style={AddWorkoutStyle.repeatAndSeriesContainer}>
                                 <Text style={AddWorkoutStyle.numberText}> {item.repeat}</Text>
@@ -143,9 +153,9 @@ const AddWorkoutScreen = ({navigation}) => {
                     </View>)
                 })}
                 <View style={AddWorkoutStyle.exerciseButtonContainer}>
-                    <TouchableOpacity style={AddWorkoutStyle.button}
+                    <TouchableOpacity style={AddWorkoutStyle.exerciseButton}
                     onPress={handleAddExercise}>
-                        <Text style={AddWorkoutStyle.buttonText}>ADD EXERCISE</Text>
+                        <Text style={AddWorkoutStyle.exerciseButtonText}>ADD EXERCISE</Text>
                     </TouchableOpacity>
                 </View> 
                 </ScrollView>

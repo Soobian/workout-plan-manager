@@ -120,13 +120,13 @@ const AddExerciseToWorkoutScreen = ({navigation}) => {
                     return(
                         <View style={AddWorkoutStyle.containerFOrExerciseAndCheckBox}> 
                             <View style={AddWorkoutStyle.singleExerciseWithPhotoContainer}> 
-                        <View style={AddWorkoutStyle.rowDivisionContainer}> 
-                            <View style={AddWorkoutStyle.exerciseNameContainer}>
+                        <View style={AddWorkoutStyle.rowDivisionContainerForExercise}> 
+                            <View style={AddWorkoutStyle.exerciseNameContainerS}>
                                 <Text style={AddWorkoutStyle.nameText}> {item.name}</Text>
                             </View>
-                            <View style={AddWorkoutStyle.imageContener}>
+                            <View style={AddWorkoutStyle.imageContenerForExercise}>
                                 <Image
-                                style={AddWorkoutStyle.image}
+                                style={AddWorkoutStyle.imageExercise}
                                 source={{uri: item.photoUrl}}/>
                             </View>
                             
