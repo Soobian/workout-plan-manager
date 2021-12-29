@@ -15,6 +15,7 @@ export const WorkoutListStyle = StyleSheet.create({
         marginBottom: 20,
     },
     
+    // upper blue container with page title
     upperContainer: {
         color: '#03767B',
         backgroundColor: '#03767B',
@@ -39,11 +40,9 @@ export const WorkoutListStyle = StyleSheet.create({
     },
 
     workoutListContainer: {
-
         width: '99%',
         height: '64%',
         paddingTop: 5,
-        backgroundColor: 'rgba(100, 100, 100, 0.01)',
     },
 
     // button
@@ -69,16 +68,22 @@ export const WorkoutListStyle = StyleSheet.create({
         alignItems: 'center',
     },
 
-    singleMeasurementContainer: {
-        borderColor: COLORS.light_gray,
-        borderWidth: 1,
+    // container with workout photo, name and level
+    singleWorkoutContainer: {
         width: '80%',
         height: 140,
         marginBottom: 20,
         alignContent: 'center',
         shadowColor: COLORS.dark_gray,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
     },
-
     workoutNameContainer: {
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         position: 'absolute', top: 50, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center',
@@ -90,36 +95,12 @@ export const WorkoutListStyle = StyleSheet.create({
         fontSize: 20,
         fontWeight: '900',
     },
-    // details about the workout - box below the name
-    specificsContainer: {
-        width: '100%',
-        height: 52,
-        borderRadius: 8,
-        flexDirection: "row" ,
-        justifyContent: 'space-evenly',
-        backgroundColor: COLORS.light_blue,
-    },
-    specificsOneItemContainer: {
-        height: 50,
-        backgroundColor: COLORS.light_blue,
-        width: '33%',
-        alignItems: 'center',
-    },
-    specificText: {
-        color: COLORS.blue,
-        paddingTop: 5,
-        paddingHorizontal: 5,
-        fontSize: 14,
-        fontWeight: "500",
-        alignItems: 'center'
-    },
-    numbersText : {
+    workoutLevelText : {
         color: COLORS.white,
         paddingHorizontal: 5,
         fontSize: 16,
         fontWeight: "900",
         alignItems: 'center',
-
     },
     image: {
         borderRadius: 10,

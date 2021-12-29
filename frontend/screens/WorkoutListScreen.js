@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from "axios"
-import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity,  Image , ImageBackground } from 'react-native'
-import { COLORS } from '../components/colors/Colors';
+import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, ImageBackground } from 'react-native'
 import { WorkoutListStyle } from '../components/workout/WorkoutListStyle';
 
 const WorkoutListScreen = ({navigation}) => {
@@ -31,17 +30,15 @@ const WorkoutListScreen = ({navigation}) => {
                 centerContent>
                     {workoutList.map((item, index) => {
                     return(
-                        <TouchableOpacity style={WorkoutListStyle.singleMeasurementContainer}>
+                        <TouchableOpacity style={WorkoutListStyle.singleWorkoutContainer}>
                             <ImageBackground 
                                 style={WorkoutListStyle.image}
                                 source={{uri: item.urlPhoto}}/>
                             
                             <View style={WorkoutListStyle.workoutNameContainer}>
-                            <Text style={WorkoutListStyle.workoutNameText}>{item.name}</Text>
-                            <Text style={WorkoutListStyle.numbersText}>{item.level}</Text>
-                            </View>
-                            
-                            
+                                <Text style={WorkoutListStyle.workoutNameText}>{item.name}</Text>
+                                <Text style={WorkoutListStyle.workoutLevelText}>{item.level}</Text>
+                            </View>  
                     </TouchableOpacity>)
                 })}
                     
