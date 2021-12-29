@@ -117,6 +117,7 @@ export const AddWorkoutStyle = StyleSheet.create({
         color: COLORS.midlle_gray,
         fontSize: 15,
         marginVertical: 10,
+        left: 60,
     },
     pickerText: {
         height: 30, 
@@ -126,19 +127,17 @@ export const AddWorkoutStyle = StyleSheet.create({
 
     // exercises
     titleText: {
-        color: COLORS.blue,
+        color: COLORS.dark_gray,
         fontWeight: '900',
-        fontSize: 15,
+        fontSize: 16,
         paddingBottom: 3
     },
     addedExercisesContainer: {
-        borderColor: '#03767B',
-        borderWidth: 2,
         borderRadius: 10,
         marginBottom: 7,
         paddingVertical: 5,
         width: '95%',
-        height: '40%',
+        height: '45%',
 
     },
     scrollView: {
@@ -148,13 +147,22 @@ export const AddWorkoutStyle = StyleSheet.create({
     },
     // container for whole exercise
     singleExerciseContainer: {
-        backgroundColor: COLORS.white,
-        borderColor: COLORS.light_gray,
+        backgroundColor: COLORS.dark_gray,
+        borderColor: COLORS.midlle_gray,
         borderWidth: 1,
         width: '90%',
         height: 80,
         marginBottom: 10,
         borderRadius: 8,
+        shadowColor: COLORS.dark_gray,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
     },
     rowDivisionContainer: {
         width: '100%',
@@ -165,26 +173,33 @@ export const AddWorkoutStyle = StyleSheet.create({
     },
     
     exerciseNameContainer: {
-        backgroundColor: COLORS.light_blue,
+        backgroundColor: COLORS.blue,
         width: '50%',
+        height: '100%',
         borderRadius: 8,
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     repeatAndSeriesContainer: {
-        width: '25%',
+        width: '24%',
+        height:'93%',
+        marginTop: 3,
+        marginLeft: 2,
         alignItems: 'center',
-        alignContent: 'center'
+        alignContent: 'center',
+        backgroundColor: 'rgba(200, 200, 200, 0.1)',
+        borderRadius: 8
     },
     nameText: {
         color: COLORS.midlle_gray,
         fontSize: 17,
-        marginTop: 5,
     },
     numberText: {
-        color: COLORS.midlle_gray,
-        fontSize: 18,
-        marginTop: 5,
+        color: COLORS.white,
+        fontSize: 20,
+        marginTop: 25,
+        left: -5,
     },
 
     //exercise button
@@ -216,6 +231,37 @@ export const AddWorkoutStyle = StyleSheet.create({
         alignItems: 'center',
         alignContent: 'center',
         justifyContent: 'center',
+    },
+
+    // CREATE WORKOUT
+    imageContenerAddWorkout: {
+        backgroundColor: COLORS.blue,
+        width: '100%',
+        height: '100%',
+        borderRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    imageAddWorkout: {
+        backgroundColor: COLORS.light_blue,
+        borderRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%',
+        width: '100%',
+    },
+    workoutNameContainer: {
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, 
+        justifyContent: 'center', alignItems: 'center',
+        width: '100%',
+        height: '100%',
+        borderRadius: 8
+    },
+    workoutNameText: {
+        color: COLORS.white,
+        fontSize: 20,
+        fontWeight: '900',
     },
 
     /*** SELECT EXERICISE SPECIFIC ***/

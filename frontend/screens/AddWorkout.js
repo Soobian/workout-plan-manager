@@ -1,7 +1,7 @@
 import React, { Component , useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/core'
 import axios from "axios"
-import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Keyboard, ImageBackground, Picker, Alert } from 'react-native'
+import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Keyboard,Image,  ImageBackground, Picker, Alert } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { COLORS } from '../components/colors/Colors';
 import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
@@ -71,9 +71,9 @@ const AddWorkoutScreen = ({navigation}) => {
 
     //added exercises
     exercises = [
-        {id: 0, urlPhoto: photos[0] ,name: 'Push up', repeat: 10, series: 3},
-        {id: 1, urlPhoto: photos[1] ,name: 'Push up', repeat: 20, series: 5},
-        {id: 2, urlPhoto: photos[2] ,name: 'Push up', repeat: 10, series: 5},
+        {id: 0, urlPhoto: photos[0] ,name: 'push up', repeat: 10, series: 3},
+        {id: 1, urlPhoto: photos[1] ,name: 'sth else', repeat: 20, series: 5},
+        {id: 2, urlPhoto: photos[2] ,name: 'have no idea', repeat: 10, series: 5},
     ];
 
     return (
@@ -126,7 +126,7 @@ const AddWorkoutScreen = ({navigation}) => {
             
             </View>
             </TouchableWithoutFeedback>
-            <Text style={AddWorkoutStyle.titleText}>Exercises:             Repetition:   Series:</Text>
+            <Text style={AddWorkoutStyle.titleText}>    Exercises:              Repetitions:   Series:</Text>
             <View style={AddWorkoutStyle.addedExercisesContainer}> 
             <ScrollView contentContainerStyle={AddWorkoutStyle.scrollView}
             centerContent>
@@ -135,11 +135,13 @@ const AddWorkoutScreen = ({navigation}) => {
                         <View style={AddWorkoutStyle.singleExerciseContainer}> 
                         <View style={AddWorkoutStyle.rowDivisionContainer}> 
                             <View style={AddWorkoutStyle.exerciseNameContainer}>
-                                <ImageBackground 
-                                style={AddWorkoutStyle.image}
-                                source={{uri: item.urlPhoto}}/>
+                            <View style={AddWorkoutStyle.imageContenerAddWorkout}>
+                                    <Image
+                                    style={AddWorkoutStyle.imageAddWorkout}
+                                    source={{uri: item.urlPhoto}}/>
+                                </View>
                                 <View style={AddWorkoutStyle.workoutNameContainer}>
-                                <Text style={AddWorkoutStyle.nameText}> {item.name}</Text>
+                                <Text style={AddWorkoutStyle.workoutNameText}> {item.name}</Text>
                                 </View>
                                 
                             </View>
