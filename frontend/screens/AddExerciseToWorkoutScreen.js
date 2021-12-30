@@ -7,7 +7,7 @@ import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { COLORS } from '../components/colors/Colors';
 import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
 
-const AddExerciseToWorkoutScreen = ({navigation}) => {
+const AddExerciseToWorkoutScreen = ({route, navigation}) => {
     const [selectedExercise, setSelectedExercise] = useState('')
     const [series, setSeries] = useState('')
     const [repeat, setRepeat] = useState('')
@@ -27,7 +27,7 @@ const AddExerciseToWorkoutScreen = ({navigation}) => {
         else{
             console.log('{exerciseId: ' + selectedExercise + ', series: '+ series +
             ',  repeat: '+ repeat + '}');
-            navigation.navigate('AddWorkout');
+            navigation.navigate('AddWorkout',{series: series, repeat: repeat, exerciseId: selectedExercise, exerciseName: exerciseList[selectedExercise].name, exercisePhotoUrl: exerciseList[selectedExercise].photoUrl});
         }
     };
 

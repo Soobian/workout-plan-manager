@@ -6,11 +6,34 @@ import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { COLORS } from '../components/colors/Colors';
 import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
 
-const AddWorkoutScreen = ({navigation}) => {
+const AddWorkoutScreen = ({route, navigation}) => {
     const [name, setName] = useState('')
     const [selectedDuration, setSelectedDuration] = useState("");
     const [selectedLevel, setSelectedLevel] = useState("");
     const [selectedType, setSelectedType] = useState("");
+
+    const newExercises = [];
+
+    const updateExerciseList = () => {
+        if(typeof route.params === 'undefined'){
+            console.log("undefined");
+        }
+        else{
+            console.log("newExercise");
+            if(route.params.exerciseName != ''){
+                const newExercise = {
+                    id: route.params.exerciseId, urlPhoto: route.params.exercisePhotoUrl,
+                    name: route.params.exerciseName, 
+                    repeat: route.params.repeat, series: route.params.series
+                };
+                newExercises.push(newExercise);
+                for(let i =0; i < newExercises.length; ++i){
+                    exercises.push(newExercises[i]);
+                }
+                console.log(exercises);
+            }
+        } 
+    };
 
     const handleAddWorkout = () => {
         if(name == ''){
@@ -26,21 +49,9 @@ const AddWorkoutScreen = ({navigation}) => {
         }
     };
 
-    const  handleAddExercise= () => {
-        navigation.navigate('AddExerciseToWorkout');
+    const  handleAddExercise = () => {
+        navigation.navigate('AddExerciseToWorkout', exercises);
     };
-
-    // select workout duration
-    const duration = [
-        {value: 1, label: '15min'},
-        {value: 2, label: '30min'},
-        {value: 3, label: '45min'},
-        {value: 4, label: '1h'},
-        {value: 5, label: '1h 15min'},
-        {value: 6, label: '1h 30min'},
-        {value: 7, label: '1h 45min'},
-        {value: 8, label: '2h'},
-    ];
 
     // select workout level
     const level = [
@@ -50,14 +61,6 @@ const AddWorkoutScreen = ({navigation}) => {
         {value: 4, label: 'killer'},
     ];
 
-    // select workout type 
-    const type = [
-        {value: 1, label: 'cardio'},
-        {value: 2, label: 'strength'},
-        {value: 3, label: 'stretching'},
-        {value: 4, label: 'balance'},
-        {value: 4, label: 'HIIT'},
-    ];
     // all tables for select windows
     const tables = [
         {name: 'LEVEL', table: level, set: setSelectedLevel, save: selectedLevel},
@@ -99,6 +102,7 @@ const AddWorkoutScreen = ({navigation}) => {
                 </View>
             
             {tables.map((item, index) => {
+                {updateExerciseList()}
                 return (
                 <View style={AddWorkoutStyle.wholeContainer}>
                     <View style={AddWorkoutStyle.labelForPickerContainer}>
