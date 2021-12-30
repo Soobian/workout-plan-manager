@@ -20,16 +20,8 @@ const AddWorkoutScreen = ({route, navigation}) => {
         }
         else{
             console.log("newExercise");
-            if(route.params.exerciseName != ''){
-                const newExercise = {
-                    id: route.params.exerciseId, urlPhoto: route.params.exercisePhotoUrl,
-                    name: route.params.exerciseName, 
-                    repeat: route.params.repeat, series: route.params.series
-                };
-                newExercises.push(newExercise);
-                for(let i =0; i < newExercises.length; ++i){
-                    exercises.push(newExercises[i]);
-                }
+            if(route.params.exe[0].name != ''){
+                exercises = route.params.exe;
                 console.log(exercises);
             }
         } 
@@ -50,7 +42,7 @@ const AddWorkoutScreen = ({route, navigation}) => {
     };
 
     const  handleAddExercise = () => {
-        navigation.navigate('AddExerciseToWorkout', exercises);
+        navigation.navigate('AddExerciseToWorkout', {exe: exercises} );
     };
 
     // select workout level

@@ -27,7 +27,29 @@ const AddExerciseToWorkoutScreen = ({route, navigation}) => {
         else{
             console.log('{exerciseId: ' + selectedExercise + ', series: '+ series +
             ',  repeat: '+ repeat + '}');
-            navigation.navigate('AddWorkout',{series: series, repeat: repeat, exerciseId: selectedExercise, exerciseName: exerciseList[selectedExercise].name, exercisePhotoUrl: exerciseList[selectedExercise].photoUrl});
+            
+            if(typeof route.params === 'undefined'){
+                console.log("undefined");
+            }
+            else{
+                console.log("params: ",route.params.exe);
+                const updatedexercise = [];
+                for (let i =0; i < route.params.exe.length; ++i){
+                    updatedexercise.push(route.params.exe[i]);
+                }
+                if(route.params.exerciseName != ''){
+                    const newExercise = {
+                        id: selectedExercise, 
+                        name: exerciseList[selectedExercise].name, 
+                        repeat: repeat, series: series,
+                        urlPhoto: exerciseList[selectedExercise].photoUrl,
+                    };
+                    updatedexercise.push(newExercise);
+                    console.log("updated", updatedexercise);
+                }
+                navigation.navigate('AddWorkout', {exe: updatedexercise});
+            } 
+            
         }
     };
 
