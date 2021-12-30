@@ -101,5 +101,24 @@ export const ExerciseStyles = StyleSheet.create({
         color: 'white',
         fontWeight: '700',
         fontSize: 20,
-    }
+    },
+
+    // workout specific
+    scrollViewWorkout: {
+        // container which enables scrolling
+        width: '100%',
+        marginBottom: 20,
+        height: 300,
+        top: -25
+    },
+    workoutnameContener: {
+        // container for exercise name in ExerciseScreen
+        backgroundColor: COLORS.dark_gray,
+        width: '100%',
+        height: '9%',
+        fontSize: 16,
+        borderRadius: 17,
+        top: -20
+    },
+
 })

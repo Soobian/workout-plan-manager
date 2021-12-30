@@ -1,8 +1,7 @@
-import React, { Component , useEffect, useState } from 'react'
-import { useNavigation } from '@react-navigation/core'
+import React, { useState } from 'react'
 import axios from "axios"
-import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Picker, Image, Alert } from 'react-native'
-import { CheckBox, Icon } from 'react-native-elements';
+import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity,  Image, Alert } from 'react-native'
+import { CheckBox } from 'react-native-elements';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { COLORS } from '../components/colors/Colors';
 import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
@@ -19,7 +18,7 @@ const AddExerciseToWorkoutScreen = ({route, navigation}) => {
                 {text: 'Understood', onPress: () => console.log('alert closed')}
             ]);
         }
-        else if(selectedExercise==''){
+        else if(selectedExercise == ''){
             Alert.alert('Ops!','No exercise was selected',[
                 {text: 'Understood', onPress: () => console.log('alert closed')}
             ]);
@@ -45,7 +44,7 @@ const AddExerciseToWorkoutScreen = ({route, navigation}) => {
                         urlPhoto: exerciseList[selectedExercise].photoUrl,
                     };
                     updatedexercise.push(newExercise);
-                    console.log("updated", updatedexercise);
+                    console.log("[AddExercise] updated exercise:", updatedexercise);
                 }
                 navigation.navigate('AddWorkout', {exe: updatedexercise});
             } 
@@ -59,6 +58,9 @@ const AddExerciseToWorkoutScreen = ({route, navigation}) => {
         'https://images.medicinenet.com/images/article/main_image/stretches-for-tight-hips.jpg'
     ] ;
 
+    // TO DO
+    // Selection of the first exercise does not work
+
     const [exerciseList, setexerciseList] = useState([
         {id: 0, name: "pushups", photoUrl: photos[0], selected: false},
         {id: 1, name: "sth else", photoUrl: photos[1], selected: false},
@@ -67,6 +69,7 @@ const AddExerciseToWorkoutScreen = ({route, navigation}) => {
 
     const handleSelection = (id) => {
         // only one box can be selected
+        console.log("selected exercise id: ", id);
         const newValue = exerciseList.map((checkbox, i) => {
             if (i !== id)
                 return {
@@ -82,13 +85,14 @@ const AddExerciseToWorkoutScreen = ({route, navigation}) => {
             }
             return checkbox
         })
-        if(newValue[id].selected==true){
+        if(newValue[id].selected === true){
             setSelectedExercise(id);
         }
         else{
             setSelectedExercise('');
         }
         setexerciseList(newValue)
+        console.log("[AddExeToWorkout] ", newValue[id].selected, {selectedExercise});
     };
 
     return (

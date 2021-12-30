@@ -8,11 +8,10 @@ import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
 
 const AddWorkoutScreen = ({route, navigation}) => {
     const [name, setName] = useState('')
-    const [selectedDuration, setSelectedDuration] = useState("");
-    const [selectedLevel, setSelectedLevel] = useState("");
-    const [selectedType, setSelectedType] = useState("");
+    const [selectedLevel, setSelectedLevel] = useState("easy");
+    const [workouts, setWorkouts] = useState('');
 
-    const newExercises = [];
+    updated = new Boolean (false);
 
     const updateExerciseList = () => {
         if(typeof route.params === 'undefined'){
@@ -27,6 +26,8 @@ const AddWorkoutScreen = ({route, navigation}) => {
         } 
     };
 
+    const defaultPhoto = 'https://globaljabar.com/wp-content/uploads/2021/02/xbreak-workout_602724-1.jpg.pagespeed.ic_.v8byD7su-e-1.jpg';
+
     const handleAddWorkout = () => {
         if(name == ''){
             console.log('workout name was not provided');
@@ -34,14 +35,26 @@ const AddWorkoutScreen = ({route, navigation}) => {
                 {text: 'Understood', onPress: () => console.log('alert closed')}
             ]);
             }
+        else if(exercises.length == 0){
+            console.log('workout name was not provided');
+            Alert.alert('Ops!','exercise list is empty',[
+                {text: 'Understood', onPress: () => console.log('alert closed')}
+            ]);
+        }
         else{
-            console.log('{ name: '+ name +', durationId: '+selectedDuration +
-            ', levelId: '+ selectedLevel + ', typeId: ' + selectedType +'}');
-            navigation.navigate('Home');
+            console.log("---WORKOUTS----", route.params.workouts);
+            const workout = {
+                name: name, level: selectedLevel, urlPhoto: defaultPhoto,
+                exerciseList: exercises
+            };
+            console.log(workout);
+            navigation.navigate('Workout');
         }
     };
 
     const  handleAddExercise = () => {
+        updated = false;
+        console.log("exercise data base not up to date");
         navigation.navigate('AddExerciseToWorkout', {exe: exercises} );
     };
 
@@ -66,9 +79,9 @@ const AddWorkoutScreen = ({route, navigation}) => {
 
     //added exercises
     exercises = [
-        {id: 0, urlPhoto: photos[0] ,name: 'push up', repeat: 10, series: 3},
-        {id: 1, urlPhoto: photos[1] ,name: 'sth else', repeat: 20, series: 5},
-        {id: 2, urlPhoto: photos[2] ,name: 'have no idea', repeat: 10, series: 5},
+        //{id: 0, urlPhoto: photos[0] ,name: 'push up', repeat: 10, series: 3},
+        //{id: 1, urlPhoto: photos[1] ,name: 'sth else', repeat: 20, series: 5},
+        //{id: 2, urlPhoto: photos[2] ,name: 'have no idea', repeat: 10, series: 5},
     ];
 
     return (
@@ -94,7 +107,10 @@ const AddWorkoutScreen = ({route, navigation}) => {
                 </View>
             
             {tables.map((item, index) => {
-                {updateExerciseList()}
+                {if(updated==false){
+                    console.log("UPDATE...");
+                    updateExerciseList();
+                    updated = true;}}
                 return (
                 <View style={AddWorkoutStyle.wholeContainer}>
                     <View style={AddWorkoutStyle.labelForPickerContainer}>
