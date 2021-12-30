@@ -34,16 +34,16 @@ const WorkoutListScreen = ({route, navigation}) => {
     ];
 
     const workoutList = [
-        {name: 'ABS workout', level: 'medium', urlPhoto: photos[0], exercises: []},
+        {name: 'ABS workout', level: 'medium', urlPhoto: photos[0], exercises: [
+            {id: 0, name: "pushups", 
+            photoUrl: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/1076/articles/2016/10/woman-pushup-1522242407.jpg?crop=1xw:0.75xh;center,top&resize=980:*', series: 3, repeat: 6},
+            {id: 1, name: "sth else", photoUrl: 'https://www.helpguide.org/wp-content/uploads/resistance-band-woman-doing-leg-workout-768.jpg', series: 13, repeat: 6},
+            {id: 2, name: "have no idea", photoUrl: 'https://images.medicinenet.com/images/article/main_image/stretches-for-tight-hips.jpg', series: 10, repeat: 6}
+        ]},
         {name: 'Killer', level: 'medium', urlPhoto: photos[1], exercises : []},
         {name: 'Hot body', level: 'hard', urlPhoto: photos[2], exercises : []},
         {name: 'Skalpel',  level: 'easy', urlPhoto: photos[1], exercises: []},
     ];
-
-    const selectWorkoutHandle = (workout) => {
-        //console.log("selected workout: ", workout);
-        navigation.navigate('Workout', {data: workout});
-    };
 
     return (
         <KeyboardAvoidingView 
@@ -60,7 +60,8 @@ const WorkoutListScreen = ({route, navigation}) => {
                     return(
                         <TouchableOpacity 
                         style={WorkoutListStyle.singleWorkoutContainer}
-                        onPress={() => navigation.navigate('Work', {name: item.name, level: item.level, photoUrl: item.urlPhoto})}>
+                        onPress={() => navigation.navigate('Work', {name: item.name, level: item.level, photoUrl: item.urlPhoto, 
+                        exercises: item.exercises})}>
                             <ImageBackground 
                                 style={WorkoutListStyle.image}
                                 source={{uri: item.urlPhoto}}/>
