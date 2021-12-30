@@ -43,12 +43,6 @@ const AddExerciseToWorkoutScreen = ({navigation}) => {
         {id: 2, name: "have no idea", photoUrl: photos[2], selected: false}
     ]);
 
-    const handleExerciseClick = (id) => {
-        // TO DO
-        // redirect to exercise page with proper id
-        navigation.navigate('Exercise');
-    };
-
     const handleSelection = (id) => {
         // only one box can be selected
         const newValue = exerciseList.map((checkbox, i) => {
@@ -127,7 +121,7 @@ const AddExerciseToWorkoutScreen = ({navigation}) => {
                         <View style={AddWorkoutStyle.containerFOrExerciseAndCheckBox}> 
                             <View style={AddWorkoutStyle.singleExerciseWithPhotoContainer}> 
                             <TouchableOpacity
-                            onPress={() => handleExerciseClick(index)}>
+                            onPress={() => navigation.navigate('Exercise',{ name: item.name, description: "fuck diet", photoUrl: item.photoUrl})}>
                                 <View style={AddWorkoutStyle.rowDivisionContainerForExercise}> 
                                 <View style={AddWorkoutStyle.exerciseNameContainerS}>
                                 <Text style={AddWorkoutStyle.exercisenameText}> {item.name}</Text>
@@ -143,10 +137,9 @@ const AddExerciseToWorkoutScreen = ({navigation}) => {
                         <View style={AddWorkoutStyle.checkboxContainer}>
                                 <CheckBox
                                 center={true}
-                                checkedIcon="dot-circle-o"
-                                uncheckedIcon="circle-o"
                                 checked={item.selected}
                                 onPress={() => handleSelection(index)}
+                                style={AddWorkoutStyle.checkbox}
                                 />
                         </View>
                         </View>

@@ -182,10 +182,10 @@ export const AddWorkoutStyle = StyleSheet.create({
     },
 
     repeatAndSeriesContainer: {
-        width: '24%',
-        height:'93%',
-        marginTop: 3,
-        marginLeft: 2,
+        width: '25%',
+        height:'98%',
+        
+        
         alignItems: 'center',
         alignContent: 'center',
         backgroundColor: 'rgba(200, 200, 200, 0.1)',
@@ -235,7 +235,7 @@ export const AddWorkoutStyle = StyleSheet.create({
 
     // CREATE WORKOUT
     imageContenerAddWorkout: {
-        backgroundColor: COLORS.blue,
+        backgroundColor: COLORS.dark_gray,
         width: '100%',
         height: '100%',
         borderRadius: 8,
@@ -243,7 +243,7 @@ export const AddWorkoutStyle = StyleSheet.create({
         justifyContent: 'center',
     },
     imageAddWorkout: {
-        backgroundColor: COLORS.light_blue,
+        backgroundColor: COLORS.dark_gray,
         borderRadius: 8,
         alignItems: 'center',
         justifyContent: 'center',
@@ -276,7 +276,7 @@ export const AddWorkoutStyle = StyleSheet.create({
         height: '50%',
     },
     titleExerciseText: {
-        color: COLORS.blue,
+        color: COLORS.dark_gray,
         fontWeight: '900',
         fontSize: 18,
         paddingTop: 20,
@@ -322,8 +322,13 @@ export const AddWorkoutStyle = StyleSheet.create({
         shadowOpacity: 0.27,
         shadowRadius: 4.65,
         elevation: 6,
-        backgroundColor: COLORS.blue,
+        backgroundColor: COLORS.dark_gray,
     },
+    checkbox: {
+        alignSelf: "center",
+        backgroundColor: 'black',
+        color: 'black',
+      },
     checkboxContainer: {
         width: '9%',
         height: '100%',
@@ -339,7 +344,7 @@ export const AddWorkoutStyle = StyleSheet.create({
         justifyContent: 'space-evenly',
     },
     exerciseNameContainerS: {
-        backgroundColor: COLORS.blue,
+        backgroundColor: COLORS.dark_gray,
         width: '60%',
         borderRadius: 8,
         alignItems: 'center'
@@ -350,7 +355,7 @@ export const AddWorkoutStyle = StyleSheet.create({
         marginTop: 22,
     },
     imageContenerForExercise: {
-        backgroundColor: COLORS.blue,
+        backgroundColor: COLORS.dark_gray,
         width: '40%',
         height: '100%',
         borderRadius: 8,
@@ -358,7 +363,7 @@ export const AddWorkoutStyle = StyleSheet.create({
         justifyContent: 'center',
     },
     imageExercise: {
-        backgroundColor: COLORS.light_blue,
+        backgroundColor: COLORS.dark_gray,
         borderRadius: 8,
         alignItems: 'center',
         justifyContent: 'center',
