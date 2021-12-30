@@ -4,7 +4,7 @@ import { KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View, Touchabl
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { RegisterLoginStyles } from './RegisterLoginStyles'
 
-const RegisterLoginForm = ({formFields, title, firstText, smallText, secondText, handleLogin, handleScreenSwitch}) => {
+const RegisterLoginForm = ({formFields, title, firstText, smallText, secondText, handleSubmit, handleScreenSwitch}) => {
     return (
         <KeyboardAvoidingView 
             behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -37,7 +37,7 @@ const RegisterLoginForm = ({formFields, title, firstText, smallText, secondText,
             </TouchableWithoutFeedback>
             <View style={RegisterLoginStyles.buttonContainer}>
                 <TouchableOpacity 
-                    onPress={handleLogin.bind(this)}
+                    onPress={handleSubmit.bind(this)}
                     style={RegisterLoginStyles.button}
                 >
                     <Text style={RegisterLoginStyles.buttonText}>{firstText}</Text>

@@ -58,7 +58,7 @@ const WorkoutScreen = () => {
                             </TouchableOpacity>
                             <Text style={WorkoutStyles.repeatItemCOntainer}>
                                     {item.repeat}
-                                </Text>
+                            </Text>
                         </View>)
                 })}
             </ScrollView>
