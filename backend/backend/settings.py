@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'users',
+    'exercise',
+    'workout',
 ]
 
 from datetime import timedelta
