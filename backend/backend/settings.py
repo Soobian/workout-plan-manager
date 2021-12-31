@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'users',
     'exercise',
     'workout',
+    'musclegroup',
 ]
 
 from datetime import timedelta

@@ -32,3 +32,8 @@ class BlacklistTokenUpdateView(APIView):
             return Response(status=status.HTTP_205_RESET_CONTENT)
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserParametersViewSet(viewsets.ModelViewSet):
+    queryset = UserParameters.objects.all()
+    serializer_class = UserParametersSerializer
