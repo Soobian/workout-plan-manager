@@ -5,6 +5,7 @@ import SmallCalendar, { weekDays } from '../components/home/SmallCalendar'
 import Greetings from '../components/home/Greetings'
 import YourPlans, { asd} from '../components/home/YourPlans'
 import TokenApi from '../components/authentication/TokenApi';
+import jwt_decode from "jwt-decode";
 
 const { height } = Dimensions.get('window');
 

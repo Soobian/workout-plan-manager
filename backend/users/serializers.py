@@ -25,4 +25,4 @@ class CustomUserSerializer(serializers.ModelSerializer):
 class UserParametersSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserParameters
-        fields = ['UserId', 'height', 'weight', 'sex', 'age']
+        fields = ['user', 'firstname', 'height', 'weight', 'sex', 'age']

@@ -1,17 +1,18 @@
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
-from .views import UserViewSet, UserParametersViewSet
 from .models import UserParameters
+from .models import CustomUser
+from .views import CustomUserCreate, BlacklistTokenUpdateView, UserParametersViewSet
 
 app_name = 'users'
 
 router = routers.DefaultRouter()
-router.register('users', UserViewSet)
 router.register('parameters', UserParametersViewSet)
 
 urlpatterns = [
     path('create/', CustomUserCreate.as_view(), name="create_user"),
     path('logout/blacklist/', BlacklistTokenUpdateView.as_view(),
-         name='blacklist')
+         name='blacklist'),
+    path('', include(router.urls)),
 ]

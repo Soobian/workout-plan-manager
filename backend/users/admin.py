@@ -1,5 +1,5 @@
 from django.contrib import admin
-from users.models import CustomUser
+from users.models import CustomUser, UserParameters
 from django.contrib.auth.admin import UserAdmin
 from django.forms import TextInput, Textarea, CharField
 from django import forms
@@ -28,3 +28,4 @@ class UserAdminConfig(UserAdmin):
 
 
 admin.site.register(CustomUser, UserAdminConfig)
+admin.site.register(UserParameters)

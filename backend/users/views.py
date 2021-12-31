@@ -5,6 +5,9 @@ from rest_framework.views import APIView
 from .serializers import CustomUserSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny
+from .models import UserParameters
+from rest_framework import viewsets
+from .serializers import UserParametersSerializer
 
 
 class CustomUserCreate(APIView):
