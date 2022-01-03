@@ -44,13 +44,16 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'users',
+    'exercise',
+    'workout',
+    'musclegroup',
 ]
 
 from datetime import timedelta
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -163,21 +166,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
-ALLOWED_HOSTS=['localhost']
+CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    "https://domain.com",
-    "https://api.domain.com",
-    "http://localhost:8080",
-    "http://127.0.0.1:9000",
-    "http://127.0.0.1:8000",
-    "http://localhost:8000",
+    "http://localhost:19006",
 ]
-
-
-CORS_ORIGIN_WHITELIST = (
-       'http://localhost:8000',
-)
 
 CORS_ALLOW_METHODS = [
     'DELETE',

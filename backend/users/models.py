@@ -43,3 +43,18 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+
+class UserParameters(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True, verbose_name='User')
+    firstname = models.TextField(max_length=50, default="")
+    height = models.FloatField()
+    weight = models.FloatField()
+    sex = models.TextField(max_length=10)
+    age = models.IntegerField()
+
+    def __str__(self):
+        return self.user
+
+    class Meta:
+        ordering = ['user']
