@@ -53,7 +53,7 @@ from datetime import timedelta
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -168,8 +168,8 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:19006",
+ALLOWED_HOSTS = [
+    '192.168.100.3',
 ]
 
 CORS_ALLOW_METHODS = [

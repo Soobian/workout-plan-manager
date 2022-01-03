@@ -2,20 +2,24 @@ import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
 import RegisterLoginForm from '../components/authentication/RegisterLoginForm';
 import TokenApi from '../components/authentication/TokenApi';
+import * as SecureStore from 'expo-secure-store'
 
 const LoginScreen = ({navigation}) => {
     useEffect(() => {
-        if(localStorage.getItem('refresh_token') !== "undefined"){
+        if(SecureStore.getItemAsync('refresh_token') !== "undefined"){
             TokenApi.post('token/refresh/', {
-                refresh: localStorage.getItem('refresh_token')
+                refresh: SecureStore.getItemAsync('refresh_token')
             })
             .then(response => {
-                localStorage.setItem('access_token', response.data.access)
+                SecureStore.setItemAsync('access_token', response.data.access)
                 setAuthorization(true)
                 navigation.navigate('Home')
             })
+            .catch(error => {
+                console.log("Refresh token not valid")
+            })
         }
-    })
+    }, [])
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -32,15 +36,16 @@ const LoginScreen = ({navigation}) => {
 
         const onSuccess = ({data}) => {
             // Set JSON Web Token on success
-            console.log(data)
-            localStorage.setItem('access_token', data.access)
-            localStorage.setItem('refresh_token', data.refresh)
+            console.log(data.access)
+            SecureStore.setItemAsync('access_token', data.access)
+            SecureStore.setItemAsync('refresh_token', data.refresh)
             setAuthorization(true)
             navigation.navigate('Home')
         };
         
         const onFailure = error => {
-            console.log(error && error.response);
+            console.log(22)
+            console.log(error);
         };
 
         TokenApi.post('token/', payload)
