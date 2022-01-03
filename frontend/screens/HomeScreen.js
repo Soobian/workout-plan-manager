@@ -4,36 +4,27 @@ import LoginScreen from './LoginScreen';
 import SmallCalendar, { weekDays } from '../components/home/SmallCalendar'
 import Greetings from '../components/home/Greetings'
 import YourPlans, { asd} from '../components/home/YourPlans'
+import { HomeScreenStyles } from '../components/home/HomeScreenStyles';
+import LastMeasurement from '../components/home/LastMeasurements';
 
 const { height } = Dimensions.get('window');
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
+    <SafeAreaView style={HomeScreenStyles.container}>
+      <ScrollView style={HomeScreenStyles.scrollView}>
         <Greetings name='Maciek'/>
-        <View style={styles.mainscreen}>
+        <View style={HomeScreenStyles.mainscreen}>
           <View style={{flex: 1, flexDirection: 'row'}}>
             <SmallCalendar days={weekDays}/>
             <YourPlans data = {asd}/>
           </View>
         </View>
+        <LastMeasurement data = {asd} navigation={navigation}/>
       </ScrollView>
     </SafeAreaView>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-    flex: 1,
-    margin: 10,
-  },
-  mainscreen: {
-    flex: 1,
-    flexDirection: 'column',
-    alignSelf: 'stretch',
-  }
-})
 
 export default HomeScreen;

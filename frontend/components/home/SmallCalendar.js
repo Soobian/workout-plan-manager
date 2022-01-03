@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { COLORS } from '../colors/Colors';
 
 export const weekDays = [
   {
@@ -38,7 +39,7 @@ const SmallCalendar = ({ days }) => {
   const Day = ({ day, index }) => (
     <View style={index == currentDay ? styles.activeday : styles.inactiveday}>
       <View style={index == currentDay ? styles.activecircle : styles.circle} />
-      <Text style={styles.dayname}>{day.shortname}</Text>
+      <Text style={index == currentDay ? styles.activeDayname : styles.dayname}>{day.shortname}</Text>
     </View>
   )
   return (
@@ -56,9 +57,18 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#03767b',
+    backgroundColor: COLORS.blue,
     borderRadius: 50/4,
     paddingTop: 10,
+    shadowColor: COLORS.dark_gray,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
   },
   inactiveday : {
     alignSelf: 'stretch',
@@ -68,7 +78,8 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 8 / 2,
-    backgroundColor: "#038f96",
+    backgroundColor: COLORS.middle_blue,
+    opacity: 0.5
   },
   activecircle : {
     width: 8,
@@ -78,6 +89,11 @@ const styles = StyleSheet.create({
   },
   dayname : {
     fontSize: 12,
+    color: COLORS.middle_blue
+  },
+  activeDayname : {
+    fontSize: 12,
+    color: COLORS.white
   },
   activeday : {
     padding: 0,
