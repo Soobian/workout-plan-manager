@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "localstorage-polyfill": "^1.0.1",
+    "parse-react": "^0.5.2"
+  }
+}
