@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ImageBackground, View, TouchableOpacity, Text , StyleSheet, ScrollView, Dimensions } from 'react-native'
 import { HomeScreenStyles } from './HomeScreenStyles';
+import {COLORS} from '../colors/Colors'
 
 const { height, width } = Dimensions.get('window');
 
@@ -16,12 +17,31 @@ export const asd = [
   { name: 'item9' },
 ]
 
+const photos = [
+  'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/1076/articles/2016/10/woman-pushup-1522242407.jpg?crop=1xw:0.75xh;center,top&resize=980:*',
+  'https://www.helpguide.org/wp-content/uploads/resistance-band-woman-doing-leg-workout-768.jpg',
+  'https://images.medicinenet.com/images/article/main_image/stretches-for-tight-hips.jpg'
+] ;
+
+const exerciseList = [
+  {id: 0, name: "pushups", photoUrl: photos[0], selected: false},
+  {id: 1, name: "sth else", photoUrl: photos[1], selected: false},
+  {id: 2, name: "have no idea", photoUrl: photos[2], selected: false}
+];
+
 const ExerciseListComponent = ({data, navigation}) => {
-  const Plan = ({ item }) => (
-    <TouchableOpacity style={styles.imageWrapper}>
-      <ImageBackground source={{uri:'https://www.fillmurray.com/600/800'}} resizeMode="cover" style={styles.coverImage} imageStyle={{ borderRadius: 20}}>
-        <View style={styles.textView}>
-          <Text style={styles.imageText}>{item.name}</Text>
+  const Exercise = ({ item }) => (
+    <TouchableOpacity style={styles.imageWrapper}
+      onPress={() => navigation.navigate('Exercise',{ name: item.name, description: "fuck diet", photoUrl: item.photoUrl})}>
+      <ImageBackground 
+        source={{uri:item.photoUrl}} 
+        resizeMode="cover" 
+        style={styles.coverImage} 
+        imageStyle={{ borderRadius: 20}}>
+
+        <View style={styles.workoutNameContainer}>
+          <Text style={styles.workoutNameText}>{item.name}</Text>
+          <Text style={styles.workoutLevelText}>{item.name}</Text>
         </View>
       </ImageBackground>
     </TouchableOpacity>
@@ -37,8 +57,8 @@ const ExerciseListComponent = ({data, navigation}) => {
       keyboardShouldPersistTaps='always' 
       showsHorizontalScrollIndicator={false} 
       style={styles.scrollview}>
-        {data.map((name, index) => (
-          <Plan item={name} key={index}/>
+        {exerciseList.map((name, index) => (
+          <Exercise item={name} key={index}/>
         ))}
       </ScrollView>
     </View>
@@ -69,21 +89,26 @@ const styles = StyleSheet.create({
     height: 100,
     marginRight: 10,
   },
-  textView: {
-    position: 'absolute',
-    justifyContent: 'center',
+  workoutNameContainer: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center',
+    aspectRatio: 4/3,
+    borderRadius: 20,
+    width: '100%',
+    height: '100%',
+  },
+  workoutNameText: {
+    color: COLORS.white,
+    fontSize: 16,
+    fontWeight: '800',
+  },
+  workoutLevelText : {
+    color: COLORS.white,
+    paddingHorizontal: 3,
+    fontSize: 12,
+    fontWeight: "900",
     alignItems: 'center',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
-  imageText: {
-    margin: 0,
-    fontSize: 20,
-    color: 'white',
-    fontWeight: 'bold',
-  },
+},
 })
 
 export default ExerciseListComponent
