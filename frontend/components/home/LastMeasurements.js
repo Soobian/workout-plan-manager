@@ -1,7 +1,7 @@
 import React from 'react'
 import { ImageBackground, View, TouchableOpacity, Text , StyleSheet, ScrollView, Dimensions } from 'react-native'
 import { COLORS } from '../colors/Colors';
-import { ProfileStyles } from '../profile/ProfileStyles';
+import { HomeScreenStyles } from './HomeScreenStyles';
 
 const { height, width } = Dimensions.get('window');
 
@@ -14,7 +14,7 @@ const LastMeasurement = ({data, navigation}) => {
 
   return (
     <View style={styles.container}>
-        <Text style={styles.titleText}>Last measurement from {lastMeasurement.date}:</Text>
+        <Text style={HomeScreenStyles.titleText}>Last measurement from {lastMeasurement.date}:</Text>
         
         <View style={styles.measurementContainer}> 
             <View style={styles.itemContainer}>
@@ -59,11 +59,6 @@ const styles = StyleSheet.create({
     width: '95%',
     height: 200
   },
-  titleText: {
-    paddingTop: 10,
-    paddingBottom: 10,
-    fontSize: 18
-  },
   measurementContainer: {
     width: '100%',
     borderColor: COLORS.blue,
@@ -107,7 +102,7 @@ numbersText : {
 
 // button
 buttonContainer: {
-    width: 230,
+    width: 235,
     marginBottom:3,
     marginTop: 10,
     marginLeft: -50,

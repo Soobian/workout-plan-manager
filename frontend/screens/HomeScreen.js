@@ -6,14 +6,18 @@ import Greetings from '../components/home/Greetings'
 import YourPlans, { asd} from '../components/home/YourPlans'
 import { HomeScreenStyles } from '../components/home/HomeScreenStyles';
 import LastMeasurement from '../components/home/LastMeasurements';
+import ExerciseListComponent from '../components/home/ExerciseList';
 
 const { height } = Dimensions.get('window');
 
 const HomeScreen = ({navigation}) => {
   return (
+    
     <SafeAreaView style={HomeScreenStyles.container}>
-      <ScrollView style={HomeScreenStyles.scrollView}>
+      <View style={HomeScreenStyles.upperContainer}>
         <Greetings name='Maciek'/>
+      </View>
+      <ScrollView style={HomeScreenStyles.scrollView}>
         <View style={HomeScreenStyles.mainscreen}>
           <View style={{flex: 1, flexDirection: 'row'}}>
             <SmallCalendar days={weekDays}/>
@@ -21,6 +25,7 @@ const HomeScreen = ({navigation}) => {
           </View>
         </View>
         <LastMeasurement data = {asd} navigation={navigation}/>
+        <ExerciseListComponent data = {asd} navigation={navigation}/>
       </ScrollView>
     </SafeAreaView>
   )

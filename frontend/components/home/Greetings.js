@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text , StyleSheet } from 'react-native'
+import { COLORS } from '../colors/Colors'
 
 const Greetings = ({ name }) => {
   return (
@@ -13,11 +14,13 @@ const Greetings = ({ name }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 0.2,
-    padding: 5,
+    paddingTop: 1,
   },
   text: {
-    fontSize: 18,
-    left: 10,
+    marginTop: 3,
+    fontSize: 19,
+    left: 20,
+    color:COLORS.white,
   }
 })
 
