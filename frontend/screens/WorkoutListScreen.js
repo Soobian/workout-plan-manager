@@ -4,6 +4,12 @@ import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, Image, 
 import { WorkoutListStyle } from '../components/workout/WorkoutListStyle';
 
 const WorkoutListScreen = ({route, navigation}) => {
+    const refreshList = () => {
+        axios
+        .get("/exercises/")
+        .then((res) => this.setState({ exercises: res.data }))
+        .catch((err) => console.log(err));
+    };
 
     const updateWorkoutList = () => {
         console.log("====== update workoutlist =======");
@@ -60,7 +66,7 @@ const WorkoutListScreen = ({route, navigation}) => {
                     return(
                         <TouchableOpacity 
                         style={WorkoutListStyle.singleWorkoutContainer}
-                        onPress={() => navigation.navigate('Work', {name: item.name, level: item.level, photoUrl: item.urlPhoto, 
+                        onPress={() => navigation.navigate('Workout', {name: item.name, level: item.level, photoUrl: item.urlPhoto, 
                         exercises: item.exercises})}>
                             <View style={WorkoutListStyle.imageContenerForExercise}>
                             <Image 
