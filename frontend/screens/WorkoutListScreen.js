@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from "axios"
-import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, Image, ImageBackground } from 'react-native'
+import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, Image} from 'react-native'
 import { WorkoutListStyle } from '../components/workout/WorkoutListStyle';
 
 const WorkoutListScreen = ({route, navigation}) => {
