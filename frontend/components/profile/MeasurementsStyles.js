@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native"
 import {COLORS} from '../colors/Colors'
 
-export const ProfileStyles = StyleSheet.create({
+export const MeasurementsStyles = StyleSheet.create({
     container: {
         // whole page
         flex: 1,

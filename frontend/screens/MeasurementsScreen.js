@@ -1,11 +1,11 @@
 import React from 'react'
 import axios from "axios"
 import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity,  Dimensions } from 'react-native'
-import { ProfileStyles } from '../components/profile/ProfileStyles';
+import { MeasurementsStyles } from '../components/profile/MeasurementsStyles';
 import { LineChart} from 'react-native-chart-kit';
 import { COLORS } from '../components/colors/Colors';
 
-const ProfileScreen = ({navigation}) => {
+const MeasurementsScreen = ({navigation}) => {
     const screenWidth = Dimensions.get("window").width;
     const screenHeight = Dimensions.get("window").height;
     const datesOfMeasurements = ["30.01","03.02","05.02","08.02","11.02"];
@@ -86,11 +86,11 @@ const ProfileScreen = ({navigation}) => {
     return (
         <KeyboardAvoidingView 
             behavior={Platform.OS === "ios" ? "padding" : "height"}
-            style={ProfileStyles.container}>
-            <View style={ProfileStyles.upperContainer}>
-                <Text style={ProfileStyles.upperContainerText}>My measurements</Text>
+            style={MeasurementsStyles.container}>
+            <View style={MeasurementsStyles.upperContainer}>
+                <Text style={MeasurementsStyles.upperContainerText}>My measurements</Text>
             </View>
-            <ScrollView contentContainerStyle={ProfileStyles.scrollView}
+            <ScrollView contentContainerStyle={MeasurementsStyles.scrollView}
             centerContent>
             <LineChart
                 data={data}
@@ -98,36 +98,36 @@ const ProfileScreen = ({navigation}) => {
                 height={220}
                 chartConfig={chartConfig}
             />
-            <View style={ProfileStyles.buttonContainer}>
-                <TouchableOpacity style={ProfileStyles.button}
+            <View style={MeasurementsStyles.buttonContainer}>
+                <TouchableOpacity style={MeasurementsStyles.button}
                 onPress={() => navigation.navigate('AddMeasurement')}>
-                    <Text style={ProfileStyles.buttonLabelText}>ADD MEASUREMENT</Text>
+                    <Text style={MeasurementsStyles.buttonLabelText}>ADD MEASUREMENT</Text>
                 </TouchableOpacity>
             </View>
-            <Text style={ProfileStyles.titleText}>History</Text>
-            <View style={ProfileStyles.measurementHistoryContainer}> 
+            <Text style={MeasurementsStyles.titleText}>History</Text>
+            <View style={MeasurementsStyles.measurementHistoryContainer}> 
                     {measurements.map((item, index) => {
                     return(
-                        <View style={ProfileStyles.singleMeasurementContainer}> 
-                        <View style={ProfileStyles.dateContainer}> 
-                            <Text style={ProfileStyles.dateText}>{item.date}</Text>
+                        <View style={MeasurementsStyles.singleMeasurementContainer}> 
+                        <View style={MeasurementsStyles.dateContainer}> 
+                            <Text style={MeasurementsStyles.dateText}>{item.date}</Text>
                         </View>
-                        <View style={ProfileStyles.measurementContainer}> 
-                            <View style={ProfileStyles.itemContainer}>
-                                    <Text style={ProfileStyles.specificText}>CHEST</Text>
-                                    <Text style={ProfileStyles.numbersText}>{item.chest}</Text>
+                        <View style={MeasurementsStyles.measurementContainer}> 
+                            <View style={MeasurementsStyles.itemContainer}>
+                                    <Text style={MeasurementsStyles.specificText}>CHEST</Text>
+                                    <Text style={MeasurementsStyles.numbersText}>{item.chest}</Text>
                             </View>
-                            <View style={ProfileStyles.itemContainer}>
-                                    <Text style={ProfileStyles.specificText}>WAIST</Text>
-                                    <Text style={ProfileStyles.numbersText}>{item.waist}</Text>
+                            <View style={MeasurementsStyles.itemContainer}>
+                                    <Text style={MeasurementsStyles.specificText}>WAIST</Text>
+                                    <Text style={MeasurementsStyles.numbersText}>{item.waist}</Text>
                             </View>
-                            <View style={ProfileStyles.itemContainer}>
-                                    <Text style={ProfileStyles.specificText}>BICEPS</Text>
-                                    <Text style={ProfileStyles.numbersText}>{item.biceps}</Text>
+                            <View style={MeasurementsStyles.itemContainer}>
+                                    <Text style={MeasurementsStyles.specificText}>BICEPS</Text>
+                                    <Text style={MeasurementsStyles.numbersText}>{item.biceps}</Text>
                             </View>
-                            <View style={ProfileStyles.itemContainer}>
-                                    <Text style={ProfileStyles.specificText}>THIGH</Text>
-                                    <Text style={ProfileStyles.numbersText}>{item.thigh}</Text>
+                            <View style={MeasurementsStyles.itemContainer}>
+                                    <Text style={MeasurementsStyles.specificText}>THIGH</Text>
+                                    <Text style={MeasurementsStyles.numbersText}>{item.thigh}</Text>
                             </View>
             
                         </View>
@@ -141,4 +141,4 @@ const ProfileScreen = ({navigation}) => {
     )
 }
 
-export default ProfileScreen
+export default MeasurementsScreen
