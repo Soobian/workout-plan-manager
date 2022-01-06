@@ -6,12 +6,13 @@ export const ProfileStyles = StyleSheet.create({
         // whole page
         flex: 1,
         alignItems: 'center',
-        backgroundColor: COLORS.white
+        backgroundColor: COLORS.white,
     },
     scrollView: {
         // container which enables scrolling
         width: '100%',
         alignItems: 'center',
+        //height: '80%',
     },
     
     upperContainer: {
@@ -38,16 +39,11 @@ export const ProfileStyles = StyleSheet.create({
     },
 
     measurementHistoryContainer: {
-        borderColor: '#03767B',
-        borderWidth: 2,
-        borderRadius: 10,
         marginBottom: 7,
         paddingVertical: 5,
-        width: '85%',
-        height: 160,
-        left: -5
+        width: '90%',
+        paddingBottom: 70,
     },
-
     detailsText: {
         color: 'black',
         fontWeight: '600',
@@ -63,8 +59,8 @@ export const ProfileStyles = StyleSheet.create({
         color: COLORS.blue,
         fontWeight: '900',
         fontSize: 19,
-        left: -110,
-        paddingBottom: 3
+        paddingBottom: 3,
+        paddingTop: 10
     },
 
     chartContainer: {
@@ -72,10 +68,11 @@ export const ProfileStyles = StyleSheet.create({
     },
 
     buttonContainer: {
-        width: '60%',
+        width: '80%',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom:3
+        marginBottom:3,
+        paddingTop: 10,
     },
 
     buttonLabelText: {
@@ -93,32 +90,49 @@ export const ProfileStyles = StyleSheet.create({
 
     singleMeasurementContainer: {
         backgroundColor: COLORS.white,
-        borderColor: COLORS.light_gray,
-        borderWidth: 1,
-        width: '101%',
+        width: '100%',
         marginBottom: 10,
-        
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     dateContainer: {
         backgroundColor: COLORS.blue,
         width: '100%',
         height: 16,
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginHorizontal: 20,
+        paddingHorizontal: 5,
+        borderRadius: 4,
+        top: 1
     },
     dateText: {
         color: COLORS.white,
-        fontSize: 10
-    },
-    specificMeasurementsCOntainer: {
+        fontSize: 10,
         width: '100%',
-        height: 50,
+        marginHorizontal: 20,
+    },
+    measurementContainer: {
+        width: '100%',
+        borderColor: COLORS.blue,
+        borderWidth: 2,
         borderRadius: 8,
+        height: 60,
         flexDirection: "row" ,
         justifyContent: 'space-evenly',
-        
+        backgroundColor: COLORS.white,
+        shadowColor: COLORS.dark_gray,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
     },
-    specificsOneItemContainer: {
+    itemContainer: {
         height: 50,
         width: '24%',
         alignItems: 'center',
@@ -126,7 +140,7 @@ export const ProfileStyles = StyleSheet.create({
     },
     specificText: {
         color: COLORS.blue,
-        paddingTop: 5,
+        paddingTop: 7,
         paddingHorizontal: 5,
         fontSize: 13,
         fontWeight: "900",

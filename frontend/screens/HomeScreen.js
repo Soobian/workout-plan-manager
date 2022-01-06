@@ -41,7 +41,7 @@ const HomeScreen = ({navigation}) =>  {
     return (
       <SafeAreaView style={HomeScreenStyles.container}>
       <View style={HomeScreenStyles.upperContainer}>
-        <Greetings name='Maciek'/>
+        <Greetings name='{firstname}'/>
       </View>
       <ScrollView style={HomeScreenStyles.scrollView}>
         <View style={HomeScreenStyles.mainscreen}>
