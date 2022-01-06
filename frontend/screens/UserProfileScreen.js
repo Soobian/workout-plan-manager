@@ -1,8 +1,10 @@
 import React from 'react'
 import axios from "axios"
 import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity,  Dimensions } from 'react-native'
-import { MeasurementsStyles } from '../components/profile/MeasurementsStyles';
+import { MeasurementsStyles } from '../components/measurements/MeasurementsStyles';
 import { COLORS } from '../components/colors/Colors';
+
+// avatars: https://www.iconfinder.com/icons/2754576/woman_female_avatar_icon
 
 const UserProfileScreen = ({navigation}) => {
     const screenWidth = Dimensions.get("window").width;

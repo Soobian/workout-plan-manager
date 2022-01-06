@@ -4,7 +4,7 @@ import axios from "axios"
 import { render } from 'react-dom';
 import { KeyboardAvoidingView, Text, Image, View, ScrollView, SafeAreaView, TouchableOpacity,  Dimensions, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input';
-import { AddMeasurementStyle } from '../components/profile/AddMeasurementStyle';
+import { AddMeasurementStyle } from '../components/measurements/AddMeasurementStyle';
 import { COLORS } from '../components/colors/Colors';
 
 const AddMeasurementScreen = ({navigation}, measurements) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from "axios"
 import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity,  Dimensions } from 'react-native'
-import { MeasurementsStyles } from '../components/profile/MeasurementsStyles';
+import { MeasurementsStyles } from '../components/measurements/MeasurementsStyles';
 import { LineChart} from 'react-native-chart-kit';
 import { COLORS } from '../components/colors/Colors';
 

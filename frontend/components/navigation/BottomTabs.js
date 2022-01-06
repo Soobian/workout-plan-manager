@@ -11,6 +11,8 @@ import UserProfileScreen from '../../screens/UserProfileScreen';
 import Icon from './Icons';
 import { COLORS } from '../colors/Colors';
 
+// TO DO
+// change measurements icon
 
 const TabArray = [
   { route: 'Home', label: 'Home', component: HomeScreen, icon: 'https://img.icons8.com/ios/50/000000/home--v1.png'},
