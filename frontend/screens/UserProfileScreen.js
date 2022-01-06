@@ -13,9 +13,9 @@ const UserProfileScreen = ({navigation}) => {
     const [usersData, setUsersData] = useState({
         name: "random",
         email: "random@example.com",
-        dateOfBirth: '2137-01-01',
-        height: 200,
-        weight: 130,
+        dateOfBirth: '-',
+        height: '-',
+        weight: '-',
         sex: "m",
     })
 

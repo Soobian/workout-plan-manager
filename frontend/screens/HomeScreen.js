@@ -43,6 +43,7 @@ const HomeScreen = ({navigation}) =>  {
       <View style={HomeScreenStyles.upperContainer}>
         <Greetings name='{firstname}'/>
       </View>
+      <View style={HomeScreenStyles.scrollView}>
       <ScrollView style={HomeScreenStyles.scrollView}>
         <View style={HomeScreenStyles.mainscreen}>
           <View style={{flex: 1, flexDirection: 'row'}}>
@@ -53,6 +54,8 @@ const HomeScreen = ({navigation}) =>  {
         <LastMeasurement data = {asd} navigation={navigation}/>
         <ExerciseListComponent data = {asd} navigation={navigation}/>
       </ScrollView>
+      </View>
+      
     </SafeAreaView>
   )
 }

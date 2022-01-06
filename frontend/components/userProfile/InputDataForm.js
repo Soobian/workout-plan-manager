@@ -9,12 +9,12 @@ const InputDataForm = ({data, navigation}) =>{
     // TO DO:
     // calculate age from date of birth
     
-    const [firstName, setFirstName] = useState('');
+    const [firstName, setFirstName] = useState('random');
     const [dateOfBirth, setdateOfBirth] = useState('');
     const [height, setHeight] = useState('');
     const [weight, setweight] = useState('');
     
-    const [isWoman, setIsWoman] = useState(true);
+    const [isWoman, setIsWoman] = useState(false);
 
     const formFields = [
         {label: 'name', value: firstName, onChangeText: text => setFirstName(text)},
@@ -22,36 +22,6 @@ const InputDataForm = ({data, navigation}) =>{
         {label: 'height', value: height, onChangeText: text => setHeight(text)},
         {label: 'weight', value: weight, onChangeText: text => setweight(text)},
     ];
-
-    const handleSelection = (id) => {
-        // only one box can be selected
-        /*
-        console.log("selected sex id: ", id);
-        const newValue = exerciseList.map((checkbox, i) => {
-            if (i !== id)
-                return {
-                ...checkbox,
-                selected: false,
-            }
-            if (i === id) {
-                const item = {
-                ...checkbox,
-                selected: !checkbox.selected,
-                }
-                return item
-            }
-            return checkbox
-        })
-        if(newValue[id].selected === true){
-            setSelectedExercise(id);
-        }
-        else{
-            setSelectedExercise('');
-        }
-        setexerciseList(newValue)
-        console.log("[AddExeToWorkout] ", newValue[id].selected, {selectedExercise});
-        */
-    };
 
     return (
             <View style={styles.container}>
@@ -72,20 +42,27 @@ const InputDataForm = ({data, navigation}) =>{
                                 />
                         </View>
                         )})}
-                <View style={styles.singleItem}> 
-                    <View style={styles.dataContainer}>
+                <View style={styles.sexContainer}> 
+                    <View style={styles.sexdataContainer}>
                         <Text style={styles.dataText}>sex:</Text>
-                    </View>  
+                    </View>
+                    <View style={styles.sexLabelContainer}>
+                        <Text style={styles.sexdataText}>W</Text>
+                    </View>
+                    <CheckBox
+                        center={true}
+                        checked={isWoman}
+                        onPress={() => setIsWoman(!isWoman)}
+                        style={styles.checkbox}/> 
+                    <View style={styles.sexLabelContainer}>
+                        <Text style={styles.sexdataText}>M</Text>
+                    </View>
+                    <CheckBox
+                        center={true}
+                        checked={!isWoman}
+                        onPress={() => setIsWoman(!isWoman)}
+                        style={styles.checkbox}/> 
                 </View>
-                <View style={styles.checkboxContainer}>
-                                <CheckBox
-                                center={true}
-                                checked={isWoman}
-                                onPress={() => handleSelection(index)}
-                                style={styles.checkbox}
-                                />
-                        </View>  
-                
             </View>
     )
 }
@@ -148,20 +125,46 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         marginLeft: 10,
     },
-    checkboxContainer: {
-        width: 50,
+    //sex
+    sexContainer: {
+        flexDirection: "row" ,
         height: 50,
+    },
+    sexdataContainer:{
+        height: '100%',
+        width: 110,
+        borderRadius: 8,
+        marginTop: 15,
+        alignItems: 'flex-end',
+        marginHorizontal: 10,
+    },
+    sexLabelContainer:{
+        height: '100%',
+        width: 20,
+        borderRadius: 8,
+        marginTop: 15,
+        alignItems: 'flex-end',
+    },
+    sexdataText : {
+        color: COLORS.blue,
+        fontSize: 16,
+        fontWeight: "700",
+        alignItems: 'center',
+        paddingTop: 2,
+    },
+    checkboxContainer: {
+        width: 20,
+        height: 40,
         borderRadius: 8,
         borderColor: COLORS.blue,
         borderWidth: 2,
-        //paddingBottom: 10,
-        //backgroundColor: COLORS.light_gray,
-        //flexDirection: "row" ,
-        //justifyContent: 'space-evenly',
     },
     checkbox: {
         alignSelf: "center",
         backgroundColor: 'black',
         color: 'black',
+        borderRadius: 8,
+        borderColor: COLORS.blue,
+        borderWidth: 2,
     },
 })
