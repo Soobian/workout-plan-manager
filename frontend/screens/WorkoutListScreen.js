@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from "axios"
-import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, ImageBackground } from 'react-native'
+import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, Image, ImageBackground } from 'react-native'
 import { WorkoutListStyle } from '../components/workout/WorkoutListStyle';
 
 const WorkoutListScreen = ({route, navigation}) => {
@@ -62,10 +62,11 @@ const WorkoutListScreen = ({route, navigation}) => {
                         style={WorkoutListStyle.singleWorkoutContainer}
                         onPress={() => navigation.navigate('Work', {name: item.name, level: item.level, photoUrl: item.urlPhoto, 
                         exercises: item.exercises})}>
-                            <ImageBackground 
-                                style={WorkoutListStyle.image}
+                            <View style={WorkoutListStyle.imageContenerForExercise}>
+                            <Image 
+                                style={WorkoutListStyle.imageExercise}
                                 source={{uri: item.urlPhoto}}/>
-                            
+                            </View>
                             <View style={WorkoutListStyle.workoutNameContainer}>
                                 <Text style={WorkoutListStyle.workoutNameText}>{item.name}</Text>
                                 <Text style={WorkoutListStyle.workoutLevelText}>{item.level}</Text>

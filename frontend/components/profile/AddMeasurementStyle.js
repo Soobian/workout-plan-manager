@@ -95,7 +95,7 @@ export const AddMeasurementStyle = StyleSheet.create({
     labelNameContianer: {
         paddingHorizontal: 15,
         borderRadius: 10,
-        width: 90,
+        width: 105,
         marginHorizontal: 35,
         marginTop: 15,
         left: -30,
