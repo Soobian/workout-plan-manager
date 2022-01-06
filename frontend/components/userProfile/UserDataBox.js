@@ -5,6 +5,9 @@ const { height, width } = Dimensions.get('window');
 
 const UserDataBox = ({data, navigation}) =>{
 
+    // TO DO:
+    // calculate age from date of birth
+
     return (
             <View style={styles.measurementContainer}>
                 <View style={styles.itemContainer}>
@@ -26,8 +29,8 @@ const UserDataBox = ({data, navigation}) =>{
 export default UserDataBox;
 
 const styles = StyleSheet.create({
-        measurementContainer: {
-        top: -height*0.57,
+    measurementContainer: {
+        top: -30,
         width: '80%',
         borderColor: COLORS.white,
         borderWidth: 1,

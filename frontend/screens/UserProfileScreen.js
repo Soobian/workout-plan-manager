@@ -4,6 +4,7 @@ import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, Dimensi
 import { COLORS } from '../components/colors/Colors';
 import AvatarWithDetails from '../components/userProfile/AvatarWithDetails';
 import UserDataBox from '../components/userProfile/UserDataBox';
+import InputDataForm from '../components/userProfile/InputDataForm';
 const { height, width } = Dimensions.get('window');
 
 // avatars: https://www.iconfinder.com/icons/2754576/woman_female_avatar_icon
@@ -19,12 +20,13 @@ const UserProfileScreen = ({navigation}) => {
     })
 
     return (
-        <SafeAreaView 
+        <KeyboardAvoidingView 
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={styles.container}>
             <AvatarWithDetails data = {usersData} navigation={navigation}/>
             <UserDataBox data = {usersData} navigation={navigation}/>
-            <Text>elo</Text>
-        </SafeAreaView>
+            <InputDataForm data = {usersData} navigation={navigation}/>
+        </KeyboardAvoidingView>
     )
 }
 export default UserProfileScreen
@@ -33,6 +35,6 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: COLORS.white,
         flex: 1,
-        justifyContent: 'center'
+        alignItems: 'center',
     },
   })

@@ -10,8 +10,6 @@ const AvatarWithDetails = ({data, navigation}) =>{
     const manAvatar = 'https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/8_avatar-512.png';
 
     return (
-        <View
-            style={styles.container}>
             <View style={styles.upperContainer}>
                 <View style={styles.imageContainer}>
                     <Image 
@@ -22,23 +20,16 @@ const AvatarWithDetails = ({data, navigation}) =>{
                 <Text style={styles.nameText}>{data.name}</Text>
                 <Text style={styles.emailText}>{data.email}</Text>
             </View>
-        </View>
     )
 }
 
 export default AvatarWithDetails;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: COLORS.white,
-        width: '100%',
-    },
     upperContainer: {
         backgroundColor: COLORS.blue,
         width: '100%',
-        height: '43%',
+        height: '40%',
         padding: 10,
         alignItems: 'center',
         justifyContent: 'center',
