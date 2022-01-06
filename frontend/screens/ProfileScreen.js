@@ -7,6 +7,7 @@ import { COLORS } from '../components/colors/Colors';
 
 const ProfileScreen = ({navigation}) => {
     const screenWidth = Dimensions.get("window").width;
+    const screenHeight = Dimensions.get("window").height;
     const datesOfMeasurements = ["30.01","03.02","05.02","08.02","11.02"];
     const chestMeasurements = [99, 96, 92, 88, 84];
     const waistMeasurements = [102, 102, 99, 96, 92];
@@ -89,38 +90,42 @@ const ProfileScreen = ({navigation}) => {
             <View style={ProfileStyles.upperContainer}>
                 <Text style={ProfileStyles.upperContainerText}>My measurements</Text>
             </View>
+            <ScrollView contentContainerStyle={ProfileStyles.scrollView}
+            centerContent>
             <LineChart
                 data={data}
                 width={screenWidth}
                 height={220}
                 chartConfig={chartConfig}
             />
-            
-            
+            <View style={ProfileStyles.buttonContainer}>
+                <TouchableOpacity style={ProfileStyles.button}
+                onPress={() => navigation.navigate('AddMeasurement')}>
+                    <Text style={ProfileStyles.buttonLabelText}>ADD MEASUREMENT</Text>
+                </TouchableOpacity>
+            </View>
             <Text style={ProfileStyles.titleText}>History</Text>
             <View style={ProfileStyles.measurementHistoryContainer}> 
-                <ScrollView contentContainerStyle={ProfileStyles.scrollView}
-            centerContent>
                     {measurements.map((item, index) => {
                     return(
                         <View style={ProfileStyles.singleMeasurementContainer}> 
                         <View style={ProfileStyles.dateContainer}> 
                             <Text style={ProfileStyles.dateText}>{item.date}</Text>
                         </View>
-                        <View style={ProfileStyles.specificMeasurementsCOntainer}> 
-                            <View style={ProfileStyles.specificsOneItemContainer}>
+                        <View style={ProfileStyles.measurementContainer}> 
+                            <View style={ProfileStyles.itemContainer}>
                                     <Text style={ProfileStyles.specificText}>CHEST</Text>
                                     <Text style={ProfileStyles.numbersText}>{item.chest}</Text>
                             </View>
-                            <View style={ProfileStyles.specificsOneItemContainer}>
+                            <View style={ProfileStyles.itemContainer}>
                                     <Text style={ProfileStyles.specificText}>WAIST</Text>
                                     <Text style={ProfileStyles.numbersText}>{item.waist}</Text>
                             </View>
-                            <View style={ProfileStyles.specificsOneItemContainer}>
+                            <View style={ProfileStyles.itemContainer}>
                                     <Text style={ProfileStyles.specificText}>BICEPS</Text>
                                     <Text style={ProfileStyles.numbersText}>{item.biceps}</Text>
                             </View>
-                            <View style={ProfileStyles.specificsOneItemContainer}>
+                            <View style={ProfileStyles.itemContainer}>
                                     <Text style={ProfileStyles.specificText}>THIGH</Text>
                                     <Text style={ProfileStyles.numbersText}>{item.thigh}</Text>
                             </View>
@@ -128,14 +133,10 @@ const ProfileScreen = ({navigation}) => {
                         </View>
                     </View>)
                 })}
-                </ScrollView>
+                
             </View>
-            <View style={ProfileStyles.buttonContainer}>
-                <TouchableOpacity style={ProfileStyles.button}
-                onPress={() => navigation.navigate('AddMeasurement')}>
-                    <Text style={ProfileStyles.buttonLabelText}>ADD MEASUREMENT</Text>
-                </TouchableOpacity>
-            </View>
+            </ScrollView>
+            
         </KeyboardAvoidingView>
     )
 }

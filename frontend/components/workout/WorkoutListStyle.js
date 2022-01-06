@@ -29,8 +29,8 @@ export const WorkoutListStyle = StyleSheet.create({
 
     upperContainerText: {
         color: 'white',
-        fontWeight: '700',
-        fontSize: 28,
+        fontWeight: '300',
+        fontSize: 25,
         justifyContent: 'center',
         alignItems: 'center',
         textAlignVertical: 'bottom',
@@ -102,11 +102,21 @@ export const WorkoutListStyle = StyleSheet.create({
         fontWeight: "900",
         alignItems: 'center',
     },
-    image: {
-        borderRadius: 10,
+    imageContenerForExercise: {
+        backgroundColor: COLORS.dark_gray,
+        width: '100%',
+        height: '100%',
+        borderRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    imageExercise: {
+        backgroundColor: COLORS.dark_gray,
+        borderRadius: 8,
         alignItems: 'center',
         justifyContent: 'center',
         height: '100%',
         width: '100%',
+        opacity: 0.7
     },
 })
