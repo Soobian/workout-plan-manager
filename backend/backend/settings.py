@@ -28,7 +28,7 @@ SECRET_KEY = get_random_secret_key()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.55.10']
 
 
 # Application definition
@@ -110,16 +110,18 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': 'mydatabase',
-#    }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
+    }
+}
+'''
 try:
     from .local_settings import *
 except ImportError:
     pass
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -169,7 +171,7 @@ AUTH_USER_MODEL = 'users.CustomUser'
 CORS_ALLOW_CREDENTIALS = True
 
 ALLOWED_HOSTS = [
-    '192.168.100.3',
+    '192.168.100.3','192.168.55.10', '192.168.56.1'
 ]
 
 CORS_ALLOW_METHODS = [
