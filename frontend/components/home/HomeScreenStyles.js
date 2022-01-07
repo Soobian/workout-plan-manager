@@ -14,6 +14,7 @@ export const HomeScreenStyles = StyleSheet.create({
     },
     scrollView: {
         paddingTop: 10,
+        height: '75%',
     },
     titleText: {
         paddingTop: 20,
