@@ -1,5 +1,5 @@
 import React from 'react'
-import { KeyboardAvoidingView, Text, View, Dimensions, StyleSheet, Image} from 'react-native'
+import { Text, View, Dimensions, StyleSheet} from 'react-native'
 import { COLORS } from '../colors/Colors';
 const { height, width } = Dimensions.get('window');
 
@@ -31,13 +31,13 @@ export default UserDataBox;
 const styles = StyleSheet.create({
     measurementContainer: {
         top: -30,
-        width: '80%',
+        height: 60,
+        width: "75%",
         borderColor: COLORS.white,
         borderWidth: 1,
         borderRadius: 10,
-        height: 60,
         flexDirection: "row" ,
-        justifyContent: 'space-evenly',
+        justifyContent: "space-evenly",
         backgroundColor: COLORS.white,
         shadowColor: COLORS.dark_gray,
             shadowColor: "#000",
@@ -53,8 +53,8 @@ const styles = StyleSheet.create({
     },
     itemContainer: {
         height: 50,
-        width: '24%',
-        alignItems: 'center',
+        width: "33%",
+        alignItems: "center",
         borderRadius: 8
     },
     specificText: {
@@ -63,12 +63,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         fontSize: 13,
         fontWeight: "900",
-        alignItems: 'center'
+        alignItems: "center"
     },
     numbersText : {
         color: COLORS.blue,
         fontSize: 19,
         fontWeight: "900",
-        alignItems: 'center'
+        alignItems: "center"
     },
   })

@@ -1,39 +1,41 @@
-import React, {useState} from 'react'
-import { KeyboardAvoidingView, Text, View, Dimensions, StyleSheet, TextInput} from 'react-native'
-import { COLORS } from '../colors/Colors';
-const { height, width } = Dimensions.get('window');
-import { CheckBox } from 'react-native-elements';
+import React, {useState} from "react"
+import { Text, View, StyleSheet, TextInput} from "react-native"
+import { COLORS } from "../colors/Colors";
+import { CheckBox } from "react-native-elements";
 
 const InputDataForm = ({data, navigation}) =>{
 
     // TO DO:
     // calculate age from date of birth
     
-    const [firstName, setFirstName] = useState('random');
-    const [dateOfBirth, setdateOfBirth] = useState('');
-    const [height, setHeight] = useState('');
-    const [weight, setweight] = useState('');
-    
+    const [firstName, setFirstName] = useState("random");
+    const [dateOfBirth, setdateOfBirth] = useState("");
+    const [height, setHeight] = useState("");
+    const [weight, setweight] = useState("");
     const [isWoman, setIsWoman] = useState(false);
 
     const formFields = [
-        {label: 'name', value: firstName, onChangeText: text => setFirstName(text)},
-        {label: 'date of birth', value: dateOfBirth, onChangeText: text => setdateOfBirth(text)},
-        {label: 'height', value: height, onChangeText: text => setHeight(text)},
-        {label: 'weight', value: weight, onChangeText: text => setweight(text)},
+        {label: "name", value: firstName, onChangeText: text => setFirstName(text)},
+        {label: "date of birth", value: dateOfBirth, onChangeText: text => setdateOfBirth(text)},
+        {label: "height", value: height, onChangeText: text => setHeight(text)},
+        {label: "weight", value: weight, onChangeText: text => setweight(text)},
     ];
 
     return (
             <View style={styles.container}>
                 <View style={styles.updateDataContainer}>
-                    <Text style={styles.updateDataTxt}>update your data</Text>
+                    <Text style={styles.updateDataTxt}>
+                        update your data
+                    </Text>
                 </View>
                 
                 {formFields.map((item, index) => {
                     return (
                         <View style={styles.singleItem}> 
                             <View style={styles.dataContainer}>
-                                <Text style={styles.dataText}>{item.label}:</Text>
+                                <Text style={styles.dataText}>
+                                    {item.label}:
+                                </Text>
                             </View>
                             <TextInput
                                     style={styles.input}
@@ -42,10 +44,12 @@ const InputDataForm = ({data, navigation}) =>{
                                 />
                         </View>
                         )})}
+                
                 <View style={styles.sexContainer}> 
                     <View style={styles.sexdataContainer}>
                         <Text style={styles.dataText}>sex:</Text>
                     </View>
+
                     <View style={styles.sexLabelContainer}>
                         <Text style={styles.sexdataText}>W</Text>
                     </View>
@@ -54,6 +58,7 @@ const InputDataForm = ({data, navigation}) =>{
                         checked={isWoman}
                         onPress={() => setIsWoman(!isWoman)}
                         style={styles.checkbox}/> 
+
                     <View style={styles.sexLabelContainer}>
                         <Text style={styles.sexdataText}>M</Text>
                     </View>
@@ -71,8 +76,7 @@ export default InputDataForm;
 
 const styles = StyleSheet.create({
     container: {
-        //top: -height*0.3,
-        width: '90%',
+        width: "85%",
         borderColor: COLORS.white,
         borderWidth: 1,
         borderRadius: 10,
@@ -87,10 +91,9 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.27,
         shadowRadius: 4.65,
         elevation: 5,
-        
     },
     updateDataContainer: {
-        alignItems: 'center',
+        alignItems: "center",
         marginBottom: 20,
         marginTop: 5,
     },
@@ -103,68 +106,56 @@ const styles = StyleSheet.create({
         height: 30,
     },
     dataContainer: {
-        height: '100%',
+        height: "100%",
         width: 110,
         borderRadius: 8,
         marginTop: 5,
-        alignItems: 'flex-end',
+        alignItems: "flex-end",
     },
     dataText : {
         color: COLORS.blue,
         fontSize: 16,
         fontWeight: "900",
-        alignItems: 'center',
+        alignItems: "center",
         paddingTop: 2,
     },
     input: {
-        height: '100%',
-        width: 150,
+        height: "100%",
+        width: "50%",
         borderEndWidth: 1,
         borderBottomWidth: 1,
         borderBottomColor: COLORS.light_gray,
         paddingLeft: 10,
         marginLeft: 10,
     },
-    //sex
+    //container for whole 'sex' part
     sexContainer: {
         flexDirection: "row" ,
         height: 50,
     },
     sexdataContainer:{
-        height: '100%',
+        height: "100%",
         width: 110,
         borderRadius: 8,
         marginTop: 15,
-        alignItems: 'flex-end',
+        alignItems: "flex-end",
         marginHorizontal: 10,
     },
     sexLabelContainer:{
-        height: '100%',
+        height: "100%",
         width: 20,
         borderRadius: 8,
         marginTop: 15,
-        alignItems: 'flex-end',
+        alignItems: "flex-end",
     },
     sexdataText : {
         color: COLORS.blue,
         fontSize: 16,
         fontWeight: "700",
-        alignItems: 'center',
+        alignItems: "center",
         paddingTop: 2,
-    },
-    checkboxContainer: {
-        width: 20,
-        height: 40,
-        borderRadius: 8,
-        borderColor: COLORS.blue,
-        borderWidth: 2,
     },
     checkbox: {
         alignSelf: "center",
-        backgroundColor: 'black',
-        color: 'black',
-        borderRadius: 8,
-        borderColor: COLORS.blue,
-        borderWidth: 2,
     },
 })

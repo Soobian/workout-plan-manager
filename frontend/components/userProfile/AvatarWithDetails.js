@@ -1,13 +1,11 @@
-import React from 'react'
-import { KeyboardAvoidingView, Text, View, Dimensions, StyleSheet, Image} from 'react-native'
-import { COLORS } from '../colors/Colors';
+import React from "react"
+import { Text, View, StyleSheet, Image} from "react-native"
+import { COLORS } from "../colors/Colors";
 
 const AvatarWithDetails = ({data, navigation}) =>{
-    const screenWidth = Dimensions.get("window").width;
-    const screenHeight = Dimensions.get("window").height;
-    
-    const womanAvatar = 'https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/11_avatar-512.png';
-    const manAvatar = 'https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/8_avatar-512.png';
+    // avatars: https://www.iconfinder.com/icons/2754576/woman_female_avatar_icon
+    const womanAvatar = "https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/11_avatar-512.png";
+    const manAvatar = "https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/8_avatar-512.png";
 
     return (
             <View style={styles.upperContainer}>

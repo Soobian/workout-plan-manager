@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import axios from "axios"
-import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, Dimensions, StyleSheet, Image, SafeAreaView} from 'react-native'
-import { COLORS } from '../components/colors/Colors';
-import AvatarWithDetails from '../components/userProfile/AvatarWithDetails';
-import UserDataBox from '../components/userProfile/UserDataBox';
-import InputDataForm from '../components/userProfile/InputDataForm';
-const { height, width } = Dimensions.get('window');
-
-// avatars: https://www.iconfinder.com/icons/2754576/woman_female_avatar_icon
+import { KeyboardAvoidingView, StyleSheet} from "react-native";
+import { COLORS } from "../components/colors/Colors";
+import AvatarWithDetails from "../components/userProfile/AvatarWithDetails";
+import UserDataBox from "../components/userProfile/UserDataBox";
+import InputDataForm from "../components/userProfile/InputDataForm";
 
 const UserProfileScreen = ({navigation}) => {
     const [usersData, setUsersData] = useState({
         name: "random",
         email: "random@example.com",
         dateOfBirth: '-',
-        height: '-',
-        weight: '-',
+        height: "-",
+        weight: "-",
         sex: "m",
     })
 
