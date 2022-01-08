@@ -6,6 +6,7 @@ import * as Animatable from 'react-native-animatable';
 import HomeScreen from '../../screens/HomeScreen';
 import UserProfileScreen from '../../screens/UserProfileScreen'
 import WorkoutListScreen from '../../screens/WorkoutListScreen';
+import MeasurementsScreen from '../../screens/MeasurementsScreen'
 
 import Icon from './Icons';
 import { COLORS } from '../colors/Colors';
@@ -15,7 +16,7 @@ const TabArray = [
     { route: 'Home', label: 'Home', component: HomeScreen, icon: 'https://img.icons8.com/ios/50/000000/home--v1.png'},
     //{ route: 'FoodTracker', label: 'Food Tracker', component: HomeScreen, icon: 'https://img.icons8.com/ios/50/000000/dining-room.png'},
     { route: 'Workout', label: 'Workout', component: WorkoutListScreen, icon: 'https://img.icons8.com/ios/50/000000/dumbbell--v1.png'},
-    { route: 'Friends', label: 'Measurements', component: HomeScreen, icon: 'https://img.icons8.com/ios/50/000000/tape-measure-sewing.png'},
+    { route: 'Friends', label: 'Measurements', component: MeasurementsScreen, icon: 'https://img.icons8.com/ios/50/000000/tape-measure-sewing.png'},
     { route: 'Profile', label: 'Profile', component: UserProfileScreen, icon: 'https://img.icons8.com/ios/50/000000/user--v1.png'},
 ]
 
