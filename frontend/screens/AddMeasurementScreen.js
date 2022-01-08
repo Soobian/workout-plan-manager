@@ -6,6 +6,9 @@ import { KeyboardAvoidingView, Text, Image, View, ScrollView, SafeAreaView, Touc
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { AddMeasurementStyle } from '../components/measurements/AddMeasurementStyle';
 import { COLORS } from '../components/colors/Colors';
+import TokenApi from '../components/authentication/TokenApi';
+import jwt_decode from "jwt-decode";
+import * as SecureStore from 'expo-secure-store'
 
 const AddMeasurementScreen = ({navigation}, measurements) => {
     const [chest, setChest] = useState('')
@@ -44,7 +47,34 @@ const AddMeasurementScreen = ({navigation}, measurements) => {
     const handleAdd = () => {
         if(areAllFormsFilled()==true){
             if(areDataValid()==true){
-                navigation.navigate('Home');
+                SecureStore.getItemAsync('access_token')
+                .then((token) => {
+                    console.log("access_token", token)
+                    const userId = jwt_decode(token).user_id
+                    console.log(userId)
+                    TokenApi.post(
+                        'measurements/measurements/', 
+                        {
+                            userId: userId,
+                            chestSize: chest,
+                            waistSize: waist,
+                            bicepsSize: biceps,
+                            thighSize: thigh,
+                        },
+                        {
+                            headers: {
+                                Authorization: 'JWT ' + token,
+                            }
+                        }
+                    )
+                    .then(response => {
+                        console.log(response.data)
+                        navigation.goBack(null)
+                    })
+                    .catch(error => {
+                        console.log(error.message)
+                    })
+                })
             }
             else{
                 Alert.alert('Ops!','Provided data are not valid',[

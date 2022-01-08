@@ -11,7 +11,7 @@ class MeasurementViewSet(viewsets.ModelViewSet):
     #permission_classes = [IsAuthenticated] 
 
 
-class MeasurementHistoryViewSet(generics.ListAPIView):
+class MeasurementHistoryViewSet(generics.ListCreateAPIView):
     serializer_class = MeasurementSerializer
     #permission_classes = [IsAuthenticated] 
 

@@ -10,4 +10,5 @@ router.register('measurements', MeasurementViewSet)
 
 urlpatterns = [
     path('user/<int:user>', MeasurementHistoryViewSet.as_view(), name='history'),
+    path('', include(router.urls)),
 ]
