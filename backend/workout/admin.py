@@ -1,7 +1,9 @@
 from django.contrib import admin
-from .models import WorkoutPlan, WorkoutPlanDay, WorkoutPlanDay_Exercise, WorkoutPlanDay_Exercise_Sets
+from .models import MuscleGroup, Exercise, WorkoutPlan, WorkoutPlanDay, WorkoutPlanDayExercise, WorkoutPlanDayExerciseSets
 
+admin.site.register(MuscleGroup)
+admin.site.register(Exercise)
 admin.site.register(WorkoutPlan)
 admin.site.register(WorkoutPlanDay)
-admin.site.register(WorkoutPlanDay_Exercise)
-admin.site.register(WorkoutPlanDay_Exercise_Sets)
+admin.site.register(WorkoutPlanDayExercise)
+admin.site.register(WorkoutPlanDayExerciseSets)

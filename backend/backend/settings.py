@@ -28,9 +28,6 @@ SECRET_KEY = get_random_secret_key()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.55.10']
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,9 +41,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'users',
-    'exercise',
     'workout',
-    'musclegroup',
 ]
 
 from datetime import timedelta
@@ -60,7 +55,7 @@ REST_FRAMEWORK = {
     ),  # 
 }
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=14),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': False,
@@ -109,7 +104,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -121,7 +116,7 @@ try:
     from .local_settings import *
 except ImportError:
     pass
-'''
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -171,7 +166,10 @@ AUTH_USER_MODEL = 'users.CustomUser'
 CORS_ALLOW_CREDENTIALS = True
 
 ALLOWED_HOSTS = [
-    '192.168.100.3','192.168.55.10', '192.168.56.1'
+    '192.168.100.3',
+    '192.168.55.10', 
+    '192.168.56.1', 
+    '127.0.0.1', 
 ]
 
 CORS_ALLOW_METHODS = [

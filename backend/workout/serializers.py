@@ -1,26 +1,41 @@
 from rest_framework import serializers
-from .models import WorkoutPlan, WorkoutPlanDay, WorkoutPlanDay_Exercise, WorkoutPlanDay_Exercise_Sets
+from .models import MuscleGroup, Exercise, WorkoutPlan, WorkoutPlanDay, WorkoutPlanDayExercise, WorkoutPlanDayExerciseSets
 
 
-class WorkoutPlanSerializer(serializers.ModelSerializer):
+class MuscleGroupSerializer(serializers.ModelSerializer):
     class Meta:
-        model = WorkoutPlan
-        fields = ['WorkoutPlanId','UserId', 'name', 'description']
+        model = MuscleGroup
+        fields = ('name', 'description', 'photo_link')
+
+
+class ExerciseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Exercise
+        fields = ('name', 'description', 'photo_link', 'musclegroups')
 
 
 class WorkoutPlanDaySerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkoutPlanDay
-        fields = ['WorkoutPlanDayId','WorkoutPlanId', 'name', 'description']
+        fields = ('workoutPlanId', 'name', 'description')
 
 
-class WorkoutPlanDay_ExerciseSerializer(serializers.ModelSerializer):
+class WorkoutPlanSerializer(serializers.ModelSerializer): 
+    workoutplanday = WorkoutPlanDaySerializer(many=True, read_only=True)
     class Meta:
-        model = WorkoutPlanDay_Exercise
-        fields = ['WorkoutPlanDay_ExerciseId', 'WorkoutPlanDayId', 'ExerciseId']
+        model = WorkoutPlan
+        fields = ('userId', 'name', 'level', 'photo_link', 'description', 'workoutplanday')
 
 
-class WorkoutPlanDay_Exercise_SetsSerializer(serializers.ModelSerializer):
+class WorkoutPlanDayExerciseSerializer(serializers.ModelSerializer):
     class Meta:
-        model = WorkoutPlanDay_Exercise_Sets
-        fields = ['WorkoutPlanDay_Exercise_SetsId', 'WorkoutPlanDay_ExerciseId','reps']
+        model = WorkoutPlanDayExercise
+        fields = ('workoutPlanDayId', 'exerciseId')
+
+
+class WorkoutPlanDayExerciseSetsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WorkoutPlanDayExerciseSets
+        fields = ('workoutPlanDayExerciseId','reps')
+
+
