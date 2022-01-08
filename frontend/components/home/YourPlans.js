@@ -1,40 +1,51 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ImageBackground, View, TouchableOpacity, Text , StyleSheet, ScrollView, Dimensions } from 'react-native'
 
 const { height, width } = Dimensions.get('window');
 
 export const asd = [
-  { name: 'item1' },
-  { name: 'item2' },
-  { name: 'item3' },
-  { name: 'item4' },
-  { name: 'item5' },
-  { name: 'item6' },
-  { name: 'item7' },
-  { name: 'item8' },
-  { name: 'item9' },
+    { name: 'item1' },
+    { name: 'item2' },
+    { name: 'item3' },
+    { name: 'item4' },
+    { name: 'item5' },
+    { name: 'item6' },
+    { name: 'item7' },
+    { name: 'item8' },
+    { name: 'item9' },
 ]
 
-const YourPlans = ({data}) => {
-  const Plan = ({ item }) => (
-    <TouchableOpacity style={styles.imageWrapper}>
-      <ImageBackground source={{uri:'https://www.fillmurray.com/600/800'}} resizeMode="cover" style={styles.coverImage} imageStyle={{ borderRadius: 20}}>
-        <View style={styles.textView}>
-          <Text style={styles.imageText}>{item.name}</Text>
-        </View>
-      </ImageBackground>
-    </TouchableOpacity>
-  )
+const Plan = ({ item, navigation }) => {
+    useEffect(() => {
+        console.log(item)
+    })
+    return(
+        <TouchableOpacity style={styles.imageWrapper} onPress={() => navigation.navigate('Work', {name: item.name, level: item.level, photoUrl: item.photo_link, 
+            exercises: item.workout})}>
+            <ImageBackground 
+                source={{uri: item.photo_link }} 
+                resizeMode="cover" 
+                style={styles.coverImage} 
+                imageStyle={{ borderRadius: 20}} 
+            >
+                <View style={styles.textView}>
+                    <Text style={styles.imageText}>{item.name}</Text>
+                </View>
+            </ImageBackground>
+        </TouchableOpacity>
+    )
+}
 
-  return (
-    <View style={styles.container}>
-      <ScrollView horizontal = {true} keyboardShouldPersistTaps='always' showsHorizontalScrollIndicator={false} style={{height: height/4, margin: 0, borderTopLeftRadius: 20, borderBottomLeftRadius: 20}}>
-        {data.map((name, index) => (
-          <Plan item={name} key={index}/>
-        ))}
-      </ScrollView>
-    </View>
-  )
+const YourPlans = ( props ) => {
+    return (
+        <View style={styles.container}>
+            <ScrollView horizontal = {true} keyboardShouldPersistTaps='always' showsHorizontalScrollIndicator={false} style={{height: height/4, margin: 0, borderTopLeftRadius: 20, borderBottomLeftRadius: 20}}>
+                {props.data.map((item, index) => (
+                    <Plan item={item} key={index} navigation={props.navigation}/>
+                ))}
+            </ScrollView>
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({

@@ -59,6 +59,7 @@ const WorkoutListScreen = ({route, navigation}) => {
                     {workoutList.map((item, index) => {
                     return(
                         <TouchableOpacity 
+                        key={index}
                         style={WorkoutListStyle.singleWorkoutContainer}
                         onPress={() => navigation.navigate('Work', {name: item.name, level: item.level, photoUrl: item.urlPhoto, 
                         exercises: item.exercises})}>

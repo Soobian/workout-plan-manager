@@ -30,39 +30,41 @@ const exerciseList = [
 ];
 
 const ExerciseListComponent = ({data, navigation}) => {
-  const Exercise = ({ item }) => (
-    <TouchableOpacity style={styles.imageWrapper}
-      onPress={() => navigation.navigate('Exercise',{ name: item.name, description: "fuck diet", photoUrl: item.photoUrl})}>
-      <ImageBackground 
-        source={{uri:item.photoUrl}} 
-        resizeMode="cover" 
-        style={styles.coverImage} 
-        imageStyle={{ borderRadius: 20}}>
+    const Exercise = ({ item }) => (
+        <TouchableOpacity 
+            style={styles.imageWrapper}
+            onPress={() => navigation.navigate('Exercise', { name: item.name, description: item.description, photoUrl: item.photo_link }) }
+        >
+            <ImageBackground 
+                source={{uri: item.photo_link}} 
+                resizeMode="cover" 
+                style={styles.coverImage} 
+                imageStyle={{ borderRadius: 20}}
+            >
+                <View style={styles.workoutNameContainer}>
+                    <Text style={styles.workoutNameText}>{item.name}</Text>
+                    <Text style={styles.workoutLevelText}>{item.name}</Text>
+                </View>
+            </ImageBackground>
+        </TouchableOpacity>
+    )
 
-        <View style={styles.workoutNameContainer}>
-          <Text style={styles.workoutNameText}>{item.name}</Text>
-          <Text style={styles.workoutLevelText}>{item.name}</Text>
+    return (
+        <View style={styles.container}>
+            <Text style={HomeScreenStyles.titleText}>
+                Explore new exercises:
+            </Text>
+        <ScrollView 
+        horizontal = {true} 
+        keyboardShouldPersistTaps='always' 
+        showsHorizontalScrollIndicator={false} 
+        style={styles.scrollview}>
+            {data.map((item, index) => (
+                <Exercise item={item} key={index}/>
+            ))}
+        </ScrollView>
         </View>
-      </ImageBackground>
-    </TouchableOpacity>
-  )
-
-  return (
-    <View style={styles.container}>
-        <Text style={HomeScreenStyles.titleText}>
-            Explore new exercises:
-        </Text>
-      <ScrollView 
-      horizontal = {true} 
-      keyboardShouldPersistTaps='always' 
-      showsHorizontalScrollIndicator={false} 
-      style={styles.scrollview}>
-        {exerciseList.map((name, index) => (
-          <Exercise item={name} key={index}/>
-        ))}
-      </ScrollView>
-    </View>
-  )
+    )
 }
 
 const styles = StyleSheet.create({

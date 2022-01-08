@@ -5,8 +5,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import BottomTab from '../components/navigation/BottomTabs';
 
-export default function MainStack() {
-  return (
-      <BottomTab />
-  )
+const MainStack = () => {
+    return (
+        <BottomTab />
+    )
 }
+
+export default MainStack;

@@ -10,20 +10,32 @@ import ExerciseListComponent from '../components/home/ExerciseList';
 import TokenApi from '../components/authentication/TokenApi';
 import jwt_decode from "jwt-decode";
 import * as SecureStore from 'expo-secure-store'
+import { useIsFocused } from "@react-navigation/native";
+
 
 const { height } = Dimensions.get('window');
 
 
-const HomeScreen = ({navigation}) =>  {
+const HomeScreen = (props) =>  {
+    const isFocused = useIsFocused();
     const [firstname, setfirstname] = useState('')
-
+    const [plans, setplans] = useState([]);
+    const [exercises, setexercises] = useState([]);
+    
     useEffect(() => {
         SecureStore.getItemAsync('access_token')
-        .then((response) => {
-            console.log("access_token", response)
-            const userId = jwt_decode(response).user_id
+        .then((token) => {
+            console.log("access_token", token)
+            const userId = jwt_decode(token).user_id
             console.log(userId)
-            TokenApi.get('user/parameters/' + userId + '/')
+            TokenApi.get(
+                'user/parameters/' + userId + '/', 
+                {
+                    headers: {
+                        Authorization: 'JWT ' + token,
+                    }
+                }
+            )
             .then(response => {
                 console.log(response.data.firstname)
                 setfirstname(response.data.firstname)
@@ -31,31 +43,80 @@ const HomeScreen = ({navigation}) =>  {
             .catch(error => {
                 console.log(error)
             })
+            
+            TokenApi.get(
+                'workout/exercise/', 
+                {
+                    headers: {
+                        Authorization: 'JWT ' + token,
+                    }
+                }
+            )
+            .then(response => {
+                console.log(response.data)
+                setexercises(response.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
         })
     }, []);
-    /*
-    useEffect(() => {
 
-    })
-    */
+    useEffect(() => {
+        if(isFocused){
+            console.log(isFocused)
+            SecureStore.getItemAsync('access_token')
+            .then((token) => {
+                console.log("access_token", token)
+                TokenApi.get(
+                    'workout/workoutplan/', 
+                    {
+                        headers: {
+                            Authorization: 'JWT ' + token,
+                        }
+                    }
+                )
+                .then(response => {
+                    console.log(response.data)
+                    setplans(response.data)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+                TokenApi.get(
+                    'workout/exercise/', 
+                    {
+                        headers: {
+                            Authorization: 'JWT ' + token,
+                        }
+                    }
+                )
+                .then(response => {
+                    console.log(response.data)
+                    setexercises(response.data)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+            })
+        }
+    }, [isFocused]);
+    
     return (
-      <SafeAreaView style={HomeScreenStyles.container}>
-      <View style={HomeScreenStyles.upperContainer}>
-        <Greetings name='{firstname}'/>
-      </View>
-      <View style={HomeScreenStyles.scrollView}>
-      <ScrollView style={HomeScreenStyles.scrollView}>
-        <View style={HomeScreenStyles.mainscreen}>
-          <View style={{flex: 1, flexDirection: 'row'}}>
-            <SmallCalendar days={weekDays}/>
-            <YourPlans data = {asd}/>
-          </View>
+        <SafeAreaView style={HomeScreenStyles.container}>
+        <View style={HomeScreenStyles.upperContainer}>
+            <Greetings name={firstname}/>
         </View>
-        <LastMeasurement data = {asd} navigation={navigation}/>
-        <ExerciseListComponent data = {asd} navigation={navigation}/>
+        <ScrollView style={HomeScreenStyles.scrollView}>
+            <View style={HomeScreenStyles.mainscreen}>
+                <View style={{flex: 1, flexDirection: 'row'}}>
+                    <SmallCalendar days={weekDays}/>
+                    <YourPlans data={plans} navigation={props.navigation}/>
+                </View>
+            </View>
+        <LastMeasurement data = {asd} navigation={props.navigation}/>
+        <ExerciseListComponent data = {exercises} navigation={props.navigation}/>
       </ScrollView>
-      </View>
-      
     </SafeAreaView>
   )
 }
