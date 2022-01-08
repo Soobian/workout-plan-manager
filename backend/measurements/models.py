@@ -3,7 +3,8 @@ from users.models import CustomUser
 
 # Create your models here.
 class Measurement(models.Model):
-    userId = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+    userId = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='measurements')
     date = models.DateField(auto_now_add=True)
     chestSize = models.IntegerField(blank=False, null=False)
     waistSize = models.IntegerField(blank=False, null=False)

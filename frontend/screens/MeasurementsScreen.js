@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity,  Dimensions } from 'react-native'
 import { MeasurementsStyles } from '../components/measurements/MeasurementsStyles';
 import { LineChart} from 'react-native-chart-kit';
 import { COLORS } from '../components/colors/Colors';
+import jwt_decode from "jwt-decode";
+import * as SecureStore from 'expo-secure-store'
+import { useIsFocused } from "@react-navigation/native";
+import TokenApi from '../components/authentication/TokenApi';
 
 const MeasurementsScreen = ({navigation}) => {
+    const isFocused = useIsFocused();
     const screenWidth = Dimensions.get("window").width;
     const screenHeight = Dimensions.get("window").height;
     const datesOfMeasurements = ["30.01","03.02","05.02","08.02","11.02"];
@@ -13,7 +18,10 @@ const MeasurementsScreen = ({navigation}) => {
     const waistMeasurements = [102, 102, 99, 96, 92];
     const bicepsMeasurements = [60.4, 60.4, 60.2, 60, 59.8];
     const thighMeasurements =  [55, 52, 52, 52, 51];
+    const [measurements, setmeasurements] = useState([]);
 
+
+    /*
     const measurements = [
         {
             date: "30.01", chest: 99, waist: 102, biceps: 60.4, thigh: 55
@@ -28,6 +36,31 @@ const MeasurementsScreen = ({navigation}) => {
             date: "08.02", chest: 93, waist: 100, biceps: 60.2, thigh: 53
         },
     ];
+    */
+
+    useEffect(() => {
+        if(isFocused){
+            SecureStore.getItemAsync('access_token')
+            .then((token) => {
+                const userId = jwt_decode(token).user_id
+                TokenApi.get(
+                    'measurements/user/' + userId, 
+                    {
+                        headers: {
+                            Authorization: 'JWT ' + token,
+                        }
+                    }
+                )
+                .then(response => {
+                    console.log(response.data)
+                    setmeasurements(response.data)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+            })
+        }
+    }, [isFocused])
 
     const updateMeasurements = () =>{
         measurements = [];
@@ -115,19 +148,19 @@ const MeasurementsScreen = ({navigation}) => {
                         <View style={MeasurementsStyles.measurementContainer}> 
                             <View style={MeasurementsStyles.itemContainer}>
                                     <Text style={MeasurementsStyles.specificText}>CHEST</Text>
-                                    <Text style={MeasurementsStyles.numbersText}>{item.chest}</Text>
+                                    <Text style={MeasurementsStyles.numbersText}>{item.chestSize}</Text>
                             </View>
                             <View style={MeasurementsStyles.itemContainer}>
                                     <Text style={MeasurementsStyles.specificText}>WAIST</Text>
-                                    <Text style={MeasurementsStyles.numbersText}>{item.waist}</Text>
+                                    <Text style={MeasurementsStyles.numbersText}>{item.waistSize}</Text>
                             </View>
                             <View style={MeasurementsStyles.itemContainer}>
                                     <Text style={MeasurementsStyles.specificText}>BICEPS</Text>
-                                    <Text style={MeasurementsStyles.numbersText}>{item.biceps}</Text>
+                                    <Text style={MeasurementsStyles.numbersText}>{item.bicepsSize}</Text>
                             </View>
                             <View style={MeasurementsStyles.itemContainer}>
                                     <Text style={MeasurementsStyles.specificText}>THIGH</Text>
-                                    <Text style={MeasurementsStyles.numbersText}>{item.thigh}</Text>
+                                    <Text style={MeasurementsStyles.numbersText}>{item.thighSize}</Text>
                             </View>
             
                         </View>

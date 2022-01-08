@@ -18,7 +18,7 @@ class ExerciseViewSet(viewsets.ModelViewSet):
 class WorkoutPlanViewSet(viewsets.ModelViewSet):
     queryset = WorkoutPlan.objects.all()
     serializer_class = WorkoutPlanSerializer
-    permission_classes = [IsAuthenticated]  
+    #permission_classes = [IsAuthenticated]  
 
 
 class WorkoutPlanDayViewSet(viewsets.ModelViewSet):
