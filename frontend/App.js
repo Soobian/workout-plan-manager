@@ -10,6 +10,8 @@ import AddWorkout from './screens/AddWorkout';
 import AddExerciseToWorkoutScreen from './screens/AddExerciseToWorkoutScreen';
 import ExerciseScreen from './screens/ExerciseScreen';
 import WorkoutScreen from './screens/WorkoutScreen';
+import WorkoutPlanScreen from './screens/WorkoutPlanScreen';
+import WorkoutListScreen from './screens/WorkoutListScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +28,8 @@ export default function App() {
                 <Stack.Screen options={{ headerShown: false }} name="AddExerciseToWorkout" component={AddExerciseToWorkoutScreen} />
                 <Stack.Screen options={{ headerShown: false }} name="Exercise" component={ExerciseScreen} />
                 <Stack.Screen options={{ headerShown: false }} name="Work" component={WorkoutScreen} />
+                <Stack.Screen options={{ headerShown: false }} name="Plan" component={WorkoutPlanScreen} />
+                <Stack.Screen options={{ headerShown: false }} name="WorkoutList" component={WorkoutListScreen} />
         </Stack.Navigator>
     </NavigationContainer>
   );

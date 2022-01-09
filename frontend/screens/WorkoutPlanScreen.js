@@ -1,66 +1,55 @@
 import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
-import { render } from 'react-dom';
-import { KeyboardAvoidingView, Text, Image, View, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
-import { WorkoutStyles } from '../components/workout/WorkoutStyles';
+import { KeyboardAvoidingView, Text, Image, View, ScrollView, TouchableOpacity } from 'react-native'
+import { WorkoutListStyle } from '../components/workout/WorkoutListStyle';
 
 
-const WorkoutPlanScreen = () => {
-    state = {
-        planId: 0,
-        name: "my first workout plan",
-        workouts: [
-            {
-                id: 0,
-                name: "Power push"
-            },
-        ]
-    };
+const WorkoutPlanScreen = ({route, navigation}) => {
+    
+    const photos = [
+        'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimagesvc.meredithcorp.io%2Fv3%2Fmm%2Fimage%3Furl%3Dhttps%253A%252F%252Fstatic.onecms.io%252Fwp-content%252Fuploads%252Fsites%252F35%252F2010%252F07%252F28170650%252Ffb-interval-training-workouts.jpg&q=85',
+        'https://globaljabar.com/wp-content/uploads/2021/02/xbreak-workout_602724-1.jpg.pagespeed.ic_.v8byD7su-e-1.jpg',
+        'https://www.incimages.com/uploaded_files/image/1920x1080/getty_901096798_200013332000928080_415454.jpg'
+    ];
 
-    const weekDays = [
-        {name: 'Monday'},
-        {name: 'Tuesday'},
-        {name: 'Wednesday'},
-        {name: 'Thursday'},
-        {name: 'Friday'},
-        {name: 'Saturday'},
-        {name: 'Sunday'},
-    ]
-
-    // on push go to the workout page
-    const handleWorkout = (id) => {
-        
-    }
+    const planList = [
+        {name: "Plan 1 ", level: 'medium', urlPhoto: photos[0] },
+        {name: "Plan 2", level: 'medium', urlPhoto: photos[1]},
+        {name: "Plan 3", level: 'hard', urlPhoto: photos[2]},
+        {name: "Plan 4",  level: 'easy', urlPhoto: photos[1]},
+    ];
 
     return (
         <KeyboardAvoidingView 
             behavior={Platform.OS === "ios" ? "padding" : "height"}
-            style={WorkoutStyles.container}>
-            <View style={WorkoutStyles.workoutContainer}>
-            <Text style={WorkoutStyles.workoutContainerText}>
-                    {state.name}</Text>
+            style={WorkoutListStyle.container}>
+            <View style={WorkoutListStyle.upperContainer}>
+                <Text style={WorkoutListStyle.upperContainerText}>My workout plans</Text>
             </View>
-            <ScrollView contentContainerStyle={WorkoutStyles.scrollView}
-            centerContent>
-                {state.workouts.map((item, index) => {
+            <View style={WorkoutListStyle.workoutListContainer}> 
+                <ScrollView contentContainerStyle={WorkoutListStyle.scrollView}
+                centerContent>
+                    {planList.map((item, index) => {
                     return(
-                        <View>
-                            <Text style={WorkoutStyles.workDayContainer}>
-                                {weekDays[index].name}
-                            </Text>
-
-                            <TouchableOpacity 
-                            //onPress={handleWorkout(item.id)} 
-                            // on press it should display WorkoutScreen of the proper workout
-                            style={WorkoutStyles.workoutItemContainer}>
-                                <Text style={WorkoutStyles.workoutItemContainerText}>
-                                    {item.name}
-                                </Text>
-                            </TouchableOpacity>
-                        </View>)
+                        <TouchableOpacity 
+                        key={index}
+                        style={WorkoutListStyle.singleWorkoutContainer}
+                        onPress={() => navigation.navigate('WorkoutList', {name: item.name, level: item.level, photoUrl: item.urlPhoto, 
+                        exercises: item.exercises})}>
+                            <View style={WorkoutListStyle.imageContenerForExercise}>
+                            <Image 
+                                style={WorkoutListStyle.imageExercise}
+                                source={{uri: item.urlPhoto}}/>
+                            </View>
+                            <View style={WorkoutListStyle.workoutNameContainer}>
+                                <Text style={WorkoutListStyle.workoutNameText}>{item.name}</Text>
+                                <Text style={WorkoutListStyle.workoutLevelText}>{item.level}</Text>
+                            </View>  
+                    </TouchableOpacity>)
                 })}
-            </ScrollView>
+                </ScrollView>
+            </View>
         </KeyboardAvoidingView>
     )
 }

@@ -1,6 +1,8 @@
 import { StyleSheet } from "react-native"
 import {COLORS} from '../colors/Colors'
 
+// styles for workoutlistScreen and WorkoutPlanScreen
+
 export const WorkoutListStyle = StyleSheet.create({
     container: {
         // whole page
