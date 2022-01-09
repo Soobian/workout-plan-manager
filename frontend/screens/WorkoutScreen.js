@@ -29,9 +29,18 @@ const WorkoutScreen = ({route, navigation}) => {
                 <Text style={ExerciseStyles.workoutDetailsText}>
                     Level: {route.params.level}
                 </Text>
-                <Text style={ExerciseStyles.workoutDetailsText}>
-                    Exercises:                     Repeat:     Series:
-                </Text>
+                <View style={ExerciseStyles.workoutDetailsRowDivision}>
+                    <Text style={ExerciseStyles.workoutDetailsText}>
+                        Exercises:
+                    </Text>
+                    <Text style={ExerciseStyles.workoutDetailsText}>
+                        Repeat:
+                    </Text>
+                    <Text style={ExerciseStyles.workoutDetailsText}>
+                        Series:
+                    </Text>
+                </View>
+                
                 {route.params.exercises.map((item, index) => {
                     return(
                         <View style={ExerciseStyles.singleExerciseContainer}> 
@@ -58,8 +67,6 @@ const WorkoutScreen = ({route, navigation}) => {
                     </View>
                     )})}
             </ScrollView>
-            
-
         </KeyboardAvoidingView>
     )
 }
