@@ -3,6 +3,7 @@ import {COLORS} from '../colors/Colors'
 
 export const HomeScreenStyles = StyleSheet.create({
     container: {
+        //whole page
         backgroundColor: COLORS.white,
         flex: 1,
     },
@@ -10,20 +11,22 @@ export const HomeScreenStyles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         alignSelf: 'stretch',
-        margin: 10,
+        marginTop: 10,
+        marginHorizontal: 10,
     },
     scrollView: {
+        // whole page exept upper blue container can be scrolled
         paddingTop: 10,
         height: '75%',
     },
     titleText: {
         paddingTop: 20,
         paddingBottom: 10,
-        fontSize: 18
+        fontSize: 17,
+        paddingLeft: 4,
     },
     upperContainer: {
-        color: '#03767B',
-        backgroundColor: '#03767B',
+        backgroundColor: COLORS.blue,
         width: '102%',
         height: '16%',
         fontSize: 16,

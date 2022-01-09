@@ -70,12 +70,11 @@ const ExerciseListComponent = ({data, navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 7,
-    marginLeft: width * 0.02,
-    top: -20
+    marginLeft: 15,
+    top: -30
   },
   scrollview:{
     height: 120, 
-    margin: 0, 
     borderTopLeftRadius: 20,
     borderBottomLeftRadius: 20,
     paddingRight: 5,
