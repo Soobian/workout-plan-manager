@@ -32,7 +32,6 @@ const ExerciseScreen = ({route, navigation}) => {
                     {route.params.description}
                 </Text>
             </View>
-
         </KeyboardAvoidingView>
     )
 }

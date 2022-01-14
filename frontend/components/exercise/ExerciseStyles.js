@@ -12,29 +12,30 @@ export const ExerciseStyles = StyleSheet.create({
     // Styles specific to ExerciseScreen:
     descriptionContener:{
         // descrition of the exercise in ExerciseScreen
-        width: '103%',
-        height: '40%',
+        width: "103%",
+        height: "40%",
         fontSize: 16,
         borderRadius: 10,
         paddingHorizontal: 10,
         top: -10,
     },
     descriptionText: {
-        color: 'white',
-        fontWeight: '700',
+        // descrition text of the exercise in ExerciseScreen
+        color: COLORS.white,
         fontSize: 15,
         paddingRight: 20,
-        paddingLeft:20,
+        paddingLeft:22,
         paddingTop: 20
     },
     image:{
-        width: '105%',
-        height: '105%',
+        // huge background image
+        width: "105%",
+        height: "105%",
         left: -10
     },
     imageContener: {
-        width: '103%',
-        height: '40%',
+        width: "103%",
+        height: "40%",
         borderRadius: 10,
         paddingHorizontal: 10,
         
@@ -42,15 +43,15 @@ export const ExerciseStyles = StyleSheet.create({
     nameContener: {
         // container for exercise name in ExerciseScreen
         backgroundColor: COLORS.dark_gray,
-        width: '100%',
-        height: '9%',
+        width: "100%",
+        height: "9%",
         fontSize: 16,
         borderRadius: 17,
         top: -20
     },
     nameText: {
         // exercise name 
-        color: 'white',
+        color: COLORS.white,
         fontWeight: '700',
         fontSize: 28,
         justifyContent: 'center',
@@ -64,14 +65,14 @@ export const ExerciseStyles = StyleSheet.create({
         // container for "Exercise" title
         color: COLORS.blue,
         backgroundColor: COLORS.blue,
-        width: '100%',
+        width: "100%",
         height: '15%',
         fontSize: 16,
         borderRadius: 17,
     },
     exerciseText: {
         // "Exercise" title at the top of page
-        color: 'white',
+        color: COLORS.white,
         fontWeight: '700',
         fontSize: 28,
         paddingLeft: '9%',
@@ -83,7 +84,7 @@ export const ExerciseStyles = StyleSheet.create({
 
     scrollView: {
         // container which enables scrolling
-        width: '150%',
+        width: "150%",
     },
     exerciseItemContainer: {
         // button with exercise name displayed
@@ -92,21 +93,21 @@ export const ExerciseStyles = StyleSheet.create({
         height: 45,
         fontSize: 16,
         borderRadius: 17,
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: "center",
+        justifyContent: "center",
         marginTop: 15
     },
     exerciseItemContainerText: {
         // text displayed on above button
-        color: 'white',
-        fontWeight: '700',
+        color: COLORS.white,
+        fontWeight: "700",
         fontSize: 20,
     },
 
     // workout specific
     scrollViewWorkout: {
         // container which enables scrolling
-        width: '100%',
+        width: "100%",
         marginBottom: 20,
         height: 300,
         top: -25
@@ -114,16 +115,16 @@ export const ExerciseStyles = StyleSheet.create({
     workoutnameContener: {
         // container for exercise name in ExerciseScreen
         backgroundColor: COLORS.dark_gray,
-        width: '100%',
-        height: '9%',
+        width: "100%",
+        height: "9%",
         fontSize: 16,
         borderRadius: 17,
         top: -20
     },
     workoutDetailsContainer : {
         // descrition of the exercise in ExerciseScreen
-        width: '103%',
-        height: '40%',
+        width: "103%",
+        height: "40%",
         fontSize: 16,
         borderRadius: 10,
         paddingHorizontal: 10,
@@ -133,19 +134,26 @@ export const ExerciseStyles = StyleSheet.create({
         color: 'white',
         fontWeight: '700',
         fontSize: 15,
-        paddingRight: 20,
         paddingLeft:33,
-        paddingTop: 20
+        paddingTop: 20,
+    },
+    workoutDetailsRowDivision: {
+        // row division container for exercise, repeat and series labels
+        flexDirection: "row" ,
+        justifyContent: "flex-end",
+        width: "80%",
+        left: 30,
     },
     singleExerciseContainer: {
+        // exercise container with photo, repeat and series number
         backgroundColor: COLORS.dark_gray,
         borderColor: COLORS.midlle_gray,
         borderWidth: 1,
-        width: '80%',
+        width: "80%",
         height: 80,
         borderRadius: 8,
         shadowColor: COLORS.dark_gray,
-        shadowColor: "#000",
+        shadowColor: COLORS.dark_gray,
         shadowOffset: {
             width: 0,
             height: 3,
@@ -157,30 +165,30 @@ export const ExerciseStyles = StyleSheet.create({
         marginTop: 10
     },
     rowDivisionContainer: {
-        width: '100%',
-        height: '100%',
+        width: "100%",
+        height: "100%",
         borderRadius: 8,
         flexDirection: "row" ,
-        justifyContent: 'space-evenly',
+        justifyContent: "space-evenly",
     },
-    
     exerciseNameContainer: {
+        // translucent container with exercise name
         backgroundColor: COLORS.blue,
-        width: '50%',
-        height: '100%',
+        width: "50%",
+        height: "100%",
         borderRadius: 8,
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: "center",
+        justifyContent: "center",
     },
     repeatAndSeriesContainer: {
+        // numbers container
         width: '25%',
         height:'98%',
-        alignItems: 'center',
-        alignContent: 'center',
-        backgroundColor: 'rgba(200, 200, 200, 0.1)',
+        alignItems: "center",
+        alignContent: "center",
+        backgroundColor: "rgba(200, 200, 200, 0.1)",
         borderRadius: 8
     },
-    
     numberText: {
         color: COLORS.white,
         fontSize: 20,
@@ -188,33 +196,33 @@ export const ExerciseStyles = StyleSheet.create({
         left: -5,
     },
     imageContenerAddWorkout: {
+        //in workoutScreen
         backgroundColor: COLORS.dark_gray,
-        width: '100%',
-        height: '100%',
+        width: "100%",
+        height: "100%",
         borderRadius: 8,
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: "center",
+        justifyContent: "center",
     },
     imageAddWorkout: {
         backgroundColor: COLORS.dark_gray,
         borderRadius: 8,
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100%',
-        width: '100%',
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100%",
+        width: "100%",
     },
     workoutNameContainer: {
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, 
-        justifyContent: 'center', alignItems: 'center',
-        width: '100%',
-        height: '100%',
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        position: "absolute", top: 0, left: 0, right: 0, bottom: 0, 
+        justifyContent: "center", alignItems: "center",
+        width: "100%",
+        height: "100%",
         borderRadius: 8
     },
     workoutNameText: {
         color: COLORS.white,
         fontSize: 20,
-        fontWeight: '900',
+        fontWeight: "900",
     },
-
 })
