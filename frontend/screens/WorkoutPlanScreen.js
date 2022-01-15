@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { KeyboardAvoidingView, Text, Image, View, ScrollView, TouchableOpacity } from 'react-native'
 import { WorkoutListStyle } from '../components/workout/WorkoutListStyle';
+import { useIsFocused } from "@react-navigation/native";
+import * as SecureStore from 'expo-secure-store'
+import TokenApi from '../components/authentication/TokenApi';
 
 
 const WorkoutPlanScreen = ({route, navigation}) => {
@@ -13,12 +16,42 @@ const WorkoutPlanScreen = ({route, navigation}) => {
         'https://www.incimages.com/uploaded_files/image/1920x1080/getty_901096798_200013332000928080_415454.jpg'
     ];
 
+    const isFocused = useIsFocused();
+    const [plans, setplans] = useState([]);
     const planList = [
         {name: "Plan 1 ", level: 'medium', urlPhoto: photos[0] },
         {name: "Plan 2", level: 'medium', urlPhoto: photos[1]},
         {name: "Plan 3", level: 'hard', urlPhoto: photos[2]},
         {name: "Plan 4",  level: 'easy', urlPhoto: photos[1]},
     ];
+
+    useEffect(() => {
+        if(isFocused){
+            console.log(isFocused)
+            SecureStore.getItemAsync('access_token')
+            .then((token) => {
+                console.log("access_token", token)
+                TokenApi.get(
+                    'workout/workoutplan/', 
+                    {
+                        headers: {
+                            Authorization: 'JWT ' + token,
+                        }
+                    }
+                )
+                .then(response => {
+                    console.log(response.data)
+                    setplans(response.data)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        }
+    }, [isFocused]);
 
     return (
         <KeyboardAvoidingView 
@@ -30,17 +63,17 @@ const WorkoutPlanScreen = ({route, navigation}) => {
             <View style={WorkoutListStyle.workoutListContainer}> 
                 <ScrollView contentContainerStyle={WorkoutListStyle.scrollView}
                 centerContent>
-                    {planList.map((item, index) => {
+                    {plans.map((item, index) => {
                     return(
                         <TouchableOpacity 
                         key={index}
                         style={WorkoutListStyle.singleWorkoutContainer}
-                        onPress={() => navigation.navigate('WorkoutList', {name: item.name, level: item.level, photoUrl: item.urlPhoto, 
-                        exercises: item.exercises})}>
+                        onPress={() => navigation.navigate('WorkoutList', {name: item.name, level: item.level, photoUrl: item.photo_link, 
+                        workouts: item.workoutplanday})}>
                             <View style={WorkoutListStyle.imageContenerForExercise}>
                             <Image 
                                 style={WorkoutListStyle.imageExercise}
-                                source={{uri: item.urlPhoto}}/>
+                                source={{uri: item.photo_link }}/>
                             </View>
                             <View style={WorkoutListStyle.workoutNameContainer}>
                                 <Text style={WorkoutListStyle.workoutNameText}>{item.name}</Text>

@@ -13,11 +13,29 @@ class ExerciseSerializer(serializers.ModelSerializer):
         model = Exercise
         fields = ('name', 'description', 'photo_link', 'musclegroups')
 
+class WorkoutPlanDayExerciseSetsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WorkoutPlanDayExerciseSets
+        fields = ('reps', 'series')
+
+
+class WorkoutPlanDayExerciseSerializer(serializers.ModelSerializer):
+    workoutplanexercisessets = WorkoutPlanDayExerciseSetsSerializer(many=True, read_only=True)
+    class Meta:
+        model = WorkoutPlanDayExercise
+        fields = ('exerciseId', 'workoutplanexercisessets')
+    
+    def to_representation(self, instance):
+        rep = super(WorkoutPlanDayExerciseSerializer, self).to_representation(instance)
+        rep['execise_name'] = instance.exerciseId.name
+        rep['exercise_photo'] = instance.exerciseId.photo_link
+        return rep
 
 class WorkoutPlanDaySerializer(serializers.ModelSerializer):
+    workoutplanexercises = WorkoutPlanDayExerciseSerializer(many=True, read_only=True)
     class Meta:
         model = WorkoutPlanDay
-        fields = ('workoutPlanId', 'name', 'description')
+        fields = ('id', 'workoutPlanId', 'name', 'description', 'workoutplanexercises')
 
 
 class WorkoutPlanSerializer(serializers.ModelSerializer): 
@@ -25,17 +43,3 @@ class WorkoutPlanSerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkoutPlan
         fields = ('userId', 'name', 'level', 'photo_link', 'description', 'workoutplanday')
-
-
-class WorkoutPlanDayExerciseSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = WorkoutPlanDayExercise
-        fields = ('workoutPlanDayId', 'exerciseId')
-
-
-class WorkoutPlanDayExerciseSetsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = WorkoutPlanDayExerciseSets
-        fields = ('workoutPlanDayExerciseId','reps')
-
-

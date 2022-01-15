@@ -45,7 +45,7 @@ class WorkoutPlanDay(models.Model):
 
 
 class WorkoutPlanDayExercise(models.Model):
-    workoutPlanDayId = models.ForeignKey(WorkoutPlanDay, on_delete=models.CASCADE)
+    workoutPlanDayId = models.ForeignKey(WorkoutPlanDay, related_name='workoutplanexercises', on_delete=models.CASCADE)
     exerciseId = models.ForeignKey(Exercise, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
@@ -53,8 +53,9 @@ class WorkoutPlanDayExercise(models.Model):
 
 
 class WorkoutPlanDayExerciseSets(models.Model):
-    workoutPlanDayExerciseId = models.ForeignKey(WorkoutPlanDayExercise, on_delete=models.CASCADE)
+    workoutPlanDayExerciseId = models.ForeignKey(WorkoutPlanDayExercise, related_name='workoutplanexercisessets', on_delete=models.CASCADE)
     reps = models.IntegerField(blank=False, null=False)
+    series = models.IntegerField(blank=False, null=False, default=5)
 
     def __str__(self) -> str:
         return self.name

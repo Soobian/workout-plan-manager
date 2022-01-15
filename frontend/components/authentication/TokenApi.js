@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as SecureStore from 'expo-secure-store'
 
-const baseURL = 'http://192.168.55.4:8000/api/'
+const baseURL = 'http://192.168.1.4:8000/api/'
 
 const TokenApi = axios.create({
     baseURL: baseURL,
