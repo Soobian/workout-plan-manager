@@ -8,7 +8,7 @@ from .views import CustomUserCreate, BlacklistTokenUpdateView, UserParametersVie
 app_name = 'users'
 
 router = routers.DefaultRouter()
-router.register('parameters', UserParametersViewSet)
+router.register('parameters', UserParametersViewSet, basename='parameters')
 
 urlpatterns = [
     path('create/', CustomUserCreate.as_view(), name="create_user"),
