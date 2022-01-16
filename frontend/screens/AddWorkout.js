@@ -5,26 +5,34 @@ import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, Touchab
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { COLORS } from '../components/colors/Colors';
 import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
+import BaseApi from '../components/authentication/BaseApi'
+import TokenApi from '../components/authentication/TokenApi';
+import jwt_decode from "jwt-decode";
+import * as SecureStore from 'expo-secure-store'
 
 const AddWorkoutScreen = ({route, navigation}) => {
     const [name, setName] = useState('')
     const [selectedLevel, setSelectedLevel] = useState("easy");
     const [workouts, setWorkouts] = useState('');
-
-    updated = new Boolean (false);
+    const [exercises, setexercises] = useState([])
 
     const updateExerciseList = () => {
-        if(typeof route.params === 'undefined'){
+        if(route.params.exercises === undefined){
             console.log("undefined");
         }
         else{
-            console.log("newExercise");
-            if(route.params.exe[0].name != ''){
-                exercises = route.params.exe;
-                console.log(exercises);
-            }
+            console.log("UPDATE EXERCISE" + JSON.stringify(route.params.exercises));
+            setexercises(route.params.exercises);
         } 
     };
+
+    useEffect(() => {
+        console.log(route.params.workoutPlanId)
+    }, [])
+
+    useEffect(() => {
+        updateExerciseList()
+    }, [route.params.exercises])
 
     const defaultPhoto = 'https://globaljabar.com/wp-content/uploads/2021/02/xbreak-workout_602724-1.jpg.pagespeed.ic_.v8byD7su-e-1.jpg';
 
@@ -41,21 +49,81 @@ const AddWorkoutScreen = ({route, navigation}) => {
                 {text: 'Understood', onPress: () => console.log('alert closed')}
             ]);
         }
-        else{
-            console.log("---WORKOUTS----", route.params.workouts);
-            const workout = {
-                name: name, level: selectedLevel, urlPhoto: defaultPhoto,
-                exerciseList: exercises
-            };
-            console.log(workout);
+        else {
+            SecureStore.getItemAsync('access_token')
+            .then((token) => {
+                const userId = jwt_decode(token).user_id;
+                let workoutId;
+                console.log("\nSEND SEND EXERCISE" + JSON.stringify(exercises))
+                console.log('IDID' + route.params.workoutPlanId)
+                TokenApi.post(
+                    'workout/workoutplanday/', 
+                    {
+                        workoutPlanId: route.params.workoutPlanId,
+                        name: name,
+                        description: "description"
+                    },
+                    {
+                        headers: {
+                            Authorization: 'JWT ' + token,
+                        }
+                    }
+                )
+                .then(response => {
+                    console.log(response.data)
+                    workoutId = response.data.id
+                    route.params.exercises.forEach((value) => {
+                        let exerciseId;
+                        TokenApi.post(
+                            '/workout/set/', 
+                            {
+                                workoutPlanDayId: workoutId,
+                                exerciseId: value.id
+                            },
+                            {
+                                headers: {
+                                    Authorization: 'JWT ' + token,
+                                }
+                            }
+                        )
+                        .then(response => {
+                            console.log(response.data)
+                            exerciseId = response.data.id
+                            TokenApi.post(
+                                '/workout/reps/', 
+                                {
+                                    workoutPlanDayExerciseId: exerciseId,
+                                    series: value.series,
+                                    reps: value.repeat,
+                                },
+                                {
+                                    headers: {
+                                        Authorization: 'JWT ' + token,
+                                    }
+                                }
+                            )
+                            .then(response => {
+                                console.log(response.data)
+                            })
+                            .catch(error => {
+                                console.log(error.message)
+                            })
+                        })
+                        .catch(error => {
+                            console.log(error.message)
+                        })
+                    })
+                })
+                .catch(error => {
+                    console.log(error.message)
+                })
+            })
             navigation.navigate('Workout');
         }
     };
 
     const  handleAddExercise = () => {
-        updated = false;
-        console.log("exercise data base not up to date");
-        navigation.navigate('AddExerciseToWorkout', {exe: exercises} );
+        navigation.navigate('AddExerciseToWorkout', {workoutPlanId: route.params.workoutPlanId, exercises: exercises} );
     };
 
     // select workout level
@@ -63,25 +131,11 @@ const AddWorkoutScreen = ({route, navigation}) => {
         {value: 1, label: 'easy'},
         {value: 2, label: 'medium'},
         {value: 3, label: 'hard'},
-        {value: 4, label: 'killer'},
     ];
 
     // all tables for select windows
     const tables = [
         {name: 'LEVEL', table: level, set: setSelectedLevel, save: selectedLevel},
-    ];
-
-    const photos = [
-        'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/1076/articles/2016/10/woman-pushup-1522242407.jpg?crop=1xw:0.75xh;center,top&resize=980:*',
-        'https://www.helpguide.org/wp-content/uploads/resistance-band-woman-doing-leg-workout-768.jpg',
-        'https://images.medicinenet.com/images/article/main_image/stretches-for-tight-hips.jpg'
-    ] ;
-
-    //added exercises
-    exercises = [
-        //{id: 0, urlPhoto: photos[0] ,name: 'push up', repeat: 10, series: 3},
-        //{id: 1, urlPhoto: photos[1] ,name: 'sth else', repeat: 20, series: 5},
-        //{id: 2, urlPhoto: photos[2] ,name: 'have no idea', repeat: 10, series: 5},
     ];
 
     return (
@@ -103,14 +157,9 @@ const AddWorkoutScreen = ({route, navigation}) => {
                     customLabelStyles={{
                         colorFocused: COLORS.midlle_gray,
                         fontSizeFocused: 10,
-                        }}/>
+                    }}/>
                 </View>
-            
             {tables.map((item, index) => {
-                {if(updated==false){
-                    console.log("UPDATE...");
-                    updateExerciseList();
-                    updated = true;}}
                 return (
                 <View style={AddWorkoutStyle.wholeContainer}>
                     <View style={AddWorkoutStyle.labelForPickerContainer}>
@@ -135,36 +184,36 @@ const AddWorkoutScreen = ({route, navigation}) => {
                 </View>
                 )
             })}
-            
             </View>
             </TouchableWithoutFeedback>
             <Text style={AddWorkoutStyle.titleText}>    Exercises:              Repetitions:   Series:</Text>
             <View style={AddWorkoutStyle.addedExercisesContainer}> 
             <ScrollView contentContainerStyle={AddWorkoutStyle.scrollView}
             centerContent>
-                    {exercises.map((item, index) => {
+                {exercises.map((item, index) => {
                     return(
                         <View style={AddWorkoutStyle.singleExerciseContainer}> 
-                        <View style={AddWorkoutStyle.rowDivisionContainer}> 
-                            <View style={AddWorkoutStyle.exerciseNameContainer}>
-                            <View style={AddWorkoutStyle.imageContenerAddWorkout}>
-                                    <Image
-                                    style={AddWorkoutStyle.imageAddWorkout}
-                                    source={{uri: item.urlPhoto}}/>
+                            <View style={AddWorkoutStyle.rowDivisionContainer}> 
+                                <View style={AddWorkoutStyle.exerciseNameContainer}>
+                                <View style={AddWorkoutStyle.imageContenerAddWorkout}>
+                                        <Image
+                                        style={AddWorkoutStyle.imageAddWorkout}
+                                        source={{uri: item.urlPhoto}}/>
+                                    </View>
+                                    <View style={AddWorkoutStyle.workoutNameContainer}>
+                                    <Text style={AddWorkoutStyle.workoutNameText}> {item.name}</Text>
+                                    </View>
+                                    
                                 </View>
-                                <View style={AddWorkoutStyle.workoutNameContainer}>
-                                <Text style={AddWorkoutStyle.workoutNameText}> {item.name}</Text>
+                                <View style={AddWorkoutStyle.repeatAndSeriesContainer}>
+                                    <Text style={AddWorkoutStyle.numberText}> {item.repeat}</Text>
                                 </View>
-                                
-                            </View>
-                            <View style={AddWorkoutStyle.repeatAndSeriesContainer}>
-                                <Text style={AddWorkoutStyle.numberText}> {item.repeat}</Text>
-                            </View>
-                            <View style={AddWorkoutStyle.repeatAndSeriesContainer}>
-                                <Text style={AddWorkoutStyle.numberText}> {item.series}</Text>
+                                <View style={AddWorkoutStyle.repeatAndSeriesContainer}>
+                                    <Text style={AddWorkoutStyle.numberText}> {item.series}</Text>
+                                </View>
                             </View>
                         </View>
-                    </View>)
+                    )
                 })}
                 <View style={AddWorkoutStyle.exerciseButtonContainer}>
                     <TouchableOpacity style={AddWorkoutStyle.exerciseButton}

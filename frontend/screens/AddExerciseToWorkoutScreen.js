@@ -1,15 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from "axios"
 import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity,  Image, Alert } from 'react-native'
 import { CheckBox } from 'react-native-elements';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { COLORS } from '../components/colors/Colors';
 import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
+import BaseApi from '../components/authentication/BaseApi';
+
 
 const AddExerciseToWorkoutScreen = ({route, navigation}) => {
     const [selectedExercise, setSelectedExercise] = useState('')
     const [series, setSeries] = useState('')
     const [repeat, setRepeat] = useState('')
+    const [exercises, setExercises] = useState(route.params.exercises)
+    const [exerciseList, setexerciseList] = useState([]);
+    const [initialRun, setInitialRun] = useState(true);
 
     const handleAddExercise = () => {
         // returning to creation of the same workout
@@ -27,45 +32,44 @@ const AddExerciseToWorkoutScreen = ({route, navigation}) => {
             console.log('{exerciseId: ' + selectedExercise + ', series: '+ series +
             ',  repeat: '+ repeat + '}');
             
-            if(typeof route.params === 'undefined'){
+            if(route.params === undefined){
                 console.log("undefined");
             }
             else{
-                console.log("params: ",route.params.exe);
-                const updatedexercise = [];
-                for (let i =0; i < route.params.exe.length; ++i){
-                    updatedexercise.push(route.params.exe[i]);
-                }
-                if(route.params.exerciseName != ''){
-                    const newExercise = {
-                        id: selectedExercise, 
-                        name: exerciseList[selectedExercise].name, 
-                        repeat: repeat, series: series,
-                        urlPhoto: exerciseList[selectedExercise].photoUrl,
-                    };
-                    updatedexercise.push(newExercise);
-                    console.log("[AddExercise] updated exercise:", updatedexercise);
-                }
-                navigation.navigate('AddWorkout', {exe: updatedexercise});
+                const newExercise = {
+                    id: selectedExercise + 1, 
+                    name: exerciseList[selectedExercise].name, 
+                    repeat: repeat, 
+                    series: series,
+                    urlPhoto: exerciseList[selectedExercise].photo_link,
+                };
+                setExercises(exercises => [...exercises, newExercise])
             } 
             
         }
     };
 
-    const photos = [
-        'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/1076/articles/2016/10/woman-pushup-1522242407.jpg?crop=1xw:0.75xh;center,top&resize=980:*',
-        'https://www.helpguide.org/wp-content/uploads/resistance-band-woman-doing-leg-workout-768.jpg',
-        'https://images.medicinenet.com/images/article/main_image/stretches-for-tight-hips.jpg'
-    ] ;
+    useEffect(() => {
+        if(!initialRun) {
+            console.log("EXERCISE SEND " + JSON.stringify(exercises));
+            navigation.navigate('AddWorkout', {workoutPlanId: route.params.workoutPlanId, exercises: exercises})
+        }
+        else {
+            setInitialRun(false);
+        }
+    }, [exercises])
 
-    // TO DO
-    // Selection of the first exercise does not work
-
-    const [exerciseList, setexerciseList] = useState([
-        {id: 0, name: "pushups", photoUrl: photos[0], selected: false},
-        {id: 1, name: "sth else", photoUrl: photos[1], selected: false},
-        {id: 2, name: "have no idea", photoUrl: photos[2], selected: false}
-    ]);
+    useEffect(() => {
+        BaseApi.get(
+            'workout/exercise/', 
+        )
+        .then(response => {
+            setexerciseList(response.data)
+        })
+        .catch(error => {
+            console.log(error.message)
+        })
+    }, [])
 
     const handleSelection = (id) => {
         // only one box can be selected
@@ -147,7 +151,7 @@ const AddExerciseToWorkoutScreen = ({route, navigation}) => {
                         <View style={AddWorkoutStyle.containerFOrExerciseAndCheckBox}> 
                             <View style={AddWorkoutStyle.singleExerciseWithPhotoContainer}> 
                             <TouchableOpacity
-                            onPress={() => navigation.navigate('Exercise',{ name: item.name, description: "fuck diet", photoUrl: item.photoUrl})}>
+                            onPress={() => navigation.navigate('Exercise',{ name: item.name, description: item.description, photoUrl: item.photo_link})}>
                                 <View style={AddWorkoutStyle.rowDivisionContainerForExercise}> 
                                 <View style={AddWorkoutStyle.exerciseNameContainerS}>
                                 <Text style={AddWorkoutStyle.exercisenameText}> {item.name}</Text>
@@ -155,7 +159,7 @@ const AddExerciseToWorkoutScreen = ({route, navigation}) => {
                                 <View style={AddWorkoutStyle.imageContenerForExercise}>
                                     <Image
                                     style={AddWorkoutStyle.imageExercise}
-                                    source={{uri: item.photoUrl}}/>
+                                    source={{uri: item.photo_link}}/>
                                 </View>
                                 </View>
                             </TouchableOpacity>

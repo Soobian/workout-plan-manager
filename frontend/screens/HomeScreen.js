@@ -15,19 +15,17 @@ import { useIsFocused } from "@react-navigation/native";
 
 const { height } = Dimensions.get('window');
 
-
 const HomeScreen = (props) =>  {
     const isFocused = useIsFocused();
     const [firstname, setfirstname] = useState('')
     const [plans, setplans] = useState([]);
     const [exercises, setexercises] = useState([]);
+    const [lastMeasurement, setlastMeasurement] = useState([{date: 0, chestSize: 0, waistSize: 0, bicepsSize: 0, thighSize: 0}]);
     
     useEffect(() => {
         SecureStore.getItemAsync('access_token')
         .then((token) => {
-            console.log("access_token", token)
             const userId = jwt_decode(token).user_id
-            console.log(userId)
             TokenApi.get(
                 'user/parameters/' + userId + '/', 
                 {
@@ -37,7 +35,6 @@ const HomeScreen = (props) =>  {
                 }
             )
             .then(response => {
-                console.log(response.data.firstname)
                 setfirstname(response.data.firstname)
             })
             .catch(error => {
@@ -53,7 +50,6 @@ const HomeScreen = (props) =>  {
                 }
             )
             .then(response => {
-                console.log(response.data)
                 setexercises(response.data)
             })
             .catch(error => {
@@ -64,10 +60,9 @@ const HomeScreen = (props) =>  {
 
     useEffect(() => {
         if(isFocused){
-            console.log(isFocused)
             SecureStore.getItemAsync('access_token')
             .then((token) => {
-                console.log("access_token", token)
+                const userId = jwt_decode(token).user_id
                 TokenApi.get(
                     'workout/workoutplan/', 
                     {
@@ -77,7 +72,6 @@ const HomeScreen = (props) =>  {
                     }
                 )
                 .then(response => {
-                    console.log(response.data)
                     setplans(response.data)
                 })
                 .catch(error => {
@@ -92,8 +86,22 @@ const HomeScreen = (props) =>  {
                     }
                 )
                 .then(response => {
-                    console.log(response.data)
                     setexercises(response.data)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+                TokenApi.get(
+                    'measurements/user/' + userId, 
+                    {
+                        headers: {
+                            Authorization: 'JWT ' + token,
+                        }
+                    }
+                )
+                .then(response => {
+                    setlastMeasurement(response.data.slice(-1))
+                    console.log(lastMeasurement)
                 })
                 .catch(error => {
                     console.log(error)
@@ -114,7 +122,7 @@ const HomeScreen = (props) =>  {
                     <YourPlans data={plans} navigation={props.navigation}/>
                 </View>
             </View>
-        <LastMeasurement data = {asd} navigation={props.navigation}/>
+        <LastMeasurement data={lastMeasurement[0]} navigation={props.navigation}/>
         <ExerciseListComponent data = {exercises} navigation={props.navigation}/>
       </ScrollView>
     </SafeAreaView>

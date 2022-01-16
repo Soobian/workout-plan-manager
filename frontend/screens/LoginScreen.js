@@ -44,7 +44,6 @@ const LoginScreen = ({navigation}) => {
         };
         
         const onFailure = error => {
-            console.log(22)
             console.log(error);
         };
 

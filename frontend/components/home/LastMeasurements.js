@@ -1,37 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ImageBackground, View, TouchableOpacity, Text , StyleSheet, ScrollView, Dimensions } from 'react-native'
 import { COLORS } from '../colors/Colors';
 import { HomeScreenStyles } from './HomeScreenStyles';
+import * as SecureStore from 'expo-secure-store'
+import jwt_decode from "jwt-decode";
+import { useIsFocused } from "@react-navigation/native";
+import TokenApi from '../authentication/TokenApi';
 
 const { height, width } = Dimensions.get('window');
 
 const LastMeasurement = ({data, navigation}) => {
-
-  const lastMeasurement = {
-    date: "08.02", chest: 93, waist: 100, biceps: 60.2, thigh: 53
-  }
-      
-
   return (
     <View style={styles.container}>
-        <Text style={HomeScreenStyles.titleText}>Last measurement from {lastMeasurement.date}:</Text>
-        
+        <Text style={HomeScreenStyles.titleText}>Last measurement from {data.date}:</Text>
         <View style={styles.measurementContainer}> 
             <View style={styles.itemContainer}>
                 <Text style={styles.specificText}>CHEST</Text>
-                <Text style={styles.numbersText}>{lastMeasurement.chest}</Text>
+                <Text style={styles.numbersText}>{data.chestSize}</Text>
             </View>
             <View style={styles.itemContainer}>
                 <Text style={styles.specificText}>WAIST</Text>
-                <Text style={styles.numbersText}>{lastMeasurement.waist}</Text>
+                <Text style={styles.numbersText}>{data.waistSize}</Text>
             </View>
             <View style={styles.itemContainer}>
                 <Text style={styles.specificText}>BICEPS</Text>
-                <Text style={styles.numbersText}>{lastMeasurement.biceps}</Text>
+                <Text style={styles.numbersText}>{data.bicepsSize}</Text>
             </View>
             <View style={styles.itemContainer}>
                 <Text style={styles.specificText}>THIGH</Text>
-                <Text style={styles.numbersText}>{lastMeasurement.thigh}</Text>
+                <Text style={styles.numbersText}>{data.thighSize}</Text>
             </View>
         </View>
         <View style={styles.twobuttons}>

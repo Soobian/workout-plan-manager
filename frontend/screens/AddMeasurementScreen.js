@@ -104,7 +104,7 @@ const AddMeasurementScreen = ({navigation}, measurements) => {
                 <View style={AddMeasurementStyle.inputContainer}>
                     {formFields.map((item, index) => {
                         return (
-                            <View style={AddMeasurementStyle.wholeContainer}>
+                            <View style={AddMeasurementStyle.wholeContainer} key={index}>
                                 <View style={AddMeasurementStyle.labelNameContianer}>
                                     <Text style={AddMeasurementStyle.labelNameText}>
                                         {item.label}
@@ -113,7 +113,6 @@ const AddMeasurementScreen = ({navigation}, measurements) => {
                                 <View style={AddMeasurementStyle.labelsCointeiner}>
                                 <FloatingLabelInput
                                 keyboardType="numeric"
-                                key={index}
                                 value={item.value}
                                 onChangeText={item.onChangeText}
                                 containerStyles={AddMeasurementStyle.floatingLabelInputContainerStyle}

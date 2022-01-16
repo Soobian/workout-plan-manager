@@ -13,30 +13,12 @@ const MeasurementsScreen = ({navigation}) => {
     const isFocused = useIsFocused();
     const screenWidth = Dimensions.get("window").width;
     const screenHeight = Dimensions.get("window").height;
-    const datesOfMeasurements = ["30.01","03.02","05.02","08.02","11.02"];
-    const chestMeasurements = [99, 96, 92, 88, 84];
-    const waistMeasurements = [102, 102, 99, 96, 92];
-    const bicepsMeasurements = [60.4, 60.4, 60.2, 60, 59.8];
-    const thighMeasurements =  [55, 52, 52, 52, 51];
+    const [dateMeasurements, setdateMeasurements] = useState([0]);
+    const [chestMeasurements, setchestMeasurements] = useState([0]);
+    const [thighMeasurements, setthighMeasurements] = useState([0]);
+    const [bicepsMeasurements, setbicepsMeasurements] = useState([0]);
+    const [waistMeasurements, setwaistMeasurements] = useState([0]);
     const [measurements, setmeasurements] = useState([]);
-
-
-    /*
-    const measurements = [
-        {
-            date: "30.01", chest: 99, waist: 102, biceps: 60.4, thigh: 55
-        },
-        {
-            date: "03.02", chest: 96, waist: 102, biceps: 60.4, thigh: 52
-        },
-        {
-            date: "05.02", chest: 92, waist: 99, biceps: 60.2, thigh: 52
-        },
-        {
-            date: "08.02", chest: 93, waist: 100, biceps: 60.2, thigh: 53
-        },
-    ];
-    */
 
     useEffect(() => {
         if(isFocused){
@@ -52,8 +34,27 @@ const MeasurementsScreen = ({navigation}) => {
                     }
                 )
                 .then(response => {
-                    console.log(response.data)
                     setmeasurements(response.data)
+                    var data = measurements.map(function (obj) {
+                        return obj.date;
+                    });
+                    setdateMeasurements(data)
+                    data = measurements.map(function (obj) {
+                        return obj.chestSize;
+                    });
+                    setchestMeasurements(data)
+                    data = measurements.map(function (obj) {
+                        return obj.thighSize;
+                    });
+                    setthighMeasurements(data)
+                    data = measurements.map(function (obj) {
+                        return obj.bicepsSize;
+                    });
+                    setbicepsMeasurements(data)
+                    data = measurements.map(function (obj) {
+                        return obj.waistSize;
+                    });
+                    setwaistMeasurements(data)
                 })
                 .catch(error => {
                     console.log(error)
@@ -61,20 +62,6 @@ const MeasurementsScreen = ({navigation}) => {
             })
         }
     }, [isFocused])
-
-    const updateMeasurements = () =>{
-        measurements = [];
-        for(let i = 0; i < datesOfMeasurements.length; i++){
-            let element = {
-                date: datesOfMeasurements[i],
-                chest: chestMeasurements[i],
-                waist: waistMeasurements[i],
-                biceps: bicepsMeasurements[i],
-                thigh: thighMeasurements[i]
-            };
-            measurements.pop(element);
-        }
-    }
 
     const chartConfig = {
         backgroundGradientFrom: COLORS.white,
@@ -85,28 +72,29 @@ const MeasurementsScreen = ({navigation}) => {
         strokeWidth: 2, 
         barPercentage: 0.5,
         useShadowColorFromDataset: true // optional
-      };
+    };
+
 
     const data = {
-        labels: datesOfMeasurements,
+        labels: dateMeasurements,
         datasets: [
             {
-                data: thighMeasurements,
+                data:chestMeasurements,
                 color: (opacity = 1) => COLORS.blue, 
                 strokeWidth: 2 
             } , 
             {
-                data: bicepsMeasurements,
+                data: waistMeasurements,
                 color: (opacity = 1) => COLORS.midlle_gray, 
                 strokeWidth: 2 
             },
             {
-                data: waistMeasurements,
+                data: bicepsMeasurements,
                 color: (opacity = 1) => COLORS.middle_blue, 
                 strokeWidth: 2 
             },
             {
-                data: chestMeasurements,
+                data: thighMeasurements,
                 color: (opacity = 1) => COLORS.light_gray,
                 strokeWidth: 2,
             }
@@ -139,32 +127,32 @@ const MeasurementsScreen = ({navigation}) => {
             </View>
             <Text style={MeasurementsStyles.titleText}>History</Text>
             <View style={MeasurementsStyles.measurementHistoryContainer}> 
-                    {measurements.map((item, index) => {
+                {measurements.map((item, index) => {
                     return(
-                        <View style={MeasurementsStyles.singleMeasurementContainer}> 
-                        <View style={MeasurementsStyles.dateContainer}> 
-                            <Text style={MeasurementsStyles.dateText}>{item.date}</Text>
+                        <View style={MeasurementsStyles.singleMeasurementContainer} key={index}> 
+                            <View style={MeasurementsStyles.dateContainer}> 
+                                <Text style={MeasurementsStyles.dateText}>{item.date}</Text>
+                            </View>
+                            <View style={MeasurementsStyles.measurementContainer}> 
+                                <View style={MeasurementsStyles.itemContainer}>
+                                        <Text style={MeasurementsStyles.specificText}>CHEST</Text>
+                                        <Text style={MeasurementsStyles.numbersText}>{item.chestSize}</Text>
+                                </View>
+                                <View style={MeasurementsStyles.itemContainer}>
+                                        <Text style={MeasurementsStyles.specificText}>WAIST</Text>
+                                        <Text style={MeasurementsStyles.numbersText}>{item.waistSize}</Text>
+                                </View>
+                                <View style={MeasurementsStyles.itemContainer}>
+                                        <Text style={MeasurementsStyles.specificText}>BICEPS</Text>
+                                        <Text style={MeasurementsStyles.numbersText}>{item.bicepsSize}</Text>
+                                </View>
+                                <View style={MeasurementsStyles.itemContainer}>
+                                        <Text style={MeasurementsStyles.specificText}>THIGH</Text>
+                                        <Text style={MeasurementsStyles.numbersText}>{item.thighSize}</Text>
+                                </View>
+                            </View>
                         </View>
-                        <View style={MeasurementsStyles.measurementContainer}> 
-                            <View style={MeasurementsStyles.itemContainer}>
-                                    <Text style={MeasurementsStyles.specificText}>CHEST</Text>
-                                    <Text style={MeasurementsStyles.numbersText}>{item.chestSize}</Text>
-                            </View>
-                            <View style={MeasurementsStyles.itemContainer}>
-                                    <Text style={MeasurementsStyles.specificText}>WAIST</Text>
-                                    <Text style={MeasurementsStyles.numbersText}>{item.waistSize}</Text>
-                            </View>
-                            <View style={MeasurementsStyles.itemContainer}>
-                                    <Text style={MeasurementsStyles.specificText}>BICEPS</Text>
-                                    <Text style={MeasurementsStyles.numbersText}>{item.bicepsSize}</Text>
-                            </View>
-                            <View style={MeasurementsStyles.itemContainer}>
-                                    <Text style={MeasurementsStyles.specificText}>THIGH</Text>
-                                    <Text style={MeasurementsStyles.numbersText}>{item.thighSize}</Text>
-                            </View>
-            
-                        </View>
-                    </View>)
+                    )
                 })}
                 
             </View>
