@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: screens/ExerciseScreen.js</title>
+    <title>JSDoc: Source: components/home/HomeScreenStyles.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: screens/ExerciseScreen.js</h1>
+    <h1 class="page-title">Source: components/home/HomeScreenStyles.js</h1>
 
     
 
@@ -26,50 +26,58 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { useNavigation } from '@react-navigation/core'
-import React, { useEffect, useState } from 'react'
-import axios from "axios"
-import { KeyboardAvoidingView, Text, Image, View } from 'react-native'
-import { ExerciseStyles } from '../components/exercise/ExerciseStyles';
-
+            <pre class="prettyprint source linenums"><code>import { StyleSheet } from "react-native"
+import {COLORS} from '../colors/Colors'
 
 /**
- * @module Exercise
- * @param {route} - enables displaying proper exercise
- * @param {navigation} - enables come back to previous screen
+ * Styles for HomeScreen
+ * @module Home
+ * @author Paulina Gacek
  */
-const ExerciseScreen = ({route, navigation}) => {
-
-    return (
-        &lt;KeyboardAvoidingView 
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
-            style={ExerciseStyles.container}>
-                
-            &lt;View style={ExerciseStyles.imageContener}>
-                &lt;Image
-                style={ExerciseStyles.image}
-                source={{
-                    uri: route.params.photoUrl}}/>
-            &lt;/View>
-
-            &lt;View style={ExerciseStyles.nameContener}>
-                &lt;Text style={ExerciseStyles.nameText}>
-                    {route.params.name}
-                &lt;/Text>
-            &lt;/View>
-
-            &lt;View style={ExerciseStyles.descriptionContener}>
-                &lt;Text style={ExerciseStyles.descriptionText}
-                android_hyphenationFrequency
-                adjustsFontSizeToFit>
-                    {route.params.description}
-                &lt;/Text>
-            &lt;/View>
-        &lt;/KeyboardAvoidingView>
-    )
-}
-
-export default ExerciseScreen</code></pre>
+export const HomeScreenStyles = StyleSheet.create({
+    /**
+    * whole page
+    */
+    container: {
+        backgroundColor: COLORS.white,
+        flex: 1,
+    },
+    mainscreen: {
+        flex: 1,
+        flexDirection: 'column',
+        alignSelf: 'stretch',
+        marginTop: 10,
+        marginHorizontal: 10,
+    },
+    scrollView: {
+        // whole page exept upper blue container can be scrolled
+        paddingTop: 10,
+        height: '75%',
+    },
+    titleText: {
+        paddingTop: 20,
+        paddingBottom: 10,
+        fontSize: 17,
+        paddingLeft: 4,
+    },
+    /**
+     * upper blue container with page title
+     */
+    upperContainer: {
+        backgroundColor: COLORS.blue,
+        width: '102%',
+        height: '16%',
+        fontSize: 16,
+        borderRadius: 10,
+        justifyContent: 'center',
+        left: -3
+    },
+    uperContainerText: {
+        paddingTop: 20,
+        paddingBottom: 10,
+        fontSize: 18
+    },
+})</code></pre>
         </article>
     </section>
 

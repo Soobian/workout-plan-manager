@@ -1,23 +1,32 @@
 import { StyleSheet } from "react-native"
 import {COLORS} from '../colors/Colors'
 
-// styles for workoutlistScreen and WorkoutPlanScreen
+/**
+ * Styles for workoutlistScreen and WorkoutPlanScreen
+ * @module Workout
+ * @author Paulina Gacek
+ */
 
 export const WorkoutListStyle = StyleSheet.create({
+    /**
+     * whole page
+     */
     container: {
-        // whole page
         flex: 1,
         alignItems: 'center',
         backgroundColor: COLORS.white
     },
+    /**
+     * container which enables scrolling
+     */
     scrollView: {
-        // container which enables scrolling
         width: '100%',
         alignItems: 'center',
         marginBottom: 20,
     },
-    
-    // upper blue container with page title
+    /**
+     * upper blue container with page title
+     */
     upperContainer: {
         color: '#03767B',
         backgroundColor: '#03767B',
@@ -28,7 +37,9 @@ export const WorkoutListStyle = StyleSheet.create({
         padding: 10,
         marginBottom: 10
     },
-
+    /**
+     * text in upper blue container with page title
+     */
     upperContainerText: {
         color: 'white',
         fontWeight: '300',
@@ -47,7 +58,9 @@ export const WorkoutListStyle = StyleSheet.create({
         paddingTop: 5,
     },
 
-    // button
+    /**
+     * button
+     */
     buttonContainer: {
         width: '60%',
         justifyContent: 'center',
@@ -69,8 +82,9 @@ export const WorkoutListStyle = StyleSheet.create({
         borderRadius: 10,
         alignItems: 'center',
     },
-
-    // container with workout photo, name and level
+    /**
+     * container with workout photo, name and level
+     */
     singleWorkoutContainer: {
         width: '80%',
         height: 140,
@@ -104,6 +118,9 @@ export const WorkoutListStyle = StyleSheet.create({
         fontWeight: "900",
         alignItems: 'center',
     },
+    /**
+     * image container
+     */
     imageContenerForExercise: {
         backgroundColor: COLORS.dark_gray,
         width: '100%',
@@ -112,6 +129,9 @@ export const WorkoutListStyle = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    /**
+     * image container with exercise photo
+     */
     imageExercise: {
         backgroundColor: COLORS.dark_gray,
         borderRadius: 8,

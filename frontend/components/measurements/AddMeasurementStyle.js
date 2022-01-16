@@ -2,7 +2,14 @@ import { StyleSheet } from "react-native"
 import {COLORS} from '../colors/Colors'
 import { useNavigation } from '@react-navigation/core'
 
+/**
+ * Styles for AddMeasurementScreen component
+ * @module Measurement
+ */
 export const AddMeasurementStyle = StyleSheet.create({
+    /**
+     * whole page
+     */
     container: {
         flex: 1,
         alignItems: 'center',

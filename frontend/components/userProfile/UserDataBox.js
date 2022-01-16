@@ -3,10 +3,13 @@ import { Text, View, Dimensions, StyleSheet} from 'react-native'
 import { COLORS } from '../colors/Colors';
 const { height, width } = Dimensions.get('window');
 
+/**
+ * @module UserProfile
+ * @param {navigation} - enables come back to previous screen
+ * @param {data} - users data
+ * @returns container for data
+ */
 const UserDataBox = ({data, navigation}) =>{
-
-    // TO DO:
-    // calculate age from date of birth
 
     return (
             <View style={styles.measurementContainer}>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: screens/ExerciseScreen.js</title>
+    <title>JSDoc: Source: components/home/Greetings.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: screens/ExerciseScreen.js</h1>
+    <h1 class="page-title">Source: components/home/Greetings.js</h1>
 
     
 
@@ -26,50 +26,43 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { useNavigation } from '@react-navigation/core'
-import React, { useEffect, useState } from 'react'
-import axios from "axios"
-import { KeyboardAvoidingView, Text, Image, View } from 'react-native'
-import { ExerciseStyles } from '../components/exercise/ExerciseStyles';
-
+            <pre class="prettyprint source linenums"><code>import React from 'react'
+import { View, Text , StyleSheet } from 'react-native'
+import { COLORS } from '../colors/Colors'
 
 /**
- * @module Exercise
- * @param {route} - enables displaying proper exercise
- * @param {navigation} - enables come back to previous screen
+ * @module Home
+ * @author Maciej Ciepał
+ * @param {name} - users name 
+ * @returns container with greetings
  */
-const ExerciseScreen = ({route, navigation}) => {
-
-    return (
-        &lt;KeyboardAvoidingView 
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
-            style={ExerciseStyles.container}>
-                
-            &lt;View style={ExerciseStyles.imageContener}>
-                &lt;Image
-                style={ExerciseStyles.image}
-                source={{
-                    uri: route.params.photoUrl}}/>
-            &lt;/View>
-
-            &lt;View style={ExerciseStyles.nameContener}>
-                &lt;Text style={ExerciseStyles.nameText}>
-                    {route.params.name}
-                &lt;/Text>
-            &lt;/View>
-
-            &lt;View style={ExerciseStyles.descriptionContener}>
-                &lt;Text style={ExerciseStyles.descriptionText}
-                android_hyphenationFrequency
-                adjustsFontSizeToFit>
-                    {route.params.description}
-                &lt;/Text>
-            &lt;/View>
-        &lt;/KeyboardAvoidingView>
-    )
+const Greetings = ({ name }) => {
+  return (
+    &lt;View style={styles.container}>
+      &lt;Text style={styles.text}>Hi, {name}&lt;/Text>
+      &lt;Text style={styles.text}>LET'S START DAY ACTIVE!&lt;/Text>
+    &lt;/View>
+  )
 }
 
-export default ExerciseScreen</code></pre>
+const styles = StyleSheet.create({
+  /**
+   * whole page
+   */
+  container: {
+    flex: 0.2,
+    paddingTop: 1,
+  },
+  text: {
+    marginTop: 3,
+    fontSize: 19,
+    left: 20,
+    color:COLORS.white,
+  }
+})
+
+export default Greetings
+</code></pre>
         </article>
     </section>
 

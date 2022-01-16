@@ -1,10 +1,17 @@
 import React from 'react'
-import { ImageBackground, View, TouchableOpacity, Text , StyleSheet, ScrollView, Dimensions } from 'react-native'
+import { View, TouchableOpacity, Text , StyleSheet, Dimensions } from 'react-native'
 import { COLORS } from '../colors/Colors';
 import { HomeScreenStyles } from './HomeScreenStyles';
 
-const { height, width } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
+/**
+ * @module Home
+ * @author Paulina Gacek
+ * @param {data} - enables displaying proper measurement
+ * @param {navigation} - enables come back to previous screen
+ * @returns component with the latest measurement
+ */
 const LastMeasurement = ({data, navigation}) => {
 
   const lastMeasurement = {

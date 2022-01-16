@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ImageBackground, View, TouchableOpacity, Text , StyleSheet, ScrollView, Dimensions } from 'react-native'
 import { HomeScreenStyles } from './HomeScreenStyles';
 import {COLORS} from '../colors/Colors'
 
-const { height, width } = Dimensions.get('window');
 
 export const asd = [
   { name: 'item1' },
@@ -17,18 +16,13 @@ export const asd = [
   { name: 'item9' },
 ]
 
-const photos = [
-  'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/1076/articles/2016/10/woman-pushup-1522242407.jpg?crop=1xw:0.75xh;center,top&resize=980:*',
-  'https://www.helpguide.org/wp-content/uploads/resistance-band-woman-doing-leg-workout-768.jpg',
-  'https://images.medicinenet.com/images/article/main_image/stretches-for-tight-hips.jpg'
-] ;
-
-const exerciseList = [
-  {id: 0, name: "pushups", photoUrl: photos[0], selected: false},
-  {id: 1, name: "sth else", photoUrl: photos[1], selected: false},
-  {id: 2, name: "have no idea", photoUrl: photos[2], selected: false}
-];
-
+/**
+ * @module Home
+ * @author Paulina Gacek
+ * @param {data} - enables displaying proper exercise and workout
+ * @param {navigation} - enables come back to previous screen
+ * @returns component with list of exercises
+ */
 const ExerciseListComponent = ({data, navigation}) => {
     const Exercise = ({ item }) => (
         <TouchableOpacity 
@@ -68,6 +62,9 @@ const ExerciseListComponent = ({data, navigation}) => {
 }
 
 const styles = StyleSheet.create({
+  /**
+   * whole page
+   */
   container: {
     flex: 7,
     marginLeft: 15,
@@ -79,12 +76,18 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 20,
     paddingRight: 5,
   },
+  /**
+  * container for image scroll horizontal list
+  */
   imageWrapper :{
     flex: 1,
     aspectRatio: 4/3,
     height: 100,
     marginRight: 2,
   },
+  /**
+   * image container
+  */
   coverImage: {
     aspectRatio: 4/3,
     height: 100,
