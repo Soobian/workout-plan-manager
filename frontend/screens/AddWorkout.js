@@ -8,6 +8,7 @@ import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
 
 /**
  * @module Workout
+ * @author Paulina Gacek, Maciej Ciepał
  * @param {route} - enables displaying proper exercise and workout
  * @param {navigation} - enables come back to previous screen
  */

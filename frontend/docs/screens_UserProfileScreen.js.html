@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: screens/ExerciseScreen.js</title>
+    <title>JSDoc: Source: screens/UserProfileScreen.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: screens/ExerciseScreen.js</h1>
+    <h1 class="page-title">Source: screens/UserProfileScreen.js</h1>
 
     
 
@@ -26,51 +26,50 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { useNavigation } from '@react-navigation/core'
-import React, { useEffect, useState } from 'react'
+            <pre class="prettyprint source linenums"><code>import React, {useState } from 'react'
 import axios from "axios"
-import { KeyboardAvoidingView, Text, Image, View } from 'react-native'
-import { ExerciseStyles } from '../components/exercise/ExerciseStyles';
-
+import { KeyboardAvoidingView, StyleSheet} from "react-native";
+import { COLORS } from "../components/colors/Colors";
+import AvatarWithDetails from "../components/userProfile/AvatarWithDetails";
+import UserDataBox from "../components/userProfile/UserDataBox";
+import InputDataForm from "../components/userProfile/InputDataForm";
 
 /**
- * @module Exercise
- * @author Paulina Gacek, Maciej Ciepał
- * @param {route} - enables displaying proper exercise
+ * Screen with user data
+ * @module UserProfile
+ * @author Paulina Gacek
  * @param {navigation} - enables come back to previous screen
  */
-const ExerciseScreen = ({route, navigation}) => {
+const UserProfileScreen = ({navigation}) => {
+    const [usersData, setUsersData] = useState({
+        name: "random",
+        email: "random@example.com",
+        dateOfBirth: '-',
+        height: "-",
+        weight: "-",
+        sex: "m",
+    })
 
     return (
         &lt;KeyboardAvoidingView 
             behavior={Platform.OS === "ios" ? "padding" : "height"}
-            style={ExerciseStyles.container}>
-                
-            &lt;View style={ExerciseStyles.imageContener}>
-                &lt;Image
-                style={ExerciseStyles.image}
-                source={{
-                    uri: route.params.photoUrl}}/>
-            &lt;/View>
-
-            &lt;View style={ExerciseStyles.nameContener}>
-                &lt;Text style={ExerciseStyles.nameText}>
-                    {route.params.name}
-                &lt;/Text>
-            &lt;/View>
-
-            &lt;View style={ExerciseStyles.descriptionContener}>
-                &lt;Text style={ExerciseStyles.descriptionText}
-                android_hyphenationFrequency
-                adjustsFontSizeToFit>
-                    {route.params.description}
-                &lt;/Text>
-            &lt;/View>
+            style={styles.container}>
+            &lt;AvatarWithDetails data = {usersData} navigation={navigation}/>
+            &lt;UserDataBox data = {usersData} navigation={navigation}/>
+            &lt;InputDataForm data = {usersData} navigation={navigation}/>
         &lt;/KeyboardAvoidingView>
     )
 }
+export default UserProfileScreen
 
-export default ExerciseScreen</code></pre>
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: COLORS.white,
+        flex: 1,
+        alignItems: 'center',
+    },
+  })
+</code></pre>
         </article>
     </section>
 

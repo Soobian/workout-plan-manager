@@ -6,6 +6,12 @@ import AvatarWithDetails from "../components/userProfile/AvatarWithDetails";
 import UserDataBox from "../components/userProfile/UserDataBox";
 import InputDataForm from "../components/userProfile/InputDataForm";
 
+/**
+ * Screen with user data
+ * @module UserProfile
+ * @author Paulina Gacek
+ * @param {navigation} - enables come back to previous screen
+ */
 const UserProfileScreen = ({navigation}) => {
     const [usersData, setUsersData] = useState({
         name: "random",

@@ -7,6 +7,7 @@ import * as SecureStore from 'expo-secure-store'
 /**
  * Login screen
  * @module Authentication
+ * @author Paulina Gacek, Maciej Ciepał
  * @param {navigation} - enables come back to previous screen
  */
 const LoginScreen = ({navigation}) => {

@@ -7,6 +7,7 @@ import { ExerciseStyles } from '../components/exercise/ExerciseStyles';
 
 /**
  * @module Exercise
+ * @author Paulina Gacek, Maciej Ciepał
  * @param {route} - enables displaying proper exercise
  * @param {navigation} - enables come back to previous screen
  */

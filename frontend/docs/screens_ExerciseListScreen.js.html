@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: screens/ExerciseScreen.js</title>
+    <title>JSDoc: Source: screens/ExerciseListScreen.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: screens/ExerciseScreen.js</h1>
+    <h1 class="page-title">Source: screens/ExerciseListScreen.js</h1>
 
     
 
@@ -29,9 +29,9 @@
             <pre class="prettyprint source linenums"><code>import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
-import { KeyboardAvoidingView, Text, Image, View } from 'react-native'
+import { render } from 'react-dom';
+import { KeyboardAvoidingView, Text, Image, View, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
 import { ExerciseStyles } from '../components/exercise/ExerciseStyles';
-
 
 /**
  * @module Exercise
@@ -39,38 +39,43 @@ import { ExerciseStyles } from '../components/exercise/ExerciseStyles';
  * @param {route} - enables displaying proper exercise
  * @param {navigation} - enables come back to previous screen
  */
-const ExerciseScreen = ({route, navigation}) => {
+const ExerciseListScreen = () => {
+    state = {}
+
+    const refreshList = () => {
+        axios
+        .get("/exercises/")
+        .then((res) => this.setState({ exercises: res.data }))
+        .catch((err) => console.log(err));
+    };
 
     return (
         &lt;KeyboardAvoidingView 
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={ExerciseStyles.container}>
-                
-            &lt;View style={ExerciseStyles.imageContener}>
-                &lt;Image
-                style={ExerciseStyles.image}
-                source={{
-                    uri: route.params.photoUrl}}/>
+            &lt;View style={ExerciseStyles.exerciseContainer}>
+            &lt;Text style={ExerciseStyles.exerciseText}>
+                    Exercises&lt;/Text>
             &lt;/View>
-
-            &lt;View style={ExerciseStyles.nameContener}>
-                &lt;Text style={ExerciseStyles.nameText}>
-                    {route.params.name}
-                &lt;/Text>
-            &lt;/View>
-
-            &lt;View style={ExerciseStyles.descriptionContener}>
-                &lt;Text style={ExerciseStyles.descriptionText}
-                android_hyphenationFrequency
-                adjustsFontSizeToFit>
-                    {route.params.description}
-                &lt;/Text>
-            &lt;/View>
+            &lt;ScrollView contentContainerStyle={ExerciseStyles.scrollView}
+            centerContent>
+                {state.exercises.map((item, index) => {
+                    return(
+                        // button with exercise name displayed
+                         &lt;TouchableOpacity 
+                        style={ExerciseStyles.exerciseItemContainer}>
+                        &lt;Text style={ExerciseStyles.exerciseItemContainerText}>
+                            {item.name}
+                        &lt;/Text>
+                        &lt;/TouchableOpacity>)
+                })}
+            &lt;/ScrollView>
         &lt;/KeyboardAvoidingView>
     )
 }
 
-export default ExerciseScreen</code></pre>
+export default ExerciseListScreen
+</code></pre>
         </article>
     </section>
 

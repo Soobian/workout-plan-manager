@@ -3,7 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, Text, Image, View , ScrollView, TouchableOpacity} from 'react-native'
 import { ExerciseStyles } from '../components/exercise/ExerciseStyles';
 
-
+/**
+ * Screen with workout name, photo and description
+ * @module Workout
+ * @author Paulina Gacek
+ * @param {route} - enables displaying proper workout
+ * @param {navigation} - enables come back to previous screen
+ */
 const WorkoutScreen = ({route, navigation}) => {
     return (
         <KeyboardAvoidingView 

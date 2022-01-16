@@ -5,64 +5,14 @@ import { render } from 'react-dom';
 import { KeyboardAvoidingView, Text, Image, View, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
 import { ExerciseStyles } from '../components/exercise/ExerciseStyles';
 
-
+/**
+ * @module Exercise
+ * @author Paulina Gacek, Maciej Ciepał
+ * @param {route} - enables displaying proper exercise
+ * @param {navigation} - enables come back to previous screen
+ */
 const ExerciseListScreen = () => {
-    state = {
-        exercises: [
-            {
-                id: 1,
-                name: "Pushup"
-            },
-            {
-                id: 2,
-                name: "Squats"
-            },
-            {
-                id: 3,
-                name: "Walking"
-            },
-            {
-                id: 4,
-                name: "Dancing"
-            },
-            {
-                id: 5,
-                name: "Lunges"
-            },
-            {
-                id: 6,
-                name: "Abdominal Crunches"
-            },
-            {
-                id: 7,
-                name: "Pushup"
-            },
-            {
-                id: 8,
-                name: "Squats"
-            },
-            {
-                id: 9,
-                name: "Pushup"
-            },
-            {
-                id: 10,
-                name: "Squats"
-            },
-            {
-                id: 8,
-                name: "Squats"
-            },
-            {
-                id: 9,
-                name: "Pushup"
-            },
-            {
-                id: 10,
-                name: "Squats"
-            },
-        ]
-    };
+    state = {}
 
     const refreshList = () => {
         axios
@@ -70,10 +20,6 @@ const ExerciseListScreen = () => {
         .then((res) => this.setState({ exercises: res.data }))
         .catch((err) => console.log(err));
     };
-
-    const handleExercise = (id) => {
-
-    }
 
     return (
         <KeyboardAvoidingView 
@@ -89,8 +35,6 @@ const ExerciseListScreen = () => {
                     return(
                         // button with exercise name displayed
                          <TouchableOpacity 
-                        //onPress={handleExercise(item.id)} 
-                        // on press it should display ExerciseScreen of proper exercise
                         style={ExerciseStyles.exerciseItemContainer}>
                         <Text style={ExerciseStyles.exerciseItemContainerText}>
                             {item.name}

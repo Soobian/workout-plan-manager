@@ -13,6 +13,7 @@ import * as SecureStore from 'expo-secure-store'
 /**
  * Screeen which enables adding new measurement by inputting propper numbers in forms
  * @module Measurement
+ * @author Paulina Gacek, Maciej Ciepał
  * @param {route} - enables displaying proper measurements
  * @param {navigation} - enables come back to previous screen
  */

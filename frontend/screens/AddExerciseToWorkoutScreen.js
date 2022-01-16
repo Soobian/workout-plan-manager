@@ -9,6 +9,7 @@ import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
 /**
  * Screen with the possibility of adding new exercise to the workout
  * @module Exercise
+ * @author Paulina Gacek, Maciej Ciepał
  * @param {route} - enables displaying proper exercise and workout
  * @param {navigation} - enables come back to previous screen
  */

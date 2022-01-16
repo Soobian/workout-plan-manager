@@ -6,6 +6,7 @@ import BaseApi from '../components/authentication/BaseApi'
 /**
  * Registration screen
  * @module Authentication
+ * @author Paulina Gacek, Maciej Ciepał
  * @param {navigation} - enables come back to previous screen
  */
 const RegisterScreen = ({navigation}) => {

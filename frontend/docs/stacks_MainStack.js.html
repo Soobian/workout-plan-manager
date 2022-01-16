@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/home/Greetings.js</title>
+    <title>JSDoc: Source: stacks/MainStack.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/home/Greetings.js</h1>
+    <h1 class="page-title">Source: stacks/MainStack.js</h1>
 
     
 
@@ -26,43 +26,25 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react'
-import { View, Text , StyleSheet } from 'react-native'
-import { COLORS } from '../colors/Colors'
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import BottomTab from '../components/navigation/BottomTabs';
 
 /**
- * @module Home
+ * Main stack for navigation
+ * @module Navigation
  * @author Maciej Ciepał
- * @param {name} - users name 
- * @returns container with greetings
  */
-const Greetings = ({ name }) => {
-  return (
-    &lt;View style={styles.container}>
-      &lt;Text style={styles.text}>Hi, {name}&lt;/Text>
-      &lt;Text style={styles.text}>LET'S START DAY ACTIVE!&lt;/Text>
-    &lt;/View>
-  )
+const MainStack = () => {
+    return (
+        &lt;BottomTab />
+    )
 }
 
-const styles = StyleSheet.create({
-  /**
-   * whole page
-   */
-  container: {
-    flex: 0.2,
-    paddingTop: 1,
-  },
-  text: {
-    marginTop: 3,
-    fontSize: 19,
-    left: 20,
-    color:COLORS.white,
-  }
-})
-
-export default Greetings
-</code></pre>
+export default MainStack;</code></pre>
         </article>
     </section>
 

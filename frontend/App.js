@@ -16,7 +16,11 @@ import MeasurementsScreen from './screens/MeasurementsScreen';
 
 const Stack = createNativeStackNavigator();
 
-
+/**
+ * Stack with all screens
+ * @module Navigation
+ * @author Maciej Ciepał, Paulina Gacek
+ */
 export default function App() {
     return (
         <NavigationContainer>
