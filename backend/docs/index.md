@@ -1,4 +1,4 @@
-##Dokumentacja kodu aplikacji FIT CRAFTER
+##Dokumentacja backendu aplikacji FIT CRAFTER
 
 ###Module backend.users.models
 
