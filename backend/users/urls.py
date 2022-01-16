@@ -1,9 +1,17 @@
+"""
+Plik zawiera adresy url dla odpowiednich widoków
+
+@author Maciej Ciepał
+
+"""
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
 from .models import UserParameters
 from .models import CustomUser
 from .views import CustomUserCreate, BlacklistTokenUpdateView, UserParametersViewSet
+
+
 
 app_name = 'users'
 

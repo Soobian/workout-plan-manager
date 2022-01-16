@@ -1,9 +1,23 @@
+"""
+Plik zawiera zbiór widoków dostęnych w aplikacji
+
+- MuscleGroupViewSet:   Widok dla grup mięśni
+- ExerciseViewSet:  Widok ćwiczeń
+- WorkoutPlanViewSet:  Widok dostępnych planów ćwiczeń
+- WorkoutPlanDayViewSet:    Widok podziału planu ćwiczeń na dni
+- WorkoutPlanDayExerciseViewSet:    Widok ćwiczeń dla konkretnego dnia planu ćwiczeń
+- WorkoutPlanDayExerciseSetsViewSet:    Widok szczegółowych informacji na temat jak wykonywać dane ćwiczenie
+
+@author Aneta Postrożny, Maciej Ciepał
+
+"""
 from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from .models import MuscleGroup, Exercise, WorkoutPlan, WorkoutPlanDay, WorkoutPlanDayExercise, WorkoutPlanDayExerciseSets
 from .serializers import MuscleGroupSerializer, ExerciseSerializer, WorkoutPlanSerializer, WorkoutPlanDaySerializer, \
      WorkoutPlanDayExerciseSerializer, WorkoutPlanDayExerciseSetsSerializer
+
 
 class MuscleGroupViewSet(viewsets.ModelViewSet):
     queryset = MuscleGroup.objects.all()

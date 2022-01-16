@@ -1,3 +1,13 @@
+"""
+Plik zawiera zbiór widoków dostęnych w aplikacji
+
+- MeasurementViewSet   Widok pomiarów użytkownika
+- MeasurementHistoryViewSet  Widok Histrorii pomiarów
+
+@author Maciej Ciepał
+
+"""
+
 from rest_framework import viewsets
 from .models import Measurement
 from .serializers import MeasurementSerializer
