@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Frontend documentation for Fitcrafter project</title>
+    <title>JSDoc: Source: components/navigation/Icons.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,32 @@
 
 <div id="main">
 
-    <h1 class="page-title">Frontend documentation for Fitcrafter project</h1>
+    <h1 class="page-title">Source: components/navigation/Icons.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { Image } from 'react-native'
 
+/**
+ * @module Navigation
+ * @author Maciej Ciepał
+ * Icons for bottom bar navigation
+ */
+const Icon = ({image, color}) => {
+    return(
+        &lt;Image source={{uri:image}} style={{height:30, width:30, tintColor: color}}/> 
+    )
+}
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default Icon</code></pre>
+        </article>
+    </section>
 
 
 

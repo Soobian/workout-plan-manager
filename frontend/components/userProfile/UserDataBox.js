@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, View, Dimensions, StyleSheet} from 'react-native'
 import { COLORS } from '../colors/Colors';
-const { height, width } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 /**
  * @module UserProfile

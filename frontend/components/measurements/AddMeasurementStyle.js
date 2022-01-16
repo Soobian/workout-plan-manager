@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/core'
 /**
  * Styles for AddMeasurementScreen component
  * @module Measurement
+ * @author Paulina Gacek
  */
 export const AddMeasurementStyle = StyleSheet.create({
     /**

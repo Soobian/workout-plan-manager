@@ -22,7 +22,7 @@ export const AddWorkoutStyle = StyleSheet.create({
         alignItems: 'center',
     },
 
-    // CREATE WORKOUT button
+    /** CREATE WORKOUT button */
     buttonContainer: {
         width: '60%',
         justifyContent: 'center',
@@ -49,7 +49,8 @@ export const AddWorkoutStyle = StyleSheet.create({
         fontSize: 16,
     },
     
-    // upper blue container
+    /**
+     * upper blue container */ 
     upperContener:{
         backgroundColor: '#03767B',
         width: '103%',
@@ -74,8 +75,10 @@ export const AddWorkoutStyle = StyleSheet.create({
         alignItems: 'center',
         paddingBottom: 10,
     },
-    // input labels
-    // whole container
+    
+    /**
+     * input labels, whole container
+     */
     wholeContainer: {
         width: 180,
         alignItems: 'center',
@@ -275,7 +278,9 @@ export const AddWorkoutStyle = StyleSheet.create({
         fontWeight: '900',
     },
 
-    /*** SELECT EXERICISE SPECIFIC ***/
+    /**
+     *  SELECT EXERICISE specific container
+     **/
     exercisesToSelectContainer: {
         borderRadius: 10,
         marginBottom: 7,
@@ -423,8 +428,9 @@ export const AddWorkoutStyle = StyleSheet.create({
         color: COLORS.midlle_gray,
     },
 
-    //button 'add exercise to workout'
-
+    /**
+     * button 'add exercise to workout'
+     */
     addButtonContainer: {
         width: '90%',
         justifyContent: 'center',

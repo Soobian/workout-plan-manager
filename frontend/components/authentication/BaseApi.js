@@ -1,5 +1,6 @@
 /**
  * @module Authentication
+ * @author Maciej Ciepał
  */
 
 import axios from 'axios';

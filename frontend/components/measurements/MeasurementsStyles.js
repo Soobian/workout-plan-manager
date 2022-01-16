@@ -1,6 +1,10 @@
 import { StyleSheet } from "react-native"
 import {COLORS} from '../colors/Colors'
 
+/**
+ * @module Measurement
+ * @author Paulina Gacek
+ */
 export const MeasurementsStyles = StyleSheet.create({
     /**
      * whole page

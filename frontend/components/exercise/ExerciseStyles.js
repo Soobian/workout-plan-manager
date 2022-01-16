@@ -4,6 +4,7 @@ import {COLORS} from '../colors/Colors'
 /**
  * Styles for ExerciseScreen and ExerciseListScreen
  * @module Exercise
+ * @author Paulina Gacek
  */
 export const ExerciseStyles = StyleSheet.create({
     /**

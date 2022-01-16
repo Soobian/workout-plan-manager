@@ -1,5 +1,6 @@
 /**
  * @module Authentication
+ * @author Maciej Ciepał
  */
 
 import { useNavigation } from '@react-navigation/core'
@@ -10,7 +11,6 @@ import { RegisterLoginStyles } from './RegisterLoginStyles'
 
 /**
  * Template for Login and Registration Screeens
- * @author Maciej Ciepał, Paulina Gacek
  * @param formFields fields which can be filled with data by user
  * @param title page title
  * @param firstText page adjusted text

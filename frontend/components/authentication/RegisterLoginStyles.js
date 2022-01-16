@@ -1,5 +1,6 @@
 /**
  * @module Authentication
+ * @authorPaulina Gacek
  */
 import { StyleSheet } from "react-native"
 

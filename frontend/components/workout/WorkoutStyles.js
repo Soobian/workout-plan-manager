@@ -4,7 +4,7 @@ import {COLORS} from '../colors/Colors'
 /**
  * Styles used in WorkoutScreen
  * @author Paulina Gacek
- * @module workout
+ * @module Workout
  */
 export const WorkoutStyles = StyleSheet.create({
     /**
