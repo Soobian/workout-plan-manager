@@ -1,3 +1,7 @@
+/**
+ * Complete color pallete of the project's front
+ * @module colors
+ */
 export const COLORS = {
     main_color: '#333333',
     white: '#fff',
