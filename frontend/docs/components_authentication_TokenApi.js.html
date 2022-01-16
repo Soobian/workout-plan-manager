@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: components/authentication/TokenApi.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,44 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: components/authentication/TokenApi.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module Authentication
+ */
 
+import axios from 'axios';
+import * as SecureStore from 'expo-secure-store'
 
-    <h3> </h3>
+/**
+ * Url with developers current IP - keep it up to date in order to develop application
+ * Synatax: 'http://&lt;IP>:8000/api/'
+ */
+const baseURL = 'http://192.168.1.4:8000/api/'
 
+/**
+ * Authentication component, which enables to use axious globally during registration process
+ */
+const TokenApi = axios.create({
+    baseURL: baseURL,
+    timeout: 5000,
+    withCredentials: true,
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+    }
+});
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default TokenApi;</code></pre>
+        </article>
+    </section>
 
 
 

@@ -1,4 +1,32 @@
-import React, { Component , useEffect, useState } from 'react'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: screens/AddMeasurementScreen.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: screens/AddMeasurementScreen.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component , useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/core'
 import axios from "axios"
 import { render } from 'react-dom';
@@ -41,10 +69,10 @@ const AddMeasurementScreen = ({navigation}, measurements) => {
     }
 
     function areDataValid(){
-        if(formFields[0].value < 30 || formFields[0].value > 200
-            || formFields[1].value < 30 || formFields[1].value > 200 || 
-            formFields[2].value < 6 || formFields[2].value > 50 ||
-            formFields[3].value < 10 || formFields[3].value > 100){
+        if(formFields[0].value &lt; 30 || formFields[0].value > 200
+            || formFields[1].value &lt; 30 || formFields[1].value > 200 || 
+            formFields[2].value &lt; 6 || formFields[2].value > 50 ||
+            formFields[3].value &lt; 10 || formFields[3].value > 100){
             return false;
         }
         return true;
@@ -97,27 +125,27 @@ const AddMeasurementScreen = ({navigation}, measurements) => {
         
     }
     return (
-        <KeyboardAvoidingView 
+        &lt;KeyboardAvoidingView 
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={AddMeasurementStyle.container}
         >
-            <View style={AddMeasurementStyle.upperContener}>
-                <Text style={AddMeasurementStyle.upperContenerText}>Add measurement</Text>
-            </View>
-            <TouchableWithoutFeedback 
+            &lt;View style={AddMeasurementStyle.upperContener}>
+                &lt;Text style={AddMeasurementStyle.upperContenerText}>Add measurement&lt;/Text>
+            &lt;/View>
+            &lt;TouchableWithoutFeedback 
             onPress={Keyboard.dismiss} 
             >
-                <View style={AddMeasurementStyle.inputContainer}>
+                &lt;View style={AddMeasurementStyle.inputContainer}>
                     {formFields.map((item, index) => {
                         return (
-                            <View style={AddMeasurementStyle.wholeContainer}>
-                                <View style={AddMeasurementStyle.labelNameContianer}>
-                                    <Text style={AddMeasurementStyle.labelNameText}>
+                            &lt;View style={AddMeasurementStyle.wholeContainer}>
+                                &lt;View style={AddMeasurementStyle.labelNameContianer}>
+                                    &lt;Text style={AddMeasurementStyle.labelNameText}>
                                         {item.label}
-                                    </Text>
-                                </View>
-                                <View style={AddMeasurementStyle.labelsCointeiner}>
-                                <FloatingLabelInput
+                                    &lt;/Text>
+                                &lt;/View>
+                                &lt;View style={AddMeasurementStyle.labelsCointeiner}>
+                                &lt;FloatingLabelInput
                                 keyboardType="numeric"
                                 key={index}
                                 value={item.value}
@@ -129,25 +157,48 @@ const AddMeasurementScreen = ({navigation}, measurements) => {
                                 }}
                                 maxDecimalPlaces='2'
                                 />
-                                </View>
-                                <View style={AddMeasurementStyle.labelkgContianer}>
-                                    <Text style={AddMeasurementStyle.labelNameText}>
+                                &lt;/View>
+                                &lt;View style={AddMeasurementStyle.labelkgContianer}>
+                                    &lt;Text style={AddMeasurementStyle.labelNameText}>
                                         cm
-                                    </Text>
-                                </View>
-                            </View>
+                                    &lt;/Text>
+                                &lt;/View>
+                            &lt;/View>
                         )
                     })}
-                </View>
-            </TouchableWithoutFeedback>
-            <View style={AddMeasurementStyle.buttonContainer}>
-                <TouchableOpacity style={AddMeasurementStyle.button}
+                &lt;/View>
+            &lt;/TouchableWithoutFeedback>
+            &lt;View style={AddMeasurementStyle.buttonContainer}>
+                &lt;TouchableOpacity style={AddMeasurementStyle.button}
                 onPress={handleAdd}>
-                    <Text style={AddMeasurementStyle.buttonText}>ADD</Text>
-                </TouchableOpacity>
-            </View> 
-        </KeyboardAvoidingView>
+                    &lt;Text style={AddMeasurementStyle.buttonText}>ADD&lt;/Text>
+                &lt;/TouchableOpacity>
+            &lt;/View> 
+        &lt;/KeyboardAvoidingView>
     )
 }
 
 export default AddMeasurementScreen
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Fitcrafter frontend documentation</a></h2><h3>Modules</h3><ul><li><a href="module-Authentication.html">Authentication</a></li><li><a href="module-colors.html">colors</a></li><li><a href="module-Exercise.html">Exercise</a></li><li><a href="module-Measurement.html">Measurement</a></li><li><a href="module-Workout.html">Workout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Jan 16 2022 11:50:45 GMT+0100 (czas środkowoeuropejski standardowy)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

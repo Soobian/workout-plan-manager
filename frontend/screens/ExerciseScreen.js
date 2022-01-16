@@ -5,6 +5,11 @@ import { KeyboardAvoidingView, Text, Image, View } from 'react-native'
 import { ExerciseStyles } from '../components/exercise/ExerciseStyles';
 
 
+/**
+ * @module Exercise
+ * @param {route} - enables displaying proper exercise
+ * @param {navigation} - enables come back to previous screen
+ */
 const ExerciseScreen = ({route, navigation}) => {
 
     return (

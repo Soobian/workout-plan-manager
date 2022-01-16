@@ -1,4 +1,32 @@
-import React, { useEffect, useState } from 'react'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: screens/MeasurementsScreen.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: screens/MeasurementsScreen.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity,  Dimensions } from 'react-native'
 import { MeasurementsStyles } from '../components/measurements/MeasurementsStyles';
@@ -70,7 +98,7 @@ const MeasurementsScreen = ({navigation}) => {
 
     const updateMeasurements = () =>{
         measurements = [];
-        for(let i = 0; i < datesOfMeasurements.length; i++){
+        for(let i = 0; i &lt; datesOfMeasurements.length; i++){
             let element = {
                 date: datesOfMeasurements[i],
                 chest: chestMeasurements[i],
@@ -123,61 +151,84 @@ const MeasurementsScreen = ({navigation}) => {
   
 
     return (
-        <KeyboardAvoidingView 
+        &lt;KeyboardAvoidingView 
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={MeasurementsStyles.container}>
-            <View style={MeasurementsStyles.upperContainer}>
-                <Text style={MeasurementsStyles.upperContainerText}>My measurements</Text>
-            </View>
-            <ScrollView contentContainerStyle={MeasurementsStyles.scrollView}
+            &lt;View style={MeasurementsStyles.upperContainer}>
+                &lt;Text style={MeasurementsStyles.upperContainerText}>My measurements&lt;/Text>
+            &lt;/View>
+            &lt;ScrollView contentContainerStyle={MeasurementsStyles.scrollView}
             centerContent>
-            <LineChart
+            &lt;LineChart
                 data={data}
                 width={screenWidth}
                 height={220}
                 chartConfig={chartConfig}
             />
-            <View style={MeasurementsStyles.buttonContainer}>
-                <TouchableOpacity style={MeasurementsStyles.button}
+            &lt;View style={MeasurementsStyles.buttonContainer}>
+                &lt;TouchableOpacity style={MeasurementsStyles.button}
                 onPress={() => navigation.navigate('AddMeasurement')}>
-                    <Text style={MeasurementsStyles.buttonLabelText}>ADD MEASUREMENT</Text>
-                </TouchableOpacity>
-            </View>
-            <Text style={MeasurementsStyles.titleText}>History</Text>
-            <View style={MeasurementsStyles.measurementHistoryContainer}> 
+                    &lt;Text style={MeasurementsStyles.buttonLabelText}>ADD MEASUREMENT&lt;/Text>
+                &lt;/TouchableOpacity>
+            &lt;/View>
+            &lt;Text style={MeasurementsStyles.titleText}>History&lt;/Text>
+            &lt;View style={MeasurementsStyles.measurementHistoryContainer}> 
                     {measurements.map((item, index) => {
                     return(
-                        <View style={MeasurementsStyles.singleMeasurementContainer}> 
-                        <View style={MeasurementsStyles.dateContainer}> 
-                            <Text style={MeasurementsStyles.dateText}>{item.date}</Text>
-                        </View>
-                        <View style={MeasurementsStyles.measurementContainer}> 
-                            <View style={MeasurementsStyles.itemContainer}>
-                                    <Text style={MeasurementsStyles.specificText}>CHEST</Text>
-                                    <Text style={MeasurementsStyles.numbersText}>{item.chestSize}</Text>
-                            </View>
-                            <View style={MeasurementsStyles.itemContainer}>
-                                    <Text style={MeasurementsStyles.specificText}>WAIST</Text>
-                                    <Text style={MeasurementsStyles.numbersText}>{item.waistSize}</Text>
-                            </View>
-                            <View style={MeasurementsStyles.itemContainer}>
-                                    <Text style={MeasurementsStyles.specificText}>BICEPS</Text>
-                                    <Text style={MeasurementsStyles.numbersText}>{item.bicepsSize}</Text>
-                            </View>
-                            <View style={MeasurementsStyles.itemContainer}>
-                                    <Text style={MeasurementsStyles.specificText}>THIGH</Text>
-                                    <Text style={MeasurementsStyles.numbersText}>{item.thighSize}</Text>
-                            </View>
+                        &lt;View style={MeasurementsStyles.singleMeasurementContainer}> 
+                        &lt;View style={MeasurementsStyles.dateContainer}> 
+                            &lt;Text style={MeasurementsStyles.dateText}>{item.date}&lt;/Text>
+                        &lt;/View>
+                        &lt;View style={MeasurementsStyles.measurementContainer}> 
+                            &lt;View style={MeasurementsStyles.itemContainer}>
+                                    &lt;Text style={MeasurementsStyles.specificText}>CHEST&lt;/Text>
+                                    &lt;Text style={MeasurementsStyles.numbersText}>{item.chestSize}&lt;/Text>
+                            &lt;/View>
+                            &lt;View style={MeasurementsStyles.itemContainer}>
+                                    &lt;Text style={MeasurementsStyles.specificText}>WAIST&lt;/Text>
+                                    &lt;Text style={MeasurementsStyles.numbersText}>{item.waistSize}&lt;/Text>
+                            &lt;/View>
+                            &lt;View style={MeasurementsStyles.itemContainer}>
+                                    &lt;Text style={MeasurementsStyles.specificText}>BICEPS&lt;/Text>
+                                    &lt;Text style={MeasurementsStyles.numbersText}>{item.bicepsSize}&lt;/Text>
+                            &lt;/View>
+                            &lt;View style={MeasurementsStyles.itemContainer}>
+                                    &lt;Text style={MeasurementsStyles.specificText}>THIGH&lt;/Text>
+                                    &lt;Text style={MeasurementsStyles.numbersText}>{item.thighSize}&lt;/Text>
+                            &lt;/View>
             
-                        </View>
-                    </View>)
+                        &lt;/View>
+                    &lt;/View>)
                 })}
                 
-            </View>
-            </ScrollView>
+            &lt;/View>
+            &lt;/ScrollView>
             
-        </KeyboardAvoidingView>
+        &lt;/KeyboardAvoidingView>
     )
 }
 
 export default MeasurementsScreen
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Fitcrafter frontend documentation</a></h2><h3>Modules</h3><ul><li><a href="module-Authentication.html">Authentication</a></li><li><a href="module-colors.html">colors</a></li><li><a href="module-Exercise.html">Exercise</a></li><li><a href="module-Measurement.html">Measurement</a></li><li><a href="module-Workout.html">Workout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Jan 16 2022 11:50:45 GMT+0100 (czas środkowoeuropejski standardowy)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

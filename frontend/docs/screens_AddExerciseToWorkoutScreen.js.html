@@ -1,4 +1,32 @@
-import React, { useState } from 'react'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: screens/AddExerciseToWorkoutScreen.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: screens/AddExerciseToWorkoutScreen.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from 'react'
 import axios from "axios"
 import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity,  Image, Alert } from 'react-native'
 import { CheckBox } from 'react-native-elements';
@@ -40,7 +68,7 @@ const AddExerciseToWorkoutScreen = ({route, navigation}) => {
             else{
                 console.log("params: ",route.params.exe);
                 const updatedexercise = [];
-                for (let i =0; i < route.params.exe.length; ++i){
+                for (let i =0; i &lt; route.params.exe.length; ++i){
                     updatedexercise.push(route.params.exe[i]);
                 }
                 if(route.params.exerciseName != ''){
@@ -60,7 +88,7 @@ const AddExerciseToWorkoutScreen = ({route, navigation}) => {
     };
 
     const photos = [
-        'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/1076/articles/2016/10/woman-pushup-1522242407.jpg?crop=1xw:0.75xh;center,top&resize=980:*',
+        'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/1076/articles/2016/10/woman-pushup-1522242407.jpg?crop=1xw:0.75xh;center,top&amp;resize=980:*',
         'https://www.helpguide.org/wp-content/uploads/resistance-band-woman-doing-leg-workout-768.jpg',
         'https://images.medicinenet.com/images/article/main_image/stretches-for-tight-hips.jpg'
     ] ;
@@ -103,19 +131,19 @@ const AddExerciseToWorkoutScreen = ({route, navigation}) => {
     };
 
     return (
-        <KeyboardAvoidingView 
+        &lt;KeyboardAvoidingView 
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={AddWorkoutStyle.container}
         >
-            <View style={AddWorkoutStyle.upperContener}>
-                <Text style={AddWorkoutStyle.upperContenerText}>Select exercise</Text>
-            </View>
-            <View style={AddWorkoutStyle.wholeContainer}>
-                <View style={AddWorkoutStyle.labelNameContianer}>
-                    <Text style={AddWorkoutStyle.labelNameText}>Series:</Text>
-                </View>
-                <View style={AddWorkoutStyle.labelsCointeiner2}>
-                    <FloatingLabelInput
+            &lt;View style={AddWorkoutStyle.upperContener}>
+                &lt;Text style={AddWorkoutStyle.upperContenerText}>Select exercise&lt;/Text>
+            &lt;/View>
+            &lt;View style={AddWorkoutStyle.wholeContainer}>
+                &lt;View style={AddWorkoutStyle.labelNameContianer}>
+                    &lt;Text style={AddWorkoutStyle.labelNameText}>Series:&lt;/Text>
+                &lt;/View>
+                &lt;View style={AddWorkoutStyle.labelsCointeiner2}>
+                    &lt;FloatingLabelInput
                         keyboardType="numeric"
                         value={series}
                         onChangeText={text => setSeries(text)}
@@ -126,12 +154,12 @@ const AddExerciseToWorkoutScreen = ({route, navigation}) => {
                         }}
                         maxDecimalPlaces='0'
                         />
-                </View>
-                <View style={AddWorkoutStyle.labelNameContianer}>
-                    <Text style={AddWorkoutStyle.labelNameText}>Repetitions:</Text>
-                </View>
-                <View style={AddWorkoutStyle.labelsCointeiner2}>
-                    <FloatingLabelInput
+                &lt;/View>
+                &lt;View style={AddWorkoutStyle.labelNameContianer}>
+                    &lt;Text style={AddWorkoutStyle.labelNameText}>Repetitions:&lt;/Text>
+                &lt;/View>
+                &lt;View style={AddWorkoutStyle.labelsCointeiner2}>
+                    &lt;FloatingLabelInput
                         keyboardType="numeric"
                         value={repeat}
                         onChangeText={text => setRepeat(text)}
@@ -142,53 +170,76 @@ const AddExerciseToWorkoutScreen = ({route, navigation}) => {
                         }}
                         maxDecimalPlaces='0'
                         />
-                </View>
-            </View>
+                &lt;/View>
+            &lt;/View>
             
-            <Text style={AddWorkoutStyle.titleExerciseText}>Exercises:</Text>
-            <View style={AddWorkoutStyle.exercisesToSelectContainer}> 
-            <ScrollView contentContainerStyle={AddWorkoutStyle.scrollView}
+            &lt;Text style={AddWorkoutStyle.titleExerciseText}>Exercises:&lt;/Text>
+            &lt;View style={AddWorkoutStyle.exercisesToSelectContainer}> 
+            &lt;ScrollView contentContainerStyle={AddWorkoutStyle.scrollView}
             centerContent>
                     {exerciseList.map((item, index) => {
                     return(
-                        <View style={AddWorkoutStyle.containerFOrExerciseAndCheckBox}> 
-                            <View style={AddWorkoutStyle.singleExerciseWithPhotoContainer}> 
-                            <TouchableOpacity
+                        &lt;View style={AddWorkoutStyle.containerFOrExerciseAndCheckBox}> 
+                            &lt;View style={AddWorkoutStyle.singleExerciseWithPhotoContainer}> 
+                            &lt;TouchableOpacity
                             onPress={() => navigation.navigate('Exercise',{ name: item.name, description: "fuck diet", photoUrl: item.photoUrl})}>
-                                <View style={AddWorkoutStyle.rowDivisionContainerForExercise}> 
-                                <View style={AddWorkoutStyle.exerciseNameContainerS}>
-                                <Text style={AddWorkoutStyle.exercisenameText}> {item.name}</Text>
-                                </View>
-                                <View style={AddWorkoutStyle.imageContenerForExercise}>
-                                    <Image
+                                &lt;View style={AddWorkoutStyle.rowDivisionContainerForExercise}> 
+                                &lt;View style={AddWorkoutStyle.exerciseNameContainerS}>
+                                &lt;Text style={AddWorkoutStyle.exercisenameText}> {item.name}&lt;/Text>
+                                &lt;/View>
+                                &lt;View style={AddWorkoutStyle.imageContenerForExercise}>
+                                    &lt;Image
                                     style={AddWorkoutStyle.imageExercise}
                                     source={{uri: item.photoUrl}}/>
-                                </View>
-                                </View>
-                            </TouchableOpacity>
-                            </View>
-                        <View style={AddWorkoutStyle.checkboxContainer}>
-                                <CheckBox
+                                &lt;/View>
+                                &lt;/View>
+                            &lt;/TouchableOpacity>
+                            &lt;/View>
+                        &lt;View style={AddWorkoutStyle.checkboxContainer}>
+                                &lt;CheckBox
                                 center={true}
                                 checked={item.selected}
                                 onPress={() => handleSelection(index)}
                                 style={AddWorkoutStyle.checkbox}
                                 />
-                        </View>
-                        </View>
+                        &lt;/View>
+                        &lt;/View>
                         )
                 })}
-                </ScrollView>
-            </View>
+                &lt;/ScrollView>
+            &lt;/View>
             
-            <View style={AddWorkoutStyle.addButtonContainer}>
-                <TouchableOpacity style={AddWorkoutStyle.addexerciseButton}
+            &lt;View style={AddWorkoutStyle.addButtonContainer}>
+                &lt;TouchableOpacity style={AddWorkoutStyle.addexerciseButton}
                 onPress={handleAddExercise}>
-                    <Text style={AddWorkoutStyle.addexerciseButtonText}>ADD EXERCISE TO WORKOUT</Text>
-                </TouchableOpacity>
-            </View> 
-        </KeyboardAvoidingView>
+                    &lt;Text style={AddWorkoutStyle.addexerciseButtonText}>ADD EXERCISE TO WORKOUT&lt;/Text>
+                &lt;/TouchableOpacity>
+            &lt;/View> 
+        &lt;/KeyboardAvoidingView>
     )
 }
 
 export default AddExerciseToWorkoutScreen
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Fitcrafter frontend documentation</a></h2><h3>Modules</h3><ul><li><a href="module-Authentication.html">Authentication</a></li><li><a href="module-colors.html">colors</a></li><li><a href="module-Exercise.html">Exercise</a></li><li><a href="module-Measurement.html">Measurement</a></li><li><a href="module-Workout.html">Workout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Jan 16 2022 11:50:45 GMT+0100 (czas środkowoeuropejski standardowy)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
