@@ -4,7 +4,7 @@ from rest_framework.test import APITestCase, URLPatternsTestCase
 from rest_framework import status
 
 
-class ExerciseTestCase(APITestCase, URLPatternsTestCase):
+class WorkoutTestCase(APITestCase, URLPatternsTestCase):
     urlpatterns = [
         path('api/workout/', include('workout.urls')),
     ]
