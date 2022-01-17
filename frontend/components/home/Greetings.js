@@ -2,6 +2,12 @@ import React from 'react'
 import { View, Text , StyleSheet } from 'react-native'
 import { COLORS } from '../colors/Colors'
 
+/**
+ * @module Home
+ * @author Maciej Ciepał
+ * @param {name} - users name 
+ * @returns container with greetings
+ */
 const Greetings = ({ name }) => {
   return (
     <View style={styles.container}>
@@ -12,6 +18,9 @@ const Greetings = ({ name }) => {
 }
 
 const styles = StyleSheet.create({
+  /**
+   * whole page
+   */
   container: {
     flex: 0.2,
     paddingTop: 1,

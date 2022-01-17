@@ -12,6 +12,11 @@ import jwt_decode from "jwt-decode";
 import * as SecureStore from 'expo-secure-store'
 import { useIsFocused } from "@react-navigation/native";
 
+/**
+ * Home screen
+ * @module Home
+ * @author Maciej Ciepał
+ */
 
 const { height } = Dimensions.get('window');
 

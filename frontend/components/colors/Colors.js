@@ -1,3 +1,8 @@
+/**
+ * Complete color pallete of the project's front
+ * @module colors
+ * @author Paulina Gacek
+ */
 export const COLORS = {
     main_color: '#333333',
     white: '#fff',

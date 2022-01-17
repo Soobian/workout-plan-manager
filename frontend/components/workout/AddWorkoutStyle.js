@@ -1,8 +1,15 @@
 import { StyleSheet } from "react-native"
 import {COLORS} from '../colors/Colors'
-import { useNavigation } from '@react-navigation/core'
 
+/**
+ * @module Workout
+ * @author Paulina Gacek
+ * Styles for AddWorkoutScreen
+ */
 export const AddWorkoutStyle = StyleSheet.create({
+    /**
+     * whole page
+     */
     container: {
         flex: 1,
         alignItems: 'center',
@@ -15,7 +22,7 @@ export const AddWorkoutStyle = StyleSheet.create({
         alignItems: 'center',
     },
 
-    // CREATE WORKOUT button
+    /** CREATE WORKOUT button */
     buttonContainer: {
         width: '60%',
         justifyContent: 'center',
@@ -42,7 +49,8 @@ export const AddWorkoutStyle = StyleSheet.create({
         fontSize: 16,
     },
     
-    // upper blue container
+    /**
+     * upper blue container */ 
     upperContener:{
         backgroundColor: '#03767B',
         width: '103%',
@@ -67,8 +75,10 @@ export const AddWorkoutStyle = StyleSheet.create({
         alignItems: 'center',
         paddingBottom: 10,
     },
-    // input labels
-    // whole container
+    
+    /**
+     * input labels, whole container
+     */
     wholeContainer: {
         width: 180,
         alignItems: 'center',
@@ -140,12 +150,16 @@ export const AddWorkoutStyle = StyleSheet.create({
         height: '45%',
 
     },
+    /**
+     * container which enables scrolling
+     */
     scrollView: {
-        // container which enables scrolling
         width: '100%',
         alignItems: 'center',
     },
-    // container for whole exercise
+    /**
+     * container for whole exercise
+     */
     singleExerciseContainer: {
         backgroundColor: COLORS.dark_gray,
         borderColor: COLORS.midlle_gray,
@@ -184,8 +198,6 @@ export const AddWorkoutStyle = StyleSheet.create({
     repeatAndSeriesContainer: {
         width: '25%',
         height:'98%',
-        
-        
         alignItems: 'center',
         alignContent: 'center',
         backgroundColor: 'rgba(200, 200, 200, 0.1)',
@@ -202,7 +214,9 @@ export const AddWorkoutStyle = StyleSheet.create({
         left: -5,
     },
 
-    //exercise button
+    /**
+     * exercise button
+     */
     exerciseButtonContainer: {
         width: '90%',
         justifyContent: 'center',
@@ -264,7 +278,9 @@ export const AddWorkoutStyle = StyleSheet.create({
         fontWeight: '900',
     },
 
-    /*** SELECT EXERICISE SPECIFIC ***/
+    /**
+     *  SELECT EXERICISE specific container
+     **/
     exercisesToSelectContainer: {
         borderRadius: 10,
         marginBottom: 7,
@@ -412,8 +428,9 @@ export const AddWorkoutStyle = StyleSheet.create({
         color: COLORS.midlle_gray,
     },
 
-    //button 'add exercise to workout'
-
+    /**
+     * button 'add exercise to workout'
+     */
     addButtonContainer: {
         width: '90%',
         justifyContent: 'center',

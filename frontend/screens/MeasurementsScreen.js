@@ -9,6 +9,13 @@ import * as SecureStore from 'expo-secure-store'
 import { useIsFocused } from "@react-navigation/native";
 import TokenApi from '../components/authentication/TokenApi';
 
+/**
+ * Screen with graph, list of measurements and possibility to add new one
+ * @module Measurement
+ * @author Paulina Gacek
+ * @param {route} - enables displaying proper measurements
+ * @param {navigation} - enables come back to previous screen
+ */
 const MeasurementsScreen = ({navigation}) => {
     const isFocused = useIsFocused();
     const screenWidth = Dimensions.get("window").width;

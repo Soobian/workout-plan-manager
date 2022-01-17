@@ -8,6 +8,14 @@ import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
 import BaseApi from '../components/authentication/BaseApi';
 
 
+/**
+ * Screen with the possibility of adding new exercise to the workout
+ * @module Exercise
+ * @author Paulina Gacek, Maciej Ciepał
+ * @param {route} - enables displaying proper exercise and workout
+ * @param {navigation} - enables come back to previous screen
+ */
+
 const AddExerciseToWorkoutScreen = ({route, navigation}) => {
     const [selectedExercise, setSelectedExercise] = useState('')
     const [series, setSeries] = useState('')

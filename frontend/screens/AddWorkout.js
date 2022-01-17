@@ -10,6 +10,12 @@ import TokenApi from '../components/authentication/TokenApi';
 import jwt_decode from "jwt-decode";
 import * as SecureStore from 'expo-secure-store'
 
+/**
+ * @module Workout
+ * @author Paulina Gacek, Maciej Ciepał
+ * @param {route} - enables displaying proper exercise and workout
+ * @param {navigation} - enables come back to previous screen
+ */
 const AddWorkoutScreen = ({route, navigation}) => {
     const [name, setName] = useState('')
     const [workouts, setWorkouts] = useState('');

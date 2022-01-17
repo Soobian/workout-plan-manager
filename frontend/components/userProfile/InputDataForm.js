@@ -4,11 +4,18 @@ import { COLORS } from "../colors/Colors";
 import { CheckBox } from "react-native-elements";
 import { MeasurementsStyles } from '../measurements/MeasurementsStyles';
 
-const InputDataForm = ({data, setFirstName, setage , setHeight, setweight, setsex, navigation}) =>{
-
-    // TO DO:
-    // calculate age from date of birth
-
+/**
+ * @module UserProfile
+ * @param {navigation} - enables come back to previous screen
+ * @param {data} - users data
+ * @returns container for data below avatar photo
+ */
+const InputDataForm = ({data, navigation}) =>{
+    
+    const [firstName, setFirstName] = useState("random");
+    const [dateOfBirth, setdateOfBirth] = useState("");
+    const [height, setHeight] = useState("");
+    const [weight, setweight] = useState("");
     const [isWoman, setIsWoman] = useState(false)
     const formFields = [
         {label: "name", onChangeText: text => setFirstName(text)},

@@ -3,6 +3,12 @@ import React, { useEffect, useState } from 'react'
 import RegisterLoginForm from '../components/authentication/RegisterLoginForm';
 import BaseApi from '../components/authentication/BaseApi'
 
+/**
+ * Registration screen
+ * @module Authentication
+ * @author Paulina Gacek, Maciej Ciepał
+ * @param {navigation} - enables come back to previous screen
+ */
 const RegisterScreen = ({navigation}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')

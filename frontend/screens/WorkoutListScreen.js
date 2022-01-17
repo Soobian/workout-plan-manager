@@ -2,6 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, Image} from 'react-native'
 import { WorkoutListStyle } from '../components/workout/WorkoutListStyle';
 
+/**
+ * Screen with workout list
+ * @module Workout
+ * @author Paulina Gacek
+ * @param {route} - enables displaying proper workout
+ * @param {navigation} - enables come back to previous screen
+ */
 const WorkoutListScreen = ({route, navigation}) => {
     const [workoutDays, setworkoutDays] = useState([]);
 

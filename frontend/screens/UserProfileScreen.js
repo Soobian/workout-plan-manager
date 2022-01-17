@@ -11,6 +11,12 @@ import jwt_decode from "jwt-decode";
 import * as SecureStore from 'expo-secure-store'
 import { useIsFocused } from "@react-navigation/native";
 
+/**
+ * Screen with user data
+ * @module UserProfile
+ * @author Paulina Gacek
+ * @param {navigation} - enables come back to previous screen
+ */
 const UserProfileScreen = ({navigation}) => {
 
     const isFocused = useIsFocused();

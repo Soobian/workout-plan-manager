@@ -7,7 +7,13 @@ import { useIsFocused } from "@react-navigation/native";
 import * as SecureStore from 'expo-secure-store'
 import TokenApi from '../components/authentication/TokenApi';
 
-
+/**
+ * Screen with workout plan name, photo and list of workouts
+ * @module Workout
+ * @author Paulina Gacek
+ * @param {route} - enables displaying proper workout plan
+ * @param {navigation} - enables come back to previous screen
+ */
 const WorkoutPlanScreen = ({route, navigation}) => {
     
     const photos = [

@@ -3,6 +3,11 @@ import { ImageBackground, View, TouchableOpacity, Text , StyleSheet, ScrollView,
 
 const { height, width } = Dimensions.get('window');
 
+/**
+ * @author Maciej Ciepał, Paulina Gacek
+ * @module Home
+ */
+
 export const asd = [
     { name: 'item1' },
     { name: 'item2' },
@@ -15,6 +20,13 @@ export const asd = [
     { name: 'item9' },
 ]
 
+/**
+ * @module Home
+ * @author Maciej Ciepał
+ * @param {item} - enables displaying proper plan
+ * @param {navigation} - enables come back to previous screen
+ * @returns component with plan
+ */
 const Plan = ({ item, navigation }) => {
     return(
         <TouchableOpacity style={styles.imageWrapper} 
@@ -34,6 +46,11 @@ const Plan = ({ item, navigation }) => {
     )
 }
 
+/**
+ * @param {props} - enables displaying proper exercise and workout
+ * @author Maciej Ciepał
+ * @returns small plan component
+ */
 const YourPlans = ( props ) => {
     return (
         <View style={styles.container}>
@@ -47,6 +64,9 @@ const YourPlans = ( props ) => {
 }
 
 const styles = StyleSheet.create({
+    /**
+    * whole page
+    */
   container: {
     flex: 7,
     marginLeft: width * 0.02,

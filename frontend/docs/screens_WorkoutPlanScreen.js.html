@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: screens/WorkoutPlanScreen.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: screens/WorkoutPlanScreen.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useNavigation } from '@react-navigation/core'
+import React, { useEffect, useState } from 'react'
+import axios from "axios"
+import { KeyboardAvoidingView, Text, Image, View, ScrollView, TouchableOpacity } from 'react-native'
+import { WorkoutListStyle } from '../components/workout/WorkoutListStyle';
+import { useIsFocused } from "@react-navigation/native";
+import * as SecureStore from 'expo-secure-store'
+import TokenApi from '../components/authentication/TokenApi';
+
+/**
+ * Screen with workout plan name, photo and list of workouts
+ * @module Workout
+ * @author Paulina Gacek
+ * @param {route} - enables displaying proper workout plan
+ * @param {navigation} - enables come back to previous screen
+ */
+const WorkoutPlanScreen = ({route, navigation}) => {
+    
+    const photos = [
+        'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimagesvc.meredithcorp.io%2Fv3%2Fmm%2Fimage%3Furl%3Dhttps%253A%252F%252Fstatic.onecms.io%252Fwp-content%252Fuploads%252Fsites%252F35%252F2010%252F07%252F28170650%252Ffb-interval-training-workouts.jpg&amp;q=85',
+        'https://globaljabar.com/wp-content/uploads/2021/02/xbreak-workout_602724-1.jpg.pagespeed.ic_.v8byD7su-e-1.jpg',
+        'https://www.incimages.com/uploaded_files/image/1920x1080/getty_901096798_200013332000928080_415454.jpg'
+    ];
+
+    const isFocused = useIsFocused();
+    const [plans, setplans] = useState([]);
+    const planList = [
+        {name: "Plan 1 ", level: 'medium', urlPhoto: photos[0] },
+        {name: "Plan 2", level: 'medium', urlPhoto: photos[1]},
+        {name: "Plan 3", level: 'hard', urlPhoto: photos[2]},
+        {name: "Plan 4",  level: 'easy', urlPhoto: photos[1]},
+    ];
+
+    useEffect(() => {
+        if(isFocused){
+            console.log(isFocused)
+            SecureStore.getItemAsync('access_token')
+            .then((token) => {
+                console.log("access_token", token)
+                TokenApi.get(
+                    'workout/workoutplan/', 
+                    {
+                        headers: {
+                            Authorization: 'JWT ' + token,
+                        }
+                    }
+                )
+                .then(response => {
+                    console.log(response.data)
+                    setplans(response.data)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        }
+    }, [isFocused]);
+
+    return (
+        &lt;KeyboardAvoidingView 
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            style={WorkoutListStyle.container}>
+            &lt;View style={WorkoutListStyle.upperContainer}>
+                &lt;Text style={WorkoutListStyle.upperContainerText}>My workout plans&lt;/Text>
+            &lt;/View>
+            &lt;View style={WorkoutListStyle.workoutListContainer}> 
+                &lt;ScrollView contentContainerStyle={WorkoutListStyle.scrollView}
+                centerContent>
+                    {plans.map((item, index) => {
+                    return(
+                        &lt;TouchableOpacity 
+                        key={index}
+                        style={WorkoutListStyle.singleWorkoutContainer}
+                        onPress={() => navigation.navigate('WorkoutList', {name: item.name, level: item.level, photoUrl: item.photo_link, 
+                        workouts: item.workoutplanday})}>
+                            &lt;View style={WorkoutListStyle.imageContenerForExercise}>
+                            &lt;Image 
+                                style={WorkoutListStyle.imageExercise}
+                                source={{uri: item.photo_link }}/>
+                            &lt;/View>
+                            &lt;View style={WorkoutListStyle.workoutNameContainer}>
+                                &lt;Text style={WorkoutListStyle.workoutNameText}>{item.name}&lt;/Text>
+                                &lt;Text style={WorkoutListStyle.workoutLevelText}>{item.level}&lt;/Text>
+                            &lt;/View>  
+                    &lt;/TouchableOpacity>)
+                })}
+                &lt;/ScrollView>
+            &lt;/View>
+        &lt;/KeyboardAvoidingView>
+    )
+}
+
+export default WorkoutPlanScreen
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Fitcrafter frontend documentation</a></h2><h3>Modules</h3><ul><li><a href="module-Authentication.html">Authentication</a></li><li><a href="module-colors.html">colors</a></li><li><a href="module-Exercise.html">Exercise</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Measurement.html">Measurement</a></li><li><a href="module-Navigation.html">Navigation</a></li><li><a href="module-UserProfile.html">UserProfile</a></li><li><a href="module-Workout.html">Workout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Jan 16 2022 13:51:14 GMT+0100 (czas środkowoeuropejski standardowy)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

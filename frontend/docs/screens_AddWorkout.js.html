@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: screens/AddWorkout.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: screens/AddWorkout.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component , useEffect, useState } from 'react'
+import { useNavigation } from '@react-navigation/core'
+import axios from "axios"
+import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Keyboard,Image,  ImageBackground, Picker, Alert } from 'react-native'
+import { FloatingLabelInput } from 'react-native-floating-label-input';
+import { COLORS } from '../components/colors/Colors';
+import { AddWorkoutStyle } from '../components/workout/AddWorkoutStyle';
+
+/**
+ * @module Workout
+ * @author Paulina Gacek, Maciej Ciepał
+ * @param {route} - enables displaying proper exercise and workout
+ * @param {navigation} - enables come back to previous screen
+ */
+const AddWorkoutScreen = ({route, navigation}) => {
+    const [name, setName] = useState('')
+    const [selectedLevel, setSelectedLevel] = useState("easy");
+    const [workouts, setWorkouts] = useState('');
+
+    updated = new Boolean (false);
+
+    const updateExerciseList = () => {
+        if(typeof route.params === 'undefined'){
+            console.log("undefined");
+        }
+        else{
+            console.log("newExercise");
+            if(route.params.exe[0].name != ''){
+                exercises = route.params.exe;
+                console.log(exercises);
+            }
+        } 
+    };
+
+    const defaultPhoto = 'https://globaljabar.com/wp-content/uploads/2021/02/xbreak-workout_602724-1.jpg.pagespeed.ic_.v8byD7su-e-1.jpg';
+
+    const handleAddWorkout = () => {
+        if(name == ''){
+            console.log('workout name was not provided');
+            Alert.alert('Ops!','workout name was not provided',[
+                {text: 'Understood', onPress: () => console.log('alert closed')}
+            ]);
+            }
+        else if(exercises.length == 0){
+            console.log('workout name was not provided');
+            Alert.alert('Ops!','exercise list is empty',[
+                {text: 'Understood', onPress: () => console.log('alert closed')}
+            ]);
+        }
+        else{
+            console.log("---WORKOUTS----", route.params.workouts);
+            const workout = {
+                name: name, level: selectedLevel, urlPhoto: defaultPhoto,
+                exerciseList: exercises
+            };
+            console.log(workout);
+            navigation.navigate('Workout');
+        }
+    };
+
+    const  handleAddExercise = () => {
+        updated = false;
+        console.log("exercise data base not up to date");
+        navigation.navigate('AddExerciseToWorkout', {exe: exercises} );
+    };
+
+    // select workout level
+    const level = [
+        {value: 1, label: 'easy'},
+        {value: 2, label: 'medium'},
+        {value: 3, label: 'hard'},
+        {value: 4, label: 'killer'},
+    ];
+
+    // all tables for select windows
+    const tables = [
+        {name: 'LEVEL', table: level, set: setSelectedLevel, save: selectedLevel},
+    ];
+
+    const photos = [
+        'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/1076/articles/2016/10/woman-pushup-1522242407.jpg?crop=1xw:0.75xh;center,top&amp;resize=980:*',
+        'https://www.helpguide.org/wp-content/uploads/resistance-band-woman-doing-leg-workout-768.jpg',
+        'https://images.medicinenet.com/images/article/main_image/stretches-for-tight-hips.jpg'
+    ] ;
+
+    //added exercises
+    exercises = [
+        //{id: 0, urlPhoto: photos[0] ,name: 'push up', repeat: 10, series: 3},
+        //{id: 1, urlPhoto: photos[1] ,name: 'sth else', repeat: 20, series: 5},
+        //{id: 2, urlPhoto: photos[2] ,name: 'have no idea', repeat: 10, series: 5},
+    ];
+
+    return (
+        &lt;KeyboardAvoidingView 
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            style={AddWorkoutStyle.container}
+        >
+            &lt;View style={AddWorkoutStyle.upperContener}>
+                &lt;Text style={AddWorkoutStyle.upperContenerText}>Create workout&lt;/Text>
+            &lt;/View>
+            &lt;TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                &lt;View style={AddWorkoutStyle.untouchableContainer}>
+                &lt;View style={AddWorkoutStyle.labelsCointeiner}>
+                    &lt;FloatingLabelInput
+                    value={name}
+                    label='Workout name'
+                    onChangeText={text => setName(text)}
+                    containerStyles={AddWorkoutStyle.floatingLabelInputContainerStyle}
+                    customLabelStyles={{
+                        colorFocused: COLORS.midlle_gray,
+                        fontSizeFocused: 10,
+                        }}/>
+                &lt;/View>
+            
+            {tables.map((item, index) => {
+                {if(updated==false){
+                    console.log("UPDATE...");
+                    updateExerciseList();
+                    updated = true;}}
+                return (
+                &lt;View style={AddWorkoutStyle.wholeContainer}>
+                    &lt;View style={AddWorkoutStyle.labelForPickerContainer}>
+                        &lt;Text style={AddWorkoutStyle.labelForPickerContainerText}>
+                        {item.name}:
+                        &lt;/Text>
+                    &lt;/View>
+                    &lt;View style={AddWorkoutStyle.pickerContainer}>
+                        &lt;Picker
+                            selectedValue={item.save}
+                            style={AddWorkoutStyle.pickerText}
+                            onValueChange={(itemValue, itemIndex) => item.set(itemValue)}
+                            mode='dropdown'
+                        >
+                            {item.table.map((subitem, subindex) => {
+                                return (
+                                    &lt;Picker.Item label={subitem.label} value={subitem.value} />
+                                    )
+                                })}
+                        &lt;/Picker>
+                    &lt;/View>
+                &lt;/View>
+                )
+            })}
+            
+            &lt;/View>
+            &lt;/TouchableWithoutFeedback>
+            &lt;Text style={AddWorkoutStyle.titleText}>    Exercises:              Repetitions:   Series:&lt;/Text>
+            &lt;View style={AddWorkoutStyle.addedExercisesContainer}> 
+            &lt;ScrollView contentContainerStyle={AddWorkoutStyle.scrollView}
+            centerContent>
+                    {exercises.map((item, index) => {
+                    return(
+                        &lt;View style={AddWorkoutStyle.singleExerciseContainer}> 
+                        &lt;View style={AddWorkoutStyle.rowDivisionContainer}> 
+                            &lt;View style={AddWorkoutStyle.exerciseNameContainer}>
+                            &lt;View style={AddWorkoutStyle.imageContenerAddWorkout}>
+                                    &lt;Image
+                                    style={AddWorkoutStyle.imageAddWorkout}
+                                    source={{uri: item.urlPhoto}}/>
+                                &lt;/View>
+                                &lt;View style={AddWorkoutStyle.workoutNameContainer}>
+                                &lt;Text style={AddWorkoutStyle.workoutNameText}> {item.name}&lt;/Text>
+                                &lt;/View>
+                                
+                            &lt;/View>
+                            &lt;View style={AddWorkoutStyle.repeatAndSeriesContainer}>
+                                &lt;Text style={AddWorkoutStyle.numberText}> {item.repeat}&lt;/Text>
+                            &lt;/View>
+                            &lt;View style={AddWorkoutStyle.repeatAndSeriesContainer}>
+                                &lt;Text style={AddWorkoutStyle.numberText}> {item.series}&lt;/Text>
+                            &lt;/View>
+                        &lt;/View>
+                    &lt;/View>)
+                })}
+                &lt;View style={AddWorkoutStyle.exerciseButtonContainer}>
+                    &lt;TouchableOpacity style={AddWorkoutStyle.exerciseButton}
+                    onPress={handleAddExercise}>
+                        &lt;Text style={AddWorkoutStyle.exerciseButtonText}>ADD EXERCISE&lt;/Text>
+                    &lt;/TouchableOpacity>
+                &lt;/View> 
+                &lt;/ScrollView>
+            &lt;/View>
+            &lt;View style={AddWorkoutStyle.buttonContainer}>
+                &lt;TouchableOpacity style={AddWorkoutStyle.button}
+                onPress={handleAddWorkout}>
+                    &lt;Text style={AddWorkoutStyle.buttonText}>CREATE WORKOUT&lt;/Text>
+                &lt;/TouchableOpacity>
+            &lt;/View> 
+        &lt;/KeyboardAvoidingView>
+    )
+}
+
+export default AddWorkoutScreen
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Fitcrafter frontend documentation</a></h2><h3>Modules</h3><ul><li><a href="module-Authentication.html">Authentication</a></li><li><a href="module-colors.html">colors</a></li><li><a href="module-Exercise.html">Exercise</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Measurement.html">Measurement</a></li><li><a href="module-Navigation.html">Navigation</a></li><li><a href="module-UserProfile.html">UserProfile</a></li><li><a href="module-Workout.html">Workout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Jan 16 2022 13:51:14 GMT+0100 (czas środkowoeuropejski standardowy)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

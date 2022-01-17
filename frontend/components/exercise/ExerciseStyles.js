@@ -1,17 +1,26 @@
 import { StyleSheet } from "react-native"
 import {COLORS} from '../colors/Colors'
 
+/**
+ * Styles for ExerciseScreen and ExerciseListScreen
+ * @module Exercise
+ * @author Paulina Gacek
+ */
 export const ExerciseStyles = StyleSheet.create({
+    /**
+     * whole page for both ExerciseScreen and ExerciseListScreen
+     */
     container: {
-        // whole page for both ExerciseScreen and ExerciseListScreen
         flex: 1,
         alignItems: 'center',
         backgroundColor: COLORS.dark_gray
     },
 
-    // Styles specific to ExerciseScreen:
+    /**
+     * Styles specific to ExerciseScreen:
+     * descrition of the exercise in ExerciseScreen
+     **/ 
     descriptionContener:{
-        // descrition of the exercise in ExerciseScreen
         width: "103%",
         height: "40%",
         fontSize: 16,
@@ -19,20 +28,28 @@ export const ExerciseStyles = StyleSheet.create({
         paddingHorizontal: 10,
         top: -10,
     },
+    /**
+     * Styles specific to ExerciseScreen:
+     * descrition text of the exercise in ExerciseScreen
+     **/ 
     descriptionText: {
-        // descrition text of the exercise in ExerciseScreen
         color: COLORS.white,
         fontSize: 15,
         paddingRight: 20,
         paddingLeft:22,
         paddingTop: 20
     },
+    /**
+     * huge background image in ExerciseScreen
+     **/ 
     image:{
-        // huge background image
         width: "105%",
         height: "105%",
         left: -10
     },
+    /**
+     * huge background image in ExerciseScreen
+     **/ 
     imageContener: {
         width: "103%",
         height: "40%",
@@ -40,8 +57,10 @@ export const ExerciseStyles = StyleSheet.create({
         paddingHorizontal: 10,
         
     },
+    /**
+     * container for exercise name in ExerciseScreen
+     **/ 
     nameContener: {
-        // container for exercise name in ExerciseScreen
         backgroundColor: COLORS.dark_gray,
         width: "100%",
         height: "9%",
@@ -49,8 +68,10 @@ export const ExerciseStyles = StyleSheet.create({
         borderRadius: 17,
         top: -20
     },
+    /**
+     * container for exercise name in ExerciseScreen
+     **/ 
     nameText: {
-        // exercise name 
         color: COLORS.white,
         fontWeight: '700',
         fontSize: 28,
@@ -61,8 +82,10 @@ export const ExerciseStyles = StyleSheet.create({
         left: 25,
         paddingTop: 17,
     },
+    /**
+     * container for "Exercise" title in ExerciseScreen
+     **/ 
     exerciseContainer: {
-        // container for "Exercise" title
         color: COLORS.blue,
         backgroundColor: COLORS.blue,
         width: "100%",
@@ -70,8 +93,10 @@ export const ExerciseStyles = StyleSheet.create({
         fontSize: 16,
         borderRadius: 17,
     },
+    /**
+     * "Exercise" title at the top of page in ExerciseScreen
+     **/ 
     exerciseText: {
-        // "Exercise" title at the top of page
         color: COLORS.white,
         fontWeight: '700',
         fontSize: 28,
@@ -82,12 +107,16 @@ export const ExerciseStyles = StyleSheet.create({
 
     // Exercise list components:
 
+    /**
+     * container which enables scrolling in ExerciseList
+     */
     scrollView: {
-        // container which enables scrolling
         width: "150%",
     },
+    /**
+     * button with exercise name displayed
+     */
     exerciseItemContainer: {
-        // button with exercise name displayed
         backgroundColor: COLORS.midlle_gray,
         width: 300,
         height: 45,
@@ -97,23 +126,28 @@ export const ExerciseStyles = StyleSheet.create({
         justifyContent: "center",
         marginTop: 15
     },
+    /**
+     * text displayed on above button
+     */
     exerciseItemContainerText: {
-        // text displayed on above button
         color: COLORS.white,
         fontWeight: "700",
         fontSize: 20,
     },
 
-    // workout specific
+    /**
+     * workout specific container which enables scrolling
+     */
     scrollViewWorkout: {
-        // container which enables scrolling
         width: "100%",
         marginBottom: 20,
         height: 300,
         top: -25
     },
+    /**
+     * workout specific container for exercise name in ExerciseScreen
+     */
     workoutnameContener: {
-        // container for exercise name in ExerciseScreen
         backgroundColor: COLORS.dark_gray,
         width: "100%",
         height: "9%",
@@ -121,6 +155,9 @@ export const ExerciseStyles = StyleSheet.create({
         borderRadius: 17,
         top: -20
     },
+    /**
+     * workout specific container for exercise name in ExerciseScreen
+     */
     workoutDetailsContainer : {
         // descrition of the exercise in ExerciseScreen
         width: "103%",
@@ -130,6 +167,9 @@ export const ExerciseStyles = StyleSheet.create({
         paddingHorizontal: 10,
         top: -10,
     },
+    /**
+     * workout specific container for exercise name in ExerciseScreen
+     */
     workoutDetailsText: {
         color: 'white',
         fontWeight: '700',
@@ -137,15 +177,19 @@ export const ExerciseStyles = StyleSheet.create({
         paddingLeft:33,
         paddingTop: 20,
     },
+    /**
+     * workout specific row division container for exercise, repeat and series labels
+     */
     workoutDetailsRowDivision: {
-        // row division container for exercise, repeat and series labels
         flexDirection: "row" ,
         justifyContent: "flex-end",
         width: "80%",
         left: 30,
     },
+    /**
+     * workout specific exercise container with photo, repeat and series number
+     */
     singleExerciseContainer: {
-        // exercise container with photo, repeat and series number
         backgroundColor: COLORS.dark_gray,
         borderColor: COLORS.midlle_gray,
         borderWidth: 1,
@@ -164,6 +208,9 @@ export const ExerciseStyles = StyleSheet.create({
         left: 30,
         marginTop: 10
     },
+    /**
+     * workout specific container for row division
+     */
     rowDivisionContainer: {
         width: "100%",
         height: "100%",
@@ -171,8 +218,10 @@ export const ExerciseStyles = StyleSheet.create({
         flexDirection: "row" ,
         justifyContent: "space-evenly",
     },
+    /**
+     * workout specific translucent container with exercise name
+     */
     exerciseNameContainer: {
-        // translucent container with exercise name
         backgroundColor: COLORS.blue,
         width: "50%",
         height: "100%",
@@ -180,8 +229,10 @@ export const ExerciseStyles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+    /**
+     * workout specific numbers container
+     */
     repeatAndSeriesContainer: {
-        // numbers container
         width: '25%',
         height:'98%',
         alignItems: "center",
@@ -195,8 +246,10 @@ export const ExerciseStyles = StyleSheet.create({
         marginTop: 25,
         left: -5,
     },
+    /**
+     * workout specific container for image in workoutScreen
+     */
     imageContenerAddWorkout: {
-        //in workoutScreen
         backgroundColor: COLORS.dark_gray,
         width: "100%",
         height: "100%",
@@ -204,6 +257,9 @@ export const ExerciseStyles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+    /**
+     * workout specific container for image in workoutScreen
+     */
     imageAddWorkout: {
         backgroundColor: COLORS.dark_gray,
         borderRadius: 8,
@@ -212,6 +268,9 @@ export const ExerciseStyles = StyleSheet.create({
         height: "100%",
         width: "100%",
     },
+    /**
+     * workout specific container for name
+     */
     workoutNameContainer: {
         backgroundColor: "rgba(0, 0, 0, 0.5)",
         position: "absolute", top: 0, left: 0, right: 0, bottom: 0, 
@@ -220,6 +279,9 @@ export const ExerciseStyles = StyleSheet.create({
         height: "100%",
         borderRadius: 8
     },
+    /**
+     * workout specific container for name
+     */
     workoutNameText: {
         color: COLORS.white,
         fontSize: 20,

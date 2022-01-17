@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: screens/WorkoutScreen.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: screens/WorkoutScreen.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useNavigation } from '@react-navigation/core'
+import React, { useEffect, useState } from 'react'
+import { KeyboardAvoidingView, Text, Image, View , ScrollView, TouchableOpacity} from 'react-native'
+import { ExerciseStyles } from '../components/exercise/ExerciseStyles';
+
+/**
+ * Screen with workout name, photo and description
+ * @module Workout
+ * @author Paulina Gacek
+ * @param {route} - enables displaying proper workout
+ * @param {navigation} - enables come back to previous screen
+ */
+const WorkoutScreen = ({route, navigation}) => {
+    return (
+        &lt;KeyboardAvoidingView 
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            style={ExerciseStyles.container}>
+                
+            &lt;View style={ExerciseStyles.imageContener}>
+                &lt;Image
+                style={ExerciseStyles.image}
+                source={{
+                    uri: route.params.photoUrl}}/>
+            &lt;/View>
+
+            &lt;View style={ExerciseStyles.workoutnameContener}>
+                &lt;Text style={ExerciseStyles.nameText}>
+                    {route.params.name}
+                &lt;/Text>
+            &lt;/View>
+            
+            &lt;ScrollView style={ExerciseStyles.scrollViewWorkout}>
+                &lt;View style={ExerciseStyles.workoutDetailsRowDivision}>
+                    &lt;Text style={ExerciseStyles.workoutDetailsText}>
+                        Exercises:
+                    &lt;/Text>
+                    &lt;Text style={ExerciseStyles.workoutDetailsText}>
+                        Repeat:
+                    &lt;/Text>
+                    &lt;Text style={ExerciseStyles.workoutDetailsText}>
+                        Series:
+                    &lt;/Text>
+                &lt;/View>
+                
+                {route.params.exercises.map((item, index) => {
+                    console.log('../././' + JSON.stringify(item, null, 4))
+                    return(
+                        &lt;View style={ExerciseStyles.singleExerciseContainer} key={index}> 
+                            &lt;View style={ExerciseStyles.rowDivisionContainer}> 
+                                &lt;TouchableOpacity style={ExerciseStyles.exerciseNameContainer}
+                                onPress={() => navigation.navigate('Exercise', { name: item.name, description: "fuck diet", photoUrl: item.photoUrl})}>
+                                &lt;View style={ExerciseStyles.imageContenerAddWorkout}>
+                                        &lt;Image
+                                        style={ExerciseStyles.imageAddWorkout}
+                                        source={{uri: item.exercise_photo}}/>
+                                    &lt;/View>
+                                    &lt;View style={ExerciseStyles.workoutNameContainer}>
+                                    &lt;Text style={ExerciseStyles.workoutNameText}> {item.execise_name}&lt;/Text>
+                                    &lt;/View>
+                                    
+                                &lt;/TouchableOpacity>
+                                &lt;View style={ExerciseStyles.repeatAndSeriesContainer}>
+                                    &lt;Text style={ExerciseStyles.numberText}> {item.workoutplanexercisessets[0].reps}&lt;/Text>
+                                &lt;/View>
+                                &lt;View style={ExerciseStyles.repeatAndSeriesContainer}>
+                                    &lt;Text style={ExerciseStyles.numberText}> {item.workoutplanexercisessets[0].series}&lt;/Text>
+                                &lt;/View>
+                            &lt;/View>
+                        &lt;/View>
+                    )})}
+            &lt;/ScrollView>
+        &lt;/KeyboardAvoidingView>
+    )
+}
+
+export default WorkoutScreen</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Fitcrafter frontend documentation</a></h2><h3>Modules</h3><ul><li><a href="module-Authentication.html">Authentication</a></li><li><a href="module-colors.html">colors</a></li><li><a href="module-Exercise.html">Exercise</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Measurement.html">Measurement</a></li><li><a href="module-Navigation.html">Navigation</a></li><li><a href="module-UserProfile.html">UserProfile</a></li><li><a href="module-Workout.html">Workout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Jan 16 2022 13:51:14 GMT+0100 (czas środkowoeuropejski standardowy)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
