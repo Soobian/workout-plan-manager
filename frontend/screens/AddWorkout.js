@@ -12,7 +12,6 @@ import * as SecureStore from 'expo-secure-store'
 
 const AddWorkoutScreen = ({route, navigation}) => {
     const [name, setName] = useState('')
-    const [selectedLevel, setSelectedLevel] = useState("easy");
     const [workouts, setWorkouts] = useState('');
     const [exercises, setexercises] = useState([])
 
@@ -126,17 +125,6 @@ const AddWorkoutScreen = ({route, navigation}) => {
         navigation.navigate('AddExerciseToWorkout', {workoutPlanId: route.params.workoutPlanId, exercises: exercises} );
     };
 
-    // select workout level
-    const level = [
-        {value: 1, label: 'easy'},
-        {value: 2, label: 'medium'},
-        {value: 3, label: 'hard'},
-    ];
-
-    // all tables for select windows
-    const tables = [
-        {name: 'LEVEL', table: level, set: setSelectedLevel, save: selectedLevel},
-    ];
 
     return (
         <KeyboardAvoidingView 
@@ -159,31 +147,6 @@ const AddWorkoutScreen = ({route, navigation}) => {
                         fontSizeFocused: 10,
                     }}/>
                 </View>
-            {tables.map((item, index) => {
-                return (
-                <View style={AddWorkoutStyle.wholeContainer}>
-                    <View style={AddWorkoutStyle.labelForPickerContainer}>
-                        <Text style={AddWorkoutStyle.labelForPickerContainerText}>
-                        {item.name}:
-                        </Text>
-                    </View>
-                    <View style={AddWorkoutStyle.pickerContainer}>
-                        <Picker
-                            selectedValue={item.save}
-                            style={AddWorkoutStyle.pickerText}
-                            onValueChange={(itemValue, itemIndex) => item.set(itemValue)}
-                            mode='dropdown'
-                        >
-                            {item.table.map((subitem, subindex) => {
-                                return (
-                                    <Picker.Item label={subitem.label} value={subitem.value} />
-                                    )
-                                })}
-                        </Picker>
-                    </View>
-                </View>
-                )
-            })}
             </View>
             </TouchableWithoutFeedback>
             <Text style={AddWorkoutStyle.titleText}>    Exercises:              Repetitions:   Series:</Text>

@@ -74,6 +74,12 @@ const WorkoutPlanScreen = ({route, navigation}) => {
                 })}
                 </ScrollView>
             </View>
+            <View style={WorkoutListStyle.buttonContainer}>
+                <TouchableOpacity style={WorkoutListStyle.button}
+                    onPress={() => navigation.navigate('AddWorkoutPlan')}>
+                    <Text style={WorkoutListStyle.buttonLabelText}>CREATE WORKOUT PLAN</Text>
+                </TouchableOpacity>
+            </View>
         </KeyboardAvoidingView>
     )
 }
