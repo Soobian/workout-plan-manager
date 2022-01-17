@@ -14,7 +14,6 @@ const WorkoutListScreen = ({route, navigation}) => {
 
     useEffect(() => {
         setworkoutDays(route.params.workouts)
-        console.log('....' + workoutDays)
     }, []);
 
     return (
@@ -29,12 +28,11 @@ const WorkoutListScreen = ({route, navigation}) => {
                 <ScrollView contentContainerStyle={WorkoutListStyle.scrollView}
                 centerContent>
                     {workoutDays.map((item, index) => {
-                    console.log('../..' + JSON.stringify(item.workoutplanexercises, null, 4))
                     return(
                         <TouchableOpacity 
                         key={index}
                         style={WorkoutListStyle.singleWorkoutContainer}
-                        onPress={() => navigation.navigate('Work', {name: item.name, description: item.description, 
+                        onPress={() => navigation.navigate('Work', {id: item.id, name: item.name, description: item.description, 
                             exercises: item.workoutplanexercises, photoUrl: route.params.photoUrl})}>
                             <View style={WorkoutListStyle.imageContenerForExercise}>
                             <Image 
@@ -52,11 +50,11 @@ const WorkoutListScreen = ({route, navigation}) => {
                 
             </View>
             <View style={WorkoutListStyle.buttonContainer}>
-                    <TouchableOpacity style={WorkoutListStyle.button}
-                onPress={() => navigation.navigate('AddWorkout')}>
+                <TouchableOpacity style={WorkoutListStyle.button}
+                    onPress={() => navigation.navigate('AddWorkout', {workoutPlanId: route.params.id, exercises: undefined})}>
                     <Text style={WorkoutListStyle.buttonLabelText}>CREATE WORKOUT</Text>
-                    </TouchableOpacity>
-                    </View>
+                </TouchableOpacity>
+            </View>
         </KeyboardAvoidingView>
     )
 }

@@ -24,19 +24,12 @@ const WorkoutPlanScreen = ({route, navigation}) => {
 
     const isFocused = useIsFocused();
     const [plans, setplans] = useState([]);
-    const planList = [
-        {name: "Plan 1 ", level: 'medium', urlPhoto: photos[0] },
-        {name: "Plan 2", level: 'medium', urlPhoto: photos[1]},
-        {name: "Plan 3", level: 'hard', urlPhoto: photos[2]},
-        {name: "Plan 4",  level: 'easy', urlPhoto: photos[1]},
-    ];
+
 
     useEffect(() => {
         if(isFocused){
-            console.log(isFocused)
             SecureStore.getItemAsync('access_token')
             .then((token) => {
-                console.log("access_token", token)
                 TokenApi.get(
                     'workout/workoutplan/', 
                     {
@@ -46,7 +39,6 @@ const WorkoutPlanScreen = ({route, navigation}) => {
                     }
                 )
                 .then(response => {
-                    console.log(response.data)
                     setplans(response.data)
                 })
                 .catch(error => {
@@ -74,7 +66,7 @@ const WorkoutPlanScreen = ({route, navigation}) => {
                         <TouchableOpacity 
                         key={index}
                         style={WorkoutListStyle.singleWorkoutContainer}
-                        onPress={() => navigation.navigate('WorkoutList', {name: item.name, level: item.level, photoUrl: item.photo_link, 
+                        onPress={() => navigation.navigate('WorkoutList', {id: item.id, name: item.name, level: item.level, photoUrl: item.photo_link, 
                         workouts: item.workoutplanday})}>
                             <View style={WorkoutListStyle.imageContenerForExercise}>
                             <Image 
@@ -88,6 +80,12 @@ const WorkoutPlanScreen = ({route, navigation}) => {
                     </TouchableOpacity>)
                 })}
                 </ScrollView>
+            </View>
+            <View style={WorkoutListStyle.buttonContainer}>
+                <TouchableOpacity style={WorkoutListStyle.button}
+                    onPress={() => navigation.navigate('AddWorkoutPlan')}>
+                    <Text style={WorkoutListStyle.buttonLabelText}>CREATE WORKOUT PLAN</Text>
+                </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>
     )

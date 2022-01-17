@@ -49,7 +49,7 @@ class WorkoutPlanDayExercise(models.Model):
     exerciseId = models.ForeignKey(Exercise, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return self.workoutPlanDayId + self.exerciseId
+        return str(self.workoutPlanDayId) + str(self.exerciseId)
 
 
 class WorkoutPlanDayExerciseSets(models.Model):
@@ -58,4 +58,4 @@ class WorkoutPlanDayExerciseSets(models.Model):
     series = models.IntegerField(blank=False, null=False, default=5)
 
     def __str__(self) -> str:
-        return self.name
+        return self.workoutPlanDayExerciseId

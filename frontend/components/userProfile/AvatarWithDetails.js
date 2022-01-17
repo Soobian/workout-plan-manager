@@ -20,11 +20,11 @@ const AvatarWithDetails = ({data, navigation}) =>{
                 <View style={styles.imageContainer}>
                     <Image 
                     style={styles.image}
-                    source={ data.sex == "w" ?
+                    source={ sex == "Woman" ?
                         {uri: womanAvatar} : {uri: manAvatar}}/>
                 </View>
-                <Text style={styles.nameText}>{data.name}</Text>
-                <Text style={styles.emailText}>{data.email}</Text>
+                <Text style={styles.nameText}>{firstname}</Text>
+                <Text style={styles.emailText}>{firstname}</Text>
             </View>
     )
 }

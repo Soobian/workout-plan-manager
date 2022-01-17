@@ -28,12 +28,10 @@ export const asd = [
  * @returns component with plan
  */
 const Plan = ({ item, navigation }) => {
-    useEffect(() => {
-        console.log(item)
-    })
     return(
-        <TouchableOpacity style={styles.imageWrapper} onPress={() => navigation.navigate('Work', {name: item.name, level: item.level, photoUrl: item.photo_link, 
-            exercises: item.workout})}>
+        <TouchableOpacity style={styles.imageWrapper} 
+        onPress={() => navigation.navigate('WorkoutList', {name: item.name, level: item.level, photoUrl: item.photo_link, workouts: item.workoutplanday})}
+        >
             <ImageBackground 
                 source={{uri: item.photo_link }} 
                 resizeMode="cover" 
