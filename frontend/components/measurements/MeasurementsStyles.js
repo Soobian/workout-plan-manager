@@ -1,20 +1,29 @@
 import { StyleSheet } from "react-native"
 import {COLORS} from '../colors/Colors'
 
+/**
+ * @module Measurement
+ * @author Paulina Gacek
+ */
 export const MeasurementsStyles = StyleSheet.create({
+    /**
+     * whole page
+     */
     container: {
-        // whole page
         flex: 1,
         alignItems: 'center',
         backgroundColor: COLORS.white,
     },
+    /**
+     * container which enables scrolling
+     */
     scrollView: {
-        // container which enables scrolling
         width: '100%',
         alignItems: 'center',
-        //height: '80%',
     },
-    
+    /**
+     * upper blue container with page title
+     */
     upperContainer: {
         color: '#03767B',
         backgroundColor: '#03767B',
@@ -25,7 +34,9 @@ export const MeasurementsStyles = StyleSheet.create({
         padding: 10,
         top: 0,
     },
-
+    /**
+     * text in upper blue container with page title
+     */
     upperContainerText: {
         color: 'white',
         fontWeight: '700',
@@ -54,7 +65,9 @@ export const MeasurementsStyles = StyleSheet.create({
         paddingVertical: 5
     },
 
-    // title for measurements: weight, ...
+    /**
+     * title for measurements: weight, ...
+     */ 
     titleText: {
         color: COLORS.blue,
         fontWeight: '900',

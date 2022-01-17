@@ -1,7 +1,17 @@
+"""
+Klasa reprezentująca utworzoną tabelę w bazie danych z odpowiednimi atrybutami
+
+- Measurement Tabela zawierająca informacje na temat wymiarów użytkownika
+
+@author Maciej Ciepał
+
+"""
 from django.db import models
 from users.models import CustomUser
 
 # Create your models here.
+
+
 class Measurement(models.Model):
 
     userId = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='measurements')

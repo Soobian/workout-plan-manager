@@ -2,6 +2,14 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { COLORS } from '../colors/Colors';
 
+/**
+ * @module Home
+ * @author Maciej Ciepał
+ */
+
+/**
+ * Array with weekdays names in full and abbreviated form
+ */
 export const weekDays = [
   {
     fullname: 'Sunday',
@@ -35,6 +43,10 @@ export const weekDays = [
 
 const currentDay = new Date().getDay();
 
+/**
+ * @param {days} - week days to include
+ * @returns small vertical calendar
+ */
 const SmallCalendar = ({ days }) => {
   const Day = ({ day, index }) => (
     <View style={index == currentDay ? styles.activeday : styles.inactiveday}>
@@ -52,6 +64,9 @@ const SmallCalendar = ({ days }) => {
 }
 
 const styles = StyleSheet.create({
+  /**
+   * whole page
+   */
   container : {
     flex: 1,
     flexDirection: 'column',

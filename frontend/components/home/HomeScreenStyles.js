@@ -1,9 +1,16 @@
 import { StyleSheet } from "react-native"
 import {COLORS} from '../colors/Colors'
 
+/**
+ * Styles for HomeScreen
+ * @module Home
+ * @author Paulina Gacek
+ */
 export const HomeScreenStyles = StyleSheet.create({
+    /**
+    * whole page
+    */
     container: {
-        //whole page
         backgroundColor: COLORS.white,
         flex: 1,
     },
@@ -25,6 +32,9 @@ export const HomeScreenStyles = StyleSheet.create({
         fontSize: 17,
         paddingLeft: 4,
     },
+    /**
+     * upper blue container with page title
+     */
     upperContainer: {
         backgroundColor: COLORS.blue,
         width: '102%',

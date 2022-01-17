@@ -2,8 +2,16 @@ import React from "react"
 import { Text, View, StyleSheet, Image} from "react-native"
 import { COLORS } from "../colors/Colors";
 
+/**
+ * @module UserProfile
+ * @param {data} - users data
+ * @param {navigation} - enables come back to previous screen
+ */
 const AvatarWithDetails = ({data, navigation}) =>{
-    // avatars: https://www.iconfinder.com/icons/2754576/woman_female_avatar_icon
+    
+    /**
+     * Links to images with avatars for both sexes
+     */
     const womanAvatar = "https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/11_avatar-512.png";
     const manAvatar = "https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/8_avatar-512.png";
 
@@ -12,18 +20,22 @@ const AvatarWithDetails = ({data, navigation}) =>{
                 <View style={styles.imageContainer}>
                     <Image 
                     style={styles.image}
-                    source={ data.sex == "w" ?
+                    source={ sex == "Woman" ?
                         {uri: womanAvatar} : {uri: manAvatar}}/>
                 </View>
-                <Text style={styles.nameText}>{data.name}</Text>
-                <Text style={styles.emailText}>{data.email}</Text>
+                <Text style={styles.nameText}>{firstname}</Text>
+                <Text style={styles.emailText}>{firstname}</Text>
             </View>
     )
 }
 
 export default AvatarWithDetails;
 
+
 const styles = StyleSheet.create({
+    /**
+     * upper blue container with page title
+     */
     upperContainer: {
         backgroundColor: COLORS.blue,
         width: '100%',

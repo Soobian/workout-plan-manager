@@ -1,6 +1,17 @@
+"""
+Plik zawiera zbiór serializatorów modeli bazy danych
+
+- CustomUserSerializer:   Serializator użykowników
+- UserParametersSerializer:  Serializator dla parametrów użytkownika
+
+@author Aneta Postrożny, Maciej Ciepał
+
+"""
 from rest_framework import serializers
 from users.models import CustomUser
 from .models import UserParameters
+
+
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
@@ -25,4 +36,4 @@ class CustomUserSerializer(serializers.ModelSerializer):
 class UserParametersSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserParameters
-        fields = ['user', 'firstname', 'height', 'weight', 'sex', 'age']
+        fields = ('user', 'firstname', 'height', 'weight', 'sex', 'age')

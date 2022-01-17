@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: screens/MeasurementsScreen.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: screens/MeasurementsScreen.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useEffect, useState } from 'react'
+import axios from "axios"
+import { KeyboardAvoidingView, Text, View, ScrollView, TouchableOpacity,  Dimensions } from 'react-native'
+import { MeasurementsStyles } from '../components/measurements/MeasurementsStyles';
+import { LineChart} from 'react-native-chart-kit';
+import { COLORS } from '../components/colors/Colors';
+import jwt_decode from "jwt-decode";
+import * as SecureStore from 'expo-secure-store'
+import { useIsFocused } from "@react-navigation/native";
+import TokenApi from '../components/authentication/TokenApi';
+
+/**
+ * Screen with graph, list of measurements and possibility to add new one
+ * @module Measurement
+ * @author Paulina Gacek
+ * @param {route} - enables displaying proper measurements
+ * @param {navigation} - enables come back to previous screen
+ */
+const MeasurementsScreen = ({navigation}) => {
+    const isFocused = useIsFocused();
+    const screenWidth = Dimensions.get("window").width;
+    const screenHeight = Dimensions.get("window").height;
+    const datesOfMeasurements = ["30.01","03.02","05.02","08.02","11.02"];
+    const chestMeasurements = [99, 96, 92, 88, 84];
+    const waistMeasurements = [102, 102, 99, 96, 92];
+    const bicepsMeasurements = [60.4, 60.4, 60.2, 60, 59.8];
+    const thighMeasurements =  [55, 52, 52, 52, 51];
+    const [measurements, setmeasurements] = useState([]);
+
+
+    /*
+    const measurements = [
+        {
+            date: "30.01", chest: 99, waist: 102, biceps: 60.4, thigh: 55
+        },
+        {
+            date: "03.02", chest: 96, waist: 102, biceps: 60.4, thigh: 52
+        },
+        {
+            date: "05.02", chest: 92, waist: 99, biceps: 60.2, thigh: 52
+        },
+        {
+            date: "08.02", chest: 93, waist: 100, biceps: 60.2, thigh: 53
+        },
+    ];
+    */
+
+    useEffect(() => {
+        if(isFocused){
+            SecureStore.getItemAsync('access_token')
+            .then((token) => {
+                const userId = jwt_decode(token).user_id
+                TokenApi.get(
+                    'measurements/user/' + userId, 
+                    {
+                        headers: {
+                            Authorization: 'JWT ' + token,
+                        }
+                    }
+                )
+                .then(response => {
+                    console.log(response.data)
+                    setmeasurements(response.data)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+            })
+        }
+    }, [isFocused])
+
+    const updateMeasurements = () =>{
+        measurements = [];
+        for(let i = 0; i &lt; datesOfMeasurements.length; i++){
+            let element = {
+                date: datesOfMeasurements[i],
+                chest: chestMeasurements[i],
+                waist: waistMeasurements[i],
+                biceps: bicepsMeasurements[i],
+                thigh: thighMeasurements[i]
+            };
+            measurements.pop(element);
+        }
+    }
+
+    const chartConfig = {
+        backgroundGradientFrom: COLORS.white,
+        backgroundGradientFromOpacity: 0,
+        backgroundGradientTo: COLORS.midlle_gray,
+        backgroundGradientToOpacity: 0.1,
+        color: (opacity = 0.2) => COLORS.midlle_gray,
+        strokeWidth: 2, 
+        barPercentage: 0.5,
+        useShadowColorFromDataset: true // optional
+      };
+
+    const data = {
+        labels: datesOfMeasurements,
+        datasets: [
+            {
+                data: thighMeasurements,
+                color: (opacity = 1) => COLORS.blue, 
+                strokeWidth: 2 
+            } , 
+            {
+                data: bicepsMeasurements,
+                color: (opacity = 1) => COLORS.midlle_gray, 
+                strokeWidth: 2 
+            },
+            {
+                data: waistMeasurements,
+                color: (opacity = 1) => COLORS.middle_blue, 
+                strokeWidth: 2 
+            },
+            {
+                data: chestMeasurements,
+                color: (opacity = 1) => COLORS.light_gray,
+                strokeWidth: 2,
+            }
+        ],
+        legend: ["Chest","Waist","Biceps", "Thigh"] 
+      };
+
+  
+
+    return (
+        &lt;KeyboardAvoidingView 
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            style={MeasurementsStyles.container}>
+            &lt;View style={MeasurementsStyles.upperContainer}>
+                &lt;Text style={MeasurementsStyles.upperContainerText}>My measurements&lt;/Text>
+            &lt;/View>
+            &lt;ScrollView contentContainerStyle={MeasurementsStyles.scrollView}
+            centerContent>
+            &lt;LineChart
+                data={data}
+                width={screenWidth}
+                height={220}
+                chartConfig={chartConfig}
+            />
+            &lt;View style={MeasurementsStyles.buttonContainer}>
+                &lt;TouchableOpacity style={MeasurementsStyles.button}
+                onPress={() => navigation.navigate('AddMeasurement')}>
+                    &lt;Text style={MeasurementsStyles.buttonLabelText}>ADD MEASUREMENT&lt;/Text>
+                &lt;/TouchableOpacity>
+            &lt;/View>
+            &lt;Text style={MeasurementsStyles.titleText}>History&lt;/Text>
+            &lt;View style={MeasurementsStyles.measurementHistoryContainer}> 
+                    {measurements.map((item, index) => {
+                    return(
+                        &lt;View style={MeasurementsStyles.singleMeasurementContainer}> 
+                        &lt;View style={MeasurementsStyles.dateContainer}> 
+                            &lt;Text style={MeasurementsStyles.dateText}>{item.date}&lt;/Text>
+                        &lt;/View>
+                        &lt;View style={MeasurementsStyles.measurementContainer}> 
+                            &lt;View style={MeasurementsStyles.itemContainer}>
+                                    &lt;Text style={MeasurementsStyles.specificText}>CHEST&lt;/Text>
+                                    &lt;Text style={MeasurementsStyles.numbersText}>{item.chestSize}&lt;/Text>
+                            &lt;/View>
+                            &lt;View style={MeasurementsStyles.itemContainer}>
+                                    &lt;Text style={MeasurementsStyles.specificText}>WAIST&lt;/Text>
+                                    &lt;Text style={MeasurementsStyles.numbersText}>{item.waistSize}&lt;/Text>
+                            &lt;/View>
+                            &lt;View style={MeasurementsStyles.itemContainer}>
+                                    &lt;Text style={MeasurementsStyles.specificText}>BICEPS&lt;/Text>
+                                    &lt;Text style={MeasurementsStyles.numbersText}>{item.bicepsSize}&lt;/Text>
+                            &lt;/View>
+                            &lt;View style={MeasurementsStyles.itemContainer}>
+                                    &lt;Text style={MeasurementsStyles.specificText}>THIGH&lt;/Text>
+                                    &lt;Text style={MeasurementsStyles.numbersText}>{item.thighSize}&lt;/Text>
+                            &lt;/View>
+            
+                        &lt;/View>
+                    &lt;/View>)
+                })}
+                
+            &lt;/View>
+            &lt;/ScrollView>
+            
+        &lt;/KeyboardAvoidingView>
+    )
+}
+
+export default MeasurementsScreen
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Fitcrafter frontend documentation</a></h2><h3>Modules</h3><ul><li><a href="module-Authentication.html">Authentication</a></li><li><a href="module-colors.html">colors</a></li><li><a href="module-Exercise.html">Exercise</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Measurement.html">Measurement</a></li><li><a href="module-Navigation.html">Navigation</a></li><li><a href="module-UserProfile.html">UserProfile</a></li><li><a href="module-Workout.html">Workout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Jan 16 2022 13:51:14 GMT+0100 (czas środkowoeuropejski standardowy)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

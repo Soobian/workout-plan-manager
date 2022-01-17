@@ -1,11 +1,29 @@
+"""
+Plik zawiera klasy reprezentujące utworzone tabele w bazie danych z odpowiednimi atrybutami
+
+- CustomAccountManager Tabela zawierająca informacje na temat administratora
+- CustomUser Tabela przechowująca informacje na temat użytkownika
+- UserParameters Tabela zawierająca dodatkowe parametry użytkownika
+
+@author Maciej Ciepał
+
+"""
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
+
+
 # Create your models here.
-class  CustomAccountManager(BaseUserManager):
+class CustomAccountManager(BaseUserManager):
     def create_superuser(self, email, password, **other_fields):
+        """
+        Funkcja tworząca instancje super użytkownika, czyli administratora
+        @param email: adres a-mail
+        @param password: hasło
+        @return: nowy administrator
+        """
         other_fields.setdefault('is_staff', True)
         other_fields.setdefault('is_superuser', True)
         other_fields.setdefault('is_active', True)
@@ -20,6 +38,12 @@ class  CustomAccountManager(BaseUserManager):
         return self.create_user(email, password, **other_fields)
 
     def create_user(self, email, password, **other_fields):
+        """
+        Funkcja tworząca nowego użytkownika
+        @param email: adres e-mail
+        @param password: silne hasło
+        @return: nowy użytkownik
+        """
         if not email:
             raise ValueError(_('You must provide an email address.'))
         

@@ -10,6 +10,13 @@ import TokenApi from '../components/authentication/TokenApi';
 import jwt_decode from "jwt-decode";
 import * as SecureStore from 'expo-secure-store'
 
+/**
+ * Screeen which enables adding new measurement by inputting propper numbers in forms
+ * @module Measurement
+ * @author Paulina Gacek, Maciej Ciepał
+ * @param {route} - enables displaying proper measurements
+ * @param {navigation} - enables come back to previous screen
+ */
 const AddMeasurementScreen = ({navigation}, measurements) => {
     const [chest, setChest] = useState('')
     const [waist, setWaist] = useState('')
@@ -104,7 +111,7 @@ const AddMeasurementScreen = ({navigation}, measurements) => {
                 <View style={AddMeasurementStyle.inputContainer}>
                     {formFields.map((item, index) => {
                         return (
-                            <View style={AddMeasurementStyle.wholeContainer}>
+                            <View style={AddMeasurementStyle.wholeContainer} key={index}>
                                 <View style={AddMeasurementStyle.labelNameContianer}>
                                     <Text style={AddMeasurementStyle.labelNameText}>
                                         {item.label}
@@ -113,7 +120,6 @@ const AddMeasurementScreen = ({navigation}, measurements) => {
                                 <View style={AddMeasurementStyle.labelsCointeiner}>
                                 <FloatingLabelInput
                                 keyboardType="numeric"
-                                key={index}
                                 value={item.value}
                                 onChangeText={item.onChangeText}
                                 containerStyles={AddMeasurementStyle.floatingLabelInputContainerStyle}

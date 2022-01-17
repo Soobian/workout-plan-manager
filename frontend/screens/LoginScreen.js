@@ -4,6 +4,12 @@ import RegisterLoginForm from '../components/authentication/RegisterLoginForm';
 import TokenApi from '../components/authentication/TokenApi';
 import * as SecureStore from 'expo-secure-store'
 
+/**
+ * Login screen
+ * @module Authentication
+ * @author Paulina Gacek, Maciej Ciepał
+ * @param {navigation} - enables come back to previous screen
+ */
 const LoginScreen = ({navigation}) => {
     useEffect(() => {
         if(SecureStore.getItemAsync('refresh_token') !== "undefined"){
@@ -40,11 +46,10 @@ const LoginScreen = ({navigation}) => {
             SecureStore.setItemAsync('access_token', data.access)
             SecureStore.setItemAsync('refresh_token', data.refresh)
             setAuthorization(true)
-            navigation.navigate('Home')
+            navigation.navigate('Main')
         };
         
         const onFailure = error => {
-            console.log(22)
             console.log(error);
         };
 

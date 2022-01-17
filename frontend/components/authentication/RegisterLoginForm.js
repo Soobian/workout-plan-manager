@@ -1,9 +1,23 @@
+/**
+ * @module Authentication
+ * @author Maciej Ciepał
+ */
+
 import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View, TouchableWithoutFeedback, Keyboard, Platform } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { RegisterLoginStyles } from './RegisterLoginStyles'
 
+/**
+ * Template for Login and Registration Screeens
+ * @param formFields fields which can be filled with data by user
+ * @param title page title
+ * @param firstText page adjusted text
+ * @param smallText page adjusted small description text
+ * @param secondText page adjusted text
+ * @returns login/register component
+ */
 const RegisterLoginForm = ({formFields, title, firstText, smallText, secondText, handleSubmit, handleScreenSwitch}) => {
     return (
         <KeyboardAvoidingView 

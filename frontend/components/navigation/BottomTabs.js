@@ -11,8 +11,14 @@ import WorkoutPlanScreen from '../../screens/WorkoutPlanScreen';
 import Icon from './Icons';
 import { COLORS } from '../colors/Colors';
 
+/**
+ * @module Navigation
+ */
 
-
+/**
+ * Array with bottom navigation bar data
+ * @author Maciej Ciepał
+ */
 const TabArray = [
     { route: 'Home', label: 'Home', component: HomeScreen, icon: 'https://img.icons8.com/ios/50/000000/home--v1.png'},
     { route: 'Workout', label: 'Workout Plans', component: WorkoutPlanScreen, icon: 'https://img.icons8.com/ios/50/000000/dumbbell--v1.png'},
@@ -28,6 +34,11 @@ const animate2 = { 0: { scale: 1.2, translateY: -24 }, 1: { scale: 1, translateY
 const circle1 = { 0: { scale: 0 }, 0.3: { scale: .9 }, 1: { scale: 1 } }
 const circle2 = { 0: { scale: 1 }, 0.3: {scale: 0.2}, 1: { scale: 0 } }
 
+/**
+ * @module Navigation
+ * @author Maciej Ciepał
+ * Bottom buttom
+ */
 const TabButton = (props) => {
     const { item, onPress, accessibilityState } = props;
     const focused = accessibilityState.selected;
@@ -76,6 +87,11 @@ const TabButton = (props) => {
     )
 }
 
+/**
+ * @module Navigation
+ * @author Maciej Ciepał
+ * Bottom navigation bar button
+ */
 const BottomTab = () => {
     return (
         <Tab.Navigator

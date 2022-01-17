@@ -3,7 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, Text, Image, View , ScrollView, TouchableOpacity} from 'react-native'
 import { ExerciseStyles } from '../components/exercise/ExerciseStyles';
 
-
+/**
+ * Screen with workout name, photo and description
+ * @module Workout
+ * @author Paulina Gacek
+ * @param {route} - enables displaying proper workout
+ * @param {navigation} - enables come back to previous screen
+ */
 const WorkoutScreen = ({route, navigation}) => {
     return (
         <KeyboardAvoidingView 
@@ -13,8 +19,7 @@ const WorkoutScreen = ({route, navigation}) => {
             <View style={ExerciseStyles.imageContener}>
                 <Image
                 style={ExerciseStyles.image}
-                source={{
-                    uri: route.params.photoUrl}}/>
+                source={{uri: route.params.photoUrl}}/>
             </View>
 
             <View style={ExerciseStyles.workoutnameContener}>
@@ -37,12 +42,11 @@ const WorkoutScreen = ({route, navigation}) => {
                 </View>
                 
                 {route.params.exercises.map((item, index) => {
-                    console.log('../././' + JSON.stringify(item, null, 4))
                     return(
                         <View style={ExerciseStyles.singleExerciseContainer} key={index}> 
                             <View style={ExerciseStyles.rowDivisionContainer}> 
                                 <TouchableOpacity style={ExerciseStyles.exerciseNameContainer}
-                                onPress={() => navigation.navigate('Exercise', { name: item.name, description: "fuck diet", photoUrl: item.photoUrl})}>
+                                onPress={() => navigation.navigate('Exercise', { name: item.execise_name, description: item.exercise_description, photoUrl: item.exercise_photo})}>
                                 <View style={ExerciseStyles.imageContenerAddWorkout}>
                                         <Image
                                         style={ExerciseStyles.imageAddWorkout}

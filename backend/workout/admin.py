@@ -1,5 +1,11 @@
+"""
+Plik zawiera zarejestrowane modele bazy
+
+@author Aneta Postrożny, Maciej Ciepał
+"""
 from django.contrib import admin
 from .models import MuscleGroup, Exercise, WorkoutPlan, WorkoutPlanDay, WorkoutPlanDayExercise, WorkoutPlanDayExerciseSets
+
 
 admin.site.register(MuscleGroup)
 admin.site.register(Exercise)

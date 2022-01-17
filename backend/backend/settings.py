@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'users',
     'workout',
     'measurements',
+    'django.contrib.admindocs',
 ]
 
 from datetime import timedelta

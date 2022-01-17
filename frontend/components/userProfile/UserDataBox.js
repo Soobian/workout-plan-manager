@@ -1,26 +1,27 @@
 import React from 'react'
 import { Text, View, Dimensions, StyleSheet} from 'react-native'
 import { COLORS } from '../colors/Colors';
-const { height, width } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
-const UserDataBox = ({data, navigation}) =>{
-
-    // TO DO:
-    // calculate age from date of birth
-
+/**
+ * @module UserProfile
+ * @param {navigation} - enables come back to previous screen
+ * @returns container for data
+ */
+const UserDataBox = ({age, height, weight, navigation}) =>{
     return (
             <View style={styles.measurementContainer}>
                 <View style={styles.itemContainer}>
                     <Text style={styles.specificText}>AGE</Text>
-                    <Text style={styles.numbersText}>20</Text>
+                    <Text style={styles.numbersText}>{age}</Text>
                 </View>
                 <View style={styles.itemContainer}>
                     <Text style={styles.specificText}>HEIGHT</Text>
-                    <Text style={styles.numbersText}>{data.height}</Text>
+                    <Text style={styles.numbersText}>{height}</Text>
                 </View>
                 <View style={styles.itemContainer}>
                     <Text style={styles.specificText}>WEIGHT</Text>
-                    <Text style={styles.numbersText}>{data.weight}</Text>
+                    <Text style={styles.numbersText}>{weight}</Text>
                 </View>
             </View>
     )

@@ -1,3 +1,12 @@
+"""
+Plik zawiera zbiór widoków dostęnych w aplikacji
+
+- BlacklistTokenUpdateView  Widok Black list
+- UserParametersViewSet   Widok dodatkowych parametrów użytkownika
+
+@author Maciej Ciepał
+
+"""
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import status
 from rest_framework.response import Response
@@ -8,6 +17,7 @@ from rest_framework.permissions import AllowAny
 from .models import UserParameters
 from rest_framework import viewsets
 from .serializers import UserParametersSerializer
+
 
 
 class CustomUserCreate(APIView):

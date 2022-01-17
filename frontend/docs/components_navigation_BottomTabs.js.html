@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/navigation/BottomTabs.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/navigation/BottomTabs.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React, { useEffect, useRef } from 'react'
+import { StyleSheet, TouchableOpacity, View} from 'react-native'
+import * as Animatable from 'react-native-animatable';
+
+import HomeScreen from '../../screens/HomeScreen';
+import UserProfileScreen from '../../screens/UserProfileScreen'
+import MeasurementsScreen from '../../screens/MeasurementsScreen'
+import WorkoutPlanScreen from '../../screens/WorkoutPlanScreen';
+
+import Icon from './Icons';
+import { COLORS } from '../colors/Colors';
+
+/**
+ * @module Navigation
+ */
+
+/**
+ * Array with bottom navigation bar data
+ * @author Maciej Ciepał
+ */
+const TabArray = [
+    { route: 'Home', label: 'Home', component: HomeScreen, icon: 'https://img.icons8.com/ios/50/000000/home--v1.png'},
+    { route: 'Workout', label: 'Workout Plans', component: WorkoutPlanScreen, icon: 'https://img.icons8.com/ios/50/000000/dumbbell--v1.png'},
+    { route: 'Friends', label: 'Measurements', component: MeasurementsScreen, icon: 'https://img.icons8.com/ios/50/000000/tape-measure-sewing.png'},
+    { route: 'Profile', label: 'Profile', component: UserProfileScreen, icon: 'https://img.icons8.com/ios/50/000000/user--v1.png'},
+]
+
+const Tab = createBottomTabNavigator();
+
+const animate1 = { 0: { scale: .5, translateY: 7 }, .92: { translateY: -34 }, 1: { scale: 1.2, translateY: -24 } }
+const animate2 = { 0: { scale: 1.2, translateY: -24 }, 1: { scale: 1, translateY: 7 } }
+
+const circle1 = { 0: { scale: 0 }, 0.3: { scale: .9 }, 1: { scale: 1 } }
+const circle2 = { 0: { scale: 1 }, 0.3: {scale: 0.2}, 1: { scale: 0 } }
+
+/**
+ * @module Navigation
+ * @author Maciej Ciepał
+ * Bottom buttom
+ */
+const TabButton = (props) => {
+    const { item, onPress, accessibilityState } = props;
+    const focused = accessibilityState.selected;
+    const viewRef = useRef(null);
+    const circleRef = useRef(null);
+    const textRef = useRef(null);
+
+    useEffect(() => {
+        if (focused) {
+            viewRef.current.animate(animate1);
+            circleRef.current.animate(circle1);
+            textRef.current.transitionTo({ scale: 1 });
+        } else {
+            viewRef.current.animate(animate2);
+            circleRef.current.animate(circle2);
+            textRef.current.transitionTo({ scale: 0 });
+        }
+    }, [focused])
+
+    return (
+        &lt;TouchableOpacity
+            onPress={onPress}
+            activeOpacity={1}
+            style={styles.container}
+        >
+            &lt;Animatable.View
+                ref={viewRef}
+                duration={200}
+                style={styles.container}
+            >
+                &lt;View style={styles.btn}>
+                    &lt;Animatable.View
+                        ref={circleRef}
+                        style={styles.circle} 
+                    />
+                        &lt;Icon image={item.icon} color={focused ? COLORS.white : COLORS.main_color} />
+                    &lt;Animatable.View/>
+                &lt;/View>
+                &lt;Animatable.Text
+                    ref={textRef}
+                    style={styles.text}>
+                    {item.label}
+                &lt;/Animatable.Text>
+            &lt;/Animatable.View>
+        &lt;/TouchableOpacity>
+    )
+}
+
+/**
+ * @module Navigation
+ * @author Maciej Ciepał
+ * Bottom navigation bar button
+ */
+const BottomTab = () => {
+    return (
+        &lt;Tab.Navigator
+            screenOptions={{
+            headerShown: false,
+            tabBarStyle: styles.tabBar,
+        }}
+        >
+        {TabArray.map((item, index) => {
+            return (
+                &lt;Tab.Screen key={index} name={item.route} component={item.component}
+                    options={{
+                        tabBarShowLabel: false,
+                        tabBarButton: (props) => &lt;TabButton {...props} item={item} />
+                    }}
+                />
+            )
+        })}
+        &lt;/Tab.Navigator>
+    )
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    tabBar: {
+        height: 70,
+        position: 'absolute',
+    },
+    btn: {
+        width: 50,
+        height: 50,
+        borderRadius: 25,
+        borderWidth: 4,
+        borderColor: COLORS.white,
+        backgroundColor: COLORS.white,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    circle: {
+        ...StyleSheet.absoluteFillObject,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: COLORS.main_color,
+        borderRadius: 25,
+    },
+    text: {
+        fontSize: 10,
+        textAlign: 'center',
+        color: COLORS.main_color,
+    }
+})
+
+export default BottomTab</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Fitcrafter frontend documentation</a></h2><h3>Modules</h3><ul><li><a href="module-Authentication.html">Authentication</a></li><li><a href="module-colors.html">colors</a></li><li><a href="module-Exercise.html">Exercise</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Measurement.html">Measurement</a></li><li><a href="module-Navigation.html">Navigation</a></li><li><a href="module-UserProfile.html">UserProfile</a></li><li><a href="module-Workout.html">Workout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Jan 16 2022 13:51:14 GMT+0100 (czas środkowoeuropejski standardowy)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

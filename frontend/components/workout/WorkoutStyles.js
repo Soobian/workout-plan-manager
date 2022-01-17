@@ -1,14 +1,24 @@
 import { StyleSheet } from "react-native"
 import {COLORS} from '../colors/Colors'
+
+/**
+ * Styles used in WorkoutScreen
+ * @author Paulina Gacek
+ * @module Workout
+ */
 export const WorkoutStyles = StyleSheet.create({
+    /**
+     * whole page
+     */
     container: {
-        // whole page
         flex: 1,
         alignItems: 'center',
         backgroundColor: COLORS.dark_gray
     },
+    /**
+     * container for workout plan name name in WorkoutPlanScreen
+     */
     workoutContainer: {
-        // container for workout plan name name in WorkoutPlanScreen
         color: COLORS.blue,
         backgroundColor: COLORS.blue,
         width: '100%',
@@ -16,8 +26,10 @@ export const WorkoutStyles = StyleSheet.create({
         fontSize: 16,
         borderRadius: 17,
     },
+    /**
+     * workout plan name name Text in WorkoutPlanScreen
+     */
     workoutContainerText: {
-        // workout plan name name Text in WorkoutPlanScreen
         color: 'white',
         fontWeight: '700',
         fontSize: 28,
@@ -25,12 +37,16 @@ export const WorkoutStyles = StyleSheet.create({
         paddingTop: '12%',
         bottom: 7
     },
+    /**
+     * container which enables scrolling
+     */
     scrollView: {
-        // container which enables scrolling
         width: 350,
     },
+    /**
+     * button with workout name displayed
+     */
     workoutItemContainer: {
-        // button with workout name displayed
         backgroundColor: COLORS.midlle_gray,
         width: 300,
         height: 45,
@@ -40,12 +56,17 @@ export const WorkoutStyles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 15
     },
+    /**
+     * text displayed on above button
+     */
     workoutItemContainerText: {
-        // text displayed on above button
         color: 'white',
         fontWeight: '700',
         fontSize: 20,
     },
+    /**
+     * container for workout day plan
+     */
     workDayContainer: {
         color: COLORS.blue,
         fontWeight: '700',
@@ -55,8 +76,10 @@ export const WorkoutStyles = StyleSheet.create({
     },
 
     // Workout screen 
-    
-    //"Exercise" and "repeat" labels
+
+    /**
+     * "Exercise" and "repeat" labels
+     */
     topLabelsExercise: {
         color: COLORS.blue,
         fontWeight: '700',
@@ -66,8 +89,10 @@ export const WorkoutStyles = StyleSheet.create({
         marginBottom: 10,
         left: 30
     },
+    /**
+     * button with exercise name displayed
+     */
     exerciseItemContainer: {
-        // button with exercise name displayed
         backgroundColor: COLORS.midlle_gray,
         width: 220,
         height: 45,
