@@ -7,6 +7,7 @@ from rest_framework import status
 class WorkoutTestCase(APITestCase, URLPatternsTestCase):
     urlpatterns = [
         path('api/workout/', include('workout.urls')),
+        path('api/', include('workout.urls')),
     ]
 
     def setUp(self):
@@ -14,6 +15,7 @@ class WorkoutTestCase(APITestCase, URLPatternsTestCase):
         self.url_workoutplan_list = reverse('workout:workoutplan-list')
         self.url_set_list = reverse('workout:set-list')
         self.url_reps_list = reverse('workout:reps-list')
+        self.url_exercise_list = reverse('workout:exercise-list')
 
     def test_workout_GET(self):
         """GET METHOD"""
@@ -47,6 +49,15 @@ class WorkoutTestCase(APITestCase, URLPatternsTestCase):
 
         response = self.client.get(
             self.url_reps_list,
+            format='json'
+        )
+        self.assertEquals(response.status_code, status.HTTP_200_OK)
+
+    def test_exercise_GET(self):
+        """GET METHOD"""
+
+        response = self.client.get(
+            self.url_exercise_list,
             format='json'
         )
         self.assertEquals(response.status_code, status.HTTP_200_OK)

@@ -12,6 +12,8 @@ from .views import MuscleGroupViewSet, ExerciseViewSet, WorkoutPlanViewSet, Work
     WorkoutPlanDayExerciseViewSet, WorkoutPlanDayExerciseSetsViewSet
 
 
+app_name = 'workout'
+
 router = routers.DefaultRouter()
 router.register('musclegroup', MuscleGroupViewSet)
 router.register('exercise', ExerciseViewSet)
