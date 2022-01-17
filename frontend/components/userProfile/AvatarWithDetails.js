@@ -2,7 +2,7 @@ import React from "react"
 import { Text, View, StyleSheet, Image} from "react-native"
 import { COLORS } from "../colors/Colors";
 
-const AvatarWithDetails = ({data, navigation}) =>{
+const AvatarWithDetails = ({firstname, sex}) =>{
     // avatars: https://www.iconfinder.com/icons/2754576/woman_female_avatar_icon
     const womanAvatar = "https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/11_avatar-512.png";
     const manAvatar = "https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/8_avatar-512.png";
@@ -12,11 +12,11 @@ const AvatarWithDetails = ({data, navigation}) =>{
                 <View style={styles.imageContainer}>
                     <Image 
                     style={styles.image}
-                    source={ data.sex == "w" ?
+                    source={ sex == "Woman" ?
                         {uri: womanAvatar} : {uri: manAvatar}}/>
                 </View>
-                <Text style={styles.nameText}>{data.name}</Text>
-                <Text style={styles.emailText}>{data.email}</Text>
+                <Text style={styles.nameText}>{firstname}</Text>
+                <Text style={styles.emailText}>{firstname}</Text>
             </View>
     )
 }

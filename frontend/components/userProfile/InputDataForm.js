@@ -1,24 +1,20 @@
 import React, {useState} from "react"
-import { Text, View, StyleSheet, TextInput} from "react-native"
+import { Text, View, StyleSheet, TextInput, TouchableOpacity} from "react-native"
 import { COLORS } from "../colors/Colors";
 import { CheckBox } from "react-native-elements";
+import { MeasurementsStyles } from '../measurements/MeasurementsStyles';
 
-const InputDataForm = ({data, navigation}) =>{
+const InputDataForm = ({data, setFirstName, setage , setHeight, setweight, setsex, navigation}) =>{
 
     // TO DO:
     // calculate age from date of birth
-    
-    const [firstName, setFirstName] = useState("random");
-    const [dateOfBirth, setdateOfBirth] = useState("");
-    const [height, setHeight] = useState("");
-    const [weight, setweight] = useState("");
-    const [isWoman, setIsWoman] = useState(false);
 
+    const [isWoman, setIsWoman] = useState(false)
     const formFields = [
-        {label: "name", value: firstName, onChangeText: text => setFirstName(text)},
-        {label: "date of birth", value: dateOfBirth, onChangeText: text => setdateOfBirth(text)},
-        {label: "height", value: height, onChangeText: text => setHeight(text)},
-        {label: "weight", value: weight, onChangeText: text => setweight(text)},
+        {label: "name", onChangeText: text => setFirstName(text)},
+        {label: "age", onChangeText: text => setage(text)},
+        {label: "height", onChangeText: text => setHeight(text)},
+        {label: "weight", onChangeText: text => setweight(text)},
     ];
 
     return (
@@ -31,7 +27,7 @@ const InputDataForm = ({data, navigation}) =>{
                 
                 {formFields.map((item, index) => {
                     return (
-                        <View style={styles.singleItem}> 
+                        <View style={styles.singleItem} key={index}> 
                             <View style={styles.dataContainer}>
                                 <Text style={styles.dataText}>
                                     {item.label}:
@@ -40,7 +36,6 @@ const InputDataForm = ({data, navigation}) =>{
                             <TextInput
                                     style={styles.input}
                                     onChangeText={item.onChangeText}
-                                    value={item.value}
                                 />
                         </View>
                         )})}
@@ -56,7 +51,10 @@ const InputDataForm = ({data, navigation}) =>{
                     <CheckBox
                         center={true}
                         checked={isWoman}
-                        onPress={() => setIsWoman(!isWoman)}
+                        onPress={() => {
+                            setsex("Woman")
+                            setIsWoman(true)
+                        }}
                         style={styles.checkbox}/> 
 
                     <View style={styles.sexLabelContainer}>
@@ -65,7 +63,10 @@ const InputDataForm = ({data, navigation}) =>{
                     <CheckBox
                         center={true}
                         checked={!isWoman}
-                        onPress={() => setIsWoman(!isWoman)}
+                        onPress={() => {
+                            setsex("Man")
+                            setIsWoman(false)
+                        }}
                         style={styles.checkbox}/> 
                 </View>
             </View>

@@ -19,6 +19,7 @@ const WorkoutPlanScreen = ({route, navigation}) => {
     const isFocused = useIsFocused();
     const [plans, setplans] = useState([]);
 
+
     useEffect(() => {
         if(isFocused){
             SecureStore.getItemAsync('access_token')
