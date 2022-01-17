@@ -19,7 +19,7 @@ import * as SecureStore from 'expo-secure-store'
  */
 const AddWorkoutPlanScreen = ({route, navigation}) => {
     const [name, setName] = useState('');
-    const [selectedLevel, setSelectedLevel] = useState("easy");
+    const [selectedLevel, setSelectedLevel] = useState(1);
     const [description, setDescription] = useState('');
     const [imageUrl, setImageUrl] = useState('');
 
@@ -36,7 +36,27 @@ const AddWorkoutPlanScreen = ({route, navigation}) => {
      * action after clicking add workout plan button 
      */ 
     const  handleCreateWorkoutPlan = () => {
-        navigation.navigate('Workout');
+        SecureStore.getItemAsync('access_token')
+        .then((token) => {
+            const userId = jwt_decode(token).user_id;
+            console.log(selectedLevel)
+            TokenApi.post(
+                'workout/workoutplan/', 
+                {
+                    userId: userId,
+                    name: name,
+                    level: selectedLevel,
+                    photo_link: imageUrl,
+                    description: description,
+                },
+                {
+                    headers: {
+                        Authorization: 'JWT ' + token,
+                    }
+                }
+            )
+        })
+        navigation.navigate('Workout', {plansChanged: true});
     };
 
     return (
@@ -102,7 +122,7 @@ const AddWorkoutPlanScreen = ({route, navigation}) => {
                         >
                             {level.map((subitem, subindex) => {
                                 return (
-                                    <Picker.Item label={subitem.label} value={subitem.value} />
+                                    <Picker.Item label={subitem.label} value={subitem.value}  key={subindex}/>
                                     )
                                 })}
                         </Picker>

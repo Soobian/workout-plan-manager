@@ -13,9 +13,9 @@ import WorkoutScreen from './screens/WorkoutScreen';
 import WorkoutPlanScreen from './screens/WorkoutPlanScreen';
 import WorkoutListScreen from './screens/WorkoutListScreen';
 import MeasurementsScreen from './screens/MeasurementsScreen';
+import AddWorkoutPlan from './screens/AddWorkoutPlan';
 
 const Stack = createNativeStackNavigator();
-
 
 export default function App() {
     return (
@@ -23,9 +23,10 @@ export default function App() {
             <Stack.Navigator initialRouteName="Login">
                 <Stack.Screen options={{ headerShown: false }} name="Register" component={RegisterScreen} />
                 <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
-                <Stack.Screen options={{ headerShown: false }} name="Home" component={MainStack} />
+                <Stack.Screen options={{ headerShown: false }} name="Main" component={MainStack} />
                 <Stack.Screen options={{ headerShown: false }} name="AddMeasurement" component={AddMeasurementScreen} />
                 <Stack.Screen options={{ headerShown: false }} name="AddWorkout" component={AddWorkout} />
+                <Stack.Screen options={{ headerShown: false }} name="AddWorkoutPlan" component={AddWorkoutPlan} />
                 <Stack.Screen options={{ headerShown: false }} name="AddExerciseToWorkout" component={AddExerciseToWorkoutScreen} />
                 <Stack.Screen options={{ headerShown: false }} name="Exercise" component={ExerciseScreen} />
                 <Stack.Screen options={{ headerShown: false }} name="Work" component={WorkoutScreen} />

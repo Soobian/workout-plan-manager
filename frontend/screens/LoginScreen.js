@@ -40,7 +40,7 @@ const LoginScreen = ({navigation}) => {
             SecureStore.setItemAsync('access_token', data.access)
             SecureStore.setItemAsync('refresh_token', data.refresh)
             setAuthorization(true)
-            navigation.navigate('Home')
+            navigation.navigate('Main')
         };
         
         const onFailure = error => {
