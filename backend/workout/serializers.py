@@ -1,5 +1,20 @@
+"""
+Plik zawiera zbiór serializatorów modeli bazy danych
+
+- MuscleGroupSerializer:   Serializator dla grup mięśni
+- ExerciseSerializer:  Serializator ćwiczeń
+- WorkoutPlanSerializer:    Serializator Planów ćwiczeń
+- WorkoutPlanDaySerializer:    Serializator dniowego planu ćwiczeń
+- WorkoutPlanDayExerciseSerializer:  Serializator ćwiczeń w danym dniu
+- WorkoutPlanDayExerciseSetsSerializer:   Serializator szczegółowych informacji na temat ćwiczenia
+
+@author Aneta Postrożny, Maciej Ciepał
+
+"""
+
 from rest_framework import serializers
 from .models import MuscleGroup, Exercise, WorkoutPlan, WorkoutPlanDay, WorkoutPlanDayExercise, WorkoutPlanDayExerciseSets
+
 
 
 class MuscleGroupSerializer(serializers.ModelSerializer):
@@ -12,6 +27,7 @@ class ExerciseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Exercise
         fields = ('name', 'description', 'photo_link', 'musclegroups')
+
 
 class WorkoutPlanDayExerciseSetsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,6 +47,7 @@ class WorkoutPlanDayExerciseSerializer(serializers.ModelSerializer):
         rep['exercise_photo'] = instance.exerciseId.photo_link
         rep['exercise_description'] = instance.exerciseId.description
         return rep
+
 
 class WorkoutPlanDaySerializer(serializers.ModelSerializer):
     workoutplanexercises = WorkoutPlanDayExerciseSerializer(many=True, read_only=True)

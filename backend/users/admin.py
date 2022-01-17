@@ -1,3 +1,8 @@
+"""
+Plik zawiera zarejestrowany model bazy dla użytkownika
+
+@author Maciej Ciepał
+"""
 from django.contrib import admin
 from users.models import CustomUser, UserParameters
 from django.contrib.auth.admin import UserAdmin

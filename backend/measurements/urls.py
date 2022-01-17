@@ -1,8 +1,15 @@
+"""
+Plik zawiera adresy url dla odpowiednich widoków
+
+@author Maciej Ciepał
+
+"""
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
 from .views import MeasurementViewSet, MeasurementHistoryViewSet
+
 
 router = routers.DefaultRouter()
 router.register('measurements', MeasurementViewSet)
