@@ -2,3 +2,7 @@
 # yarn lockfile v1
 
 
+parse-react@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/parse-react/-/parse-react-0.5.2.tgz#980f776b39f6bd1d2d6d5902a1a916678666e4ae"
+  integrity sha1-mA93azn2vR0tbVkCoakWZ4Zm5K4=
